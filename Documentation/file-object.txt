@@ -1,0 +1,4 @@
+File objects will contain the data for each item, it will start with the object
+type name then a space and the size of the data as an base 10 integer, then
+comes a Unix line break character to end the file header.
+After that starts the file object content.
