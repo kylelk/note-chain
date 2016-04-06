@@ -1,0 +1,16 @@
+branches will be stored in the file branches.json of the project directory
+the json will use a dictionary structure to store infomation about the state of
+the branches, the dictionary will contain a entry called "branches" will will
+store a list of all the branches, each branch entry will be a dictionary.
+containing the name of the branch and a refrence to the SHA-1 of the root tree
+
+
+example:
+
+{
+	"head": "master",
+	"branches": [
+		{"name": "master", "tree-ref": "tree SHA-1"},
+		{"name": "test", "tree-ref": "tree SHA-1"}	
+	]
+}
