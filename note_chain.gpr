@@ -6,21 +6,16 @@ project Note_Chain is
    for Languages use ("Ada");
 
    package Compiler is
-      for Default_Switches ("ada") use
-        ("-fstack-check",
-         "-gnata",
-         "-gnato",
-         "-gnatf",
-         "-gnatwa",
-         "-gnatwr",
-         "-gnatVa",
-         "-gnat2012",
-         "-Wall",
-         "-O2");
+      for Default_Switches ("ada") use ("-fstack-check", "-gnata", "-gnato", "-gnatf", "-gnatwa", "-gnatwr", "-gnatVa", "-gnat2012", "-Wall", "-O2");
    end Compiler;
 
    package Builder is
       for Executable ("main.adb") use "Note_Chain";
    end Builder;
+
+   package Ide is
+      for Documentation_Dir use "Documentation";
+   end Ide;
+
 end Note_Chain;
 
