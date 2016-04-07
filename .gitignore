@@ -4,4 +4,4 @@ obj/*
 *.o
 *.ali
 *.db
-.note_data/
+.note_chain_data/
