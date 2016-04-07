@@ -3,21 +3,21 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Branch_JSON_File",
-      "docHref": "docs/config.html#L15C4",
+      "docHref": "docs/config.html#L19C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L15"
+      "srcHref": "srcs/config.ads.html#L19"
     },
     {
       "label": "Data_Dir",
-      "docHref": "docs/config.html#L9C4",
+      "docHref": "docs/config.html#L10C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L9"
+      "srcHref": "srcs/config.ads.html#L10"
     },
     {
       "label": "Default_Branch_Name",
-      "docHref": "docs/config.html#L17C4",
+      "docHref": "docs/config.html#L22C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L17"
+      "srcHref": "srcs/config.ads.html#L22"
     },
     {
       "label": "Empty_Array",
@@ -39,15 +39,15 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Object_Dir",
-      "docHref": "docs/config.html#L11C4",
-      "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L11"
-    },
-    {
-      "label": "Temp_Dir",
       "docHref": "docs/config.html#L13C4",
       "declared": "Config",
       "srcHref": "srcs/config.ads.html#L13"
+    },
+    {
+      "label": "Temp_Dir",
+      "docHref": "docs/config.html#L16C4",
+      "declared": "Config",
+      "srcHref": "srcs/config.ads.html#L16"
     }
   ]
 };

@@ -9,7 +9,7 @@ GNATdoc.Documentation = {
       "entities": [
         {
           "label": "Data_Dir",
-          "line": 9,
+          "line": 10,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -20,7 +20,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 9,
+                  "number": 10,
                   "children": [
                     {
                       "kind": "span",
@@ -85,12 +85,21 @@ GNATdoc.Documentation = {
                   ]
                 }
               ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "directory used to store project data and folders\n"
+                }
+              ]
             }
           ]
         },
         {
           "label": "Object_Dir",
-          "line": 11,
+          "line": 13,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -101,7 +110,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 11,
+                  "number": 13,
                   "children": [
                     {
                       "kind": "span",
@@ -201,12 +210,21 @@ GNATdoc.Documentation = {
                   ]
                 }
               ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "place to store all of the file objects used for storing data\n"
+                }
+              ]
             }
           ]
         },
         {
           "label": "Temp_Dir",
-          "line": 13,
+          "line": 16,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -217,7 +235,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 13,
+                  "number": 16,
                   "children": [
                     {
                       "kind": "span",
@@ -302,7 +320,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "string",
-                      "text": "\"temp\""
+                      "text": "\"temp/\""
                     },
                     {
                       "kind": "span",
@@ -317,12 +335,21 @@ GNATdoc.Documentation = {
                   ]
                 }
               ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "place to store temporary files and folders while the app is running\n"
+                }
+              ]
             }
           ]
         },
         {
           "label": "Branch_JSON_File",
-          "line": 15,
+          "line": 19,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -333,7 +360,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 15,
+                  "number": 19,
                   "children": [
                     {
                       "kind": "span",
@@ -433,12 +460,21 @@ GNATdoc.Documentation = {
                   ]
                 }
               ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "JSON file to store the current branches of the project\n"
+                }
+              ]
             }
           ]
         },
         {
           "label": "Default_Branch_Name",
-          "line": 17,
+          "line": 22,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -449,7 +485,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 17,
+                  "number": 22,
                   "children": [
                     {
                       "kind": "span",
@@ -527,6 +563,15 @@ GNATdoc.Documentation = {
                       "text": ";"
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "when the app starts for the first time a default branch is created\n"
                 }
               ]
             }
