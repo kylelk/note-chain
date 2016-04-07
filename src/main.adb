@@ -16,11 +16,10 @@ procedure Main is
 
 
    subtype SHA256_Value is String(1..64);
-   Null_Sha256 : constant SHA256_Value :=
-     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+   Empty_Tree_Ref : constant SHA256_Value := (others=>' ');
    type Branch is record
       Name : UBS.Unbounded_String;
-      Tree_Ref : SHA256_Value := Null_Sha256;
+      Tree_Ref : SHA256_Value := Empty_Tree_Ref;
    end record;
 
    function Hash (Key : UBS.Unbounded_String) return Ada.Containers.Hash_Type is
@@ -33,7 +32,7 @@ procedure Main is
       Equivalent_Keys => UBS."=");
 
    type Branch_Info is record
-      Head : Branch;
+      Head : UBS.Unbounded_String := UBS.Null_Unbounded_String;
       Branches : Branch_Map.Map;
    end record;
 
@@ -49,12 +48,20 @@ procedure Main is
       end if;
    end Set_Branch;
 
+   procedure Set_Head(Info : in out Branch_Info; Branch_Name : UBS.Unbounded_String) is
+   begin
+      Info.Head := Branch_Name;
+   end Set_Head;
+
    procedure Load_Branches(Result : out Branch_Info) is
       procedure Handler(Name : JSON.UTF8_String; Value : JSON.JSON_Value) is
          Branch_Result : Branch;
+         use JSON;
       begin
          Branch_Result.Name := UBS.To_Unbounded_String(Name);
-         Branch_Result.Tree_Ref := Value.Get("tree_ref");
+         if JSON.Kind(Value.Get("tree_ref")) = JSON.JSON_String_Type then
+            Branch_Result.Tree_Ref := Value.Get("tree_ref");
+         end if;
          Set_Branch(Result, Branch_Result);
       end Handler;
 
@@ -76,13 +83,17 @@ procedure Main is
          Temp_Branch := Branch_Map.Element(Branch_Cursor);
          Branch_Entry_JSON := JSON.Create_Object;
          Branch_Entry_JSON.Set_Field("name", UBS.To_String(Temp_Branch.Name));
-         Branch_Entry_JSON.Set_Field("tree_ref", Temp_Branch.Tree_Ref);
+         if Temp_Branch.Tree_Ref /= Empty_Tree_Ref then
+            Branch_Entry_JSON.Set_Field("tree_ref", Temp_Branch.Tree_Ref);
+         else
+            Branch_Entry_JSON.Set_Field("tree_ref", JSON.JSON_Null);
+         end if;
          Branch_JSON.Set_Field(UBS.To_String(Temp_Branch.Name), Branch_Entry_JSON);
          Branch_Map.Next(Branch_Cursor);
       end loop;
       Result_JSON := JSON.Create_Object;
       Result_JSON.Set_Field("branches", Branch_JSON);
-      Result_JSON.Set_Field("head", JSON.JSON_Null);
+      Result_JSON.Set_Field("head", Info.Head);
 
       TIO.Create(Data_File, TIO.Out_File, Config.Branch_JSON_File);
       Ada.Text_IO.Put(Data_File, Result_JSON.Write);
@@ -103,12 +114,21 @@ procedure Main is
    end Setup_Project;
 
    Branch_Status : Branch_Info;
+   Default_Branch : Branch;
+   First_Load : Boolean := False;
 begin
    Setup_Project;
+
    begin
       Load_Branches(Branch_Status);
-   exception when Ada.IO_Exceptions.Name_Error => null;
+   exception when Ada.IO_Exceptions.Name_Error => First_Load := True;
    end;
+
+   if First_Load then
+      Default_Branch.Name := Config.Default_Branch_Name;
+      Set_Branch(Branch_Status, Default_Branch);
+      Set_Head(Branch_Status, Config.Default_Branch_Name);
+   end if;
 
    Save_Branches(Branch_Status);
 end Main;
