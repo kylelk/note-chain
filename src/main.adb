@@ -103,7 +103,6 @@ procedure Main is
    end Setup_Project;
 
    Branch_Status : Branch_Info;
-   Test_Branch : Branch;
 begin
    Setup_Project;
    begin
@@ -111,7 +110,5 @@ begin
    exception when Ada.IO_Exceptions.Name_Error => null;
    end;
 
-   Test_Branch.Name := UBS.To_Unbounded_String("test");
-   Set_Branch(Branch_Status, Test_Branch);
    Save_Branches(Branch_Status);
 end Main;
