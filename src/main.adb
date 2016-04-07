@@ -5,6 +5,7 @@ with Ada.Strings.Unbounded;
 with Ada.Containers.Hashed_Maps;
 with Ada.Strings.Unbounded.Hash;
 with Ada.IO_Exceptions;
+with Ada.Command_Line;
 
 with Config;
 with File_Operations;
@@ -13,6 +14,7 @@ procedure Main is
    package TIO renames Ada.Text_IO;
    package JSON renames GNATCOLL_JSON;
    package UBS renames Ada.Strings.Unbounded;
+   package CLI renames Ada.Command_Line;
 
 
    subtype SHA256_Value is String(1..64);
@@ -109,6 +111,12 @@ begin
       Load_Branches(Branch_Status);
    exception when Ada.IO_Exceptions.Name_Error => null;
    end;
+   
+   if CLI.Argument_Count < 1 then
+      null;
+   else
+      null;
+   end if;
 
    Save_Branches(Branch_Status);
 end Main;
