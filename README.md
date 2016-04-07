@@ -1,3 +1,3 @@
 # Note chain
 
-# written in the Ada programming language
+written in the Ada programming language
