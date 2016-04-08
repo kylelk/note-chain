@@ -1,10 +1,12 @@
 with Ada.Directories;
 with Ada.IO_Exceptions;
+with GNAT.Command_Line;
 
 with Config;
 with Client;
 
 procedure Main is
+   package CMD renames GNAT.Command_Line;
 
    procedure Setup_Project is
       procedure Create_Dir (Path : String) is

@@ -1,3 +1,5 @@
+with Ada.Text_IO;
+
 with Config;
 with File_Operations;
 
@@ -57,7 +59,7 @@ package body Client is
       Result_JSON, Branch_JSON, Branch_Entry_JSON : JSON.JSON_Value;
       Branch_Cursor : Branch_Map.Cursor;
       Temp_Branch : Branch;
-      Data_File : TIO.File_Type;
+      Data_File : Ada.Text_IO.File_Type;
    begin
       Branch_JSON := JSON.Create_Object;
       Branch_Cursor := Status.Branch_Status.Branches.First;
@@ -77,8 +79,8 @@ package body Client is
       Result_JSON.Set_Field("branches", Branch_JSON);
       Result_JSON.Set_Field("head", UBS.To_String(Status.Branch_Status.Head));
 
-      TIO.Create(Data_File, TIO.Out_File, Config.Branch_JSON_File);
+      Ada.Text_IO.Create(Data_File, Ada.Text_IO.Out_File, Config.Branch_JSON_File);
       Ada.Text_IO.Put(Data_File, Result_JSON.Write);
-      TIO.Close(Data_File);
+      Ada.Text_IO.Close(Data_File);
    end Save_Branches;
 end Client;

@@ -1,4 +1,3 @@
-with Ada.Text_IO;
 with GNATCOLL_JSON;
 with Ada.Strings.Unbounded;
 with Ada.Containers.Hashed_Maps;
@@ -6,7 +5,6 @@ with Ada.Strings.Unbounded.Hash;
 
 
 package Client is
-   package TIO renames Ada.Text_IO;
    package JSON renames GNATCOLL_JSON;
    package UBS renames Ada.Strings.Unbounded;
 
