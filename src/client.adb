@@ -15,8 +15,8 @@ package body Client is
          use JSON;
       begin
          Branch_Result.Name := UBS.To_Unbounded_String (Name);
-         if JSON.Kind (Value.Get ("tree_ref")) = JSON.JSON_String_Type then
-            Branch_Result.Tree_Ref := Value.Get ("tree_ref");
+         if JSON.Kind (Value.Get ("commit_ref")) = JSON.JSON_String_Type then
+            Branch_Result.Commit_Ref := Value.Get ("commit_ref");
          end if;
          Status.Set_Branch (Branch_Result);
       end Handler;
@@ -82,10 +82,10 @@ package body Client is
          Branch_Entry_JSON := JSON.Create_Object;
          Branch_Entry_JSON.Set_Field
          ("name", UBS.To_String (Temp_Branch.Name));
-         if Temp_Branch.Tree_Ref /= Empty_Tree_Ref then
-            Branch_Entry_JSON.Set_Field ("tree_ref", Temp_Branch.Tree_Ref);
+         if Temp_Branch.Commit_Ref /= Empty_Hash_Ref then
+            Branch_Entry_JSON.Set_Field ("commit_ref", Temp_Branch.Commit_Ref);
          else
-            Branch_Entry_JSON.Set_Field ("tree_ref", JSON.JSON_Null);
+            Branch_Entry_JSON.Set_Field ("commit_ref", JSON.JSON_Null);
          end if;
          Branch_JSON.Set_Field
          (UBS.To_String (Temp_Branch.Name), Branch_Entry_JSON);

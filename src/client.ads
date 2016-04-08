@@ -8,10 +8,10 @@ package Client is
    package UBS renames Ada.Strings.Unbounded;
 
    subtype SHA256_Value is String(1..64);
-   Empty_Tree_Ref : constant SHA256_Value := (others=>' ');
+   Empty_Hash_Ref : constant SHA256_Value := (others=>' ');
    type Branch is record
       Name : UBS.Unbounded_String;
-      Tree_Ref : SHA256_Value := Empty_Tree_Ref;
+      Commit_Ref : SHA256_Value := Empty_Hash_Ref;
    end record;
 
    function Hash (Key : UBS.Unbounded_String) return Ada.Containers.Hash_Type is
