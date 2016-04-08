@@ -1,5 +1,17 @@
 GNATdoc.DocumentationIndex = [
   {
+    "label": "Client",
+    "file": "docs/client.html"
+  },
+  {
+    "label": "Client.JSON",
+    "file": "docs/client.json.html"
+  },
+  {
+    "label": "Client.UBS",
+    "file": "docs/client.ubs.html"
+  },
+  {
     "label": "Config",
     "file": "docs/config.html"
   },

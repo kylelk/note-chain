@@ -1,5 +1,9 @@
 GNATdoc.SourceFileIndex = [
   {
+    "label": "client.ads",
+    "srcHref": "srcs/client.ads.html"
+  },
+  {
     "label": "config.ads",
     "srcHref": "srcs/config.ads.html"
   },

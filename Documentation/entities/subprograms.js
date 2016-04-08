@@ -26,6 +26,12 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/gnatcoll_json.ads.html#L275"
     },
     {
+      "label": "Hash",
+      "docHref": "docs/client.html#L18C13",
+      "declared": "Client",
+      "srcHref": "srcs/client.ads.html#L18"
+    },
+    {
       "label": "Is_Empty",
       "docHref": "docs/gnatcoll_json.html#L60C13",
       "declared": "GNATCOLL_JSON",

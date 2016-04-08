@@ -29,14 +29,25 @@ package Client is
       Branches : Branch_Map.Map;
    end record;
 
+   -- @description
+   -- Current status of the client
    type Client_Status is tagged record
       Branch_Status : Branch_Info;
-      Default_Branch : Branch;
+      -- first time starting the client
       First_Load : Boolean := False;
    end record;
 
+   -- @description
+   -- Load branches from the JSON file defined in the config.ads
    procedure Load_Branches(Status : in out Client_Status);
-   procedure Set_Head(Status : in out Client_Status; Branch_Name : UBS.Unbounded_String );
+
+   procedure Set_Head(Status : in out Client_Status; Branch_Name : UBS.Unbounded_String);
+
+   -- @description
+   -- Set the Value of a branch
    procedure Set_Branch(Status : in out Client_Status; Item : Branch);
+
+   -- @description
+   -- Save branches to the JSON file defined in config.ads
    procedure Save_Branches(Status : in out Client_Status);
 end Client;
