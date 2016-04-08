@@ -14,7 +14,7 @@ project Note_Chain is
    end Builder;
 
    package Ide is
-      for Documentation_Dir use "Documentation";
+      for Documentation_Dir use "Documentation/gnatdoc/";
    end Ide;
 
 end Note_Chain;
