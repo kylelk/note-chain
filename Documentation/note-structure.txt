@@ -1,0 +1,18 @@
+The note data will be stored as JSON, the root strucre will be an object
+containing the key value properties of the note.
+
+date time will be ISO 8601 format,  yyyy-MM-dd hh:mm:ss
+the time zone is Greenwich mean time.
+
+when creating a note a Universally unique identifier (UUID) is created to
+prevent collisons between notes with the same text.
+
+Example:
+
+{
+  "encoding": "UTF-8",
+  "uuid": "UUID",
+  "note_text": "hello world",
+  "created_at": "ISO 8601 date time",
+  "author": "optional persons name"
+}
