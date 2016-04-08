@@ -31,12 +31,6 @@ begin
    exception when Ada.IO_Exceptions.Name_Error => First_Load := True;
    end;
    
-   if CLI.Argument_Count < 1 then
-      null;
-   else
-      null;
-   end if;
-
    if First_Load then
       Default_Branch.Name := Config.Default_Branch_Name;
       Note_Client.Set_Branch(Default_Branch);
