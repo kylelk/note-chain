@@ -3,7 +3,6 @@ with Ada.Strings.Unbounded;
 with Ada.Containers.Hashed_Maps;
 with Ada.Strings.Unbounded.Hash;
 
-
 package Client is
    package JSON renames GNATCOLL_JSON;
    package UBS renames Ada.Strings.Unbounded;
@@ -37,6 +36,8 @@ package Client is
       First_Load : Boolean := False;
    end record;
 
+   No_Branch_Error : exception;
+
    -- @description
    -- Load branches from the JSON file defined in the config.ads
    procedure Load_Branches(Status : in out Client_Status);
@@ -46,6 +47,8 @@ package Client is
    -- @description
    -- Set the Value of a branch
    procedure Set_Branch(Status : in out Client_Status; Item : Branch);
+
+   procedure Copy_Branch(Status : in out Client_Status; From, To : UBS.Unbounded_String);
 
    -- @description
    -- Save branches to the JSON file defined in config.ads
