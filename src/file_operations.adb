@@ -1,6 +1,7 @@
 with Ada.Directories;
 with Ada.Direct_IO;
 with GNAT.SHA256;
+with Ada.Text_IO;
 
 package body File_Operations is
    function Load_File (Filename : in String) return String is
@@ -78,4 +79,13 @@ package body File_Operations is
       GNAT.SHA256.Update (C, Data);
       return GNAT.SHA256.Digest (C);
    end String_Hash;
+
+   procedure create_empty_file(path : String) is
+      File_Item : Ada.Text_IO.File_Type;
+      begin
+      if not Ada.Directories.Exists(path) then
+         Ada.Text_IO.Create(File_Item, Ada.Text_IO.Out_File, path);
+         Ada.Text_IO.Close(File_Item);
+      end if;
+   end create_empty_file;
 end File_Operations;

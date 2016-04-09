@@ -5,7 +5,11 @@ package File_Operations is
 
    procedure Remake_Directory (Path : String);
 
+   -- @description
+   -- computes the SHA-256 hash of a file by reading it in 4096 byte blocks
    function Get_File_Sha256 (File_Name : String) return SHA256_Value;
 
    function String_Hash (Data : String) return SHA256_Value;
+
+    procedure create_empty_file(path : String);
 end File_Operations;

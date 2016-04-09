@@ -79,6 +79,7 @@ procedure Main is
    end Cmd_Branch;
 
    procedure Cmd_Note (Info : in out Client.Client_Status) is
+      pragma Unreferenced (Info);
    begin
       if CLI.Argument_Count > 1 then
          if CLI.Argument (2) = "new" then
