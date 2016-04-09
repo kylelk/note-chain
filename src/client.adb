@@ -2,12 +2,13 @@ with Ada.Text_IO;
 
 with Config;
 with File_Operations;
+with Object_Store;
 
 package body Client is
-
-   -------------------
-   -- Load_Branches --
-   -------------------
+   procedure Init is
+   begin
+      Object_Store.Init;
+   end Init;
 
    procedure Load_Branches (Status : in out Client_Status) is
       procedure Handler (Name : JSON.UTF8_String; Value : JSON.JSON_Value) is
@@ -27,7 +28,7 @@ package body Client is
       JSON.Map_JSON_Object
         (Val => Branch_Json.Get ("branches"),
          CB  => Handler'Access);
-      Status.Set_Head(Branch_Json.Get("head"));
+      Status.Set_Head (Branch_Json.Get ("head"));
    end Load_Branches;
 
    procedure Set_Head
@@ -55,17 +56,17 @@ package body Client is
       From, To :        UBS.Unbounded_String)
    is
       use Branch_Map;
-      New_Branch : Branch;
+      New_Branch    : Branch;
       Result_Cursor : Branch_Map.Cursor;
    begin
-      Result_Cursor := Status.Branch_Status.Branches.Find(From);
+      Result_Cursor := Status.Branch_Status.Branches.Find (From);
       if Result_Cursor /= Branch_Map.No_Element then
-         New_Branch := Branch_Map.Element(Result_Cursor);
+         New_Branch      := Branch_Map.Element (Result_Cursor);
          New_Branch.Name := To;
-         Status.Branch_Status.Branches.Insert(To, New_Branch);
+         Status.Branch_Status.Branches.Insert (To, New_Branch);
       else
-         raise No_Branch_Error with "could not find branch with name: " &
-           UBS.To_String(From);
+         raise No_Branch_Error
+           with "could not find branch with name: " & UBS.To_String (From);
       end if;
    end Copy_Branch;
 
@@ -101,5 +102,7 @@ package body Client is
          Config.Branch_JSON_File);
       Ada.Text_IO.Put (Data_File, Result_JSON.Write);
       Ada.Text_IO.Close (Data_File);
+      -- clear the temp directory
+      File_Operations.Remake_Directory (Config.Temp_Dir);
    end Save_Branches;
 end Client;

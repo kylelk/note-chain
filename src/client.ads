@@ -45,6 +45,8 @@ package Client is
 
    No_Branch_Error : exception;
 
+   procedure Init;
+
    -- @description
    -- Load branches from the JSON file defined in the config.ads
    procedure Load_Branches(Status : in out Client_Status);
