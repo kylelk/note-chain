@@ -1,4 +1,6 @@
 with Ada.Text_IO;
+with Ada.Numerics.Discrete_Random;
+with GNAT.Calendar.Time_IO;
 
 with Config;
 with File_Operations;
@@ -106,4 +108,47 @@ package body Client is
       -- clear the temp directory
       -- File_Operations.Remake_Directory (Config.Temp_Dir);
    end Save_Branches;
+
+   procedure Create_Note(Status : in out Client_Status; Item : out Note) is
+      pragma Unreferenced (Status);
+      Note_Content : constant String :=
+        File_Operations.Load_File(Config.Temp_Note_File);
+   begin
+      Item.Note_Text := UBS.To_Unbounded_String(Note_Content);
+      Item.Encoding := UBS.To_Unbounded_String("UTF-8");
+      Item.Uniq_UUID := Random_SHA256;
+      Item.Created_At := Ada.Calendar.Clock;
+   end Create_Note;
+
+   procedure Save(Status : in out Client_Status; Item : in out Note) is
+      pragma Unreferenced (Status);
+      Note_JSON : JSON.JSON_Value;
+      Note_Hash : SHA256_Value;
+   begin
+      Note_JSON := JSON.Create_Object;
+      Note_JSON.Set_Field("note_text", Item.Note_Text);
+      Note_JSON.Set_Field("encoding", Item.Encoding);
+      Note_JSON.Set_Field("created_at", To_ISO_8601(Item.Created_At));
+      Note_JSON.Set_Field("uniq_uuid", Item.Uniq_UUID);
+      Object_Store.Write("note", Note_JSON.Write, Note_Hash);
+      Item.Object_Ref := Note_Hash;
+   end Save;
+
+   function Random_SHA256 return SHA256_Value is
+      package Guess_Generator is new Ada.Numerics.Discrete_Random(Character);
+      Gen : Guess_Generator.Generator;
+      Data : SHA256_Value;
+   begin
+      for I in Data'Range loop
+         Guess_Generator.Reset(Gen);
+         Data(I) := Guess_Generator.Random(Gen);
+      end loop;
+      return File_Operations.String_Hash(Data);
+   end Random_SHA256;
+
+   function To_ISO_8601 (Date : in Ada.Calendar.Time) return String is
+
+   begin
+      return GNAT.Calendar.Time_IO.Image(Date, "%Y-%m-%dT%H:%M:%S");
+   end To_ISO_8601;
 end Client;

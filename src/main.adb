@@ -78,12 +78,14 @@ procedure Main is
       end if;
    end Cmd_Branch;
 
-   procedure Cmd_Note (Info : in out Client.Client_Status) is
-      pragma Unreferenced (Info);
+   procedure Cmd_Note (Status : in out Client.Client_Status) is
+      Note_Item : Client.Note;
    begin
       if CLI.Argument_Count > 1 then
          if CLI.Argument (2) = "new" then
             Edit_Note_Content;
+            Status.Create_Note(Note_Item);
+            Status.Save(Note_Item);
          end if;
       end if;
    end Cmd_Note;

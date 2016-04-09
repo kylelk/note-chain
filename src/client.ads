@@ -2,6 +2,7 @@ with GNATCOLL_JSON;
 with Ada.Strings.Unbounded;
 with Ada.Containers.Hashed_Maps;
 with Ada.Strings.Unbounded.Hash;
+with Ada.Calendar;
 
 package Client is
    package JSON renames GNATCOLL_JSON;
@@ -13,15 +14,18 @@ package Client is
    type Object_Type is (Type_Commit, Type_Tree, Type_Note, Type_Blob);
 
    type Note is record
-      Note_Text : UBS.Unbounded_String;
-      Encoding  : UBS.Unbounded_String;
-      Uniq_UUID : SHA256_Value;
+      Object_Ref : SHA256_Value := Empty_Hash_Ref;
+      Note_Text  : UBS.Unbounded_String;
+      Encoding   : UBS.Unbounded_String;
+      Uniq_UUID  : SHA256_Value;
+      Created_At : Ada.Calendar.Time;
    end record;
 
    type Commit is record
       Object_Ref : SHA256_Value := Empty_Hash_Ref;
       Parent_Ref : SHA256_Value := Empty_Hash_Ref;
       Tree_Ref   : SHA256_Value := Empty_Hash_Ref;
+      Created_At : Ada.Calendar.Time;
    end record;
 
    type Tree_Entry is record
@@ -82,4 +86,13 @@ package Client is
    -- @description
    -- Save branches to the JSON file defined in config.ads
    procedure Save_Branches (Status : in out Client_Status);
+
+   procedure Create_Note (Status : in out Client_Status; Item : out Note);
+
+   procedure Save(Status : in out Client_Status; Item : in out Note);
+
+private
+   function Random_SHA256 return SHA256_Value;
+
+   function To_ISO_8601(Date : Ada.Calendar.Time) return String;
 end Client;
