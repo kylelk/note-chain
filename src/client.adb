@@ -5,7 +5,7 @@ with File_Operations;
 with Object_Store;
 
 package body Client is
-   procedure Init is
+   procedure Init(Status : in out Client_Status) is
    begin
       Object_Store.Init;
    end Init;

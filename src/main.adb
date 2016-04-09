@@ -60,6 +60,7 @@ procedure Main is
    Note_Client    : Client.Client_Status;
 begin
    Setup_Project;
+   Note_Client.Init;
 
    begin
       Note_Client.Load_Branches;
