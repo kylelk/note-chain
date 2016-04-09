@@ -6,6 +6,7 @@ with Object_Store;
 
 package body Client is
    procedure Init(Status : in out Client_Status) is
+      pragma Unreferenced (Status);
    begin
       Object_Store.Init;
    end Init;
@@ -103,6 +104,6 @@ package body Client is
       Ada.Text_IO.Put (Data_File, Result_JSON.Write);
       Ada.Text_IO.Close (Data_File);
       -- clear the temp directory
-      File_Operations.Remake_Directory (Config.Temp_Dir);
+      -- File_Operations.Remake_Directory (Config.Temp_Dir);
    end Save_Branches;
 end Client;

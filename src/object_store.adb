@@ -20,6 +20,7 @@ package body Object_Store is
       TIO.Put (Object_Type & ' ' & Content'Length'Img & ASCII.LF & Content);
       TIO.Close (Data_File);
       Hash := File_Operations.Get_File_Sha256 (Config.Temp_Object_File);
+      Ada.Directories.Rename (Config.Temp_Object_File, Object_Path (Hash));
    end Write;
 
    function Read (Hash : SHA256_Value) return String is

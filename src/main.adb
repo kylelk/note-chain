@@ -25,32 +25,31 @@ procedure Main is
       Create_Dir (Config.Object_Dir);
       Create_Dir (Config.Temp_Dir);
    end Setup_Project;
-   
-   procedure Execute_System (Command : String) 
-    is 
-       use GNAT.OS_Lib; 
 
-       List : String_List_Access := Argument_String_To_List (Command); 
-       Exec_Path : String_Access := Locate_Exec_On_Path (List (1).all); 
-       Success : Boolean; 
+   procedure Execute_System (Command : String) is
+      use GNAT.OS_Lib;
 
-    begin 
-       if Exec_Path /= null then 
-          Spawn (Program_Name => Exec_Path.all, 
-                 Args         => List (2 .. List'Last), 
-                 Success      => Success); 
-          Free (Exec_Path); 
-       else 
-          Ada.Text_IO.Put_Line ("Command not found"); 
-       end if; 
+      List      : String_List_Access := Argument_String_To_List (Command);
+      Exec_Path : String_Access      := Locate_Exec_On_Path (List (1).all);
+      Success   : Boolean;
 
-       Free (List); 
-    end Execute_System;
-   
-   
+   begin
+      if Exec_Path /= null then
+         Spawn
+           (Program_Name => Exec_Path.all,
+            Args         => List (2 .. List'Last),
+            Success      => Success);
+         Free (Exec_Path);
+      else
+         Ada.Text_IO.Put_Line ("Command not found");
+      end if;
+
+      Free (List);
+   end Execute_System;
+
    procedure Edit_Note_Content is
    begin
-      Execute_System("vim " & config.Temp_Note_File);
+      Execute_System ("vim " & Config.Temp_Note_File);
    end Edit_Note_Content;
 
    procedure Cmd_Branch (Info : in out Client.Client_Status) is
@@ -60,18 +59,19 @@ procedure Main is
             if CLI.Argument (2) = "new" then
                Info.Copy_Branch
                (Info.Branch_Status
-                .Head, UBS.To_Unbounded_String(CLI.Argument (3)));
-               TIO.Put_Line("created branch: " & CLI.Argument(3));
-            elsif CLI.Argument(2) = "checkout" then
-               TIO.Put_Line("TODO: checkout branch");
-            elsif CLI.Argument(2) = "merge"  then
-               TIO.Put_Line("TODO: merge branch");
-            elsif CLI.Argument(2) = "remove" then
-              TIO.Put_Line("TODO: remove");
+                  .Head, UBS.To_Unbounded_String
+                  (CLI.Argument (3)));
+               TIO.Put_Line ("created branch: " & CLI.Argument (3));
+            elsif CLI.Argument (2) = "checkout" then
+               TIO.Put_Line ("TODO: checkout branch");
+            elsif CLI.Argument (2) = "merge" then
+               TIO.Put_Line ("TODO: merge branch");
+            elsif CLI.Argument (2) = "remove" then
+               TIO.Put_Line ("TODO: remove");
             end if;
          end if;
-         if CLI.Argument(2) = "head" then
-            TIO.Put_Line("head: " & UBS.To_String(Info.Branch_Status.Head));
+         if CLI.Argument (2) = "head" then
+            TIO.Put_Line ("head: " & UBS.To_String (Info.Branch_Status.Head));
          end if;
       else
          TIO.Put_Line ("TODO: branch list");
@@ -81,7 +81,7 @@ procedure Main is
    procedure Cmd_Note (Info : in out Client.Client_Status) is
    begin
       if CLI.Argument_Count > 1 then
-         if CLI.Argument(2) = "new" then
+         if CLI.Argument (2) = "new" then
             Edit_Note_Content;
          end if;
       end if;
@@ -111,7 +111,7 @@ begin
       if CLI.Argument (1) = "branch" then
          Cmd_Branch (Note_Client);
       elsif CLI.Argument (1) = "help" then
-         TIO.Put_Line("TODO: help");
+         TIO.Put_Line ("TODO: help");
       elsif CLI.Argument (1) = "note" then
          Cmd_Note (Note_Client);
       end if;

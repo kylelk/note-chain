@@ -14,6 +14,8 @@ package Object_Store is
    -- does not exist
    function Read(Hash : SHA256_Value) return String;
 
+   -- @description
+   -- setup the project's object store system
    procedure Init;
 
 private
