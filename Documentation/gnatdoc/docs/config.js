@@ -9,7 +9,7 @@ GNATdoc.Documentation = {
       "entities": [
         {
           "label": "Data_Dir",
-          "line": 10,
+          "line": 8,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -20,7 +20,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 10,
+                  "number": 8,
                   "children": [
                     {
                       "kind": "span",
@@ -99,7 +99,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Object_Dir",
-          "line": 13,
+          "line": 11,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -110,7 +110,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 13,
+                  "number": 11,
                   "children": [
                     {
                       "kind": "span",
@@ -195,7 +195,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "string",
-                      "text": "\"objects\""
+                      "text": "\"objects/\""
                     },
                     {
                       "kind": "span",
@@ -224,7 +224,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Temp_Dir",
-          "line": 16,
+          "line": 14,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -235,7 +235,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 16,
+                  "number": 14,
                   "children": [
                     {
                       "kind": "span",
@@ -349,7 +349,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Branch_JSON_File",
-          "line": 19,
+          "line": 17,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -360,7 +360,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 19,
+                  "number": 17,
                   "children": [
                     {
                       "kind": "span",
@@ -474,7 +474,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Default_Branch_Name",
-          "line": 22,
+          "line": 20,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -485,7 +485,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 22,
+                  "number": 20,
                   "children": [
                     {
                       "kind": "span",
@@ -520,12 +520,18 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "UBS.Unbounded_String"
-                    },
+                      "text": "Ada.Strings.Unbounded.Unbounded_String"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 21,
+                  "children": [
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": " "
+                      "text": "     "
                     },
                     {
                       "kind": "span",
@@ -540,7 +546,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "UBS.To_Unbounded_String"
+                      "text": "Ada.Strings.Unbounded.To_Unbounded_String"
                     },
                     {
                       "kind": "span",
@@ -576,6 +582,256 @@ GNATdoc.Documentation = {
               ]
             }
           ]
+        },
+        {
+          "label": "Temp_Object_File",
+          "line": 24,
+          "column": 4,
+          "src": "srcs/config.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 24,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Temp_Object_File"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "constant"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Join"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Temp_Dir"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "&"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "string",
+                      "text": "\"object-file\""
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "temp object file\n"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Temp_Note_File",
+          "line": 27,
+          "column": 4,
+          "src": "srcs/config.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 27,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Temp_Note_File"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "constant"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Join"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Temp_Dir"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "&"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "string",
+                      "text": "\"note_content.txt\""
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "temp note file to store the content of a note while editing\n"
+                }
+              ]
+            }
+          ]
         }
       ],
       "label": "Constants and variables"
@@ -584,7 +840,7 @@ GNATdoc.Documentation = {
       "entities": [
         {
           "label": "Join",
-          "line": 7,
+          "line": 5,
           "column": 13,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -595,7 +851,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 7,
+                  "number": 5,
                   "children": [
                     {
                       "kind": "span",
@@ -616,7 +872,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Join",
-                      "href": "docs/config.html#L7C13"
+                      "href": "docs/config.html#L5C13"
                     },
                     {
                       "kind": "span",
@@ -627,7 +883,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Path",
-                      "href": "docs/config.html#L7C18"
+                      "href": "docs/config.html#L5C18"
                     },
                     {
                       "kind": "span",
@@ -732,7 +988,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Path",
-              "line": 7,
+              "line": 5,
               "column": 18,
               "type": {
                 "label": "String"
@@ -744,19 +1000,6 @@ GNATdoc.Documentation = {
         }
       ],
       "label": "Subprograms"
-    },
-    {
-      "entities": [
-        {
-          "label": "UBS",
-          "href": "../docs/config.ubs.html#L5C12",
-          "summary": [
-          ],
-          "description": [
-          ]
-        }
-      ],
-      "label": "Nested packages"
     }
   ]
 };

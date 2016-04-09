@@ -18,5 +18,9 @@ GNATdoc.SourceFileIndex = [
   {
     "label": "gnatcoll_json_utility.ads",
     "srcHref": "srcs/gnatcoll_json_utility.ads.html"
+  },
+  {
+    "label": "object_store.ads",
+    "srcHref": "srcs/object_store.ads.html"
   }
 ];

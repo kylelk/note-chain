@@ -26,10 +26,22 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/gnatcoll_json.ads.html#L275"
     },
     {
+      "label": "Get_File_Sha256",
+      "docHref": "docs/file_operations.html#L8C13",
+      "declared": "File_Operations",
+      "srcHref": "srcs/file_operations.ads.html#L8"
+    },
+    {
       "label": "Hash",
-      "docHref": "docs/client.html#L18C13",
+      "docHref": "docs/client.html#L24C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L18"
+      "srcHref": "srcs/client.ads.html#L24"
+    },
+    {
+      "label": "Init",
+      "docHref": "docs/object_store.html#L19C14",
+      "declared": "Object_Store",
+      "srcHref": "srcs/object_store.ads.html#L19"
     },
     {
       "label": "Is_Empty",
@@ -39,9 +51,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Join",
-      "docHref": "docs/config.html#L7C13",
+      "docHref": "docs/config.html#L5C13",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L7"
+      "srcHref": "srcs/config.ads.html#L5"
     },
     {
       "label": "Length",
@@ -51,15 +63,39 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Load_File",
-      "docHref": "docs/file_operations.html#L2C13",
+      "docHref": "docs/file_operations.html#L4C13",
       "declared": "File_Operations",
-      "srcHref": "srcs/file_operations.ads.html#L2"
+      "srcHref": "srcs/file_operations.ads.html#L4"
+    },
+    {
+      "label": "Read",
+      "docHref": "docs/object_store.html#L15C13",
+      "declared": "Object_Store",
+      "srcHref": "srcs/object_store.ads.html#L15"
+    },
+    {
+      "label": "Remake_Directory",
+      "docHref": "docs/file_operations.html#L6C14",
+      "declared": "File_Operations",
+      "srcHref": "srcs/file_operations.ads.html#L6"
+    },
+    {
+      "label": "String_Hash",
+      "docHref": "docs/file_operations.html#L10C13",
+      "declared": "File_Operations",
+      "srcHref": "srcs/file_operations.ads.html#L10"
     },
     {
       "label": "Un_Escape_String",
       "docHref": "docs/gnatcoll_json_utility.html#L42C13",
       "declared": "GNATCOLL_JSON_Utility",
       "srcHref": "srcs/gnatcoll_json_utility.ads.html#L42"
+    },
+    {
+      "label": "Write",
+      "docHref": "docs/object_store.html#L10C14",
+      "declared": "Object_Store",
+      "srcHref": "srcs/object_store.ads.html#L10"
     }
   ]
 };

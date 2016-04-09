@@ -16,10 +16,6 @@ GNATdoc.DocumentationIndex = [
     "file": "docs/config.html"
   },
   {
-    "label": "Config.UBS",
-    "file": "docs/config.ubs.html"
-  },
-  {
     "label": "File_Operations",
     "file": "docs/file_operations.html"
   },
@@ -30,5 +26,9 @@ GNATdoc.DocumentationIndex = [
   {
     "label": "GNATCOLL_JSON_Utility",
     "file": "docs/gnatcoll_json_utility.html"
+  },
+  {
+    "label": "Object_Store",
+    "file": "docs/object_store.html"
   }
 ];

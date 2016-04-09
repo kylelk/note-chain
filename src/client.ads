@@ -35,7 +35,6 @@ package Client is
       Branches : Branch_Map.Map;
    end record;
 
-   -- @description
    -- Current status of the client
    type Client_Status is tagged record
       Branch_Status : Branch_Info;

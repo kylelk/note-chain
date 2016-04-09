@@ -3,15 +3,21 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Branch",
-      "docHref": "docs/client.html#L13C9",
+      "docHref": "docs/client.html#L19C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L13"
+      "srcHref": "srcs/client.ads.html#L19"
     },
     {
       "label": "Branch_Info",
-      "docHref": "docs/client.html#L27C9",
+      "docHref": "docs/client.html#L33C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L27"
+      "srcHref": "srcs/client.ads.html#L33"
+    },
+    {
+      "label": "Commit",
+      "docHref": "docs/client.html#L13C9",
+      "declared": "Client",
+      "srcHref": "srcs/client.ads.html#L13"
     },
     {
       "label": "JSON_Array",
