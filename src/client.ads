@@ -9,6 +9,13 @@ package Client is
 
    subtype SHA256_Value is String(1..64);
    Empty_Hash_Ref : constant SHA256_Value := (others=>' ');
+
+   type Commit is record
+      Object_Ref : SHA256_Value := Empty_Hash_Ref;
+      Parent_Ref : SHA256_Value := Empty_Hash_Ref;
+      Tree_Ref : SHA256_Value := Empty_Hash_Ref;
+   end record;
+
    type Branch is record
       Name : UBS.Unbounded_String;
       Commit_Ref : SHA256_Value := Empty_Hash_Ref;
