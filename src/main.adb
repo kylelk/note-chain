@@ -3,6 +3,7 @@ with Ada.IO_Exceptions;
 with Ada.Command_Line;
 with Ada.Text_IO;
 with Ada.Strings.Unbounded;
+with GNAT.OS_Lib;
 
 with Config;
 with Client;
@@ -24,6 +25,33 @@ procedure Main is
       Create_Dir (Config.Object_Dir);
       Create_Dir (Config.Temp_Dir);
    end Setup_Project;
+   
+   procedure Execute_System (Command : String) 
+    is 
+       use GNAT.OS_Lib; 
+
+       List : String_List_Access := Argument_String_To_List (Command); 
+       Exec_Path : String_Access := Locate_Exec_On_Path (List (1).all); 
+       Success : Boolean; 
+
+    begin 
+       if Exec_Path /= null then 
+          Spawn (Program_Name => Exec_Path.all, 
+                 Args         => List (2 .. List'Last), 
+                 Success      => Success); 
+          Free (Exec_Path); 
+       else 
+          Ada.Text_IO.Put_Line ("Command not found"); 
+       end if; 
+
+       Free (List); 
+    end Execute_System;
+   
+   
+   procedure Edit_Note_Content is
+   begin
+      Execute_System("vim " & config.Temp_Note_File);
+   end Edit_Note_Content;
 
    procedure Cmd_Branch (Info : in out Client.Client_Status) is
    begin
@@ -52,7 +80,11 @@ procedure Main is
 
    procedure Cmd_Note (Info : in out Client.Client_Status) is
    begin
-      null;
+      if CLI.Argument_Count > 1 then
+         if CLI.Argument(2) = "new" then
+            Edit_Note_Content;
+         end if;
+      end if;
    end Cmd_Note;
 
    Default_Branch : Client.Branch;

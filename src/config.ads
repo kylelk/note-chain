@@ -22,4 +22,7 @@ package Config is
 
    -- temp object file
    Temp_Object_File : constant String := Join(Temp_Dir & "object-file");
+   
+   -- temp note file to store the content of a note while editing
+   Temp_Note_File : constant String := Join(Temp_Dir & "note_content.txt");
 end Config;
