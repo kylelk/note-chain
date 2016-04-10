@@ -18,8 +18,16 @@ package Object_Store is
    -- setup the project's object store system
    procedure Init;
 
+   function Object_Type(Hash : SHA256_Value) return String;
+
 private
    package TIO renames Ada.Text_IO;
 
    function Object_Path(Hash : SHA256_Value) return String;
+
+   function Get_Content (File_Path : String) return String;
+
+   function Char_Index (Data : String; Char : Character) return Integer;
+
+   function Last_Index(Data : String; Char : Character) return Integer;
 end Object_Store;

@@ -8,6 +8,7 @@ with Ada.Calendar.Formatting;
 
 with Config;
 with Client;
+with Object_Store;
 
 procedure Main is
    package CLI renames Ada.Command_Line;
@@ -154,6 +155,20 @@ procedure Main is
       end if;
    end Cmd_Log;
 
+   procedure Cmd_Object(Status : Client.Client_Status) is
+      pragma Unreferenced (Status);
+   begin
+      if CLI.Argument_Count > 1 then
+         if CLI.Argument_Count > 2 then
+            if CLI.Argument(2) = "type" then
+               TIO.Put_Line(Object_Store.Object_Type(CLI.Argument(3)));
+            elsif CLI.Argument(2) = "print" then
+               TIO.Put_Line(Object_Store.Read(CLI.Argument(3)));
+            end if;
+         end if;
+      end if;
+   end Cmd_Object;
+
    Default_Branch : Client.Branch;
    First_Load     : Boolean := False;
    Note_Client    : Client.Client_Status;
@@ -185,6 +200,8 @@ begin
          TIO.Put_Line(Config.Version);
       elsif CLI.Argument(1) = "log" then
          Cmd_Log(Note_Client);
+      elsif CLI.Argument(1) = "object" then
+         Cmd_Object(Note_Client);
       end if;
    else
       TIO.Put_Line ("usage infomation");
