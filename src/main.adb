@@ -117,6 +117,8 @@ begin
          TIO.Put_Line ("TODO: help");
       elsif CLI.Argument (1) = "note" then
          Cmd_Note (Note_Client);
+      elsif CLI.Argument(1) = "version" then
+        TIO.Put_Line(Config.Version);
       end if;
    else
       TIO.Put_Line ("usage infomation");

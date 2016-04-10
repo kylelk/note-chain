@@ -74,6 +74,17 @@ package body Client is
       end if;
    end Copy_Branch;
 
+   procedure Create_Note(Status : in out Client_Status; Item : out Note) is
+      pragma Unreferenced (Status);
+      Note_Content : constant String :=
+        File_Operations.Load_File(Config.Temp_Note_File);
+   begin
+      Item.Note_Text := UBS.To_Unbounded_String(Note_Content);
+      Item.Encoding := UBS.To_Unbounded_String("UTF-8");
+      Item.Uniq_UUID := Random_SHA256;
+      Item.Created_At := Ada.Calendar.Clock;
+   end Create_Note;
+
    procedure Save_Branches (Status : in out Client_Status) is
       Result_JSON, Branch_JSON, Branch_Entry_JSON : JSON.JSON_Value;
       Branch_Cursor                               : Branch_Map.Cursor;
@@ -111,39 +122,58 @@ package body Client is
    end Save_Branches;
 
    procedure Save(Status : in out Client_Status; Item : in out Tree_Entry) is
+      pragma Unreferenced (Status);
+      Result_JSON  : constant JSON.JSON_Value := JSON.Create_Object;
+      Result_Hash : SHA256_Value;
+      use Ada.Strings.Unbounded;
    begin
-      null;
+      Result_JSON.Set_Field("entry_type", Object_Type'Image(Item.Entry_Type));
+      Result_JSON.Set_Field("child_ref", Item.Child_Ref);
+      Result_JSON.Set_Field("next_ref", Item.Next_Ref);
+      if Item.Name /= UBS.Null_Unbounded_String then
+         Result_JSON.Set_Field("name", Item.Name);
+      else
+         Result_JSON.Set_Field("name", JSON.JSON_Null);
+      end if;
+      Object_Store.Write("tree_entry", Result_JSON.Write, Result_Hash);
+      Item.Object_Ref := Result_Hash;
    end Save;
 
    procedure Save(Status : in out Client_Status; Item : in out Commit) is
+      pragma Unreferenced(Status);
+      Result_JSON  : constant JSON.JSON_Value := JSON.Create_Object;
+      Result_Hash : SHA256_Value;
+      use Ada.Strings.Unbounded;
    begin
-      null;
+      if Item.Parent_Ref /= Empty_Hash_Ref then
+         Result_JSON.Set_Field("parent_ref", Item.Parent_Ref);
+      else
+         Result_JSON.Set_Field("parent_ref", JSON.JSON_Null);
+      end if;
+      Result_JSON.Set_Field("tree_ref", Item.Tree_Ref);
+      Result_JSON.Set_Field("created_at", To_ISO_8601(Item.Created_At));
+      if Item.Message /= UBS.Null_Unbounded_String then
+         Result_JSON.Set_Field("message", Item.Message);
+      else
+         Result_JSON.Set_Field("message", JSON.JSON_Null);
+      end if;
+      Object_Store.Write("commit", Result_JSON.Write, Result_Hash);
+      Item.Object_Ref := Result_Hash;
+      Item.Saved := True;
    end Save;
 
 
-   procedure Create_Note(Status : in out Client_Status; Item : out Note) is
-      pragma Unreferenced (Status);
-      Note_Content : constant String :=
-        File_Operations.Load_File(Config.Temp_Note_File);
-   begin
-      Item.Note_Text := UBS.To_Unbounded_String(Note_Content);
-      Item.Encoding := UBS.To_Unbounded_String("UTF-8");
-      Item.Uniq_UUID := Random_SHA256;
-      Item.Created_At := Ada.Calendar.Clock;
-   end Create_Note;
-
    procedure Save(Status : in out Client_Status; Item : in out Note) is
       pragma Unreferenced (Status);
-      Note_JSON : JSON.JSON_Value;
-      Note_Hash : SHA256_Value;
+      Result_JSON : constant JSON.JSON_Value := JSON.Create_Object;
+      Result_Hash : SHA256_Value;
    begin
-      Note_JSON := JSON.Create_Object;
-      Note_JSON.Set_Field("note_text", Item.Note_Text);
-      Note_JSON.Set_Field("encoding", Item.Encoding);
-      Note_JSON.Set_Field("created_at", To_ISO_8601(Item.Created_At));
-      Note_JSON.Set_Field("uniq_uuid", Item.Uniq_UUID);
-      Object_Store.Write("note", Note_JSON.Write, Note_Hash);
-      Item.Object_Ref := Note_Hash;
+      Result_JSON.Set_Field("note_text", Item.Note_Text);
+      Result_JSON.Set_Field("encoding", Item.Encoding);
+      Result_JSON.Set_Field("created_at", To_ISO_8601(Item.Created_At));
+      Result_JSON.Set_Field("uniq_uuid", Item.Uniq_UUID);
+      Object_Store.Write("note", Result_JSON.Write, Result_Hash);
+      Item.Object_Ref := Result_Hash;
       Item.Saved := True;
    end Save;
 
@@ -155,23 +185,34 @@ package body Client is
    function Get_Commit(Ref : SHA256_Value) return Commit is
       Item_JSON : JSON.JSON_Value;
       Result : Commit;
+      use JSON;
    begin
       Item_JSON := JSON.Read(Object_Store.Read(Ref), "");
       Result.Object_Ref := Ref;
-      Result.Parent_Ref := Item_JSON.Get("parent_ref");
+      if JSON.Kind(Item_JSON.Get("parent_ref")) = JSON.JSON_String_Type then
+         Result.Parent_Ref := Item_JSON.Get("parent_ref");
+      end if;
+      if JSON.Kind(Item_JSON.Get("message")) = JSON.JSON_String_Type then
+         Result.Message := Item_JSON.Get("message");
+      end if;
       Result.Tree_Ref := Item_JSON.Get("tree_ref");
-      Result.Created_At := From_ISO_8601(Item_JSON.Get("Created_At"));
+      Result.Created_At := From_ISO_8601(Item_JSON.Get("created_at"));
+      Result.Saved := True;
       return Result;
    end Get_Commit;
 
    function Get_Tree_Entry(Ref : SHA256_Value) return Tree_Entry is
       Result : Tree_Entry;
       Item_JSON : JSON.JSON_Value;
+      use JSON;
    begin
       Item_JSON := JSON.Read(Object_Store.Read(Ref), "");
       Result.Entry_Type := Object_Type'Value(Item_JSON.Get("entry_type"));
       Result.Child_Ref := Item_JSON.Get("child_ref");
       Result.Next_Ref := Item_JSON.Get("next_ref");
+      if JSON.Kind(Item_JSON.Get("name")) = JSON.JSON_String_Type then
+         Result.Name := Item_JSON.Get("name");
+      end if;
       Result.Object_Ref := Ref;
       return Result;
    end Get_Tree_Entry;

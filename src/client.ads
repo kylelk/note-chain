@@ -27,6 +27,8 @@ package Client is
       Parent_Ref : SHA256_Value := Empty_Hash_Ref;
       Tree_Ref   : SHA256_Value := Empty_Hash_Ref;
       Created_At : Ada.Calendar.Time;
+      Message : UBS.Unbounded_String := UBS.Null_Unbounded_String;
+      Saved : Boolean := False;
    end record;
 
    type Tree_Entry is record
@@ -34,7 +36,7 @@ package Client is
       Entry_Type : Object_Type range Type_Tree .. Type_Note;
       Child_Ref  : SHA256_Value := Empty_Hash_Ref;
       Next_Ref   : SHA256_Value := Empty_Hash_Ref;
-      Name       : UBS.Unbounded_String;
+      Name       : UBS.Unbounded_String := UBS.Null_Unbounded_String;
    end record;
 
    type Branch is record
