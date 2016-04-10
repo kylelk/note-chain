@@ -121,10 +121,10 @@ package Client is
 
    procedure Set_Head(Status : in out Client_Status; Item : Commit);
 
-private
-   function Random_SHA256 return SHA256_Value;
-
    function To_ISO_8601(Date : Ada.Calendar.Time) return String;
 
    function From_ISO_8601 (Date_Str : String) return Ada.Calendar.Time;
+
+private
+   function Random_SHA256 return SHA256_Value;
 end Client;

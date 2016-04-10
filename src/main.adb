@@ -4,6 +4,7 @@ with Ada.Command_Line;
 with Ada.Text_IO;
 with Ada.Strings.Unbounded;
 with GNAT.OS_Lib;
+with Ada.Calendar.Formatting;
 
 with Config;
 with Client;
@@ -51,6 +52,13 @@ procedure Main is
    begin
       Execute_System ("vim " & Config.Temp_Note_File);
    end Edit_Note_Content;
+
+   procedure Display_Commit(Item : Client.Commit) is
+   begin
+      TIO.Put_Line(Item.Object_Ref & " " &
+                     Ada.Calendar.Formatting.Image(Item.Created_At));
+   end Display_Commit;
+
 
    procedure Cmd_Branch (Info : in out Client.Client_Status) is
    begin
@@ -112,6 +120,22 @@ procedure Main is
       end if;
    end Cmd_Note;
 
+   procedure Cmd_Log(Status : in out Client.Client_Status) is
+      Next_Commit_Ref : Client.SHA256_Value;
+      Next_Commit : Client.Commit;
+   begin
+      if CLI.Argument_Count > 1 then
+         null;
+      else
+         Next_Commit_Ref := Status.Head_Commit_Ref;
+         while Next_Commit_Ref /= Client.Empty_Hash_Ref loop
+            Next_Commit := Client.Get_Commit(Next_Commit_Ref);
+            Display_Commit(Next_Commit);
+            Next_Commit_Ref := Next_Commit.Parent_Ref;
+         end loop;
+      end if;
+   end Cmd_Log;
+
    Default_Branch : Client.Branch;
    First_Load     : Boolean := False;
    Note_Client    : Client.Client_Status;
@@ -140,7 +164,9 @@ begin
       elsif CLI.Argument (1) = "note" then
          Cmd_Note (Note_Client);
       elsif CLI.Argument(1) = "version" then
-        TIO.Put_Line(Config.Version);
+         TIO.Put_Line(Config.Version);
+      elsif CLI.Argument(1) = "log" then
+         Cmd_Log(Note_Client);
       end if;
    else
       TIO.Put_Line ("usage infomation");
