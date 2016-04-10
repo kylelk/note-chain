@@ -19,6 +19,7 @@ package Client is
       Encoding   : UBS.Unbounded_String;
       Uniq_UUID  : SHA256_Value;
       Created_At : Ada.Calendar.Time;
+      Saved : Boolean := False;
    end record;
 
    type Commit is record
@@ -29,8 +30,8 @@ package Client is
    end record;
 
    type Tree_Entry is record
-      Entry_Type : Object_Type range Type_Tree .. Type_Note;
       Object_Ref : SHA256_Value := Empty_Hash_Ref;
+      Entry_Type : Object_Type range Type_Tree .. Type_Note;
       Child_Ref  : SHA256_Value := Empty_Hash_Ref;
       Next_Ref   : SHA256_Value := Empty_Hash_Ref;
       Name       : UBS.Unbounded_String;
@@ -91,8 +92,19 @@ package Client is
 
    procedure Save(Status : in out Client_Status; Item : in out Note);
 
+   function Get_Commit(Ref : SHA256_Value) return Commit;
+
+   function Get_Tree_Entry(Ref : SHA256_Value) return Tree_Entry;
+
+   function Get_Note(Ref : SHA256_Value) return Note;
+
+   -- get commit SHA-256 of the commit for the current head branch
+   function Head_Commit_Ref(Status : Client_Status) return SHA256_Value;
+
 private
    function Random_SHA256 return SHA256_Value;
 
    function To_ISO_8601(Date : Ada.Calendar.Time) return String;
+
+   function From_ISO_8601 (Date_Str : String) return Ada.Calendar.Time;
 end Client;

@@ -122,5 +122,7 @@ begin
       TIO.Put_Line ("usage infomation");
    end if;
 
+   TIO.Put_Line(UBS.To_String(Client.Get_Note("f90aab610ad199e64c2e9b97f6755b0cafefae20b3e24413e01646d38314a358").Note_Text));
+
    Note_Client.Save_Branches;
 end Main;

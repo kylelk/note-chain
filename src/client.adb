@@ -5,6 +5,7 @@ with GNAT.Calendar.Time_IO;
 with Config;
 with File_Operations;
 with Object_Store;
+with Ada.Calendar.Formatting;
 
 package body Client is
    procedure Init(Status : in out Client_Status) is
@@ -132,7 +133,50 @@ package body Client is
       Note_JSON.Set_Field("uniq_uuid", Item.Uniq_UUID);
       Object_Store.Write("note", Note_JSON.Write, Note_Hash);
       Item.Object_Ref := Note_Hash;
+      Item.Saved := True;
    end Save;
+
+   function Head_Commit_Ref(Status : Client_Status) return SHA256_Value is
+   begin
+      return Status.Branch_Status.Branches.Element(Status.Branch_Status.Head).Commit_Ref;
+   end Head_Commit_Ref;
+
+   function Get_Commit(Ref : SHA256_Value) return Commit is
+      Item_JSON : JSON.JSON_Value;
+      Result : Commit;
+   begin
+      Item_JSON := JSON.Read(Object_Store.Read(Ref), "");
+      Result.Object_Ref := Ref;
+      Result.Parent_Ref := Item_JSON.Get("parent_ref");
+      Result.Tree_Ref := Item_JSON.Get("tree_ref");
+      Result.Created_At := From_ISO_8601(Item_JSON.Get("Created_At"));
+      return Result;
+   end Get_Commit;
+
+   function Get_Tree_Entry(Ref : SHA256_Value) return Tree_Entry is
+      Result : Tree_Entry;
+      Item_JSON : JSON.JSON_Value;
+   begin
+      Item_JSON := JSON.Read(Object_Store.Read(Ref), "");
+      Result.Entry_Type := Object_Type'Value(Item_JSON.Get("entry_type"));
+      Result.Child_Ref := Item_JSON.Get("child_ref");
+      Result.Next_Ref := Item_JSON.Get("next_ref");
+      Result.Object_Ref := Ref;
+      return Result;
+   end Get_Tree_Entry;
+
+   function Get_Note(Ref : SHA256_Value) return Note is
+      Result : Note;
+      Item_JSON : JSON.JSON_Value;
+   begin
+      Item_JSON := JSON.Read(Object_Store.Read(Ref), "");
+      Result.Note_Text := Item_JSON.Get("note_text");
+      Result.Encoding := Item_JSON.Get("encoding");
+      Result.Uniq_UUID := Item_JSON.Get("uniq_uuid");
+      Result.Created_At := From_ISO_8601(Item_JSON.Get("created_at"));
+      Result.Saved := True;
+      return Result;
+   end Get_Note;
 
    function Random_SHA256 return SHA256_Value is
       package Guess_Generator is new Ada.Numerics.Discrete_Random(Character);
@@ -151,4 +195,28 @@ package body Client is
    begin
       return GNAT.Calendar.Time_IO.Image(Date, "%Y-%m-%dT%H:%M:%S");
    end To_ISO_8601;
+
+   function From_ISO_8601 (Date_Str : String) return Ada.Calendar.Time is
+      Year : Integer;
+      Month : Integer range 1..12;
+      Day : Integer range 1..31;
+      Hour : Integer range 1..23;
+      Minute : Integer range 1..59;
+      Second : Integer range 1..59;
+   begin
+      -- 2016-04-09T15:35:16
+      Year := Integer'Value(Date_Str(Date_Str'First..Date_Str'First + 3));
+      Month := Integer'Value(Date_Str(Date_Str'First + 5..Date_Str'First + 6));
+      Day := Integer'Value(Date_Str(Date_Str'First + 8..Date_Str'First + 9));
+      Hour := Integer'Value(Date_Str(Date_Str'First + 11..Date_Str'First + 12));
+      Minute := Integer'Value(Date_Str(Date_Str'First + 14..Date_Str'First + 15));
+      Second := Integer'Value(Date_Str(Date_Str'First + 17..Date_Str'First + 18));
+      return Ada.Calendar.Formatting.Time_Of (Year        => Year,
+                                              Month       => Month,
+                                              Day         => Day,
+                                              Hour        => Hour,
+                                              Minute      => Minute,
+                                              Second      => Second,
+                                              Sub_Second  => 0.0);
+   end From_ISO_8601;
 end Client;
