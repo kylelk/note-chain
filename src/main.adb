@@ -7,6 +7,7 @@ with GNAT.OS_Lib;
 
 with Config;
 with Client;
+with File_Operations;
 
 procedure Main is
    package CLI renames Ada.Command_Line;
@@ -80,12 +81,34 @@ procedure Main is
 
    procedure Cmd_Note (Status : in out Client.Client_Status) is
       Note_Item : Client.Note;
+      Note_Entry : Client.Tree_Entry;
+      New_Commit : Client.Commit;
    begin
+      Note_Entry.Entry_Type := Client.Type_Note;
+
+      if Status.Head_Commit_Ref /= Client.Empty_Hash_Ref then
+         Note_Entry.Next_Ref := Status.Head_Commit.Tree_Ref;
+         New_Commit.Parent_Ref := Status.Head_Commit_Ref;
+      end if;
+
       if CLI.Argument_Count > 1 then
          if CLI.Argument (2) = "new" then
             Edit_Note_Content;
             Status.Create_Note(Note_Item);
             Status.Save(Note_Item);
+
+            -- save tree entry for note
+            Note_Entry.Child_Ref := Note_Item.Object_Ref;
+            Status.Save(Note_Entry);
+
+            -- create new commit for changes
+            New_Commit.Tree_Ref := Note_Entry.Object_Ref;
+            Status.Save(New_Commit);
+
+            -- update the head commit to point to the newest tree
+            Status.Set_Head(New_Commit);
+
+            TIO.Put_Line("created new note");
          end if;
       end if;
    end Cmd_Note;
@@ -125,4 +148,7 @@ begin
    end if;
 
    Note_Client.Save_Branches;
+
+   -- clear the temp directory
+   File_Operations.Remake_Directory (Config.Temp_Dir);
 end Main;

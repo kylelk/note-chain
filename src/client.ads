@@ -107,6 +107,14 @@ package Client is
    -- get commit SHA-256 of the commit for the current head branch
    function Head_Commit_Ref(Status : Client_Status) return SHA256_Value;
 
+   function Head_Commit(Status : Client_Status) return Commit;
+
+   function Head(Status : Client_Status) return Branch;
+
+   procedure Set_Head_Ref(Status : in out Client_Status; Ref : SHA256_Value);
+
+   procedure Set_Head(Status : in out Client_Status; Item : Commit);
+
 private
    function Random_SHA256 return SHA256_Value;
 

@@ -22,6 +22,7 @@ package body Client is
          Branch_Result.Name := UBS.To_Unbounded_String (Name);
          if JSON.Kind (Value.Get ("commit_ref")) = JSON.JSON_String_Type then
             Branch_Result.Commit_Ref := Value.Get ("commit_ref");
+            Branch_Result.Name := Value.Get ("name");
          end if;
          Status.Set_Branch (Branch_Result);
       end Handler;
@@ -117,8 +118,6 @@ package body Client is
          Config.Branch_JSON_File);
       Ada.Text_IO.Put (Data_File, Result_JSON.Write);
       Ada.Text_IO.Close (Data_File);
-      -- clear the temp directory
-      -- File_Operations.Remake_Directory (Config.Temp_Dir);
    end Save_Branches;
 
    procedure Save(Status : in out Client_Status; Item : in out Tree_Entry) is
@@ -129,7 +128,13 @@ package body Client is
    begin
       Result_JSON.Set_Field("entry_type", Object_Type'Image(Item.Entry_Type));
       Result_JSON.Set_Field("child_ref", Item.Child_Ref);
-      Result_JSON.Set_Field("next_ref", Item.Next_Ref);
+
+      if Item.Next_Ref /= Empty_Hash_Ref then
+         Result_JSON.Set_Field("next_ref", Item.Next_Ref);
+      else
+         Result_JSON.Set_Field("next_ref", JSON.JSON_Null);
+      end if;
+
       if Item.Name /= UBS.Null_Unbounded_String then
          Result_JSON.Set_Field("name", Item.Name);
       else
@@ -145,6 +150,7 @@ package body Client is
       Result_Hash : SHA256_Value;
       use Ada.Strings.Unbounded;
    begin
+      Item.Created_At := Ada.Calendar.Clock;
       if Item.Parent_Ref /= Empty_Hash_Ref then
          Result_JSON.Set_Field("parent_ref", Item.Parent_Ref);
       else
@@ -201,6 +207,16 @@ package body Client is
       return Result;
    end Get_Commit;
 
+   function Head_Commit(Status : Client_Status) return Commit is
+   begin
+      return Get_Commit(Status.Head_Commit_Ref);
+   end Head_Commit;
+
+   function Head(Status : Client_Status) return Branch is
+   begin
+      return Status.Branch_Status.Branches.Element(Status.Branch_Status.Head);
+   end Head;
+
    function Get_Tree_Entry(Ref : SHA256_Value) return Tree_Entry is
       Result : Tree_Entry;
       Item_JSON : JSON.JSON_Value;
@@ -209,7 +225,9 @@ package body Client is
       Item_JSON := JSON.Read(Object_Store.Read(Ref), "");
       Result.Entry_Type := Object_Type'Value(Item_JSON.Get("entry_type"));
       Result.Child_Ref := Item_JSON.Get("child_ref");
-      Result.Next_Ref := Item_JSON.Get("next_ref");
+      if JSON.Kind(Item_JSON.Get("next_ref")) = JSON.JSON_String_Type then
+         Result.Next_Ref := Item_JSON.Get("next_ref");
+      end if;
       if JSON.Kind(Item_JSON.Get("name")) = JSON.JSON_String_Type then
          Result.Name := Item_JSON.Get("name");
       end if;
@@ -229,6 +247,19 @@ package body Client is
       Result.Saved := True;
       return Result;
    end Get_Note;
+
+   procedure Set_Head_Ref(Status : in out Client_Status; Ref : SHA256_Value) is
+      Updated_Branch : Branch;
+   begin
+      Updated_Branch := Status.Head;
+      Updated_Branch.Commit_Ref := Ref;
+      Status.Branch_Status.Branches.Replace(Updated_Branch.Name, Updated_Branch);
+   end Set_Head_Ref;
+
+   procedure Set_Head(Status : in out Client_Status; Item : Commit) is
+   begin
+      Status.Set_Head_Ref(Item.Object_Ref);
+   end Set_Head;
 
    function Random_SHA256 return SHA256_Value is
       package Guess_Generator is new Ada.Numerics.Discrete_Random(Character);
