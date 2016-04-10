@@ -53,12 +53,30 @@ procedure Main is
       Execute_System ("vim " & Config.Temp_Note_File);
    end Edit_Note_Content;
 
+   procedure List_Branches(Status : Client.Client_Status) is
+      Cursor : Client.Branch_Map.Cursor;
+      Branch_Result : Client.Branch;
+      use Client.Branch_Map;
+      use UBS;
+   begin
+      Cursor := Status.Branch_Status.Branches.First;
+      while Cursor /= Client.Branch_Map.No_Element loop
+         Branch_Result := Client.Branch_Map.Element(Cursor);
+         if Branch_Result.Name = Status.Branch_Status.Head then
+            TIO.Put ("* ");
+         else
+            TIO.Put("  ");
+         end if;
+         TIO.Put_Line(UBS.To_String(Branch_Result.Name));
+         Cursor := Client.Branch_Map.Next(Cursor);
+      end loop;
+   end List_Branches;
+
    procedure Display_Commit(Item : Client.Commit) is
    begin
       TIO.Put_Line(Item.Object_Ref & " " &
                      Ada.Calendar.Formatting.Image(Item.Created_At));
    end Display_Commit;
-
 
    procedure Cmd_Branch (Info : in out Client.Client_Status) is
    begin
@@ -82,7 +100,7 @@ procedure Main is
             TIO.Put_Line ("head: " & UBS.To_String (Info.Branch_Status.Head));
          end if;
       else
-         TIO.Put_Line ("TODO: branch list");
+         List_Branches(Info);
       end if;
    end Cmd_Branch;
 
