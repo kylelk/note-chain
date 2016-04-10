@@ -70,6 +70,12 @@ package Client is
 
    procedure Init (Status : in out Client_Status);
 
+   -- @summary
+   -- called when done with the client
+   -- @description
+   -- saves the branches, cleans up the temporary directory
+   procedure Cleanup(Status : in out Client_Status);
+
    -- @description
    -- Load branches from the JSON file defined in the config.ads
    procedure Load_Branches (Status : in out Client_Status);

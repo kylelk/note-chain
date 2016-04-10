@@ -7,7 +7,6 @@ with GNAT.OS_Lib;
 
 with Config;
 with Client;
-with File_Operations;
 
 procedure Main is
    package CLI renames Ada.Command_Line;
@@ -147,8 +146,5 @@ begin
       TIO.Put_Line ("usage infomation");
    end if;
 
-   Note_Client.Save_Branches;
-
-   -- clear the temp directory
-   File_Operations.Remake_Directory (Config.Temp_Dir);
+   Note_Client.Cleanup;
 end Main;

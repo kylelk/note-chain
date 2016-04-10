@@ -14,6 +14,14 @@ package body Client is
       Object_Store.Init;
    end Init;
 
+   procedure Cleanup(Status : in out Client_Status) is
+   begin
+      Status.Save_Branches;
+
+      -- clear the temp directory
+      File_Operations.Remake_Directory (Config.Temp_Dir);
+   end Cleanup;
+
    procedure Load_Branches (Status : in out Client_Status) is
       procedure Handler (Name : JSON.UTF8_String; Value : JSON.JSON_Value) is
          Branch_Result : Branch;
