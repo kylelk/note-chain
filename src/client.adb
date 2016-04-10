@@ -110,6 +110,17 @@ package body Client is
       -- File_Operations.Remake_Directory (Config.Temp_Dir);
    end Save_Branches;
 
+   procedure Save(Status : in out Client_Status; Item : in out Tree_Entry) is
+   begin
+      null;
+   end Save;
+
+   procedure Save(Status : in out Client_Status; Item : in out Commit) is
+   begin
+      null;
+   end Save;
+
+
    procedure Create_Note(Status : in out Client_Status; Item : out Note) is
       pragma Unreferenced (Status);
       Note_Content : constant String :=

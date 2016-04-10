@@ -92,6 +92,10 @@ package Client is
 
    procedure Save(Status : in out Client_Status; Item : in out Note);
 
+   procedure Save(Status : in out Client_Status; Item : in out Tree_Entry);
+
+   procedure Save(Status : in out Client_Status; Item : in out Commit);
+
    function Get_Commit(Ref : SHA256_Value) return Commit;
 
    function Get_Tree_Entry(Ref : SHA256_Value) return Tree_Entry;
