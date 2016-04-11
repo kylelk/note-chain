@@ -14,5 +14,6 @@ Example:
   "uuid": "UUID",
   "note_text": "hello world",
   "created_at": "ISO 8601 date time",
+  "updated_at": "ISO 8601 date time",
   "author": "optional persons name"
 }
