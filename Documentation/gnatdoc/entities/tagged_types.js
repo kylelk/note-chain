@@ -3,9 +3,9 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Client_Status",
-      "docHref": "docs/client.html#L63C9",
+      "docHref": "docs/client.html#L72C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L63"
+      "srcHref": "srcs/client.ads.html#L72"
     },
     {
       "label": "JSON_Value",

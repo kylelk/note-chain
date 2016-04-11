@@ -27,9 +27,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "From_ISO_8601",
-      "docHref": "docs/client.html#L139C13",
+      "docHref": "docs/client.html#L154C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L139"
+      "srcHref": "srcs/client.ads.html#L154"
     },
     {
       "label": "Gen_Map_JSON_Object",
@@ -39,9 +39,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Get_Commit",
-      "docHref": "docs/client.html#L113C13",
+      "docHref": "docs/client.html#L128C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L113"
+      "srcHref": "srcs/client.ads.html#L128"
     },
     {
       "label": "Get_File_Sha256",
@@ -51,21 +51,21 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Get_Note",
-      "docHref": "docs/client.html#L117C13",
+      "docHref": "docs/client.html#L132C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L117"
+      "srcHref": "srcs/client.ads.html#L132"
     },
     {
       "label": "Get_Tree_Entry",
-      "docHref": "docs/client.html#L115C13",
+      "docHref": "docs/client.html#L130C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L115"
+      "srcHref": "srcs/client.ads.html#L130"
     },
     {
       "label": "Hash",
-      "docHref": "docs/client.html#L47C13",
+      "docHref": "docs/client.html#L56C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L47"
+      "srcHref": "srcs/client.ads.html#L56"
     },
     {
       "label": "Init",
@@ -123,9 +123,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "To_ISO_8601",
-      "docHref": "docs/client.html#L137C13",
+      "docHref": "docs/client.html#L152C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L137"
+      "srcHref": "srcs/client.ads.html#L152"
     },
     {
       "label": "Un_Escape_String",

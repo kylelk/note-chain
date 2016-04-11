@@ -13,12 +13,21 @@ package Client is
 
    type Object_Type is (Type_Commit, Type_Tree, Type_Note, Type_Blob);
 
+   -- Stores note infomation
+   -- @field Object_Ref data object which contains the record
+   -- @field Note_Text content of the note
+   -- @field Encoding text encoding of the note content
+   -- @field Uniq_UUID unique note identifier
+   -- @field Created_At when the first note version was created
+   -- @field Updated_At when this version of the note was created
+   -- @field Saved has the record been saved yet
    type Note is record
       Object_Ref : SHA256_Value := Empty_Hash_Ref;
       Note_Text  : UBS.Unbounded_String;
       Encoding   : UBS.Unbounded_String;
       Uniq_UUID  : SHA256_Value;
       Created_At : Ada.Calendar.Time;
+      Updated_At : Ada.Calendar.Time;
       Saved : Boolean := False;
    end record;
 
@@ -88,6 +97,9 @@ package Client is
    -- Set the Value of a branch
    procedure Set_Branch (Status : in out Client_Status; Item : Branch);
 
+   -- @description
+   -- creates a new branch from another, when no branch exists then a
+   -- No_Branch_Error exception is raised
    procedure Copy_Branch
      (Status   : in out Client_Status;
       From, To :        UBS.Unbounded_String);
@@ -96,6 +108,9 @@ package Client is
    -- Save branches to the JSON file defined in config.ads
    procedure Save_Branches (Status : in out Client_Status);
 
+   -- @summary initalizes a new note object
+   -- @description
+   -- creates a new note object with the contents of the temporary note file
    procedure Create_Note (Status : in out Client_Status; Item : out Note);
 
    -- @summary

@@ -75,7 +75,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "string",
-                      "text": "\"1.4.0\""
+                      "text": "\"1.5.0\""
                     },
                     {
                       "kind": "span",

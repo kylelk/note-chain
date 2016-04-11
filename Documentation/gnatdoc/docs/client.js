@@ -445,7 +445,7 @@ GNATdoc.Documentation = {
       "entities": [
         {
           "label": "Note",
-          "line": 16,
+          "line": 24,
           "column": 9,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -456,7 +456,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 16,
+                  "number": 24,
                   "children": [
                     {
                       "kind": "span",
@@ -477,7 +477,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Note",
-                      "href": "docs/client.html#L16C9"
+                      "href": "docs/client.html#L24C9"
                     },
                     {
                       "kind": "span",
@@ -503,7 +503,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 17,
+                  "number": 25,
                   "children": [
                     {
                       "kind": "span",
@@ -514,7 +514,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Object_Ref",
-                      "href": "docs/client.html#L17C7"
+                      "href": "docs/client.html#L25C7"
                     },
                     {
                       "kind": "span",
@@ -561,397 +561,6 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 18,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Note_Text",
-                      "href": "docs/client.html#L18C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "  "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "UBS.Unbounded_String"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 19,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Encoding",
-                      "href": "docs/client.html#L19C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "UBS.Unbounded_String"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 20,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Uniq_UUID",
-                      "href": "docs/client.html#L20C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "  "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "SHA256_Value",
-                      "href": "docs/client.html#L11C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 21,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Created_At",
-                      "href": "docs/client.html#L21C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Ada.Calendar.Time"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 22,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Saved",
-                      "href": "docs/client.html#L22C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Boolean"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":="
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "False"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 23,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "end"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "record"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";",
-                      "href": "docs/client.html#L16C9"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "fields": [
-            {
-              "label": "Object_Ref",
-              "line": 17,
-              "column": 7,
-              "type": {
-                "label": "Client.SHA256_Value",
-                "docHref": "docs/client.html#L11C12"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Note_Text",
-              "line": 18,
-              "column": 7,
-              "type": {
-                "label": "Unbounded_String",
-                "docHref": "docs/unbounded_string.html#L79C9"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Encoding",
-              "line": 19,
-              "column": 7,
-              "type": {
-                "label": "Unbounded_String",
-                "docHref": "docs/unbounded_string.html#L79C9"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Uniq_UUID",
-              "line": 20,
-              "column": 7,
-              "type": {
-                "label": "Client.SHA256_Value",
-                "docHref": "docs/client.html#L11C12"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Created_At",
-              "line": 21,
-              "column": 7,
-              "type": {
-                "label": "Time"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Saved",
-              "line": 22,
-              "column": 7,
-              "type": {
-                "label": "Boolean"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Commit",
-          "line": 25,
-          "column": 9,
-          "src": "srcs/client.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 25,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "type"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Commit",
-                      "href": "docs/client.html#L25C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "is"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "record"
                     }
                   ]
                 },
@@ -967,13 +576,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Object_Ref",
+                      "text": "Note_Text",
                       "href": "docs/client.html#L26C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": " "
+                      "text": "  "
                     },
                     {
                       "kind": "span",
@@ -988,28 +597,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "SHA256_Value",
-                      "href": "docs/client.html#L11C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":="
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Empty_Hash_Ref"
+                      "text": "UBS.Unbounded_String"
                     },
                     {
                       "kind": "span",
@@ -1030,13 +618,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Parent_Ref",
+                      "text": "Encoding",
                       "href": "docs/client.html#L27C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": " "
+                      "text": "   "
                     },
                     {
                       "kind": "span",
@@ -1051,28 +639,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "SHA256_Value",
-                      "href": "docs/client.html#L11C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":="
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Empty_Hash_Ref"
+                      "text": "UBS.Unbounded_String"
                     },
                     {
                       "kind": "span",
@@ -1093,13 +660,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Tree_Ref",
+                      "text": "Uniq_UUID",
                       "href": "docs/client.html#L28C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "   "
+                      "text": "  "
                     },
                     {
                       "kind": "span",
@@ -1116,26 +683,6 @@ GNATdoc.Documentation = {
                       "cssClass": "identifier",
                       "text": "SHA256_Value",
                       "href": "docs/client.html#L11C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":="
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Empty_Hash_Ref"
                     },
                     {
                       "kind": "span",
@@ -1198,7 +745,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Message",
+                      "text": "Updated_At",
                       "href": "docs/client.html#L30C7"
                     },
                     {
@@ -1219,27 +766,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "UBS.Unbounded_String"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":="
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "UBS.Null_Unbounded_String"
+                      "text": "Ada.Calendar.Time"
                     },
                     {
                       "kind": "span",
@@ -1338,9 +865,18 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/client.html#L25C9"
+                      "href": "docs/client.html#L24C9"
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Stores note infomation\n"
                 }
               ]
             }
@@ -1348,28 +884,66 @@ GNATdoc.Documentation = {
           "fields": [
             {
               "label": "Object_Ref",
+              "line": 25,
+              "column": 7,
+              "type": {
+                "label": "Client.SHA256_Value",
+                "docHref": "docs/client.html#L11C12"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "data object which contains the record\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Note_Text",
               "line": 26,
               "column": 7,
               "type": {
-                "label": "Client.SHA256_Value",
-                "docHref": "docs/client.html#L11C12"
+                "label": "Unbounded_String",
+                "docHref": "docs/unbounded_string.html#L79C9"
               },
               "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "content of the note\n"
+                    }
+                  ]
+                }
               ]
             },
             {
-              "label": "Parent_Ref",
+              "label": "Encoding",
               "line": 27,
               "column": 7,
               "type": {
-                "label": "Client.SHA256_Value",
-                "docHref": "docs/client.html#L11C12"
+                "label": "Unbounded_String",
+                "docHref": "docs/unbounded_string.html#L79C9"
               },
               "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "text encoding of the note content\n"
+                    }
+                  ]
+                }
               ]
             },
             {
-              "label": "Tree_Ref",
+              "label": "Uniq_UUID",
               "line": 28,
               "column": 7,
               "type": {
@@ -1377,6 +951,15 @@ GNATdoc.Documentation = {
                 "docHref": "docs/client.html#L11C12"
               },
               "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "unique note identifier\n"
+                    }
+                  ]
+                }
               ]
             },
             {
@@ -1387,17 +970,34 @@ GNATdoc.Documentation = {
                 "label": "Time"
               },
               "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "when the first note version was created\n"
+                    }
+                  ]
+                }
               ]
             },
             {
-              "label": "Message",
+              "label": "Updated_At",
               "line": 30,
               "column": 7,
               "type": {
-                "label": "Unbounded_String",
-                "docHref": "docs/unbounded_string.html#L79C9"
+                "label": "Time"
               },
               "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "when this version of the note was created\n"
+                    }
+                  ]
+                }
               ]
             },
             {
@@ -1408,12 +1008,21 @@ GNATdoc.Documentation = {
                 "label": "Boolean"
               },
               "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "has the record been saved yet\n"
+                    }
+                  ]
+                }
               ]
             }
           ]
         },
         {
-          "label": "Tree_Entry",
+          "label": "Commit",
           "line": 34,
           "column": 9,
           "src": "srcs/client.ads.html",
@@ -1445,7 +1054,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Tree_Entry",
+                      "text": "Commit",
                       "href": "docs/client.html#L34C9"
                     },
                     {
@@ -1545,8 +1154,523 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Entry_Type",
+                      "text": "Parent_Ref",
                       "href": "docs/client.html#L36C7"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "SHA256_Value",
+                      "href": "docs/client.html#L11C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Empty_Hash_Ref"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 37,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Tree_Ref",
+                      "href": "docs/client.html#L37C7"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "SHA256_Value",
+                      "href": "docs/client.html#L11C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Empty_Hash_Ref"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 38,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Created_At",
+                      "href": "docs/client.html#L38C7"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Ada.Calendar.Time"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 39,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Message",
+                      "href": "docs/client.html#L39C7"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "UBS.Unbounded_String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "UBS.Null_Unbounded_String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 40,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Saved",
+                      "href": "docs/client.html#L40C7"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Boolean"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "False"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 41,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "end"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "record"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";",
+                      "href": "docs/client.html#L34C9"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "fields": [
+            {
+              "label": "Object_Ref",
+              "line": 35,
+              "column": 7,
+              "type": {
+                "label": "Client.SHA256_Value",
+                "docHref": "docs/client.html#L11C12"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Parent_Ref",
+              "line": 36,
+              "column": 7,
+              "type": {
+                "label": "Client.SHA256_Value",
+                "docHref": "docs/client.html#L11C12"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Tree_Ref",
+              "line": 37,
+              "column": 7,
+              "type": {
+                "label": "Client.SHA256_Value",
+                "docHref": "docs/client.html#L11C12"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Created_At",
+              "line": 38,
+              "column": 7,
+              "type": {
+                "label": "Time"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Message",
+              "line": 39,
+              "column": 7,
+              "type": {
+                "label": "Unbounded_String",
+                "docHref": "docs/unbounded_string.html#L79C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Saved",
+              "line": 40,
+              "column": 7,
+              "type": {
+                "label": "Boolean"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Tree_Entry",
+          "line": 43,
+          "column": 9,
+          "src": "srcs/client.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 43,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "type"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Tree_Entry",
+                      "href": "docs/client.html#L43C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "record"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 44,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Object_Ref",
+                      "href": "docs/client.html#L44C7"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "SHA256_Value",
+                      "href": "docs/client.html#L11C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Empty_Hash_Ref"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 45,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Entry_Type",
+                      "href": "docs/client.html#L45C7"
                     },
                     {
                       "kind": "span",
@@ -1618,7 +1742,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 37,
+                  "number": 46,
                   "children": [
                     {
                       "kind": "span",
@@ -1629,7 +1753,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Child_Ref",
-                      "href": "docs/client.html#L37C7"
+                      "href": "docs/client.html#L46C7"
                     },
                     {
                       "kind": "span",
@@ -1681,7 +1805,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 38,
+                  "number": 47,
                   "children": [
                     {
                       "kind": "span",
@@ -1692,7 +1816,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Next_Ref",
-                      "href": "docs/client.html#L38C7"
+                      "href": "docs/client.html#L47C7"
                     },
                     {
                       "kind": "span",
@@ -1744,7 +1868,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 39,
+                  "number": 48,
                   "children": [
                     {
                       "kind": "span",
@@ -1755,7 +1879,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Name",
-                      "href": "docs/client.html#L39C7"
+                      "href": "docs/client.html#L48C7"
                     },
                     {
                       "kind": "span",
@@ -1806,7 +1930,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 40,
+                  "number": 49,
                   "children": [
                     {
                       "kind": "span",
@@ -1832,7 +1956,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/client.html#L34C9"
+                      "href": "docs/client.html#L43C9"
                     }
                   ]
                 }
@@ -1842,7 +1966,7 @@ GNATdoc.Documentation = {
           "fields": [
             {
               "label": "Object_Ref",
-              "line": 35,
+              "line": 44,
               "column": 7,
               "type": {
                 "label": "Client.SHA256_Value",
@@ -1853,7 +1977,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Entry_Type",
-              "line": 36,
+              "line": 45,
               "column": 7,
               "type": {
                 "label": "Client.Object_Type",
@@ -1864,7 +1988,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Child_Ref",
-              "line": 37,
+              "line": 46,
               "column": 7,
               "type": {
                 "label": "Client.SHA256_Value",
@@ -1875,7 +1999,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Next_Ref",
-              "line": 38,
+              "line": 47,
               "column": 7,
               "type": {
                 "label": "Client.SHA256_Value",
@@ -1886,7 +2010,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Name",
-              "line": 39,
+              "line": 48,
               "column": 7,
               "type": {
                 "label": "Unbounded_String",
@@ -1899,7 +2023,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Branch",
-          "line": 42,
+          "line": 51,
           "column": 9,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -1910,7 +2034,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 42,
+                  "number": 51,
                   "children": [
                     {
                       "kind": "span",
@@ -1931,7 +2055,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Branch",
-                      "href": "docs/client.html#L42C9"
+                      "href": "docs/client.html#L51C9"
                     },
                     {
                       "kind": "span",
@@ -1957,7 +2081,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 43,
+                  "number": 52,
                   "children": [
                     {
                       "kind": "span",
@@ -1968,7 +2092,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Name",
-                      "href": "docs/client.html#L43C7"
+                      "href": "docs/client.html#L52C7"
                     },
                     {
                       "kind": "span",
@@ -1999,7 +2123,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 44,
+                  "number": 53,
                   "children": [
                     {
                       "kind": "span",
@@ -2010,7 +2134,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Commit_Ref",
-                      "href": "docs/client.html#L44C7"
+                      "href": "docs/client.html#L53C7"
                     },
                     {
                       "kind": "span",
@@ -2062,7 +2186,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 45,
+                  "number": 54,
                   "children": [
                     {
                       "kind": "span",
@@ -2088,7 +2212,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/client.html#L42C9"
+                      "href": "docs/client.html#L51C9"
                     }
                   ]
                 }
@@ -2098,7 +2222,7 @@ GNATdoc.Documentation = {
           "fields": [
             {
               "label": "Name",
-              "line": 43,
+              "line": 52,
               "column": 7,
               "type": {
                 "label": "Unbounded_String",
@@ -2109,7 +2233,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Commit_Ref",
-              "line": 44,
+              "line": 53,
               "column": 7,
               "type": {
                 "label": "Client.SHA256_Value",
@@ -2122,7 +2246,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Branch_Info",
-          "line": 57,
+          "line": 66,
           "column": 9,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -2133,7 +2257,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 57,
+                  "number": 66,
                   "children": [
                     {
                       "kind": "span",
@@ -2154,7 +2278,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Branch_Info",
-                      "href": "docs/client.html#L57C9"
+                      "href": "docs/client.html#L66C9"
                     },
                     {
                       "kind": "span",
@@ -2180,7 +2304,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 58,
+                  "number": 67,
                   "children": [
                     {
                       "kind": "span",
@@ -2191,7 +2315,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Head",
-                      "href": "docs/client.html#L58C7"
+                      "href": "docs/client.html#L67C7"
                     },
                     {
                       "kind": "span",
@@ -2242,7 +2366,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 59,
+                  "number": 68,
                   "children": [
                     {
                       "kind": "span",
@@ -2253,7 +2377,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Branches",
-                      "href": "docs/client.html#L59C7"
+                      "href": "docs/client.html#L68C7"
                     },
                     {
                       "kind": "span",
@@ -2284,7 +2408,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 60,
+                  "number": 69,
                   "children": [
                     {
                       "kind": "span",
@@ -2310,7 +2434,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/client.html#L57C9"
+                      "href": "docs/client.html#L66C9"
                     }
                   ]
                 }
@@ -2320,7 +2444,7 @@ GNATdoc.Documentation = {
           "fields": [
             {
               "label": "Head",
-              "line": 58,
+              "line": 67,
               "column": 7,
               "type": {
                 "label": "Unbounded_String",
@@ -2331,7 +2455,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Branches",
-              "line": 59,
+              "line": 68,
               "column": 7,
               "type": {
                 "label": "Map"
@@ -2348,7 +2472,7 @@ GNATdoc.Documentation = {
       "entities": [
         {
           "label": "Client_Status",
-          "line": 63,
+          "line": 72,
           "column": 9,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -2359,7 +2483,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 63,
+                  "number": 72,
                   "children": [
                     {
                       "kind": "span",
@@ -2380,7 +2504,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -2416,7 +2540,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 64,
+                  "number": 73,
                   "children": [
                     {
                       "kind": "span",
@@ -2427,7 +2551,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Branch_Status",
-                      "href": "docs/client.html#L64C7"
+                      "href": "docs/client.html#L73C7"
                     },
                     {
                       "kind": "span",
@@ -2448,7 +2572,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Branch_Info",
-                      "href": "docs/client.html#L57C9"
+                      "href": "docs/client.html#L66C9"
                     },
                     {
                       "kind": "span",
@@ -2459,7 +2583,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 65,
+                  "number": 74,
                   "children": [
                     {
                       "kind": "span",
@@ -2475,7 +2599,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 66,
+                  "number": 75,
                   "children": [
                     {
                       "kind": "span",
@@ -2486,7 +2610,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "First_Load",
-                      "href": "docs/client.html#L66C7"
+                      "href": "docs/client.html#L75C7"
                     },
                     {
                       "kind": "span",
@@ -2537,7 +2661,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 67,
+                  "number": 76,
                   "children": [
                     {
                       "kind": "span",
@@ -2563,7 +2687,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     }
                   ]
                 }
@@ -2582,11 +2706,11 @@ GNATdoc.Documentation = {
           "fields": [
             {
               "label": "Branch_Status",
-              "line": 64,
+              "line": 73,
               "column": 7,
               "type": {
                 "label": "Client.Branch_Info",
-                "docHref": "docs/client.html#L57C9"
+                "docHref": "docs/client.html#L66C9"
               },
               "description": [
                 {
@@ -2602,7 +2726,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "First_Load",
-              "line": 66,
+              "line": 75,
               "column": 7,
               "type": {
                 "label": "Boolean"
@@ -2619,7 +2743,7 @@ GNATdoc.Documentation = {
       "entities": [
         {
           "label": "Hash",
-          "line": 47,
+          "line": 56,
           "column": 13,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -2630,7 +2754,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 47,
+                  "number": 56,
                   "children": [
                     {
                       "kind": "span",
@@ -2651,13 +2775,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Hash",
-                      "href": "docs/client.html#L47C13"
+                      "href": "docs/client.html#L56C13"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 48,
+                  "number": 57,
                   "children": [
                     {
                       "kind": "span",
@@ -2673,7 +2797,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Key",
-                      "href": "docs/client.html#L48C7"
+                      "href": "docs/client.html#L57C7"
                     },
                     {
                       "kind": "span",
@@ -2734,7 +2858,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 49,
+                  "number": 58,
                   "children": [
                     {
                       "kind": "span",
@@ -2789,7 +2913,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Key",
-              "line": 48,
+              "line": 57,
               "column": 7,
               "type": {
                 "label": "Unbounded_String",
@@ -2802,7 +2926,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Get_Commit",
-          "line": 113,
+          "line": 128,
           "column": 13,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -2813,7 +2937,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 113,
+                  "number": 128,
                   "children": [
                     {
                       "kind": "span",
@@ -2834,7 +2958,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Get_Commit",
-                      "href": "docs/client.html#L113C13"
+                      "href": "docs/client.html#L128C13"
                     },
                     {
                       "kind": "span",
@@ -2845,7 +2969,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Ref",
-                      "href": "docs/client.html#L113C24"
+                      "href": "docs/client.html#L128C24"
                     },
                     {
                       "kind": "span",
@@ -2892,7 +3016,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Commit",
-                      "href": "docs/client.html#L25C9"
+                      "href": "docs/client.html#L34C9"
                     },
                     {
                       "kind": "span",
@@ -2907,7 +3031,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Ref",
-              "line": 113,
+              "line": 128,
               "column": 24,
               "type": {
                 "label": "Client.SHA256_Value",
@@ -2920,7 +3044,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Get_Tree_Entry",
-          "line": 115,
+          "line": 130,
           "column": 13,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -2931,7 +3055,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 115,
+                  "number": 130,
                   "children": [
                     {
                       "kind": "span",
@@ -2952,7 +3076,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Get_Tree_Entry",
-                      "href": "docs/client.html#L115C13"
+                      "href": "docs/client.html#L130C13"
                     },
                     {
                       "kind": "span",
@@ -2963,7 +3087,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Ref",
-                      "href": "docs/client.html#L115C28"
+                      "href": "docs/client.html#L130C28"
                     },
                     {
                       "kind": "span",
@@ -3010,7 +3134,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Tree_Entry",
-                      "href": "docs/client.html#L34C9"
+                      "href": "docs/client.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -3025,7 +3149,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Ref",
-              "line": 115,
+              "line": 130,
               "column": 28,
               "type": {
                 "label": "Client.SHA256_Value",
@@ -3038,7 +3162,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Get_Note",
-          "line": 117,
+          "line": 132,
           "column": 13,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -3049,7 +3173,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 117,
+                  "number": 132,
                   "children": [
                     {
                       "kind": "span",
@@ -3070,7 +3194,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Get_Note",
-                      "href": "docs/client.html#L117C13"
+                      "href": "docs/client.html#L132C13"
                     },
                     {
                       "kind": "span",
@@ -3081,7 +3205,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Ref",
-                      "href": "docs/client.html#L117C22"
+                      "href": "docs/client.html#L132C22"
                     },
                     {
                       "kind": "span",
@@ -3128,7 +3252,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Note",
-                      "href": "docs/client.html#L16C9"
+                      "href": "docs/client.html#L24C9"
                     },
                     {
                       "kind": "span",
@@ -3143,7 +3267,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Ref",
-              "line": 117,
+              "line": 132,
               "column": 22,
               "type": {
                 "label": "Client.SHA256_Value",
@@ -3156,7 +3280,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "To_ISO_8601",
-          "line": 137,
+          "line": 152,
           "column": 13,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -3167,7 +3291,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 137,
+                  "number": 152,
                   "children": [
                     {
                       "kind": "span",
@@ -3188,7 +3312,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "To_ISO_8601",
-                      "href": "docs/client.html#L137C13"
+                      "href": "docs/client.html#L152C13"
                     },
                     {
                       "kind": "span",
@@ -3199,7 +3323,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Date",
-                      "href": "docs/client.html#L137C25"
+                      "href": "docs/client.html#L152C25"
                     },
                     {
                       "kind": "span",
@@ -3259,7 +3383,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Date",
-              "line": 137,
+              "line": 152,
               "column": 25,
               "type": {
                 "label": "Time"
@@ -3271,7 +3395,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "From_ISO_8601",
-          "line": 139,
+          "line": 154,
           "column": 13,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -3282,7 +3406,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 139,
+                  "number": 154,
                   "children": [
                     {
                       "kind": "span",
@@ -3303,7 +3427,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "From_ISO_8601",
-                      "href": "docs/client.html#L139C13"
+                      "href": "docs/client.html#L154C13"
                     },
                     {
                       "kind": "span",
@@ -3319,7 +3443,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Date_Str",
-                      "href": "docs/client.html#L139C28"
+                      "href": "docs/client.html#L154C28"
                     },
                     {
                       "kind": "span",
@@ -3379,7 +3503,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Date_Str",
-              "line": 139,
+              "line": 154,
               "column": 28,
               "type": {
                 "label": "String"
@@ -3396,7 +3520,7 @@ GNATdoc.Documentation = {
       "entities": [
         {
           "label": "Init",
-          "line": 71,
+          "line": 80,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -3407,7 +3531,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 71,
+                  "number": 80,
                   "children": [
                     {
                       "kind": "span",
@@ -3428,7 +3552,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Init",
-                      "href": "docs/client.html#L71C14"
+                      "href": "docs/client.html#L80C14"
                     },
                     {
                       "kind": "span",
@@ -3444,7 +3568,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L71C20"
+                      "href": "docs/client.html#L80C20"
                     },
                     {
                       "kind": "span",
@@ -3485,7 +3609,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -3505,11 +3629,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 71,
+              "line": 80,
               "column": 20,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
@@ -3518,7 +3642,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Cleanup",
-          "line": 77,
+          "line": 86,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -3538,7 +3662,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 77,
+                  "number": 86,
                   "children": [
                     {
                       "kind": "span",
@@ -3559,7 +3683,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Cleanup",
-                      "href": "docs/client.html#L77C14"
+                      "href": "docs/client.html#L86C14"
                     },
                     {
                       "kind": "span",
@@ -3570,7 +3694,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L77C22"
+                      "href": "docs/client.html#L86C22"
                     },
                     {
                       "kind": "span",
@@ -3611,7 +3735,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -3640,11 +3764,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 77,
+              "line": 86,
               "column": 22,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
@@ -3653,7 +3777,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Load_Branches",
-          "line": 81,
+          "line": 90,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -3664,7 +3788,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 81,
+                  "number": 90,
                   "children": [
                     {
                       "kind": "span",
@@ -3685,7 +3809,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Load_Branches",
-                      "href": "docs/client.html#L81C14"
+                      "href": "docs/client.html#L90C14"
                     },
                     {
                       "kind": "span",
@@ -3701,7 +3825,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L81C29"
+                      "href": "docs/client.html#L90C29"
                     },
                     {
                       "kind": "span",
@@ -3742,7 +3866,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -3771,11 +3895,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 81,
+              "line": 90,
               "column": 29,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
@@ -3784,7 +3908,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Set_Head",
-          "line": 83,
+          "line": 92,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -3795,7 +3919,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 83,
+                  "number": 92,
                   "children": [
                     {
                       "kind": "span",
@@ -3816,13 +3940,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Set_Head",
-                      "href": "docs/client.html#L83C14"
+                      "href": "docs/client.html#L92C14"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 84,
+                  "number": 93,
                   "children": [
                     {
                       "kind": "span",
@@ -3838,7 +3962,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L84C7"
+                      "href": "docs/client.html#L93C7"
                     },
                     {
                       "kind": "span",
@@ -3879,7 +4003,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -3890,7 +4014,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 85,
+                  "number": 94,
                   "children": [
                     {
                       "kind": "span",
@@ -3901,7 +4025,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Branch_Name",
-                      "href": "docs/client.html#L85C7"
+                      "href": "docs/client.html#L94C7"
                     },
                     {
                       "kind": "span",
@@ -3941,18 +4065,18 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 84,
+              "line": 93,
               "column": 7,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
             },
             {
               "label": "Branch_Name",
-              "line": 85,
+              "line": 94,
               "column": 7,
               "type": {
                 "label": "Unbounded_String",
@@ -3965,7 +4089,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Set_Branch",
-          "line": 89,
+          "line": 98,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -3976,7 +4100,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 89,
+                  "number": 98,
                   "children": [
                     {
                       "kind": "span",
@@ -3997,7 +4121,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Set_Branch",
-                      "href": "docs/client.html#L89C14"
+                      "href": "docs/client.html#L98C14"
                     },
                     {
                       "kind": "span",
@@ -4013,7 +4137,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L89C26"
+                      "href": "docs/client.html#L98C26"
                     },
                     {
                       "kind": "span",
@@ -4054,7 +4178,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -4070,7 +4194,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Item",
-                      "href": "docs/client.html#L89C57"
+                      "href": "docs/client.html#L98C57"
                     },
                     {
                       "kind": "span",
@@ -4091,7 +4215,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Branch",
-                      "href": "docs/client.html#L42C9"
+                      "href": "docs/client.html#L51C9"
                     },
                     {
                       "kind": "span",
@@ -4120,22 +4244,22 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 89,
+              "line": 98,
               "column": 26,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
             },
             {
               "label": "Item",
-              "line": 89,
+              "line": 98,
               "column": 57,
               "type": {
                 "label": "Client.Branch",
-                "docHref": "docs/client.html#L42C9"
+                "docHref": "docs/client.html#L51C9"
               },
               "description": [
               ]
@@ -4144,7 +4268,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Copy_Branch",
-          "line": 91,
+          "line": 103,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -4155,7 +4279,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 91,
+                  "number": 103,
                   "children": [
                     {
                       "kind": "span",
@@ -4176,13 +4300,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Copy_Branch",
-                      "href": "docs/client.html#L91C14"
+                      "href": "docs/client.html#L103C14"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 92,
+                  "number": 104,
                   "children": [
                     {
                       "kind": "span",
@@ -4198,7 +4322,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L92C7"
+                      "href": "docs/client.html#L104C7"
                     },
                     {
                       "kind": "span",
@@ -4239,7 +4363,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -4250,7 +4374,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 93,
+                  "number": 105,
                   "children": [
                     {
                       "kind": "span",
@@ -4261,7 +4385,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "From",
-                      "href": "docs/client.html#L93C7"
+                      "href": "docs/client.html#L105C7"
                     },
                     {
                       "kind": "span",
@@ -4277,7 +4401,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "To",
-                      "href": "docs/client.html#L93C13"
+                      "href": "docs/client.html#L105C13"
                     },
                     {
                       "kind": "span",
@@ -4312,23 +4436,36 @@ GNATdoc.Documentation = {
                   ]
                 }
               ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "creates a new branch from another, when no branch exists then a\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "No_Branch_Error exception is raised\n"
+                }
+              ]
             }
           ],
           "parameters": [
             {
               "label": "Status",
-              "line": 92,
+              "line": 104,
               "column": 7,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
             },
             {
               "label": "From",
-              "line": 93,
+              "line": 105,
               "column": 7,
               "type": {
                 "label": "Unbounded_String",
@@ -4339,7 +4476,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "To",
-              "line": 93,
+              "line": 105,
               "column": 13,
               "type": {
                 "label": "Unbounded_String",
@@ -4352,7 +4489,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Save_Branches",
-          "line": 97,
+          "line": 109,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -4363,7 +4500,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 97,
+                  "number": 109,
                   "children": [
                     {
                       "kind": "span",
@@ -4384,7 +4521,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Save_Branches",
-                      "href": "docs/client.html#L97C14"
+                      "href": "docs/client.html#L109C14"
                     },
                     {
                       "kind": "span",
@@ -4400,7 +4537,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L97C29"
+                      "href": "docs/client.html#L109C29"
                     },
                     {
                       "kind": "span",
@@ -4441,7 +4578,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -4470,11 +4607,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 97,
+              "line": 109,
               "column": 29,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
@@ -4483,10 +4620,19 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Create_Note",
-          "line": 99,
+          "line": 114,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "initalizes a new note object\n"
+                }
+              ]
+            }
           ],
           "description": [
             {
@@ -4494,7 +4640,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 99,
+                  "number": 114,
                   "children": [
                     {
                       "kind": "span",
@@ -4515,7 +4661,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Create_Note",
-                      "href": "docs/client.html#L99C14"
+                      "href": "docs/client.html#L114C14"
                     },
                     {
                       "kind": "span",
@@ -4531,7 +4677,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L99C27"
+                      "href": "docs/client.html#L114C27"
                     },
                     {
                       "kind": "span",
@@ -4572,7 +4718,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -4588,7 +4734,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Item",
-                      "href": "docs/client.html#L99C58"
+                      "href": "docs/client.html#L114C58"
                     },
                     {
                       "kind": "span",
@@ -4619,7 +4765,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Note",
-                      "href": "docs/client.html#L16C9"
+                      "href": "docs/client.html#L24C9"
                     },
                     {
                       "kind": "span",
@@ -4634,27 +4780,36 @@ GNATdoc.Documentation = {
                   ]
                 }
               ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "creates a new note object with the contents of the temporary note file\n"
+                }
+              ]
             }
           ],
           "parameters": [
             {
               "label": "Status",
-              "line": 99,
+              "line": 114,
               "column": 27,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
             },
             {
               "label": "Item",
-              "line": 99,
+              "line": 114,
               "column": 58,
               "type": {
                 "label": "Client.Note",
-                "docHref": "docs/client.html#L16C9"
+                "docHref": "docs/client.html#L24C9"
               },
               "description": [
               ]
@@ -4663,7 +4818,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Save",
-          "line": 103,
+          "line": 118,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -4683,7 +4838,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 103,
+                  "number": 118,
                   "children": [
                     {
                       "kind": "span",
@@ -4704,7 +4859,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Save",
-                      "href": "docs/client.html#L103C14"
+                      "href": "docs/client.html#L118C14"
                     },
                     {
                       "kind": "span",
@@ -4715,7 +4870,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L103C19"
+                      "href": "docs/client.html#L118C19"
                     },
                     {
                       "kind": "span",
@@ -4756,7 +4911,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -4772,7 +4927,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Item",
-                      "href": "docs/client.html#L103C50"
+                      "href": "docs/client.html#L118C50"
                     },
                     {
                       "kind": "span",
@@ -4813,7 +4968,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Note",
-                      "href": "docs/client.html#L16C9"
+                      "href": "docs/client.html#L24C9"
                     },
                     {
                       "kind": "span",
@@ -4833,22 +4988,22 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 103,
+              "line": 118,
               "column": 19,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
             },
             {
               "label": "Item",
-              "line": 103,
+              "line": 118,
               "column": 50,
               "type": {
                 "label": "Client.Note",
-                "docHref": "docs/client.html#L16C9"
+                "docHref": "docs/client.html#L24C9"
               },
               "description": [
               ]
@@ -4857,7 +5012,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Save",
-          "line": 107,
+          "line": 122,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -4877,7 +5032,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 107,
+                  "number": 122,
                   "children": [
                     {
                       "kind": "span",
@@ -4898,7 +5053,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Save",
-                      "href": "docs/client.html#L107C14"
+                      "href": "docs/client.html#L122C14"
                     },
                     {
                       "kind": "span",
@@ -4909,7 +5064,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L107C19"
+                      "href": "docs/client.html#L122C19"
                     },
                     {
                       "kind": "span",
@@ -4950,7 +5105,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -4966,7 +5121,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Item",
-                      "href": "docs/client.html#L107C50"
+                      "href": "docs/client.html#L122C50"
                     },
                     {
                       "kind": "span",
@@ -5007,7 +5162,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Tree_Entry",
-                      "href": "docs/client.html#L34C9"
+                      "href": "docs/client.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -5027,22 +5182,22 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 107,
+              "line": 122,
               "column": 19,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
             },
             {
               "label": "Item",
-              "line": 107,
+              "line": 122,
               "column": 50,
               "type": {
                 "label": "Client.Tree_Entry",
-                "docHref": "docs/client.html#L34C9"
+                "docHref": "docs/client.html#L43C9"
               },
               "description": [
               ]
@@ -5051,7 +5206,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Save",
-          "line": 111,
+          "line": 126,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -5071,7 +5226,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 111,
+                  "number": 126,
                   "children": [
                     {
                       "kind": "span",
@@ -5092,7 +5247,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Save",
-                      "href": "docs/client.html#L111C14"
+                      "href": "docs/client.html#L126C14"
                     },
                     {
                       "kind": "span",
@@ -5103,7 +5258,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L111C19"
+                      "href": "docs/client.html#L126C19"
                     },
                     {
                       "kind": "span",
@@ -5144,7 +5299,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -5160,7 +5315,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Item",
-                      "href": "docs/client.html#L111C50"
+                      "href": "docs/client.html#L126C50"
                     },
                     {
                       "kind": "span",
@@ -5201,7 +5356,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Commit",
-                      "href": "docs/client.html#L25C9"
+                      "href": "docs/client.html#L34C9"
                     },
                     {
                       "kind": "span",
@@ -5221,22 +5376,22 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 111,
+              "line": 126,
               "column": 19,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
             },
             {
               "label": "Item",
-              "line": 111,
+              "line": 126,
               "column": 50,
               "type": {
                 "label": "Client.Commit",
-                "docHref": "docs/client.html#L25C9"
+                "docHref": "docs/client.html#L34C9"
               },
               "description": [
               ]
@@ -5245,7 +5400,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Head_Commit_Ref",
-          "line": 121,
+          "line": 136,
           "column": 13,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -5265,7 +5420,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 121,
+                  "number": 136,
                   "children": [
                     {
                       "kind": "span",
@@ -5286,7 +5441,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Head_Commit_Ref",
-                      "href": "docs/client.html#L121C13"
+                      "href": "docs/client.html#L136C13"
                     },
                     {
                       "kind": "span",
@@ -5297,7 +5452,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L121C29"
+                      "href": "docs/client.html#L136C29"
                     },
                     {
                       "kind": "span",
@@ -5318,7 +5473,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -5359,11 +5514,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 121,
+              "line": 136,
               "column": 29,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
@@ -5372,7 +5527,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Head_Commit",
-          "line": 125,
+          "line": 140,
           "column": 13,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -5392,7 +5547,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 125,
+                  "number": 140,
                   "children": [
                     {
                       "kind": "span",
@@ -5413,7 +5568,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Head_Commit",
-                      "href": "docs/client.html#L125C13"
+                      "href": "docs/client.html#L140C13"
                     },
                     {
                       "kind": "span",
@@ -5424,7 +5579,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L125C25"
+                      "href": "docs/client.html#L140C25"
                     },
                     {
                       "kind": "span",
@@ -5445,7 +5600,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -5471,7 +5626,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Commit",
-                      "href": "docs/client.html#L25C9"
+                      "href": "docs/client.html#L34C9"
                     },
                     {
                       "kind": "span",
@@ -5486,11 +5641,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 125,
+              "line": 140,
               "column": 25,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
@@ -5499,7 +5654,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Head",
-          "line": 129,
+          "line": 144,
           "column": 13,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -5519,7 +5674,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 129,
+                  "number": 144,
                   "children": [
                     {
                       "kind": "span",
@@ -5540,7 +5695,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Head",
-                      "href": "docs/client.html#L129C13"
+                      "href": "docs/client.html#L144C13"
                     },
                     {
                       "kind": "span",
@@ -5551,7 +5706,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L129C18"
+                      "href": "docs/client.html#L144C18"
                     },
                     {
                       "kind": "span",
@@ -5572,7 +5727,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -5598,7 +5753,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Branch",
-                      "href": "docs/client.html#L42C9"
+                      "href": "docs/client.html#L51C9"
                     },
                     {
                       "kind": "span",
@@ -5613,11 +5768,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 129,
+              "line": 144,
               "column": 18,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
@@ -5626,7 +5781,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Set_Head_Ref",
-          "line": 131,
+          "line": 146,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -5637,7 +5792,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 131,
+                  "number": 146,
                   "children": [
                     {
                       "kind": "span",
@@ -5658,7 +5813,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Set_Head_Ref",
-                      "href": "docs/client.html#L131C14"
+                      "href": "docs/client.html#L146C14"
                     },
                     {
                       "kind": "span",
@@ -5669,7 +5824,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L131C27"
+                      "href": "docs/client.html#L146C27"
                     },
                     {
                       "kind": "span",
@@ -5710,7 +5865,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -5726,7 +5881,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Ref",
-                      "href": "docs/client.html#L131C58"
+                      "href": "docs/client.html#L146C58"
                     },
                     {
                       "kind": "span",
@@ -5767,18 +5922,18 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 131,
+              "line": 146,
               "column": 27,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
             },
             {
               "label": "Ref",
-              "line": 131,
+              "line": 146,
               "column": 58,
               "type": {
                 "label": "Client.SHA256_Value",
@@ -5791,7 +5946,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Set_Head",
-          "line": 135,
+          "line": 150,
           "column": 14,
           "src": "srcs/client.ads.html",
           "summary": [
@@ -5811,7 +5966,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 135,
+                  "number": 150,
                   "children": [
                     {
                       "kind": "span",
@@ -5832,7 +5987,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Set_Head",
-                      "href": "docs/client.html#L135C14"
+                      "href": "docs/client.html#L150C14"
                     },
                     {
                       "kind": "span",
@@ -5843,7 +5998,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Status",
-                      "href": "docs/client.html#L135C23"
+                      "href": "docs/client.html#L150C23"
                     },
                     {
                       "kind": "span",
@@ -5884,7 +6039,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client_Status",
-                      "href": "docs/client.html#L63C9"
+                      "href": "docs/client.html#L72C9"
                     },
                     {
                       "kind": "span",
@@ -5900,7 +6055,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Item",
-                      "href": "docs/client.html#L135C54"
+                      "href": "docs/client.html#L150C54"
                     },
                     {
                       "kind": "span",
@@ -5921,7 +6076,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Commit",
-                      "href": "docs/client.html#L25C9"
+                      "href": "docs/client.html#L34C9"
                     },
                     {
                       "kind": "span",
@@ -5941,22 +6096,22 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Status",
-              "line": 135,
+              "line": 150,
               "column": 23,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L63C9"
+                "docHref": "docs/client.html#L72C9"
               },
               "description": [
               ]
             },
             {
               "label": "Item",
-              "line": 135,
+              "line": 150,
               "column": 54,
               "type": {
                 "label": "Client.Commit",
-                "docHref": "docs/client.html#L25C9"
+                "docHref": "docs/client.html#L34C9"
               },
               "description": [
               ]
