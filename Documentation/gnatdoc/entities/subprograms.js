@@ -26,10 +26,16 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/gnatcoll_json_utility.ads.html#L37"
     },
     {
+      "label": "Exists",
+      "docHref": "docs/object_store.html#L21C13",
+      "declared": "Object_Store",
+      "srcHref": "srcs/object_store.ads.html#L21"
+    },
+    {
       "label": "From_ISO_8601",
-      "docHref": "docs/client.html#L154C13",
+      "docHref": "docs/client.html#L162C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L154"
+      "srcHref": "srcs/client.ads.html#L162"
     },
     {
       "label": "Gen_Map_JSON_Object",
@@ -39,9 +45,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Get_Commit",
-      "docHref": "docs/client.html#L128C13",
+      "docHref": "docs/client.html#L132C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L128"
+      "srcHref": "srcs/client.ads.html#L132"
     },
     {
       "label": "Get_File_Sha256",
@@ -51,27 +57,21 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Get_Note",
-      "docHref": "docs/client.html#L132C13",
+      "docHref": "docs/client.html#L136C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L132"
+      "srcHref": "srcs/client.ads.html#L136"
     },
     {
       "label": "Get_Tree_Entry",
-      "docHref": "docs/client.html#L130C13",
+      "docHref": "docs/client.html#L134C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L130"
+      "srcHref": "srcs/client.ads.html#L134"
     },
     {
       "label": "Hash",
-      "docHref": "docs/client.html#L56C13",
+      "docHref": "docs/client.html#L60C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L56"
-    },
-    {
-      "label": "Init",
-      "docHref": "docs/object_store.html#L19C14",
-      "declared": "Object_Store",
-      "srcHref": "srcs/object_store.ads.html#L19"
+      "srcHref": "srcs/client.ads.html#L60"
     },
     {
       "label": "Is_Empty",
@@ -99,9 +99,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Object_Type",
-      "docHref": "docs/object_store.html#L21C13",
+      "docHref": "docs/object_store.html#L17C13",
       "declared": "Object_Store",
-      "srcHref": "srcs/object_store.ads.html#L21"
+      "srcHref": "srcs/object_store.ads.html#L17"
     },
     {
       "label": "Read",
@@ -123,9 +123,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "To_ISO_8601",
-      "docHref": "docs/client.html#L152C13",
+      "docHref": "docs/client.html#L160C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L152"
+      "srcHref": "srcs/client.ads.html#L160"
     },
     {
       "label": "Un_Escape_String",

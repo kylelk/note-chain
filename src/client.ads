@@ -20,7 +20,7 @@ package Client is
    -- @field Uniq_UUID unique note identifier
    -- @field Created_At when the first note version was created
    -- @field Updated_At when this version of the note was created
-   -- @field Next_Version reference to the next note version
+   -- @field Next_Ref reference to the next note version
    -- @field Version version number of the note edit
    -- @field Saved has the record been saved yet
    type Note is record

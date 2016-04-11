@@ -11,7 +11,7 @@ package body Client is
    procedure Init(Status : in out Client_Status) is
       pragma Unreferenced (Status);
    begin
-      Object_Store.Init;
+      null;
    end Init;
 
    procedure Cleanup(Status : in out Client_Status) is

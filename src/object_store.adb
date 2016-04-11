@@ -2,9 +2,7 @@ with GNAT.Directory_Operations;
 with Ada.Directories;
 with File_Operations;
 with Config;
-with Ada.Integer_Text_IO;
 with Ada.Strings.Fixed;
-with Ada.Characters.Handling;
 
 package body Object_Store is
    package DIR_OPS renames GNAT.Directory_Operations;
@@ -36,44 +34,6 @@ package body Object_Store is
       return File_Content (Newline_Index .. File_Content'Last);
    end Read;
 
-   procedure Init is
-      function Integer2Hexa
-        (Hex_Int : Integer;
-         Width   : Positive := 2) return String
-      is
-
-         Hex_Prefix_Length : constant := 3;
-         Hexa              : String (1 .. Hex_Prefix_Length + Width + 1);
-         Result            : String (1 .. Width);
-         Start             : Natural;
-      begin
-         Ada.Integer_Text_IO.Put (Hexa, Hex_Int, 16);
-         Start := Ada.Strings.Fixed.Index (Source => Hexa, Pattern => "#");
-         Ada.Strings.Fixed.Move
-           (Source  => Hexa (Start + 1 .. Hexa'Last - 1),
-            Target  => Result,
-            Justify => Ada.Strings.Right,
-            Pad     => '0');
-         Result := Ada.Characters.Handling.To_Lower (Result);
-         return Result;
-      end Integer2Hexa;
-
-      procedure Create_New_Dir (Name : String) is
-      begin
-         if not Ada.Directories.Exists (Name) then
-            Ada.Directories.Create_Directory (Name);
-         end if;
-      end Create_New_Dir;
-
-      Prefix : String (1 .. 2);
-   begin
-      for I in 0 .. 255 loop
-         Prefix := Integer2Hexa (I);
-         Create_New_Dir
-           (DIR_OPS.Format_Pathname (Config.Object_Dir & "/" & Prefix));
-      end loop;
-   end Init;
-
    function Object_Type (Hash : SHA256_Value) return String is
       Path          : constant String := Object_Path (Hash);
       File_Content  : constant String := Get_Content (Path);
@@ -91,9 +51,12 @@ package body Object_Store is
    end Exists;
 
    function Object_Path (Hash : SHA256_Value) return String is
+      Dir : constant String := DIR_OPS.Format_Pathname(Config.Object_Dir & '/' & Hash (1 .. 2));
    begin
-      return DIR_OPS.Format_Pathname
-          (Config.Object_Dir & '/' & Hash (1 .. 2) & '/' & Hash);
+      if not Ada.Directories.Exists(Dir) then
+         Ada.Directories.Create_Directory(Dir);
+      end if;
+      return DIR_OPS.Format_Pathname (Dir & '/' & Hash);
    end Object_Path;
 
    function Get_Content (File_Path : String) return String is
