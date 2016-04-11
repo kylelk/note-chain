@@ -100,6 +100,8 @@ procedure Main is
          end if;
          if CLI.Argument (2) = "head" then
             TIO.Put_Line ("head: " & UBS.To_String (Info.Branch_Status.Head));
+         elsif CLI.Argument (2) = "list" then
+            List_Branches(Info);
          end if;
       else
          List_Branches(Info);
@@ -171,20 +173,47 @@ procedure Main is
    end Cmd_Object;
 
    procedure Display_Help is
-      procedure P(Str : String) renames TIO.Put_Line;
-      use Ada.Strings.Fixed;
+      longest_name : Integer := 0;
+      procedure P(Run, Indent : Integer; Name : String; Help : String := "") is
+         use Ada.Strings.Fixed;
+      begin
+         if Run = 1 then
+            if (Indent + Name'Length) > longest_name then
+               longest_name := Indent + Name'Length;
+            end if;
+         elsif Run = 2 then
+            if Indent = 0 then
+               TIO.New_Line;
+            end if;
+            TIO.Put_Line(
+            Indent*" " & 
+            Name & ((longest_name+4)-Name'Length-Indent)*" " & Help);
+         end if;
+      end P;
    begin
-      P("usage:");
-      TIO.New_Line;
-      P("branch:");
-      P(2*" " & "checkout <name>");
-      P(2*" " & "head");
-      P(2*" " & "list");
-      P(2*" " & "merge <name>");
-      P(2*" " & "new <name>");
-      P(2*" " & "remove <name>");
-
-
+      TIO.Put_Line("usage:");
+      
+      for R in 1..2 loop
+         P(R, 0, "branch");
+         P(R, 2, "checkout <name>", "change into another branch");
+         P(R, 2, "head", "get the name of the curent branch");
+         P(R, 2, "list", "list all branches");
+         P(R, 2, "merge <name>", "pull the commits of a another branch info the current");
+         P(R, 2, "new <name>", "create a new branch from the current");
+         P(R, 2, "remove <name>", "delete a branch");
+         
+         P(R, 0, "help", "displays the usage options");
+         
+         P(R, 0, "object");
+         P(R, 2, "print <sha256>", "show the content of a data object");
+         P(R, 2, "type <sha256>", "get the type of a data object");
+         
+         P(R, 0, "note");
+         P(R, 2, "new", "create a new note");
+         
+         P(R, 0, "version", "displays the current version number");
+      end loop;
+      
 
    end Display_Help;
 
