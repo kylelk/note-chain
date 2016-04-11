@@ -204,6 +204,8 @@ procedure Main is
          
          P(R, 0, "help", "displays the usage options");
          
+         P(R, 0, "log", "displays a list of commits in the current branch");
+
          P(R, 0, "object");
          P(R, 2, "print <sha256>", "show the content of a data object");
          P(R, 2, "type <sha256>", "get the type of a data object");
@@ -213,8 +215,6 @@ procedure Main is
          
          P(R, 0, "version", "displays the current version number");
       end loop;
-      
-
    end Display_Help;
 
    Default_Branch : Client.Branch;
