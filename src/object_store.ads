@@ -20,6 +20,10 @@ package Object_Store is
 
    function Object_Type(Hash : SHA256_Value) return String;
 
+   -- @description
+   -- checks if an object exists
+   function Exists(Hash : SHA256_Value) return Boolean;
+
 private
    package TIO renames Ada.Text_IO;
 

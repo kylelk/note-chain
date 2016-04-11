@@ -85,6 +85,11 @@ package body Object_Store is
       return File_Content(1..Last_Space);
    end Object_Type;
 
+   function Exists(Hash : SHA256_Value) return Boolean is
+   begin
+      return Ada.Directories.Exists(Object_Path(Hash));
+   end Exists;
+
    function Object_Path (Hash : SHA256_Value) return String is
    begin
       return DIR_OPS.Format_Pathname
