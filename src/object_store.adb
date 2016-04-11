@@ -15,11 +15,13 @@ package body Object_Store is
       Hash        : out SHA256_Value)
    is
       Data_File : Ada.Text_IO.File_Type;
+      Length_Str : constant String :=
+        Ada.Strings.Fixed.Trim(Content'Length'Img, Ada.Strings.Left);
    begin
       TIO.Create (Data_File, TIO.Out_File, Config.Temp_Object_File);
       TIO.Put
         (Data_File,
-         Object_Type & ' ' & Content'Length'Img & ASCII.LF & Content);
+         Object_Type & ' ' & Length_Str & ASCII.LF & Content);
       TIO.Close (Data_File);
       Hash := File_Operations.Get_File_Sha256 (Config.Temp_Object_File);
       Ada.Directories.Rename (Config.Temp_Object_File, Object_Path (Hash));
@@ -30,7 +32,7 @@ package body Object_Store is
       File_Content  : constant String := Get_Content (Path);
       Newline_Index : Integer;
    begin
-      Newline_Index := Char_Index (File_Content, ASCII.LF);
+      Newline_Index := Char_Index (File_Content, ASCII.LF)+1;
       return File_Content (Newline_Index .. File_Content'Last);
    end Read;
 
