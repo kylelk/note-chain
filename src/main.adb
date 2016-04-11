@@ -111,10 +111,14 @@ procedure Main is
                   .Head, UBS.To_Unbounded_String
                   (CLI.Argument (3)));
                TIO.Put_Line ("created branch: " & CLI.Argument (3));
+               
             elsif CLI.Argument (2) = "checkout" then
-               TIO.Put_Line ("TODO: checkout branch");
+               Info.Checkout_Branch(UBS.To_Unbounded_String(CLI.Argument(3)));
+               TIO.Put_Line("changed to branch: " & CLI.Argument(3));
+               
             elsif CLI.Argument (2) = "merge" then
                TIO.Put_Line ("TODO: merge branch");
+               
             elsif CLI.Argument (2) = "remove" then
                TIO.Put_Line ("TODO: remove");
             end if;
@@ -267,7 +271,7 @@ begin
    if First_Load then
       Default_Branch.Name := Config.Default_Branch_Name;
       Note_Client.Set_Branch (Default_Branch);
-      Note_Client.Set_Head (Config.Default_Branch_Name);
+      Note_Client.Checkout_Branch (Config.Default_Branch_Name);
    end if;
 
    if CLI.Argument_Count >= 1 then

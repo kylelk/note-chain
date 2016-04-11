@@ -30,25 +30,25 @@ package Client is
       Uniq_UUID  : SHA256_Value;
       Created_At : Ada.Calendar.Time;
       Updated_At : Ada.Calendar.Time;
-      Next_Ref : SHA256_Value := Empty_Hash_Ref;
-      Version : Integer := 1;
-      Saved : Boolean := False;
+      Next_Ref   : SHA256_Value := Empty_Hash_Ref;
+      Version    : Integer      := 1;
+      Saved      : Boolean      := False;
    end record;
 
    type Commit is record
-      Object_Ref : SHA256_Value := Empty_Hash_Ref;
-      Parent_Ref : SHA256_Value := Empty_Hash_Ref;
-      Tree_Ref   : SHA256_Value := Empty_Hash_Ref;
+      Object_Ref : SHA256_Value         := Empty_Hash_Ref;
+      Parent_Ref : SHA256_Value         := Empty_Hash_Ref;
+      Tree_Ref   : SHA256_Value         := Empty_Hash_Ref;
       Created_At : Ada.Calendar.Time;
-      Message : UBS.Unbounded_String := UBS.Null_Unbounded_String;
-      Saved : Boolean := False;
+      Message    : UBS.Unbounded_String := UBS.Null_Unbounded_String;
+      Saved      : Boolean              := False;
    end record;
 
    type Tree_Entry is record
-      Object_Ref : SHA256_Value := Empty_Hash_Ref;
+      Object_Ref : SHA256_Value         := Empty_Hash_Ref;
       Entry_Type : Object_Type range Type_Tree .. Type_Note;
-      Child_Ref  : SHA256_Value := Empty_Hash_Ref;
-      Next_Ref   : SHA256_Value := Empty_Hash_Ref;
+      Child_Ref  : SHA256_Value         := Empty_Hash_Ref;
+      Next_Ref   : SHA256_Value         := Empty_Hash_Ref;
       Name       : UBS.Unbounded_String := UBS.Null_Unbounded_String;
    end record;
 
@@ -87,13 +87,13 @@ package Client is
    -- called when done with the client
    -- @description
    -- saves the branches, cleans up the temporary directory
-   procedure Cleanup(Status : in out Client_Status);
+   procedure Cleanup (Status : in out Client_Status);
 
    -- @description
    -- Load branches from the JSON file defined in the config.ads
    procedure Load_Branches (Status : in out Client_Status);
 
-   procedure Set_Head
+   procedure Checkout_Branch
      (Status      : in out Client_Status;
       Branch_Name :        UBS.Unbounded_String);
 
@@ -119,41 +119,45 @@ package Client is
 
    -- @summary
    -- saves a Note to the object store
-   procedure Save(Status : in out Client_Status; Item : in out Note);
+   procedure Save (Status : in out Client_Status; Item : in out Note);
 
    -- @summary
    -- saves a Tree_Entry to the object store
-   procedure Save(Status : in out Client_Status; Item : in out Tree_Entry);
+   procedure Save (Status : in out Client_Status; Item : in out Tree_Entry);
 
    -- @summary
    -- saves a Commit to the object store
-   procedure Save(Status : in out Client_Status; Item : in out Commit);
+   procedure Save (Status : in out Client_Status; Item : in out Commit);
 
-   function Get_Commit(Ref : SHA256_Value) return Commit;
+   function Get_Commit (Ref : SHA256_Value) return Commit;
 
-   function Get_Tree_Entry(Ref : SHA256_Value) return Tree_Entry;
+   function Get_Tree_Entry (Ref : SHA256_Value) return Tree_Entry;
 
-   function Get_Note(Ref : SHA256_Value) return Note;
+   function Get_Note (Ref : SHA256_Value) return Note;
 
    -- @summary
    -- get commit SHA-256 of the commit for the current head branch
-   function Head_Commit_Ref(Status : Client_Status) return SHA256_Value;
+   function Head_Commit_Ref (Status : Client_Status) return SHA256_Value;
 
    -- @summary
    -- returns the commit at the head of the current branch
-   function Head_Commit(Status : Client_Status) return Commit;
+   function Head_Commit (Status : Client_Status) return Commit;
 
    -- @summary
    -- returns the head branch
-   function Head(Status : Client_Status) return Branch;
+   function Head (Status : Client_Status) return Branch;
 
-   procedure Set_Head_Ref(Status : in out Client_Status; Ref : SHA256_Value);
+   procedure Set_Head_Ref (Status : in out Client_Status; Ref : SHA256_Value);
+
+   function Branch_Exists
+     (Status      : Client_Status;
+      Branch_Name : UBS.Unbounded_String) return Boolean;
 
    -- @summary
    -- updates the current branch head to a commit
-   procedure Set_Head(Status : in out Client_Status; Item : Commit);
+   procedure Set_Head (Status : in out Client_Status; Item : Commit);
 
-   function To_ISO_8601(Date : Ada.Calendar.Time) return String;
+   function To_ISO_8601 (Date : Ada.Calendar.Time) return String;
 
    function From_ISO_8601 (Date_Str : String) return Ada.Calendar.Time;
 

@@ -41,16 +41,20 @@ package body Client is
       JSON.Map_JSON_Object
         (Val => Branch_Json.Get ("branches"),
          CB  => Handler'Access);
-      Status.Set_Head (Branch_Json.Get ("head"));
+      Status.Checkout_Branch (Branch_Json.Get ("head"));
    end Load_Branches;
 
-   procedure Set_Head
+   procedure Checkout_Branch
      (Status      : in out Client_Status;
       Branch_Name :        UBS.Unbounded_String)
    is
    begin
-      Status.Branch_Status.Head := Branch_Name;
-   end Set_Head;
+      if Status.Branch_Exists(Branch_Name) then
+         Status.Branch_Status.Head := Branch_Name;
+      else
+         raise No_Branch_Error;
+      end if;
+   end Checkout_Branch;
 
    procedure Set_Branch (Status : in out Client_Status; Item : Branch) is
       use Branch_Map;
@@ -282,6 +286,13 @@ package body Client is
    begin
       Status.Set_Head_Ref(Item.Object_Ref);
    end Set_Head;
+
+   function Branch_Exists
+     (Status      : Client_Status;
+      Branch_Name : UBS.Unbounded_String) return Boolean is
+   begin
+      return Status.Branch_Status.Branches.Contains(Branch_Name);
+   end Branch_Exists;
 
    function Random_SHA256 return SHA256_Value is
       package Guess_Generator is new Ada.Numerics.Discrete_Random(Character);
