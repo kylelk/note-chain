@@ -139,6 +139,12 @@ procedure Main is
 
             TIO.Put_Line("created new note");
          end if;
+
+         if CLI.Argument_Count > 2 then
+            if CLI.Argument(2) = "view" then
+               null;
+            end if;
+         end if;
       end if;
    end Cmd_Note;
 
@@ -212,6 +218,7 @@ procedure Main is
          
          P(R, 0, "note");
          P(R, 2, "new", "create a new note");
+         P(R, 2, "view <sha256>", "view the content of a note in the editor");
          
          P(R, 0, "version", "displays the current version number");
       end loop;
