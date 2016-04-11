@@ -20,6 +20,8 @@ package Client is
    -- @field Uniq_UUID unique note identifier
    -- @field Created_At when the first note version was created
    -- @field Updated_At when this version of the note was created
+   -- @field Next_Version reference to the next note version
+   -- @field Version version number of the note edit
    -- @field Saved has the record been saved yet
    type Note is record
       Object_Ref : SHA256_Value := Empty_Hash_Ref;
@@ -28,6 +30,8 @@ package Client is
       Uniq_UUID  : SHA256_Value;
       Created_At : Ada.Calendar.Time;
       Updated_At : Ada.Calendar.Time;
+      Next_Ref : SHA256_Value := Empty_Hash_Ref;
+      Version : Integer := 1;
       Saved : Boolean := False;
    end record;
 

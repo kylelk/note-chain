@@ -185,7 +185,14 @@ package body Client is
       Result_JSON.Set_Field("note_text", Item.Note_Text);
       Result_JSON.Set_Field("encoding", Item.Encoding);
       Result_JSON.Set_Field("created_at", To_ISO_8601(Item.Created_At));
+      Result_JSON.Set_Field("updated_at", To_ISO_8601(Item.Updated_At));
       Result_JSON.Set_Field("uniq_uuid", Item.Uniq_UUID);
+      Result_JSON.Set_Field("version", Item.Version);
+      if Item.Next_Ref /= Empty_Hash_Ref then
+         Result_JSON.Set_Field("next_ref", Item.Next_Ref);
+      else
+         Result_JSON.Set_Field("next_ref", JSON.JSON_Null);
+      end if;
       Object_Store.Write("note", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
       Item.Saved := True;
@@ -246,12 +253,18 @@ package body Client is
    function Get_Note(Ref : SHA256_Value) return Note is
       Result : Note;
       Item_JSON : JSON.JSON_Value;
+      use JSON;
    begin
       Item_JSON := JSON.Read(Object_Store.Read(Ref), "");
       Result.Note_Text := Item_JSON.Get("note_text");
       Result.Encoding := Item_JSON.Get("encoding");
       Result.Uniq_UUID := Item_JSON.Get("uniq_uuid");
       Result.Created_At := From_ISO_8601(Item_JSON.Get("created_at"));
+      Result.Updated_At := From_ISO_8601(Item_JSON.Get("updated_at"));
+      Result.Version := Item_JSON.Get("version");
+      if JSON.Kind(Item_JSON.Get("next_ref")) = JSON.JSON_String_Type then
+         Result.Next_Ref := Item_JSON.Get("next_ref");
+      end if;
       Result.Saved := True;
       return Result;
    end Get_Note;
