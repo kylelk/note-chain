@@ -92,6 +92,7 @@ package body Client is
       Item.Encoding := UBS.To_Unbounded_String("UTF-8");
       Item.Uniq_UUID := Random_SHA256;
       Item.Created_At := Ada.Calendar.Clock;
+      Item.Updated_At := Ada.Calendar.Clock;
    end Create_Note;
 
    procedure Save_Branches (Status : in out Client_Status) is
@@ -308,7 +309,6 @@ package body Client is
       Minute : Integer range 1..59;
       Second : Integer range 1..59;
    begin
-      -- 2016-04-09T15:35:16
       Year := Integer'Value(Date_Str(Date_Str'First..Date_Str'First + 3));
       Month := Integer'Value(Date_Str(Date_Str'First + 5..Date_Str'First + 6));
       Day := Integer'Value(Date_Str(Date_Str'First + 8..Date_Str'First + 9));

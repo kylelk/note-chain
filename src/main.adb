@@ -79,6 +79,27 @@ procedure Main is
       TIO.Put_Line(Item.Object_Ref & " " &
                      Ada.Calendar.Formatting.Image(Item.Created_At));
    end Display_Commit;
+   
+   procedure List_Notes(Status : Client.Client_Status) is
+      Next_Ref : Client.SHA256_Value;
+      Tree_Result : Client.Tree_Entry;
+      Note_Result : Client.Note;
+      use client;
+   begin
+      if Status.Head_Commit_Ref = Client.Empty_Hash_Ref then
+         TIO.Put_Line("tree is null");
+         return;
+      end if;
+      Next_Ref := Status.Head_Commit.Tree_Ref;
+      while next_ref /= Client.Empty_Hash_Ref loop
+         Tree_Result := Client.Get_Tree_Entry(next_ref);
+         if Tree_Result.Entry_Type = Client.Type_Note then
+            Note_Result := Client.Get_Note(Tree_Result.Child_Ref);
+            TIO.Put_Line("note: " & UBS.To_String(Note_Result.Note_Text));
+         end if;
+         Next_Ref := Tree_Result.Next_Ref;
+      end loop;
+   end List_Notes;
 
    procedure Cmd_Branch (Info : in out Client.Client_Status) is
    begin
@@ -144,6 +165,10 @@ procedure Main is
             if CLI.Argument(2) = "view" then
                null;
             end if;
+         end if;
+         
+         if CLI.Argument(2) = "list" then
+            List_Notes(Status);
          end if;
       end if;
    end Cmd_Note;
@@ -217,6 +242,7 @@ procedure Main is
          P(R, 2, "type <sha256>", "get the type of a data object");
          
          P(R, 0, "note");
+         P(R, 2, "list", "list notes in the current branch");
          P(R, 2, "new", "create a new note");
          P(R, 2, "view <sha256>", "view the content of a note in the editor");
          
