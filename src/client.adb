@@ -270,6 +270,7 @@ package body Client is
       if JSON.Kind(Item_JSON.Get("next_ref")) = JSON.JSON_String_Type then
          Result.Next_Ref := Item_JSON.Get("next_ref");
       end if;
+      Result.Object_Ref := Ref;
       Result.Saved := True;
       return Result;
    end Get_Note;

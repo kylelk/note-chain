@@ -90,12 +90,13 @@ procedure Main is
          TIO.Put_Line("tree is null");
          return;
       end if;
+      
       Next_Ref := Status.Head_Commit.Tree_Ref;
       while next_ref /= Client.Empty_Hash_Ref loop
          Tree_Result := Client.Get_Tree_Entry(next_ref);
          if Tree_Result.Entry_Type = Client.Type_Note then
             Note_Result := Client.Get_Note(Tree_Result.Child_Ref);
-            TIO.Put_Line("note: " & UBS.To_String(Note_Result.Note_Text));
+            TIO.Put_Line(Note_Result.Object_Ref);
          end if;
          Next_Ref := Tree_Result.Next_Ref;
       end loop;
@@ -168,6 +169,8 @@ procedure Main is
          if CLI.Argument_Count > 2 then
             if CLI.Argument(2) = "view" then
                null;
+            elsif CLI.Argument(2) = "print" then
+               TIO.Put_Line(UBS.To_String(Client.Get_Note(CLI.Argument(3)).Note_Text));
             end if;
          end if;
          
@@ -245,11 +248,12 @@ procedure Main is
          P(R, 2, "print <sha256>", "show the content of a data object");
          P(R, 2, "type <sha256>", "get the type of a data object");
          
-         P(R, 0, "note");
+         P(R, 0, "note"); 
          P(R, 2, "list", "list notes in the current branch");
          P(R, 2, "new", "create a new note");
+         P(R, 2, "print <sha256>", "display the text of a note");
          P(R, 2, "view <sha256>", "view the content of a note in the editor");
-         
+
          P(R, 0, "version", "displays the current version number");
       end loop;
    end Display_Help;
@@ -291,7 +295,7 @@ begin
          Cmd_Object(Note_Client);
       end if;
    else
-      TIO.Put_Line ("usage infomation");
+      TIO.Put_Line ("call 'help' command for more infomation");
    end if;
 
    Note_Client.Cleanup;
