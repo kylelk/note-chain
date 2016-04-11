@@ -2,6 +2,7 @@ with Ada.Directories;
 with Ada.Direct_IO;
 with GNAT.SHA256;
 with Ada.Text_IO;
+with Ada.IO_Exceptions;
 
 package body File_Operations is
    function Load_File (Filename : in String) return String is
@@ -25,10 +26,15 @@ package body File_Operations is
    procedure Remake_Directory (Path : String) is
       use Ada.Directories;
    begin
-      if Exists (Path) then
-         Delete_Tree (Path);
-         Create_Directory (Path);
-      end if;
+      begin
+         if Exists (Path) then
+            Delete_Tree (Path);
+            Create_Directory (Path);
+         end if;
+      exception
+         when Ada.IO_Exceptions.Use_Error =>
+            null;
+      end;
    end Remake_Directory;
 
    function Get_File_Sha256 (File_Name : String) return SHA256_Value is
@@ -80,12 +86,12 @@ package body File_Operations is
       return GNAT.SHA256.Digest (C);
    end String_Hash;
 
-   procedure create_empty_file(path : String) is
+   procedure create_empty_file (path : String) is
       File_Item : Ada.Text_IO.File_Type;
-      begin
-      if not Ada.Directories.Exists(path) then
-         Ada.Text_IO.Create(File_Item, Ada.Text_IO.Out_File, path);
-         Ada.Text_IO.Close(File_Item);
+   begin
+      if not Ada.Directories.Exists (path) then
+         Ada.Text_IO.Create (File_Item, Ada.Text_IO.Out_File, path);
+         Ada.Text_IO.Close (File_Item);
       end if;
    end create_empty_file;
 end File_Operations;

@@ -181,7 +181,6 @@ package body Client is
       Item.Saved := True;
    end Save;
 
-
    procedure Save(Status : in out Client_Status; Item : in out Note) is
       pragma Unreferenced (Status);
       Result_JSON : constant JSON.JSON_Value := JSON.Create_Object;
