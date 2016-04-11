@@ -20,10 +20,16 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/gnatcoll_json.ads.html#L32"
     },
     {
-      "label": "SHA256_Value",
-      "docHref": "docs/client.html#L10C12",
+      "label": "Object_Type",
+      "docHref": "docs/client.html#L14C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L10"
+      "srcHref": "srcs/client.ads.html#L14"
+    },
+    {
+      "label": "SHA256_Value",
+      "docHref": "docs/client.html#L11C12",
+      "declared": "Client",
+      "srcHref": "srcs/client.ads.html#L11"
     },
     {
       "label": "SHA256_Value",

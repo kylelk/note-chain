@@ -371,7 +371,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Get_File_Sha256",
-          "line": 8,
+          "line": 10,
           "column": 13,
           "src": "srcs/file_operations.ads.html",
           "summary": [
@@ -382,7 +382,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 8,
+                  "number": 10,
                   "children": [
                     {
                       "kind": "span",
@@ -403,7 +403,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Get_File_Sha256",
-                      "href": "docs/file_operations.html#L8C13"
+                      "href": "docs/file_operations.html#L10C13"
                     },
                     {
                       "kind": "span",
@@ -419,7 +419,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "File_Name",
-                      "href": "docs/file_operations.html#L8C30"
+                      "href": "docs/file_operations.html#L10C30"
                     },
                     {
                       "kind": "span",
@@ -475,12 +475,21 @@ GNATdoc.Documentation = {
                   ]
                 }
               ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "computes the SHA-256 hash of a file by reading it in 4096 byte blocks\n"
+                }
+              ]
             }
           ],
           "parameters": [
             {
               "label": "File_Name",
-              "line": 8,
+              "line": 10,
               "column": 30,
               "type": {
                 "label": "String"
@@ -492,7 +501,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "String_Hash",
-          "line": 10,
+          "line": 12,
           "column": 13,
           "src": "srcs/file_operations.ads.html",
           "summary": [
@@ -503,7 +512,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 10,
+                  "number": 12,
                   "children": [
                     {
                       "kind": "span",
@@ -524,7 +533,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "String_Hash",
-                      "href": "docs/file_operations.html#L10C13"
+                      "href": "docs/file_operations.html#L12C13"
                     },
                     {
                       "kind": "span",
@@ -540,7 +549,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Data",
-                      "href": "docs/file_operations.html#L10C26"
+                      "href": "docs/file_operations.html#L12C26"
                     },
                     {
                       "kind": "span",
@@ -601,8 +610,103 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Data",
-              "line": 10,
+              "line": 12,
               "column": 26,
+              "type": {
+                "label": "String"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "create_empty_file",
+          "line": 14,
+          "column": 15,
+          "src": "srcs/file_operations.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 14,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "    "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "create_empty_file",
+                      "href": "docs/file_operations.html#L14C15"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "path",
+                      "href": "docs/file_operations.html#L14C33"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "path",
+              "line": 14,
+              "column": 33,
               "type": {
                 "label": "String"
               },

@@ -3,21 +3,21 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Branch_JSON_File",
-      "docHref": "docs/config.html#L17C4",
+      "docHref": "docs/config.html#L19C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L17"
+      "srcHref": "srcs/config.ads.html#L19"
     },
     {
       "label": "Data_Dir",
-      "docHref": "docs/config.html#L8C4",
+      "docHref": "docs/config.html#L10C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L8"
+      "srcHref": "srcs/config.ads.html#L10"
     },
     {
       "label": "Default_Branch_Name",
-      "docHref": "docs/config.html#L20C4",
+      "docHref": "docs/config.html#L22C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L20"
+      "srcHref": "srcs/config.ads.html#L22"
     },
     {
       "label": "Empty_Array",
@@ -27,9 +27,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Empty_Hash_Ref",
-      "docHref": "docs/client.html#L11C4",
+      "docHref": "docs/client.html#L12C4",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L11"
+      "srcHref": "srcs/client.ads.html#L12"
     },
     {
       "label": "JSON_Null",
@@ -45,27 +45,33 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Object_Dir",
-      "docHref": "docs/config.html#L11C4",
+      "docHref": "docs/config.html#L13C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L11"
+      "srcHref": "srcs/config.ads.html#L13"
     },
     {
       "label": "Temp_Dir",
-      "docHref": "docs/config.html#L14C4",
+      "docHref": "docs/config.html#L16C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L14"
+      "srcHref": "srcs/config.ads.html#L16"
     },
     {
       "label": "Temp_Note_File",
-      "docHref": "docs/config.html#L27C4",
+      "docHref": "docs/config.html#L29C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L27"
+      "srcHref": "srcs/config.ads.html#L29"
     },
     {
       "label": "Temp_Object_File",
-      "docHref": "docs/config.html#L24C4",
+      "docHref": "docs/config.html#L26C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L24"
+      "srcHref": "srcs/config.ads.html#L26"
+    },
+    {
+      "label": "Version",
+      "docHref": "docs/config.html#L7C4",
+      "declared": "Config",
+      "srcHref": "srcs/config.ads.html#L7"
     }
   ]
 };

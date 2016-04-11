@@ -98,10 +98,16 @@ package Client is
 
    procedure Create_Note (Status : in out Client_Status; Item : out Note);
 
+   -- @summary
+   -- saves a Note to the object store
    procedure Save(Status : in out Client_Status; Item : in out Note);
 
+   -- @summary
+   -- saves a Tree_Entry to the object store
    procedure Save(Status : in out Client_Status; Item : in out Tree_Entry);
 
+   -- @summary
+   -- saves a Commit to the object store
    procedure Save(Status : in out Client_Status; Item : in out Commit);
 
    function Get_Commit(Ref : SHA256_Value) return Commit;
@@ -110,15 +116,22 @@ package Client is
 
    function Get_Note(Ref : SHA256_Value) return Note;
 
+   -- @summary
    -- get commit SHA-256 of the commit for the current head branch
    function Head_Commit_Ref(Status : Client_Status) return SHA256_Value;
 
+   -- @summary
+   -- returns the commit at the head of the current branch
    function Head_Commit(Status : Client_Status) return Commit;
 
+   -- @summary
+   -- returns the head branch
    function Head(Status : Client_Status) return Branch;
 
    procedure Set_Head_Ref(Status : in out Client_Status; Ref : SHA256_Value);
 
+   -- @summary
+   -- updates the current branch head to a commit
    procedure Set_Head(Status : in out Client_Status; Item : Commit);
 
    function To_ISO_8601(Date : Ada.Calendar.Time) return String;

@@ -8,8 +8,8 @@ GNATdoc.Documentation = {
     {
       "entities": [
         {
-          "label": "Data_Dir",
-          "line": 8,
+          "label": "Version",
+          "line": 7,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -20,7 +20,88 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 8,
+                  "number": 7,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Version"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "constant"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "string",
+                      "text": "\"1.4.0\""
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Data_Dir",
+          "line": 10,
+          "column": 4,
+          "src": "srcs/config.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 10,
                   "children": [
                     {
                       "kind": "span",
@@ -99,7 +180,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Object_Dir",
-          "line": 11,
+          "line": 13,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -110,7 +191,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 11,
+                  "number": 13,
                   "children": [
                     {
                       "kind": "span",
@@ -224,7 +305,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Temp_Dir",
-          "line": 14,
+          "line": 16,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -235,7 +316,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 14,
+                  "number": 16,
                   "children": [
                     {
                       "kind": "span",
@@ -349,7 +430,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Branch_JSON_File",
-          "line": 17,
+          "line": 19,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -360,7 +441,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 17,
+                  "number": 19,
                   "children": [
                     {
                       "kind": "span",
@@ -474,7 +555,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Default_Branch_Name",
-          "line": 20,
+          "line": 22,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -485,7 +566,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 20,
+                  "number": 22,
                   "children": [
                     {
                       "kind": "span",
@@ -526,7 +607,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 21,
+                  "number": 23,
                   "children": [
                     {
                       "kind": "span",
@@ -585,7 +666,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Temp_Object_File",
-          "line": 24,
+          "line": 26,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -596,7 +677,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 24,
+                  "number": 26,
                   "children": [
                     {
                       "kind": "span",
@@ -710,7 +791,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Temp_Note_File",
-          "line": 27,
+          "line": 29,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -721,7 +802,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 27,
+                  "number": 29,
                   "children": [
                     {
                       "kind": "span",
