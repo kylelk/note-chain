@@ -9,6 +9,7 @@ with Ada.Calendar.Formatting;
 with Config;
 with Client;
 with Object_Store;
+with Ada.Strings.Fixed;
 
 procedure Main is
    package CLI renames Ada.Command_Line;
@@ -169,6 +170,25 @@ procedure Main is
       end if;
    end Cmd_Object;
 
+   procedure Display_Help is
+      procedure P(Str : String) renames TIO.Put_Line;
+      use Ada.Strings.Fixed;
+   begin
+      P("usage:");
+      TIO.New_Line;
+      P("branch:");
+      P(2*" " & "list");
+      P(2*" " & "new <name>");
+      P(2*" " & "checkout <name>");
+      P(2*" " & "merge <name>");
+      P(2*" " & "remove <name>");
+      P(2*" " & "head");
+
+
+
+
+   end Display_Help;
+
    Default_Branch : Client.Branch;
    First_Load     : Boolean := False;
    Note_Client    : Client.Client_Status;
@@ -193,7 +213,9 @@ begin
       if CLI.Argument (1) = "branch" then
          Cmd_Branch (Note_Client);
       elsif CLI.Argument (1) = "help" then
-         TIO.Put_Line ("TODO: help");
+         Display_Help;
+      elsif CLI.Argument (1) = "--help" then
+         Display_Help;
       elsif CLI.Argument (1) = "note" then
          Cmd_Note (Note_Client);
       elsif CLI.Argument(1) = "version" then
