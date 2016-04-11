@@ -177,13 +177,12 @@ procedure Main is
       P("usage:");
       TIO.New_Line;
       P("branch:");
-      P(2*" " & "list");
-      P(2*" " & "new <name>");
       P(2*" " & "checkout <name>");
-      P(2*" " & "merge <name>");
-      P(2*" " & "remove <name>");
       P(2*" " & "head");
-
+      P(2*" " & "list");
+      P(2*" " & "merge <name>");
+      P(2*" " & "new <name>");
+      P(2*" " & "remove <name>");
 
 
 
