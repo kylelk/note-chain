@@ -4,6 +4,7 @@ package Object_Store is
    subtype SHA256_Value is String(1..64);
 
    Object_Not_Found : exception;
+   Invalid_Hash_Format : exception;
 
    -- @description
    -- Store an object's content

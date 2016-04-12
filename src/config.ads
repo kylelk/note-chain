@@ -4,7 +4,7 @@ with Ada.Strings.Unbounded;
 package Config is
    function Join(Path : String) return String is (GNAT.Directory_Operations.Format_Pathname(Path));
 
-   Version : constant String := "1.6.0";
+   Version : constant String := "1.6.1";
 
    -- directory used to store project data and folders
    Data_Dir : constant String := ".note_chain_data/";
@@ -24,7 +24,7 @@ package Config is
 
    -- temp object file
    Temp_Object_File : constant String := Join(Temp_Dir & "object-file");
-   
+
    -- temp note file to store the content of a note while editing
    Temp_Note_File : constant String := Join(Temp_Dir & "note_content.txt");
 end Config;
