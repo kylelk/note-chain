@@ -146,6 +146,8 @@ procedure Main is
       elsif CLI.Argument_Count = 3 then
          if CLI.Argument (2) = "get" then
             TIO.Put_Line(Status.Settings_Status.Get(CLI.Argument(3)));
+         elsif CLI.Argument (2) = "remove" then
+            Status.Settings_Status.Remove(CLI.Argument(3));
          end if;
       elsif CLI.Argument_Count > 3 then
          if CLI.Argument (2) = "set" then
@@ -269,8 +271,9 @@ procedure Main is
          P (R, 2, "remove <name>", "delete a branch");
 
          P (R, 0, "config");
-         P (R, 2, "list", "list all config items");
          P (R, 2, "get <key>", "gets a config item by a key");
+         P (R, 2, "list", "list all config items");
+         P (R, 2, "remove <key>", "removes a config key");
          P (R, 2, "set <key> <value>", "sets a config item");
 
          P (R, 0, "help", "displays the usage options");

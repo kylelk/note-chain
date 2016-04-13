@@ -64,6 +64,16 @@ package body Settings is
       end if;
    end Set;
 
+   procedure Remove(Data : in out Settings_Data; Key : String) is
+   begin
+      if Data.Exists(Key) then
+         Data.Values.Delete(UBS.To_Unbounded_String(Key));
+         Data.Modified := True;
+      else
+         raise No_Key_Error;
+      end if;
+   end Remove;
+
    procedure Save (Data : Settings_Data) is
       Data_File   : TIO.File_Type;
       Result_JSON : JSON.JSON_Value;

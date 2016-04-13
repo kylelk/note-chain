@@ -32,5 +32,7 @@ package Settings is
 
    procedure Set(Data : in out Settings_Data; Key : String; Value : String);
 
+   procedure Remove(Data : in out Settings_Data; Key : String);
+
    procedure Save(Data : Settings_Data);
 end Settings;
