@@ -161,6 +161,8 @@ package Client is
    -- updates the current branch head to a commit
    procedure Set_Head (Status : in out Client_Status; Item : Commit);
 
+   procedure Export (Status : Client_Status; Filename : String);
+
    function To_ISO_8601 (Date : Ada.Calendar.Time) return String;
 
    function From_ISO_8601 (Date_Str : String) return Ada.Calendar.Time;

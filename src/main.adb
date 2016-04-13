@@ -264,6 +264,12 @@ procedure Main is
          end if;
       end if;
    end Cmd_Object;
+   
+   procedure Cmd_Export(Status : in out Client.Client_Status) is
+   begin
+      
+   end Cmd_Export;
+   
 
    procedure Display_Help is
       longest_name : Integer := 0;
@@ -354,6 +360,8 @@ begin
          Display_Help;
       elsif CLI.Argument (1) = "--help" then
          Display_Help;
+      elsif CLI.Argument (1) = "export" then
+         Cmd_Export;
       elsif CLI.Argument (1) = "note" then
          Cmd_Note (Note_Client);
       elsif CLI.Argument (1) = "version" then

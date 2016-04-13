@@ -305,11 +305,6 @@ package body Client is
       (Updated_Branch.Name, Updated_Branch);
    end Set_Head_Ref;
 
-   procedure Set_Head (Status : in out Client_Status; Item : Commit) is
-   begin
-      Status.Set_Head_Ref (Item.Object_Ref);
-   end Set_Head;
-
    function Branch_Exists
      (Status      : Client_Status;
       Branch_Name : UBS.Unbounded_String) return Boolean
@@ -317,6 +312,16 @@ package body Client is
    begin
       return Status.Branch_Status.Branches.Contains (Branch_Name);
    end Branch_Exists;
+
+   procedure Set_Head (Status : in out Client_Status; Item : Commit) is
+   begin
+      Status.Set_Head_Ref (Item.Object_Ref);
+   end Set_Head;
+
+   procedure Export (Status : Client_Status; Filename : String) is
+   begin
+      null;
+   end Export;
 
    function Random_SHA256 return SHA256_Value is
       package Guess_Generator is new Ada.Numerics.Discrete_Random (Character);
