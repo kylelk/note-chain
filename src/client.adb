@@ -2,10 +2,12 @@ with Ada.Text_IO;
 with Ada.Numerics.Discrete_Random;
 with GNAT.Calendar.Time_IO;
 with Ada.Calendar.Formatting;
+with Ada.Containers.Hashed_Sets;
 
 with Config;
 with File_Operations;
 with Object_Store;
+with Ada.Strings.Hash;
 
 package body Client is
    procedure Init (Status : in out Client_Status) is
@@ -102,7 +104,6 @@ package body Client is
          Item.Author :=
            UBS.To_Unbounded_String (Status.Settings_Status.Get ("author"));
       end if;
-
    end Create_Note;
 
    procedure Save_Branches (Status : in out Client_Status) is
@@ -210,7 +211,7 @@ package body Client is
       if Item.Author /= UBS.Null_Unbounded_String then
          Result_JSON.Set_Field ("author", Item.Author);
       else
-         Result_JSON.Set_Field("author", JSON.JSON_Null);
+         Result_JSON.Set_Field ("author", JSON.JSON_Null);
       end if;
       Object_Store.Write ("note", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
@@ -286,7 +287,7 @@ package body Client is
          Result.Next_Ref := Item_JSON.Get ("next_ref");
       end if;
       if JSON.Kind (Item_JSON.Get ("author")) = JSON.JSON_String_Type then
-         Result.Author := Item_JSON.Get("author");
+         Result.Author := Item_JSON.Get ("author");
       end if;
       Result.Object_Ref := Ref;
       Result.Saved      := True;
@@ -319,8 +320,19 @@ package body Client is
    end Set_Head;
 
    procedure Export (Status : Client_Status; Filename : String) is
+      pragma Unreferenced (Filename);
+      package Hash_Set is new Ada.Containers.Hashed_Sets
+        (Element_Type        => SHA256_Value,
+         Hash                => Ada.Strings.Hash,
+         Equivalent_Elements => "=");
+      Refrences : Hash_Set.Set;
    begin
-      null;
+      for Branch_Result of Status.Branch_Status.Branches loop
+         Refrences.Insert(Branch_Result.Commit_Ref);
+      end loop;
+      for Ref of Refrences loop
+         Ada.Text_IO.Put_Line(Ref);
+      end loop;
    end Export;
 
    function Random_SHA256 return SHA256_Value is
@@ -336,7 +348,6 @@ package body Client is
    end Random_SHA256;
 
    function To_ISO_8601 (Date : in Ada.Calendar.Time) return String is
-
    begin
       return GNAT.Calendar.Time_IO.Image (Date, "%Y-%m-%dT%H:%M:%S");
    end To_ISO_8601;

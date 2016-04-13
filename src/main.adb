@@ -58,21 +58,15 @@ procedure Main is
    end Edit_Note_Content;
 
    procedure List_Branches (Status : Client.Client_Status) is
-      Cursor        : Client.Branch_Map.Cursor;
-      Branch_Result : Client.Branch;
-      use Client.Branch_Map;
       use UBS;
    begin
-      Cursor := Status.Branch_Status.Branches.First;
-      while Cursor /= Client.Branch_Map.No_Element loop
-         Branch_Result := Client.Branch_Map.Element (Cursor);
+      for Branch_Result of Status.Branch_Status.Branches loop
          if Branch_Result.Name = Status.Branch_Status.Head then
             TIO.Put ("* ");
          else
             TIO.Put ("  ");
          end if;
          TIO.Put_Line (UBS.To_String (Branch_Result.Name));
-         Cursor := Client.Branch_Map.Next (Cursor);
       end loop;
    end List_Branches;
 
@@ -267,7 +261,7 @@ procedure Main is
    
    procedure Cmd_Export(Status : in out Client.Client_Status) is
    begin
-      
+      Status.Export("export.dat");
    end Cmd_Export;
    
 
@@ -361,7 +355,7 @@ begin
       elsif CLI.Argument (1) = "--help" then
          Display_Help;
       elsif CLI.Argument (1) = "export" then
-         Cmd_Export;
+         Cmd_Export (Note_Client);
       elsif CLI.Argument (1) = "note" then
          Cmd_Note (Note_Client);
       elsif CLI.Argument (1) = "version" then
