@@ -75,9 +75,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Hash",
-      "docHref": "docs/settings.html#L9C13",
+      "docHref": "docs/settings.html#L8C13",
       "declared": "Settings",
-      "srcHref": "srcs/settings.ads.html#L9"
+      "srcHref": "srcs/settings.ads.html#L8"
     },
     {
       "label": "Is_Empty",

@@ -15,9 +15,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Settings_Data",
-      "docHref": "docs/settings.html#L20C9",
+      "docHref": "docs/settings.html#L19C9",
       "declared": "Settings",
-      "srcHref": "srcs/settings.ads.html#L20"
+      "srcHref": "srcs/settings.ads.html#L19"
     }
   ]
 };

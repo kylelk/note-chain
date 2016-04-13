@@ -9,7 +9,7 @@ GNATdoc.Documentation = {
       "entities": [
         {
           "label": "Settings_Data",
-          "line": 20,
+          "line": 19,
           "column": 9,
           "src": "srcs/settings.ads.html",
           "summary": [
@@ -20,7 +20,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 20,
+                  "number": 19,
                   "children": [
                     {
                       "kind": "span",
@@ -41,7 +41,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Settings_Data",
-                      "href": "docs/settings.html#L20C9"
+                      "href": "docs/settings.html#L19C9"
                     },
                     {
                       "kind": "span",
@@ -77,7 +77,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 21,
+                  "number": 20,
                   "children": [
                     {
                       "kind": "span",
@@ -88,12 +88,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Values",
-                      "href": "docs/settings.html#L21C7"
+                      "href": "docs/settings.html#L20C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": " "
+                      "text": "   "
                     },
                     {
                       "kind": "span",
@@ -119,7 +119,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 22,
+                  "number": 21,
                   "children": [
                     {
                       "kind": "span",
@@ -130,7 +130,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Modified",
-                      "href": "docs/settings.html#L22C7"
+                      "href": "docs/settings.html#L21C7"
                     },
                     {
                       "kind": "span",
@@ -181,7 +181,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 23,
+                  "number": 22,
                   "children": [
                     {
                       "kind": "span",
@@ -207,7 +207,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/settings.html#L20C9"
+                      "href": "docs/settings.html#L19C9"
                     }
                   ]
                 }
@@ -217,7 +217,7 @@ GNATdoc.Documentation = {
           "fields": [
             {
               "label": "Values",
-              "line": 21,
+              "line": 20,
               "column": 7,
               "type": {
                 "label": "Map"
@@ -227,7 +227,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Modified",
-              "line": 22,
+              "line": 21,
               "column": 7,
               "type": {
                 "label": "Boolean"
@@ -244,7 +244,7 @@ GNATdoc.Documentation = {
       "entities": [
         {
           "label": "Hash",
-          "line": 9,
+          "line": 8,
           "column": 13,
           "src": "srcs/settings.ads.html",
           "summary": [
@@ -255,7 +255,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 9,
+                  "number": 8,
                   "children": [
                     {
                       "kind": "span",
@@ -276,7 +276,18 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Hash",
-                      "href": "docs/settings.html#L9C13"
+                      "href": "docs/settings.html#L8C13"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 9,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "     "
                     },
                     {
                       "kind": "span",
@@ -287,7 +298,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Key",
-                      "href": "docs/settings.html#L9C18"
+                      "href": "docs/settings.html#L9C7"
                     },
                     {
                       "kind": "span",
@@ -313,17 +324,11 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ")"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 10,
-                  "children": [
+                    },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "                 "
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -349,11 +354,17 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "keyword",
                       "text": "is"
-                    },
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 10,
+                  "children": [
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": " "
+                      "text": "     "
                     },
                     {
                       "kind": "span",
@@ -404,7 +415,7 @@ GNATdoc.Documentation = {
             {
               "label": "Key",
               "line": 9,
-              "column": 18,
+              "column": 7,
               "type": {
                 "label": "Unbounded_String",
                 "docHref": "docs/unbounded_string.html#L79C9"
@@ -425,6 +436,15 @@ GNATdoc.Documentation = {
           "column": 14,
           "src": "srcs/settings.ads.html",
           "summary": [
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "loads the settings data\n"
+                }
+              ]
+            }
           ],
           "description": [
             {
@@ -457,6 +477,11 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
                       "cssClass": "identifier",
                       "text": "("
                     },
@@ -464,7 +489,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Data",
-                      "href": "docs/settings.html#L27C19"
+                      "href": "docs/settings.html#L27C20"
                     },
                     {
                       "kind": "span",
@@ -495,7 +520,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Settings_Data",
-                      "href": "docs/settings.html#L20C9"
+                      "href": "docs/settings.html#L19C9"
                     },
                     {
                       "kind": "span",
@@ -516,10 +541,10 @@ GNATdoc.Documentation = {
             {
               "label": "Data",
               "line": 27,
-              "column": 19,
+              "column": 20,
               "type": {
                 "label": "Settings.Settings_Data",
-                "docHref": "docs/settings.html#L20C9"
+                "docHref": "docs/settings.html#L19C9"
               },
               "description": [
               ]
@@ -528,10 +553,19 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Exists",
-          "line": 29,
+          "line": 30,
           "column": 13,
           "src": "srcs/settings.ads.html",
           "summary": [
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "checks if a key exists\n"
+                }
+              ]
+            }
           ],
           "description": [
             {
@@ -539,7 +573,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 29,
+                  "number": 30,
                   "children": [
                     {
                       "kind": "span",
@@ -560,7 +594,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Exists",
-                      "href": "docs/settings.html#L29C13"
+                      "href": "docs/settings.html#L30C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -571,7 +610,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Data",
-                      "href": "docs/settings.html#L29C20"
+                      "href": "docs/settings.html#L30C21"
                     },
                     {
                       "kind": "span",
@@ -612,7 +651,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Settings_Data",
-                      "href": "docs/settings.html#L20C9"
+                      "href": "docs/settings.html#L19C9"
                     },
                     {
                       "kind": "span",
@@ -628,7 +667,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Key",
-                      "href": "docs/settings.html#L29C49"
+                      "href": "docs/settings.html#L30C50"
                     },
                     {
                       "kind": "span",
@@ -688,19 +727,19 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Data",
-              "line": 29,
-              "column": 20,
+              "line": 30,
+              "column": 21,
               "type": {
                 "label": "Settings.Settings_Data",
-                "docHref": "docs/settings.html#L20C9"
+                "docHref": "docs/settings.html#L19C9"
               },
               "description": [
               ]
             },
             {
               "label": "Key",
-              "line": 29,
-              "column": 49,
+              "line": 30,
+              "column": 50,
               "type": {
                 "label": "String"
               },
@@ -711,10 +750,19 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Get",
-          "line": 31,
+          "line": 36,
           "column": 13,
           "src": "srcs/settings.ads.html",
           "summary": [
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "get a setting value\n"
+                }
+              ]
+            }
           ],
           "description": [
             {
@@ -722,7 +770,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 31,
+                  "number": 36,
                   "children": [
                     {
                       "kind": "span",
@@ -743,7 +791,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Get",
-                      "href": "docs/settings.html#L31C13"
+                      "href": "docs/settings.html#L36C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -754,7 +807,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Data",
-                      "href": "docs/settings.html#L31C17"
+                      "href": "docs/settings.html#L36C18"
                     },
                     {
                       "kind": "span",
@@ -795,7 +848,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Settings_Data",
-                      "href": "docs/settings.html#L20C9"
+                      "href": "docs/settings.html#L19C9"
                     },
                     {
                       "kind": "span",
@@ -811,7 +864,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Key",
-                      "href": "docs/settings.html#L31C46"
+                      "href": "docs/settings.html#L36C47"
                     },
                     {
                       "kind": "span",
@@ -866,24 +919,37 @@ GNATdoc.Documentation = {
                   ]
                 }
               ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Gets a value by it's key name and returns the result as a string\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "if the key does not exist then a No_Key_Error is raised\n"
+                }
+              ]
             }
           ],
           "parameters": [
             {
               "label": "Data",
-              "line": 31,
-              "column": 17,
+              "line": 36,
+              "column": 18,
               "type": {
                 "label": "Settings.Settings_Data",
-                "docHref": "docs/settings.html#L20C9"
+                "docHref": "docs/settings.html#L19C9"
               },
               "description": [
               ]
             },
             {
               "label": "Key",
-              "line": 31,
-              "column": 46,
+              "line": 36,
+              "column": 47,
               "type": {
                 "label": "String"
               },
@@ -894,10 +960,19 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Set",
-          "line": 33,
+          "line": 41,
           "column": 14,
           "src": "srcs/settings.ads.html",
           "summary": [
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "set a value\n"
+                }
+              ]
+            }
           ],
           "description": [
             {
@@ -905,7 +980,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 33,
+                  "number": 41,
                   "children": [
                     {
                       "kind": "span",
@@ -926,7 +1001,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Set",
-                      "href": "docs/settings.html#L33C14"
+                      "href": "docs/settings.html#L41C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -937,7 +1017,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Data",
-                      "href": "docs/settings.html#L33C18"
+                      "href": "docs/settings.html#L41C19"
                     },
                     {
                       "kind": "span",
@@ -978,7 +1058,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Settings_Data",
-                      "href": "docs/settings.html#L20C9"
+                      "href": "docs/settings.html#L19C9"
                     },
                     {
                       "kind": "span",
@@ -994,7 +1074,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Key",
-                      "href": "docs/settings.html#L33C47"
+                      "href": "docs/settings.html#L41C48"
                     },
                     {
                       "kind": "span",
@@ -1030,7 +1110,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Value",
-                      "href": "docs/settings.html#L33C61"
+                      "href": "docs/settings.html#L41C62"
                     },
                     {
                       "kind": "span",
@@ -1065,24 +1145,33 @@ GNATdoc.Documentation = {
                   ]
                 }
               ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Creates a new setting value, if the key already exists it is updated\n"
+                }
+              ]
             }
           ],
           "parameters": [
             {
               "label": "Data",
-              "line": 33,
-              "column": 18,
+              "line": 41,
+              "column": 19,
               "type": {
                 "label": "Settings.Settings_Data",
-                "docHref": "docs/settings.html#L20C9"
+                "docHref": "docs/settings.html#L19C9"
               },
               "description": [
               ]
             },
             {
               "label": "Key",
-              "line": 33,
-              "column": 47,
+              "line": 41,
+              "column": 48,
               "type": {
                 "label": "String"
               },
@@ -1091,8 +1180,8 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Value",
-              "line": 33,
-              "column": 61,
+              "line": 41,
+              "column": 62,
               "type": {
                 "label": "String"
               },
@@ -1103,10 +1192,19 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Remove",
-          "line": 35,
+          "line": 47,
           "column": 14,
           "src": "srcs/settings.ads.html",
           "summary": [
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "remove setting key\n"
+                }
+              ]
+            }
           ],
           "description": [
             {
@@ -1114,7 +1212,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 35,
+                  "number": 47,
                   "children": [
                     {
                       "kind": "span",
@@ -1135,7 +1233,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Remove",
-                      "href": "docs/settings.html#L35C14"
+                      "href": "docs/settings.html#L47C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -1146,7 +1249,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Data",
-                      "href": "docs/settings.html#L35C21"
+                      "href": "docs/settings.html#L47C22"
                     },
                     {
                       "kind": "span",
@@ -1187,7 +1290,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Settings_Data",
-                      "href": "docs/settings.html#L20C9"
+                      "href": "docs/settings.html#L19C9"
                     },
                     {
                       "kind": "span",
@@ -1203,7 +1306,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Key",
-                      "href": "docs/settings.html#L35C50"
+                      "href": "docs/settings.html#L47C51"
                     },
                     {
                       "kind": "span",
@@ -1238,24 +1341,37 @@ GNATdoc.Documentation = {
                   ]
                 }
               ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "removes an entry from the settings, if the key does not exist then a\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "No_Key_Error is raised\n"
+                }
+              ]
             }
           ],
           "parameters": [
             {
               "label": "Data",
-              "line": 35,
-              "column": 21,
+              "line": 47,
+              "column": 22,
               "type": {
                 "label": "Settings.Settings_Data",
-                "docHref": "docs/settings.html#L20C9"
+                "docHref": "docs/settings.html#L19C9"
               },
               "description": [
               ]
             },
             {
               "label": "Key",
-              "line": 35,
-              "column": 50,
+              "line": 47,
+              "column": 51,
               "type": {
                 "label": "String"
               },
@@ -1266,10 +1382,19 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Save",
-          "line": 37,
+          "line": 50,
           "column": 14,
           "src": "srcs/settings.ads.html",
           "summary": [
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "saves the settings data\n"
+                }
+              ]
+            }
           ],
           "description": [
             {
@@ -1277,7 +1402,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 37,
+                  "number": 50,
                   "children": [
                     {
                       "kind": "span",
@@ -1298,7 +1423,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Save",
-                      "href": "docs/settings.html#L37C14"
+                      "href": "docs/settings.html#L50C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -1309,7 +1439,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Data",
-                      "href": "docs/settings.html#L37C19"
+                      "href": "docs/settings.html#L50C20"
                     },
                     {
                       "kind": "span",
@@ -1330,7 +1460,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Settings_Data",
-                      "href": "docs/settings.html#L20C9"
+                      "href": "docs/settings.html#L19C9"
                     },
                     {
                       "kind": "span",
@@ -1350,11 +1480,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Data",
-              "line": 37,
-              "column": 19,
+              "line": 50,
+              "column": 20,
               "type": {
                 "label": "Settings.Settings_Data",
-                "docHref": "docs/settings.html#L20C9"
+                "docHref": "docs/settings.html#L19C9"
               },
               "description": [
               ]
