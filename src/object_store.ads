@@ -31,4 +31,6 @@ private
    function Char_Index (Data : String; Char : Character) return Integer;
 
    function Last_Index(Data : String; Char : Character) return Integer;
+
+   procedure Check_SHA256(Hash : SHA256_Value);
 end Object_Store;

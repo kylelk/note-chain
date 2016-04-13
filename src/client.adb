@@ -1,17 +1,17 @@
 with Ada.Text_IO;
 with Ada.Numerics.Discrete_Random;
 with GNAT.Calendar.Time_IO;
+with Ada.Calendar.Formatting;
 
 with Config;
 with File_Operations;
 with Object_Store;
-with Ada.Calendar.Formatting;
 
 package body Client is
    procedure Init(Status : in out Client_Status) is
       pragma Unreferenced (Status);
    begin
-      null;
+      Status.Settings_Status.Load;
    end Init;
 
    procedure Cleanup(Status : in out Client_Status) is

@@ -272,7 +272,7 @@ procedure Main is
          P (R, 2, "merge <name>", "merges the commits of a another branch");
          P (R, 2, "new <name>", "create a new branch from the current");
          P (R, 2, "remove <name>", "delete a branch");
-         
+
          P (R, 0, "config");
          P (R, 2, "list", "list all config items");
          P (R, 2, "get <key>", "gets a config item by a key");

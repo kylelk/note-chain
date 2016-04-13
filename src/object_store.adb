@@ -52,8 +52,7 @@ package body Object_Store is
       Dir : constant String :=
         DIR_OPS.Format_Pathname (Config.Object_Dir & '/' & Hash (1 .. 2));
    begin
-      -- check the hash format, raise Invalid_Hash_Format when error
-      pragma Assert(Integer'Value("16#" & Hash(1..2) & "#") in 0..16#FF#);
+      Check_SHA256(Hash);
       if not Ada.Directories.Exists (Dir) then
          Ada.Directories.Create_Directory (Dir);
       end if;
@@ -88,4 +87,13 @@ package body Object_Store is
       end loop;
       return -1;
    end Last_Index;
+
+   procedure Check_SHA256(Hash : SHA256_Value) is
+   begin
+      for C of Hash loop
+         if C not in '0'..'9' | 'a'..'f' | 'A'..'F' then
+            raise Invalid_Hash_Format;
+         end if;
+      end loop;
+   end Check_SHA256;
 end Object_Store;

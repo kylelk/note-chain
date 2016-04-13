@@ -4,6 +4,8 @@ with Ada.Containers.Hashed_Maps;
 with Ada.Strings.Unbounded.Hash;
 with Ada.Calendar;
 
+with Settings;
+
 package Client is
    package JSON renames GNATCOLL_JSON;
    package UBS renames Ada.Strings.Unbounded;
@@ -75,6 +77,7 @@ package Client is
    -- Current status of the client
    type Client_Status is tagged record
       Branch_Status : Branch_Info;
+      Settings_Status : Settings.Settings_Data;
       -- first time starting the client
       First_Load : Boolean := False;
    end record;
