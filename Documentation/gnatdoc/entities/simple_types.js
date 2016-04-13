@@ -21,15 +21,15 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Object_Type",
-      "docHref": "docs/client.html#L14C9",
+      "docHref": "docs/client.html#L16C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L14"
+      "srcHref": "srcs/client.ads.html#L16"
     },
     {
       "label": "SHA256_Value",
-      "docHref": "docs/client.html#L11C12",
+      "docHref": "docs/client.html#L13C12",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L11"
+      "srcHref": "srcs/client.ads.html#L13"
     },
     {
       "label": "SHA256_Value",

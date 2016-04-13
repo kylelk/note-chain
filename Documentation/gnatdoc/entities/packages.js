@@ -3,15 +3,21 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "JSON",
-      "docHref": "docs/client.json.html#L8C12",
+      "docHref": "docs/client.json.html#L10C12",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L8"
+      "srcHref": "srcs/client.ads.html#L10"
     },
     {
       "label": "UBS",
-      "docHref": "docs/client.ubs.html#L9C12",
+      "docHref": "docs/client.ubs.html#L11C12",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L9"
+      "srcHref": "srcs/client.ads.html#L11"
+    },
+    {
+      "label": "UBS",
+      "docHref": "docs/settings.ubs.html#L6C12",
+      "declared": "Settings",
+      "srcHref": "srcs/settings.ads.html#L6"
     }
   ]
 };

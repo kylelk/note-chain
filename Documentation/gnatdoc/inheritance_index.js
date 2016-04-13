@@ -1,7 +1,7 @@
 GNATdoc.InheritanceIndex = [
   {
     "label": "Client_Status",
-    "docHref": "docs/client.html#L76C9"
+    "docHref": "docs/client.html#L79C9"
   },
   {
     "label": "Controlled",
@@ -11,5 +11,9 @@ GNATdoc.InheritanceIndex = [
         "docHref": "docs/gnatcoll_json.html#L53C9"
       }
     ]
+  },
+  {
+    "label": "Settings_Data",
+    "docHref": "docs/settings.html#L20C9"
   }
 ];

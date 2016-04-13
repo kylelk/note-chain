@@ -3,21 +3,21 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Branch",
-      "docHref": "docs/client.html#L55C9",
+      "docHref": "docs/client.html#L58C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L55"
+      "srcHref": "srcs/client.ads.html#L58"
     },
     {
       "label": "Branch_Info",
-      "docHref": "docs/client.html#L70C9",
+      "docHref": "docs/client.html#L73C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L70"
+      "srcHref": "srcs/client.ads.html#L73"
     },
     {
       "label": "Commit",
-      "docHref": "docs/client.html#L38C9",
+      "docHref": "docs/client.html#L41C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L38"
+      "srcHref": "srcs/client.ads.html#L41"
     },
     {
       "label": "JSON_Array",
@@ -27,15 +27,15 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Note",
-      "docHref": "docs/client.html#L26C9",
+      "docHref": "docs/client.html#L28C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L26"
+      "srcHref": "srcs/client.ads.html#L28"
     },
     {
       "label": "Tree_Entry",
-      "docHref": "docs/client.html#L47C9",
+      "docHref": "docs/client.html#L50C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L47"
+      "srcHref": "srcs/client.ads.html#L50"
     },
     {
       "label": "UTF8_Unbounded_String",

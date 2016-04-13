@@ -27,9 +27,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Empty_Hash_Ref",
-      "docHref": "docs/client.html#L12C4",
+      "docHref": "docs/client.html#L14C4",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L12"
+      "srcHref": "srcs/client.ads.html#L14"
     },
     {
       "label": "JSON_Null",
@@ -48,6 +48,12 @@ GNATdoc.EntitiesCategory = {
       "docHref": "docs/config.html#L13C4",
       "declared": "Config",
       "srcHref": "srcs/config.ads.html#L13"
+    },
+    {
+      "label": "Settings_JSON_File",
+      "docHref": "docs/config.html#L31C4",
+      "declared": "Config",
+      "srcHref": "srcs/config.ads.html#L31"
     },
     {
       "label": "Temp_Dir",

@@ -22,5 +22,9 @@ GNATdoc.SourceFileIndex = [
   {
     "label": "object_store.ads",
     "srcHref": "srcs/object_store.ads.html"
+  },
+  {
+    "label": "settings.ads",
+    "srcHref": "srcs/settings.ads.html"
   }
 ];

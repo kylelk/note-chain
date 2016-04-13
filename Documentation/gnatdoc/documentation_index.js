@@ -30,5 +30,13 @@ GNATdoc.DocumentationIndex = [
   {
     "label": "Object_Store",
     "file": "docs/object_store.html"
+  },
+  {
+    "label": "Settings",
+    "file": "docs/settings.html"
+  },
+  {
+    "label": "Settings.UBS",
+    "file": "docs/settings.ubs.html"
   }
 ];
