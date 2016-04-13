@@ -1,6 +1,8 @@
 with GNATCOLL_JSON;
 with Ada.Strings.Unbounded;
+with Ada.Strings.Hash;
 with Ada.Containers.Hashed_Maps;
+with Ada.Containers.Hashed_Sets;
 with Ada.Strings.Unbounded.Hash;
 with Ada.Calendar;
 
@@ -69,6 +71,11 @@ package Client is
       Element_Type    => Branch,
       Hash            => Hash,
       Equivalent_Keys => UBS."=");
+
+   package Reference_Set is new Ada.Containers.Hashed_Sets
+        (Element_Type        => SHA256_Value,
+         Hash                => Ada.Strings.Hash,
+         Equivalent_Elements => "=");
 
    type Branch_Info is record
       Head     : UBS.Unbounded_String := UBS.Null_Unbounded_String;

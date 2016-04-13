@@ -2,12 +2,10 @@ with Ada.Text_IO;
 with Ada.Numerics.Discrete_Random;
 with GNAT.Calendar.Time_IO;
 with Ada.Calendar.Formatting;
-with Ada.Containers.Hashed_Sets;
 
 with Config;
 with File_Operations;
 with Object_Store;
-with Ada.Strings.Hash;
 
 package body Client is
    procedure Init (Status : in out Client_Status) is
@@ -321,16 +319,53 @@ package body Client is
 
    procedure Export (Status : Client_Status; Filename : String) is
       pragma Unreferenced (Filename);
-      package Hash_Set is new Ada.Containers.Hashed_Sets
-        (Element_Type        => SHA256_Value,
-         Hash                => Ada.Strings.Hash,
-         Equivalent_Elements => "=");
-      Refrences : Hash_Set.Set;
+      References : Reference_Set.Set;
+
+      procedure Tree_Refs(Start_Ref : SHA256_Value) is
+         Next_Ref    : Client.SHA256_Value;
+         Tree_Result : Client.Tree_Entry;
+         Note_Result : Client.Note;
+      begin
+         Next_Ref := Start_Ref;
+         while Next_Ref /= Empty_Hash_Ref loop
+            --if not References.Contains(Next_Ref) then
+            --   References.Insert(Next_Ref);
+            --end if;
+            exit when References.Contains(Next_Ref);
+            References.Insert(Next_Ref);
+
+            Tree_Result := Get_Tree_Entry (Next_Ref);
+            if Tree_Result.Entry_Type = Type_Note then
+               Note_Result := Get_Note (Tree_Result.Child_Ref);
+               if not References.Contains(Note_Result.Object_Ref) then
+                  References.Insert(Note_Result.Object_Ref);
+               end if;
+            elsif Tree_Result.Entry_Type = Type_Tree then
+               Tree_Refs(Tree_Result.Child_Ref);
+            end if;
+            Next_Ref := Tree_Result.Next_Ref;
+         end loop;
+      end Tree_Refs;
+
+      procedure Branch_Refs(Item : branch) is
+         Next_Commit_Ref : Client.SHA256_Value;
+         Next_Commit     : Client.Commit;
+      begin
+
+         Next_Commit_Ref := Item.Commit_Ref;
+         while Next_Commit_Ref /= Client.Empty_Hash_Ref loop
+            exit when References.Contains(Next_Commit_Ref);
+            Next_Commit := Client.Get_Commit (Next_Commit_Ref);
+            References.Insert(Next_Commit_Ref);
+            Tree_Refs(Next_Commit.Tree_Ref);
+            Next_Commit_Ref := Next_Commit.Parent_Ref;
+         end loop;
+      end Branch_Refs;
    begin
       for Branch_Result of Status.Branch_Status.Branches loop
-         Refrences.Insert(Branch_Result.Commit_Ref);
+         Branch_Refs(Branch_Result);
       end loop;
-      for Ref of Refrences loop
+      for Ref of References loop
          Ada.Text_IO.Put_Line(Ref);
       end loop;
    end Export;
