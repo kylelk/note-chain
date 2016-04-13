@@ -4,7 +4,7 @@ with Ada.Strings.Unbounded;
 package Config is
    function Join(Path : String) return String is (GNAT.Directory_Operations.Format_Pathname(Path));
 
-   Version : constant String := "1.6.2";
+   Version : constant String := "1.6.3";
 
    -- directory used to store project data and folders
    Data_Dir : constant String := ".note_chain_data/";

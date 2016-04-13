@@ -5,11 +5,13 @@ with Ada.Text_IO;
 with Ada.Strings.Unbounded;
 with GNAT.OS_Lib;
 with Ada.Calendar.Formatting;
+with Ada.Strings.Fixed;
 
 with Config;
 with Client;
 with Object_Store;
-with Ada.Strings.Fixed;
+with Settings;
+
 
 procedure Main is
    package CLI renames Ada.Command_Line;
@@ -104,6 +106,35 @@ procedure Main is
       end loop;
    end List_Notes;
 
+   procedure List_Settings (Status : Client.Client_Status) is
+      Longest_Key : Integer := 0;
+      procedure Put(Run : Integer; Key, Value : UBS.Unbounded_String) is
+         use Ada.Strings.Fixed;
+      begin
+         if Run = 1 then
+            if UBS.Length(Key) > Longest_Key then
+               Longest_Key := UBS.Length(Key);
+            end if;
+         elsif Run = 2 then
+            TIO.Put_Line
+              (UBS.To_String(Key) &
+               ((Longest_Key + 4) - UBS.Length(Key)) * " " &
+               UBS.To_String(Value));
+         end if;
+      end Put;
+
+      use Settings.KV_Map;
+      Item_Cursor : Settings.KV_Map.Cursor;
+   begin
+      for R in 1..2 loop
+         Item_Cursor := Status.Settings_Status.Values.First;
+         while Item_Cursor /= Settings.KV_Map.No_Element loop
+            Put(R, Key(Item_Cursor), Element(Item_Cursor));
+            Next(Item_Cursor);
+         end loop;
+      end loop;
+   end List_Settings;
+
    procedure Cmd_Branch (Info : in out Client.Client_Status) is
    begin
       if CLI.Argument_Count > 1 then
@@ -141,7 +172,7 @@ procedure Main is
    begin
       if CLI.Argument_Count = 2 then
          if CLI.Argument (2) = "list" then
-            TIO.Put_Line ("TODO: list config items");
+            List_Settings(Status);
          end if;
       elsif CLI.Argument_Count = 3 then
          if CLI.Argument (2) = "get" then
