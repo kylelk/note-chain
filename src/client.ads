@@ -26,15 +26,16 @@ package Client is
    -- @field Version version number of the note edit
    -- @field Saved has the record been saved yet
    type Note is record
-      Object_Ref : SHA256_Value := Empty_Hash_Ref;
+      Object_Ref : SHA256_Value         := Empty_Hash_Ref;
       Note_Text  : UBS.Unbounded_String;
       Encoding   : UBS.Unbounded_String;
       Uniq_UUID  : SHA256_Value;
       Created_At : Ada.Calendar.Time;
       Updated_At : Ada.Calendar.Time;
-      Next_Ref   : SHA256_Value := Empty_Hash_Ref;
-      Version    : Integer      := 1;
-      Saved      : Boolean      := False;
+      Next_Ref   : SHA256_Value         := Empty_Hash_Ref;
+      Version    : Integer              := 1;
+      Saved      : Boolean              := False;
+      Author     : UBS.Unbounded_String := UBS.Null_Unbounded_String;
    end record;
 
    type Commit is record
@@ -76,7 +77,7 @@ package Client is
 
    -- Current status of the client
    type Client_Status is tagged record
-      Branch_Status : Branch_Info;
+      Branch_Status   : Branch_Info;
       Settings_Status : Settings.Settings_Data;
       -- first time starting the client
       First_Load : Boolean := False;

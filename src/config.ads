@@ -3,8 +3,8 @@ with Ada.Strings.Unbounded;
 
 package Config is
    function Join(Path : String) return String is (GNAT.Directory_Operations.Format_Pathname(Path));
-   
-   Version : constant String := "1.6.1";
+
+   Version : constant String := "1.6.2";
 
    -- directory used to store project data and folders
    Data_Dir : constant String := ".note_chain_data/";
@@ -27,6 +27,6 @@ package Config is
 
    -- temp note file to store the content of a note while editing
    Temp_Note_File : constant String := Join(Temp_Dir & "note_content.txt");
-   
+
    Settings_JSON_File : constant String := Join(Data_Dir & "settings.json");
 end Config;
