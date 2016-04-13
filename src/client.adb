@@ -17,6 +17,7 @@ package body Client is
    procedure Cleanup(Status : in out Client_Status) is
    begin
       Status.Save_Branches;
+      Status.Settings_Status.Save;
 
       -- clear the temp directory
       File_Operations.Remake_Directory (Config.Temp_Dir);

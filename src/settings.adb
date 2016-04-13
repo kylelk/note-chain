@@ -20,11 +20,14 @@ package body Settings is
       end Handler;
    begin
       begin
-      JSON_Data :=
-        JSON.Read (File_Operations.Load_File (Config.Settings_JSON_File), "");
+         JSON_Data :=
+           JSON.Read
+             (File_Operations.Load_File (Config.Settings_JSON_File),
+              "");
          JSON.Map_JSON_Object (Val => JSON_Data, CB => Handler'Access);
       exception
-         when Ada.IO_Exceptions.Name_Error => null;
+         when Ada.IO_Exceptions.Name_Error =>
+            null;
       end;
    end Load;
 
@@ -52,11 +55,9 @@ package body Settings is
    begin
       Data.Modified := True;
       Data.Values.Insert
-      (Key                                       =>
-         UBS.To_Unbounded_String (Key), New_Item =>
-         UBS.To_Unbounded_String (Key), Position =>
-         Result_Cursor, Inserted                 =>
-         Inserted);
+      (To_Unbounded_String
+         (Key), To_Unbounded_String
+         (Key), Result_Cursor, Inserted);
       if not Inserted then
          Data.Values.Replace_Element
          (Position => Result_Cursor, New_Item => To_Unbounded_String (Value));
@@ -66,9 +67,17 @@ package body Settings is
    procedure Save (Data : Settings_Data) is
       Data_File   : TIO.File_Type;
       Result_JSON : JSON.JSON_Value;
+      Item_Cursor : KV_Map.Cursor;
+      use KV_Map;
    begin
       if Data.Modified then
          Result_JSON := JSON.Create_Object;
+         Item_Cursor := Data.Values.First;
+         while Item_Cursor /= KV_Map.No_Element loop
+            Result_JSON.Set_Field(Field_Name => To_String(Key(Item_Cursor)),
+                                  Field      => Element(Item_Cursor));
+            Next(Item_Cursor);
+         end loop;
          TIO.Create (Data_File, TIO.Out_File, Config.Settings_JSON_File);
          TIO.Put (Data_File, Result_JSON.Write (Compact => False));
          TIO.Close (Data_File);

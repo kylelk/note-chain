@@ -138,7 +138,6 @@ procedure Main is
    end Cmd_Branch;
 
    procedure Cmd_Config (Status : in out Client.Client_Status) is
-      pragma Unreferenced (Status);
    begin
       if CLI.Argument_Count = 2 then
          if CLI.Argument (2) = "list" then
@@ -146,15 +145,11 @@ procedure Main is
          end if;
       elsif CLI.Argument_Count = 3 then
          if CLI.Argument (2) = "get" then
-            TIO.Put_Line ("TODO: get value of " & CLI.Argument (3));
+            TIO.Put_Line(Status.Settings_Status.Get(CLI.Argument(3)));
          end if;
       elsif CLI.Argument_Count > 3 then
          if CLI.Argument (2) = "set" then
-            TIO.Put_Line
-              ("TODO: set value of " &
-               CLI.Argument (3) &
-               "=" &
-               CLI.Argument (4));
+            Status.Settings_Status.Set(CLI.Argument(3), CLI.Argument(4));
          end if;
       end if;
    end Cmd_Config;
