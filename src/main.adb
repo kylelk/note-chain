@@ -261,7 +261,10 @@ procedure Main is
    
    procedure Cmd_Export(Status : in out Client.Client_Status) is
    begin
-      Status.Export("export.dat");
+      if CLI.Argument_Count > 1 then
+         Status.Export(CLI.Argument(2));
+         TIO.Put_Line("exported objects to " & CLI.Argument(2));
+      end if;
    end Cmd_Export;
    
 
@@ -306,6 +309,8 @@ procedure Main is
          P (R, 2, "list", "list all config items");
          P (R, 2, "remove <key>", "removes a config key");
          P (R, 2, "set <key> <value>", "sets a config item");
+
+         P (R, 0, "export <filename>", "exports all objects to a file");
 
          P (R, 0, "help", "displays the usage options");
 
