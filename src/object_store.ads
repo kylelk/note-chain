@@ -15,7 +15,9 @@ package Object_Store is
    -- does not exist
    function Read(Hash : SHA256_Value) return String;
 
-   function Read_Data(Hash : SHA256_Value) return String;
+   -- @description
+   -- returns the entire data object as a string
+   function Read_Object (Hash : SHA256_Value) return String;
 
    function Object_Type(Hash : SHA256_Value) return String;
 

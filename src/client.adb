@@ -380,7 +380,7 @@ package body Client is
       String'Write(Output_Stream, Filetype_Str);
       for Ref of Items loop
          declare
-            Content : constant String := Object_Store.Read_Data(Ref);
+            Content : constant String := Object_Store.Read_Object(Ref);
          begin
             Integer'Write(Output_Stream, Content'Length);
             String'Write(Output_Stream, Content);

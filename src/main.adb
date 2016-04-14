@@ -258,7 +258,7 @@ procedure Main is
          end if;
       end if;
    end Cmd_Object;
-   
+
    procedure Cmd_Export(Status : in out Client.Client_Status) is
    begin
       if CLI.Argument_Count > 1 then
@@ -266,7 +266,7 @@ procedure Main is
          TIO.Put_Line("exported objects to " & CLI.Argument(2));
       end if;
    end Cmd_Export;
-   
+
 
    procedure Display_Help is
       longest_name : Integer := 0;
