@@ -32,6 +32,12 @@ package body Object_Store is
       return File_Content (Newline_Index .. File_Content'Last);
    end Read;
 
+   function Read_Data(Hash : SHA256_Value) return String is
+      Path          : constant String := Object_Path (Hash);
+   begin
+      return Get_Content (Path);
+   end Read_Data;
+
    function Object_Type (Hash : SHA256_Value) return String is
       Path          : constant String := Object_Path (Hash);
       File_Content  : constant String := Get_Content (Path);

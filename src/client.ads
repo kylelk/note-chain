@@ -170,6 +170,8 @@ package Client is
 
    procedure Export (Status : Client_Status; Filename : String);
 
+   procedure Export_Refs(Items : Reference_Set.Set; Filename : String);
+
    function To_ISO_8601 (Date : Ada.Calendar.Time) return String;
 
    function From_ISO_8601 (Date_Str : String) return Ada.Calendar.Time;

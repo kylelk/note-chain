@@ -6,6 +6,7 @@ with Ada.Calendar.Formatting;
 with Config;
 with File_Operations;
 with Object_Store;
+with Ada.Streams.Stream_IO;
 
 package body Client is
    procedure Init (Status : in out Client_Status) is
@@ -318,7 +319,6 @@ package body Client is
    end Set_Head;
 
    procedure Export (Status : Client_Status; Filename : String) is
-      pragma Unreferenced (Filename);
       References : Reference_Set.Set;
 
       procedure Tree_Refs(Start_Ref : SHA256_Value) is
@@ -365,10 +365,30 @@ package body Client is
       for Branch_Result of Status.Branch_Status.Branches loop
          Branch_Refs(Branch_Result);
       end loop;
-      for Ref of References loop
-         Ada.Text_IO.Put_Line(Ref);
-      end loop;
+      Export_Refs(References, Filename);
    end Export;
+
+   procedure Export_Refs(Items : Reference_Set.Set; Filename : String) is
+      Filetype_Str : constant String := "note chain export " & ASCII.LF;
+      Output_File : Ada.Streams.Stream_IO.File_Type;
+      Output_Stream : Ada.Streams.Stream_IO.Stream_Access;
+   begin
+      Ada.Streams.Stream_IO.Create(File => Output_File,
+                                 Mode => Ada.Streams.Stream_IO.Out_File,
+                                 Name => Filename);
+      Output_Stream := Ada.Streams.Stream_IO.Stream(Output_File);
+      String'Write(Output_Stream, Filetype_Str);
+      for Ref of Items loop
+         declare
+            Content : constant String := Object_Store.Read_Data(Ref);
+         begin
+            Integer'Write(Output_Stream, Content'Length);
+            String'Write(Output_Stream, Content);
+         end;
+      end loop;
+      Ada.Streams.Stream_IO.Close(Output_File);
+
+   end Export_Refs;
 
    function Random_SHA256 return SHA256_Value is
       package Guess_Generator is new Ada.Numerics.Discrete_Random (Character);
