@@ -168,6 +168,12 @@ package Client is
    -- updates the current branch head to a commit
    procedure Set_Head (Status : in out Client_Status; Item : Commit);
 
+   procedure Tree_Refs
+     (Start_Ref  :        SHA256_Value;
+      References : in out Reference_Set.Set);
+
+   procedure Branch_Refs(Item : Branch; References : in out Reference_Set.Set);
+
    procedure Export (Status : Client_Status; Filename : String);
 
    procedure Export_Refs(Items : Reference_Set.Set; Filename : String);
