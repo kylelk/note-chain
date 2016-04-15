@@ -178,6 +178,8 @@ package Client is
 
    procedure Export_Refs(Items : Reference_Set.Set; Filename : String);
 
+   function Format_Note(Item : Note) return String;
+
    function To_ISO_8601 (Date : Ada.Calendar.Time) return String;
 
    function From_ISO_8601 (Date_Str : String) return Ada.Calendar.Time;

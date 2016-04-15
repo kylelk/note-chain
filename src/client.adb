@@ -2,11 +2,12 @@ with Ada.Text_IO;
 with Ada.Numerics.Discrete_Random;
 with GNAT.Calendar.Time_IO;
 with Ada.Calendar.Formatting;
+with Ada.Streams.Stream_IO;
 
 with Config;
 with File_Operations;
 with Object_Store;
-with Ada.Streams.Stream_IO;
+with Message_Format;
 
 package body Client is
    procedure Init (Status : in out Client_Status) is
@@ -392,6 +393,20 @@ package body Client is
       end loop;
       Ada.Streams.Stream_IO.Close (Output_File);
    end Export_Refs;
+
+   function Format_Note(Item : Note) return String is
+      Result : Message_Format.Message;
+   begin
+      Result.Set_Header("SHA-256", Item.Object_Ref);
+      Result.Set_Header("Version", Item.Version'Img);
+      Result.Set_Header("Uniq_UUID", Item.Uniq_UUID);
+      Result.Set_Header("Created_At", To_ISO_8601(Item.Created_At));
+      Result.Set_Header("Updated_At", To_ISO_8601(Item.Updated_At));
+
+      Result.Set_Content(Item.Note_Text);
+      return Result.To_String;
+   end Format_Note;
+
 
    function Random_SHA256 return SHA256_Value is
       package Guess_Generator is new Ada.Numerics.Discrete_Random (Character);

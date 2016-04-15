@@ -57,7 +57,7 @@ package body Settings is
       Data.Values.Insert
       (To_Unbounded_String
          (Key), To_Unbounded_String
-         (Key), Result_Cursor, Inserted);
+         (Value), Result_Cursor, Inserted);
       if not Inserted then
          Data.Values.Replace_Element
          (Position => Result_Cursor, New_Item => To_Unbounded_String (Value));

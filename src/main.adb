@@ -214,12 +214,11 @@ procedure Main is
          end if;
 
          if CLI.Argument_Count > 2 then
+            Note_Item := Client.Get_Note(CLI.Argument(3));
             if CLI.Argument (2) = "view" then
-               null;
+               TIO.Put_Line(Client.Format_Note(Note_Item));
             elsif CLI.Argument (2) = "print" then
-               TIO.Put_Line
-                 (UBS.To_String
-                    (Client.Get_Note (CLI.Argument (3)).Note_Text));
+               TIO.Put_Line(UBS.To_String(Note_Item.Note_Text));
             end if;
          end if;
 
