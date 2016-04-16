@@ -1,6 +1,7 @@
 with Ada.Strings.Unbounded;
 with Ada.Strings.Unbounded.Hash;
 with Ada.Containers.Hashed_Maps;
+with Config;
 
 package Settings is
    package UBS renames Ada.Strings.Unbounded;
@@ -19,9 +20,15 @@ package Settings is
    type Settings_Data is tagged record
       Values   : KV_Map.Map;
       Modified : Boolean := False;
+      Path : UBS.Unbounded_String :=
+      UBS.To_Unbounded_String(Config.Settings_JSON_File);
    end record;
 
    No_Key_Error : exception;
+
+   procedure Set_Path(Data : in out Settings_Data; Path : String);
+
+   function Get_Path(Data : Settings_Data) return String;
 
    -- @summary loads the settings data
    procedure Load (Data : out Settings_Data);

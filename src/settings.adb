@@ -1,5 +1,4 @@
 with GNATCOLL_JSON;
-with Config;
 with Ada.Text_IO;
 with Ada.IO_Exceptions;
 
@@ -8,6 +7,16 @@ with File_Operations;
 package body Settings is
    package JSON renames GNATCOLL_JSON;
    package TIO renames Ada.Text_IO;
+
+   procedure Set_Path(Data : in out Settings_Data; Path : String) is
+   begin
+      Data.Path := UBS.To_Unbounded_String(Path);
+   end Set_Path;
+
+   function Get_Path(Data : Settings_Data) return String is
+   begin
+      return UBS.To_String(Data.Path);
+   end Get_Path;
 
    procedure Load (Data : out Settings_Data) is
       JSON_Data : JSON.JSON_Value;
@@ -22,7 +31,7 @@ package body Settings is
       begin
          JSON_Data :=
            JSON.Read
-             (File_Operations.Load_File (Config.Settings_JSON_File),
+             (File_Operations.Load_File (UBS.To_String(Data.Path)),
               "");
          JSON.Map_JSON_Object (Val => JSON_Data, CB => Handler'Access);
       exception
@@ -88,7 +97,7 @@ package body Settings is
                                   Field      => Element(Item_Cursor));
             Next(Item_Cursor);
          end loop;
-         TIO.Create (Data_File, TIO.Out_File, Config.Settings_JSON_File);
+         TIO.Create (Data_File, TIO.Out_File, UBS.To_String(Data.Path));
          TIO.Put (Data_File, Result_JSON.Write (Compact => False));
          TIO.Close (Data_File);
       end if;
