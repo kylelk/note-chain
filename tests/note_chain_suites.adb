@@ -6,7 +6,7 @@ package body Note_Chain_Suites is
    Settings_Tests : aliased Settings_Test_Case.Settings_Test_Case;
 
    function Suite return Test_Suites.Access_Test_Suite is
-      Result : Access_Test_Suite := AUnit.Test_Suites.New_Suite;
+      Result : constant Access_Test_Suite := AUnit.Test_Suites.New_Suite;
    begin
       Result.Add_Test (Settings_Tests'Access);
 
