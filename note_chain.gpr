@@ -8,18 +8,23 @@ project Note_Chain is
    for Languages use ("Ada");
 
    package Compiler is
-      for Default_Switches ("ada") use ("-fstack-check", "-gnata", "-gnato", "-gnatf", "-gnatwaru", "-gnatVa", "-gnat2012", "-Wall", "-O2", "-Wunused", "-g", "-fcallgraph-info=su,da");
+      for Default_Switches ("ada") use ("-fstack-check", "-gnata", "-gnato", "-gnatf", "-gnatwaru", "-gnatVa", "-gnat2012", "-Wall", "-O2", "-Wunused", "-g");
    end Compiler;
 
    package Builder is
       for Executable ("main.adb") use "note_chain";
       for Executable ("tests.adb") use "test";
+      for Default_Switches ("ada") use ("-g", "-j2");
    end Builder;
 
    package Ide is
       for Documentation_Dir use "Documentation/gnatdoc/";
       for Vcs_Kind use "Git";
    end Ide;
+
+   package Linker is
+      for Default_Switches ("ada") use ("-g");
+   end Linker;
 
 end Note_Chain;
 
