@@ -3,6 +3,7 @@ with Ada.Numerics.Discrete_Random;
 with GNAT.Calendar.Time_IO;
 with Ada.Calendar.Formatting;
 with Ada.Streams.Stream_IO;
+with GNAT.Regpat;
 
 with Config;
 with File_Operations;
@@ -52,6 +53,9 @@ package body Client is
       Branch_Name :        UBS.Unbounded_String)
    is
    begin
+      if not Valid_Branch_Name(UBS.To_String(Branch_Name)) then
+         raise Branch_Name_Format_Error;
+      end if;
       if Status.Branch_Exists (Branch_Name) then
          Status.Branch_Status.Head := Branch_Name;
       else
@@ -79,6 +83,9 @@ package body Client is
       New_Branch    : Branch;
       Result_Cursor : Branch_Map.Cursor;
    begin
+      if not Valid_Branch_Name(UBS.To_String(To)) then
+         raise Branch_Name_Format_Error;
+      end if;
       Result_Cursor := Status.Branch_Status.Branches.Find (From);
       if Result_Cursor /= Branch_Map.No_Element then
          New_Branch      := Branch_Map.Element (Result_Cursor);
@@ -406,6 +413,17 @@ package body Client is
       Result.Set_Content(Item.Note_Text);
       return Result.To_String;
    end Format_Note;
+
+   function Valid_Branch_Name(Name : String) return Boolean is
+      package Pat renames GNAT.Regpat;
+      Valid_Pattern : constant String := "([A-Za-z0-9_\-\+\(\)]+|\.\.)\&";
+   begin
+      if Name'Length = 40 then
+         return False;
+      else
+         return Pat.Match(Valid_Pattern, Name);
+      end if;
+   end Valid_Branch_Name;
 
 
    function Random_SHA256 return SHA256_Value is

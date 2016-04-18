@@ -91,6 +91,7 @@ package Client is
    end record;
 
    No_Branch_Error : exception;
+   Branch_Name_Format_Error : exception;
 
    procedure Init (Status : in out Client_Status);
 
@@ -179,6 +180,8 @@ package Client is
    procedure Export_Refs(Items : Reference_Set.Set; Filename : String);
 
    function Format_Note(Item : Note) return String;
+
+   function Valid_Branch_Name(Name : String) return Boolean;
 
    function To_ISO_8601 (Date : Ada.Calendar.Time) return String;
 

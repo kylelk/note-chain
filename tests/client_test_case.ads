@@ -14,6 +14,8 @@ package Client_Test_Case is
 
    procedure Test_Create_Branch (T : in out Test_Case'Class);
 
+   procedure Test_Valid_Branch_Name (T : in out Test_Case'Class);
+
    procedure Register_Tests( Test : in out Client_Test_Case );
 
 end Client_Test_Case;
