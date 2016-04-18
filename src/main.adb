@@ -79,8 +79,8 @@ procedure Main is
    end Display_Commit;
 
    procedure List_Notes (Status : Client.Client_Status) is
-      Next_Ref    : Client.SHA256_Value;
-      Tree_Result : Client.Tree_Entry;
+      Tree_Ref    : Client.SHA256_Value;
+      Tree_Result : Client.Tree;
       Note_Result : Client.Note;
       use Client;
    begin
@@ -88,16 +88,18 @@ procedure Main is
          TIO.Put_Line ("tree is null");
          return;
       end if;
+      Tree_Ref := Status.Head_Commit.Tree_Ref;
+      if Tree_Ref = Empty_Hash_Ref then
+         return;
+      end if;
 
---        Next_Ref := Status.Head_Commit.Tree_Ref;
---        while Next_Ref /= Client.Empty_Hash_Ref loop
---           Tree_Result := Client.Get_Tree_Entry (Next_Ref);
---           if Tree_Result.Entry_Type = Client.Type_Note then
---              Note_Result := Client.Get_Note (Tree_Result.Child_Ref);
---              TIO.Put_Line (Note_Result.Object_Ref);
---           end if;
---           Next_Ref := Tree_Result.Next_Ref;
---        end loop;
+      Tree_Result := Get_Tree(Tree_Ref);
+      for Item of Tree_Result.Entries loop
+         if Item.Entry_Type = Type_Note then
+            Note_Result := Get_Note (Item.Child_Ref);
+            TIO.Put_Line(Note_Result.Object_Ref);
+         end if;
+      end loop;
    end List_Notes;
 
    procedure List_Settings (Status : Client.Client_Status) is
@@ -183,13 +185,11 @@ procedure Main is
 
    procedure Cmd_Note (Status : in out Client.Client_Status) is
       Note_Item  : Client.Note;
-      Note_Entry : Client.Tree_Entry;
       New_Commit : Client.Commit;
+      Branch_Tree : Client.Tree;
    begin
-      Note_Entry.Entry_Type := Client.Type_Note;
-
       if Status.Head_Commit_Ref /= Client.Empty_Hash_Ref then
-         Note_Entry.Next_Ref   := Status.Head_Commit.Tree_Ref;
+         Branch_Tree := Client.Get_Tree(Status.Head_Commit_Ref);
          New_Commit.Parent_Ref := Status.Head_Commit_Ref;
       end if;
 
@@ -199,12 +199,14 @@ procedure Main is
             Status.Create_Note (Note_Item);
             Status.Save (Note_Item);
 
-            -- save tree entry for note
-            Note_Entry.Child_Ref := Note_Item.Object_Ref;
-            Status.Save (Note_Entry);
+            -- add note to tree
+            Client.Add_Note(Branch_Tree, Note_Item);
+
+            -- save tree
+            Status.Save(Branch_Tree);
 
             -- create new commit for changes
-            New_Commit.Tree_Ref := Note_Entry.Object_Ref;
+            New_Commit.Tree_Ref := Branch_Tree.Object_Ref;
             Status.Save (New_Commit);
 
             -- update the head commit to point to the newest tree

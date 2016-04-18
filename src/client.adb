@@ -346,28 +346,15 @@ package body Client is
      (Start_Ref  :        SHA256_Value;
       References : in out Reference_Set.Set)
    is
-      Next_Ref    : Client.SHA256_Value;
-      Tree_Result : Client.Tree_Entry;
-      Note_Result : Client.Note;
+      Tree_Result : Client.Tree;
    begin
-      Next_Ref := Start_Ref;
-      while Next_Ref /= Empty_Hash_Ref loop
-         --if not References.Contains(Next_Ref) then
-         --   References.Insert(Next_Ref);
-         --end if;
-         exit when References.Contains (Next_Ref);
-         References.Insert (Next_Ref);
-
-         Tree_Result := Get_Tree_Entry (Next_Ref);
-         if Tree_Result.Entry_Type = Type_Note then
-            Note_Result := Get_Note (Tree_Result.Child_Ref);
-            if not References.Contains (Note_Result.Object_Ref) then
-               References.Insert (Note_Result.Object_Ref);
-            end if;
-         elsif Tree_Result.Entry_Type = Type_Tree then
-            Tree_Refs (Tree_Result.Child_Ref, References);
+      Tree_Result := Get_Tree(Start_Ref);
+      for Item of Tree_Result.Entries loop
+         if Item.Entry_Type = Type_Note then
+            References.Insert(Item.Child_Ref);
+         elsif Item.Entry_Type = Type_Tree then
+            Tree_Refs(Item.Child_Ref, References);
          end if;
-         Next_Ref := Tree_Result.Next_Ref;
       end loop;
    end Tree_Refs;
 
