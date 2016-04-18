@@ -18,10 +18,11 @@ package body Client is
    end Init;
 
    function Tree_Entry_Hash
-     (Item : Tree_Entry) return Ada.Containers.Hash_Type is
+     (Item : Tree_Entry) return Ada.Containers.Hash_Type
+   is
    begin
-      return Ada.Strings.Hash(Item.Child_Ref & UBS.To_String(Item.Name));
-   end;
+      return Ada.Strings.Hash (Item.Child_Ref & UBS.To_String (Item.Name));
+   end Tree_Entry_Hash;
 
    procedure Cleanup (Status : in out Client_Status) is
    begin
@@ -59,7 +60,7 @@ package body Client is
       Branch_Name :        UBS.Unbounded_String)
    is
    begin
-      if not Valid_Branch_Name(UBS.To_String(Branch_Name)) then
+      if not Valid_Branch_Name (UBS.To_String (Branch_Name)) then
          raise Branch_Name_Format_Error;
       end if;
       if Status.Branch_Exists (Branch_Name) then
@@ -89,7 +90,7 @@ package body Client is
       New_Branch    : Branch;
       Result_Cursor : Branch_Map.Cursor;
    begin
-      if not Valid_Branch_Name(UBS.To_String(To)) then
+      if not Valid_Branch_Name (UBS.To_String (To)) then
          raise Branch_Name_Format_Error;
       end if;
       Result_Cursor := Status.Branch_Status.Branches.Find (From);
@@ -119,12 +120,12 @@ package body Client is
       end if;
    end Create_Note;
 
-   procedure Add_Note(T : in out Tree; Note_Entry : Note) is
+   procedure Add_Note (T : in out Tree; Note_Entry : Note) is
       New_Entry : Tree_Entry;
    begin
       New_Entry.Entry_Type := Type_Note;
-      New_Entry.Child_Ref := Note_Entry.Object_Ref;
-      T.Entries.Insert(New_Entry);
+      New_Entry.Child_Ref  := Note_Entry.Object_Ref;
+      T.Entries.Insert (New_Entry);
    end Add_Note;
 
    procedure Save_Branches (Status : in out Client_Status) is
@@ -163,24 +164,24 @@ package body Client is
 
    procedure Save (Status : in out Client_Status; Item : in out Tree) is
       pragma Unreferenced (Status);
-      Result_JSON : constant JSON.JSON_Value := JSON.Create_Object;
-      Result_Hash : SHA256_Value;
-      Entry_JSON : constant JSON.JSON_Value := JSON.Create_Object;
+      Result_JSON   : constant JSON.JSON_Value := JSON.Create_Object;
+      Result_Hash   : SHA256_Value;
+      Entry_JSON    : constant JSON.JSON_Value := JSON.Create_Object;
       Entries_Array : JSON.JSON_Array;
       use UBS;
    begin
       for Entry_Item of Item.Entries loop
-         Entry_JSON.Set_Field("entry_type", Entry_Item.Entry_Type'Img);
-         Entry_JSON.Set_Field("child_ref", Entry_Item.Child_Ref);
+         Entry_JSON.Set_Field ("entry_type", Entry_Item.Entry_Type'Img);
+         Entry_JSON.Set_Field ("child_ref", Entry_Item.Child_Ref);
          if Entry_Item.Name /= UBS.Null_Unbounded_String then
-            Entry_JSON.Set_Field("name", Entry_Item.Name);
+            Entry_JSON.Set_Field ("name", Entry_Item.Name);
          else
-            Entry_JSON.Set_Field("name", JSON.JSON_Null);
+            Entry_JSON.Set_Field ("name", JSON.JSON_Null);
          end if;
-         JSON.Append(Entries_Array, Entry_JSON);
+         JSON.Append (Entries_Array, Entry_JSON);
       end loop;
-      Result_JSON.Set_Field("entries", Entries_Array);
-      Object_Store.Write("tree", Result_JSON.Write, Result_Hash);
+      Result_JSON.Set_Field ("entries", Entries_Array);
+      Object_Store.Write ("tree", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
    end Save;
 
@@ -272,25 +273,29 @@ package body Client is
       return Status.Branch_Status.Branches.Element (Status.Branch_Status.Head);
    end Head;
 
-   function Get_Tree(Ref : SHA256_Value) return Tree is
-      Result : Tree;
-      Item_JSON : JSON.JSON_Value;
-      Entry_Item : Tree_Entry;
+   function Get_Tree (Ref : SHA256_Value) return Tree is
+      Result        : Tree;
+      Item_JSON     : JSON.JSON_Value;
+      Entry_Item    : Tree_Entry;
       Entries_Array : JSON.JSON_Array;
-      Entry_JSON : JSON.JSON_Value;
+      Entry_JSON    : JSON.JSON_Value;
       use JSON;
    begin
-      Item_JSON         := JSON.Read (Object_Store.Read (Ref), "");
-      Entries_Array := Item_JSON.Get("entries");
-      for I in 1 .. (JSON.Length(Entries_Array)) loop
-         Entry_JSON := JSON.Get(Entries_Array, I);
-         Entry_Item.Entry_Type := Object_Type'Value(Entry_JSON.Get("entry_type"));
-         Entry_Item.Child_Ref := Entry_JSON.Get("child_ref");
-         if JSON.Kind(Item_JSON.Get("name")) = JSON.JSON_String_Type then
-            Entry_Item.Name := Item_JSON.Get("name");
+      Item_JSON := JSON.Read (Object_Store.Read (Ref), "");
+      Entries_Array := JSON.Get(Item_JSON, "entries");
+
+      Ada.Text_IO.Put_Line ("got entries");
+      for I in 1 .. (JSON.Length (Entries_Array)) loop
+         Entry_JSON            := JSON.Get (Entries_Array, I);
+         Entry_Item.Entry_Type :=
+           Object_Type'Value (Entry_JSON.Get ("entry_type"));
+         Entry_Item.Child_Ref := Entry_JSON.Get ("child_ref");
+         if JSON.Kind (Item_JSON.Get ("name")) = JSON.JSON_String_Type then
+            Entry_Item.Name := Item_JSON.Get ("name");
          end if;
-         Result.Entries.Insert(Entry_Item);
+         Result.Entries.Insert (Entry_Item);
       end loop;
+
       return Result;
    end Get_Tree;
 
@@ -348,17 +353,19 @@ package body Client is
    is
       Tree_Result : Client.Tree;
    begin
-      Tree_Result := Get_Tree(Start_Ref);
+      Tree_Result := Get_Tree (Start_Ref);
       for Item of Tree_Result.Entries loop
          if Item.Entry_Type = Type_Note then
-            References.Insert(Item.Child_Ref);
+            References.Insert (Item.Child_Ref);
          elsif Item.Entry_Type = Type_Tree then
-            Tree_Refs(Item.Child_Ref, References);
+            Tree_Refs (Item.Child_Ref, References);
          end if;
       end loop;
    end Tree_Refs;
 
-   procedure Branch_Refs(Item : Branch; References : in out Reference_Set.Set)
+   procedure Branch_Refs
+     (Item       :        Branch;
+      References : in out Reference_Set.Set)
    is
       Next_Commit_Ref : Client.SHA256_Value;
       Next_Commit     : Client.Commit;
@@ -404,20 +411,20 @@ package body Client is
       Ada.Streams.Stream_IO.Close (Output_File);
    end Export_Refs;
 
-   function Format_Note(Item : Note) return String is
+   function Format_Note (Item : Note) return String is
       Result : Message_Format.Message;
    begin
-      Result.Set_Header("SHA-256", Item.Object_Ref);
-      Result.Set_Header("Version", Item.Version'Img);
-      Result.Set_Header("Uniq_UUID", Item.Uniq_UUID);
-      Result.Set_Header("Created_At", To_ISO_8601(Item.Created_At));
-      Result.Set_Header("Updated_At", To_ISO_8601(Item.Updated_At));
+      Result.Set_Header ("SHA-256", Item.Object_Ref);
+      Result.Set_Header ("Version", Item.Version'Img);
+      Result.Set_Header ("Uniq_UUID", Item.Uniq_UUID);
+      Result.Set_Header ("Created_At", To_ISO_8601 (Item.Created_At));
+      Result.Set_Header ("Updated_At", To_ISO_8601 (Item.Updated_At));
 
-      Result.Set_Content(Item.Note_Text);
+      Result.Set_Content (Item.Note_Text);
       return Result.To_String;
    end Format_Note;
 
-   function Valid_Branch_Name(Name : String) return Boolean is
+   function Valid_Branch_Name (Name : String) return Boolean is
       package Pat renames GNAT.Regpat;
       Valid_Pattern : constant String := "^([A-Za-z0-9_\-\+\(\)]+)$";
    begin
@@ -425,13 +432,12 @@ package body Client is
          return False;
       end if;
 
-      if Pat.Match("\.\.", Name) then
-	 return False;
+      if Pat.Match ("\.\.", Name) then
+         return False;
       end if;
 
-      return Pat.Match(Valid_Pattern, Name);
+      return Pat.Match (Valid_Pattern, Name);
    end Valid_Branch_Name;
-
 
    function Random_SHA256 return SHA256_Value is
       package Guess_Generator is new Ada.Numerics.Discrete_Random (Character);
