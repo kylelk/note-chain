@@ -416,13 +416,17 @@ package body Client is
 
    function Valid_Branch_Name(Name : String) return Boolean is
       package Pat renames GNAT.Regpat;
-      Valid_Pattern : constant String := "([A-Za-z0-9_\-\+\(\)]+|\.\.)\&";
+      Valid_Pattern : constant String := "^([A-Za-z0-9_\-\+\(\)]+)$";
    begin
       if Name'Length = 40 then
          return False;
-      else
-         return Pat.Match(Valid_Pattern, Name);
       end if;
+
+      if Pat.Match("\.\.", Name) then
+	 return False;
+      end if;
+
+      return Pat.Match(Valid_Pattern, Name);
    end Valid_Branch_Name;
 
 
