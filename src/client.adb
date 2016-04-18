@@ -166,11 +166,12 @@ package body Client is
       pragma Unreferenced (Status);
       Result_JSON   : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash   : SHA256_Value;
-      Entry_JSON    : constant JSON.JSON_Value := JSON.Create_Object;
+      Entry_JSON    : JSON.JSON_Value;
       Entries_Array : JSON.JSON_Array;
       use UBS;
    begin
       for Entry_Item of Item.Entries loop
+         Entry_JSON := JSON.Create_Object;
          Entry_JSON.Set_Field ("entry_type", Entry_Item.Entry_Type'Img);
          Entry_JSON.Set_Field ("child_ref", Entry_Item.Child_Ref);
          if Entry_Item.Name /= UBS.Null_Unbounded_String then
