@@ -158,7 +158,7 @@ package body Client is
         (Data_File,
          Ada.Text_IO.Out_File,
          Config.Branch_JSON_File);
-      Ada.Text_IO.Put (Data_File, Result_JSON.Write);
+      Ada.Text_IO.Put (Data_File, Result_JSON.Write(Compact => False));
       Ada.Text_IO.Close (Data_File);
    end Save_Branches;
 
@@ -354,12 +354,20 @@ package body Client is
       Tree_Result : Client.Tree;
    begin
       Tree_Result := Get_Tree (Start_Ref);
+      if not References.Contains(Start_Ref) then
+         References.Insert(Start_Ref);
+      end if;
+
       for Item of Tree_Result.Entries loop
-         if Item.Entry_Type = Type_Note then
-            References.Insert (Item.Child_Ref);
-         elsif Item.Entry_Type = Type_Tree then
-            Tree_Refs (Item.Child_Ref, References);
-         end if;
+         begin
+            if Item.Entry_Type = Type_Note then
+               References.Insert (Item.Child_Ref);
+            elsif Item.Entry_Type = Type_Tree then
+               Tree_Refs (Item.Child_Ref, References);
+            end if;
+         exception
+            when Constraint_Error => null;
+         end;
       end loop;
    end Tree_Refs;
 
