@@ -89,15 +89,15 @@ procedure Main is
          return;
       end if;
 
-      Next_Ref := Status.Head_Commit.Tree_Ref;
-      while Next_Ref /= Client.Empty_Hash_Ref loop
-         Tree_Result := Client.Get_Tree_Entry (Next_Ref);
-         if Tree_Result.Entry_Type = Client.Type_Note then
-            Note_Result := Client.Get_Note (Tree_Result.Child_Ref);
-            TIO.Put_Line (Note_Result.Object_Ref);
-         end if;
-         Next_Ref := Tree_Result.Next_Ref;
-      end loop;
+--        Next_Ref := Status.Head_Commit.Tree_Ref;
+--        while Next_Ref /= Client.Empty_Hash_Ref loop
+--           Tree_Result := Client.Get_Tree_Entry (Next_Ref);
+--           if Tree_Result.Entry_Type = Client.Type_Note then
+--              Note_Result := Client.Get_Note (Tree_Result.Child_Ref);
+--              TIO.Put_Line (Note_Result.Object_Ref);
+--           end if;
+--           Next_Ref := Tree_Result.Next_Ref;
+--        end loop;
    end List_Notes;
 
    procedure List_Settings (Status : Client.Client_Status) is

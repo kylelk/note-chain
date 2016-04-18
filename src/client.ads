@@ -50,11 +50,28 @@ package Client is
    end record;
 
    type Tree_Entry is record
-      Object_Ref : SHA256_Value         := Empty_Hash_Ref;
+      -- Object_Ref : SHA256_Value         := Empty_Hash_Ref;
       Entry_Type : Object_Type range Type_Tree .. Type_Note;
       Child_Ref  : SHA256_Value         := Empty_Hash_Ref;
-      Next_Ref   : SHA256_Value         := Empty_Hash_Ref;
       Name       : UBS.Unbounded_String := UBS.Null_Unbounded_String;
+   end record;
+
+   package Reference_Set is new Ada.Containers.Hashed_Sets
+     (Element_Type        => SHA256_Value,
+      Hash                => Ada.Strings.Hash,
+      Equivalent_Elements => "=");
+
+   function Tree_Entry_Hash
+     (Item : Tree_Entry) return Ada.Containers.Hash_Type;
+
+   package Tree_Entry_Set is new Ada.Containers.Hashed_Sets
+     (Element_Type        => Tree_Entry,
+      Hash                => Tree_Entry_Hash,
+      Equivalent_Elements => "=");
+
+   type Tree is record
+      Object_Ref : SHA256_Value := Empty_Hash_Ref;
+      Entries : Tree_Entry_Set.Set;
    end record;
 
    type Branch is record
@@ -71,11 +88,6 @@ package Client is
       Element_Type    => Branch,
       Hash            => Hash,
       Equivalent_Keys => UBS."=");
-
-   package Reference_Set is new Ada.Containers.Hashed_Sets
-        (Element_Type        => SHA256_Value,
-         Hash                => Ada.Strings.Hash,
-         Equivalent_Elements => "=");
 
    type Branch_Info is record
       Head     : UBS.Unbounded_String := UBS.Null_Unbounded_String;
@@ -129,13 +141,15 @@ package Client is
    -- creates a new note object with the contents of the temporary note file
    procedure Create_Note (Status : in out Client_Status; Item : out Note);
 
+   procedure Add_Note(T : in out Tree; Note_Entry : Note);
+
    -- @summary
    -- saves a Note to the object store
    procedure Save (Status : in out Client_Status; Item : in out Note);
 
    -- @summary
    -- saves a Tree_Entry to the object store
-   procedure Save (Status : in out Client_Status; Item : in out Tree_Entry);
+   procedure Save (Status : in out Client_Status; Item : in out Tree);
 
    -- @summary
    -- saves a Commit to the object store
@@ -143,7 +157,7 @@ package Client is
 
    function Get_Commit (Ref : SHA256_Value) return Commit;
 
-   function Get_Tree_Entry (Ref : SHA256_Value) return Tree_Entry;
+   function Get_Tree (Ref : SHA256_Value) return Tree;
 
    function Get_Note (Ref : SHA256_Value) return Note;
 
@@ -173,15 +187,17 @@ package Client is
      (Start_Ref  :        SHA256_Value;
       References : in out Reference_Set.Set);
 
-   procedure Branch_Refs(Item : Branch; References : in out Reference_Set.Set);
+   procedure Branch_Refs
+     (Item       :        Branch;
+      References : in out Reference_Set.Set);
 
    procedure Export (Status : Client_Status; Filename : String);
 
-   procedure Export_Refs(Items : Reference_Set.Set; Filename : String);
+   procedure Export_Refs (Items : Reference_Set.Set; Filename : String);
 
-   function Format_Note(Item : Note) return String;
+   function Format_Note (Item : Note) return String;
 
-   function Valid_Branch_Name(Name : String) return Boolean;
+   function Valid_Branch_Name (Name : String) return Boolean;
 
    function To_ISO_8601 (Date : Ada.Calendar.Time) return String;
 

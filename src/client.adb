@@ -17,6 +17,12 @@ package body Client is
       Status.Settings_Status.Load;
    end Init;
 
+   function Tree_Entry_Hash
+     (Item : Tree_Entry) return Ada.Containers.Hash_Type is
+   begin
+      return Ada.Strings.Hash(Item.Child_Ref & UBS.To_String(Item.Name));
+   end;
+
    procedure Cleanup (Status : in out Client_Status) is
    begin
       Status.Save_Branches;
@@ -113,6 +119,14 @@ package body Client is
       end if;
    end Create_Note;
 
+   procedure Add_Note(T : in out Tree; Note_Entry : Note) is
+      New_Entry : Tree_Entry;
+   begin
+      New_Entry.Entry_Type := Type_Note;
+      New_Entry.Child_Ref := Note_Entry.Object_Ref;
+      T.Entries.Insert(New_Entry);
+   end Add_Note;
+
    procedure Save_Branches (Status : in out Client_Status) is
       Result_JSON, Branch_JSON, Branch_Entry_JSON : JSON.JSON_Value;
       Branch_Cursor                               : Branch_Map.Cursor;
@@ -147,28 +161,26 @@ package body Client is
       Ada.Text_IO.Close (Data_File);
    end Save_Branches;
 
-   procedure Save (Status : in out Client_Status; Item : in out Tree_Entry) is
+   procedure Save (Status : in out Client_Status; Item : in out Tree) is
       pragma Unreferenced (Status);
       Result_JSON : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash : SHA256_Value;
-      use Ada.Strings.Unbounded;
+      Entry_JSON : constant JSON.JSON_Value := JSON.Create_Object;
+      Entries_Array : JSON.JSON_Array;
+      use UBS;
    begin
-      Result_JSON.Set_Field
-      ("entry_type", Object_Type'Image (Item.Entry_Type));
-      Result_JSON.Set_Field ("child_ref", Item.Child_Ref);
-
-      if Item.Next_Ref /= Empty_Hash_Ref then
-         Result_JSON.Set_Field ("next_ref", Item.Next_Ref);
-      else
-         Result_JSON.Set_Field ("next_ref", JSON.JSON_Null);
-      end if;
-
-      if Item.Name /= UBS.Null_Unbounded_String then
-         Result_JSON.Set_Field ("name", Item.Name);
-      else
-         Result_JSON.Set_Field ("name", JSON.JSON_Null);
-      end if;
-      Object_Store.Write ("tree_entry", Result_JSON.Write, Result_Hash);
+      for Entry_Item of Item.Entries loop
+         Entry_JSON.Set_Field("entry_type", Entry_Item.Entry_Type'Img);
+         Entry_JSON.Set_Field("child_ref", Entry_Item.Child_Ref);
+         if Entry_Item.Name /= UBS.Null_Unbounded_String then
+            Entry_JSON.Set_Field("name", Entry_Item.Name);
+         else
+            Entry_JSON.Set_Field("name", JSON.JSON_Null);
+         end if;
+         JSON.Append(Entries_Array, Entry_JSON);
+      end loop;
+      Result_JSON.Set_Field("entries", Entries_Array);
+      Object_Store.Write("tree", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
    end Save;
 
@@ -260,23 +272,27 @@ package body Client is
       return Status.Branch_Status.Branches.Element (Status.Branch_Status.Head);
    end Head;
 
-   function Get_Tree_Entry (Ref : SHA256_Value) return Tree_Entry is
-      Result    : Tree_Entry;
+   function Get_Tree(Ref : SHA256_Value) return Tree is
+      Result : Tree;
       Item_JSON : JSON.JSON_Value;
+      Entry_Item : Tree_Entry;
+      Entries_Array : JSON.JSON_Array;
+      Entry_JSON : JSON.JSON_Value;
       use JSON;
    begin
       Item_JSON         := JSON.Read (Object_Store.Read (Ref), "");
-      Result.Entry_Type := Object_Type'Value (Item_JSON.Get ("entry_type"));
-      Result.Child_Ref  := Item_JSON.Get ("child_ref");
-      if JSON.Kind (Item_JSON.Get ("next_ref")) = JSON.JSON_String_Type then
-         Result.Next_Ref := Item_JSON.Get ("next_ref");
-      end if;
-      if JSON.Kind (Item_JSON.Get ("name")) = JSON.JSON_String_Type then
-         Result.Name := Item_JSON.Get ("name");
-      end if;
-      Result.Object_Ref := Ref;
+      Entries_Array := Item_JSON.Get("entries");
+      for I in 1 .. (JSON.Length(Entries_Array)) loop
+         Entry_JSON := JSON.Get(Entries_Array, I);
+         Entry_Item.Entry_Type := Object_Type'Value(Entry_JSON.Get("entry_type"));
+         Entry_Item.Child_Ref := Entry_JSON.Get("child_ref");
+         if JSON.Kind(Item_JSON.Get("name")) = JSON.JSON_String_Type then
+            Entry_Item.Name := Item_JSON.Get("name");
+         end if;
+         Result.Entries.Insert(Entry_Item);
+      end loop;
       return Result;
-   end Get_Tree_Entry;
+   end Get_Tree;
 
    function Get_Note (Ref : SHA256_Value) return Note is
       Result    : Note;
