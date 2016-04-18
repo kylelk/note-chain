@@ -284,7 +284,6 @@ package body Client is
       Item_JSON := JSON.Read (Object_Store.Read (Ref), "");
       Entries_Array := JSON.Get(Item_JSON, "entries");
 
-      Ada.Text_IO.Put_Line ("got entries");
       for I in 1 .. (JSON.Length (Entries_Array)) loop
          Entry_JSON            := JSON.Get (Entries_Array, I);
          Entry_Item.Entry_Type :=

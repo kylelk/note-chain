@@ -189,7 +189,7 @@ procedure Main is
       Branch_Tree : Client.Tree;
    begin
       if Status.Head_Commit_Ref /= Client.Empty_Hash_Ref then
-         Branch_Tree := Client.Get_Tree(Status.Head_Commit_Ref);
+         Branch_Tree := Client.Get_Tree(Status.Head_Commit.Tree_Ref);
          New_Commit.Parent_Ref := Status.Head_Commit_Ref;
       end if;
 
