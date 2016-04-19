@@ -666,6 +666,54 @@ GNATdoc.SourceFile = {
         },
         {
           "kind": "span",
+          "cssClass": "comment",
+          "text": "-- @field Values hash map containing data"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 22,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- @field Modified if the data has been changed"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 23,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- @field Path file path to json file"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 24,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
           "cssClass": "keyword",
           "text": "type"
         },
@@ -678,7 +726,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Settings_Data",
-          "href": "docs/settings.html#L21C9"
+          "href": "docs/settings.html#L24C9"
         },
         {
           "kind": "span",
@@ -714,7 +762,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 22,
+      "number": 25,
       "children": [
         {
           "kind": "span",
@@ -725,7 +773,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Values",
-          "href": "docs/settings.html#L22C7"
+          "href": "docs/settings.html#L25C7"
         },
         {
           "kind": "span",
@@ -756,7 +804,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 23,
+      "number": 26,
       "children": [
         {
           "kind": "span",
@@ -767,7 +815,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Modified",
-          "href": "docs/settings.html#L23C7"
+          "href": "docs/settings.html#L26C7"
         },
         {
           "kind": "span",
@@ -818,7 +866,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 24,
+      "number": 27,
       "children": [
         {
           "kind": "span",
@@ -829,7 +877,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Path",
-          "href": "docs/settings.html#L24C7"
+          "href": "docs/settings.html#L27C7"
         },
         {
           "kind": "span",
@@ -865,7 +913,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 25,
+      "number": 28,
       "children": [
         {
           "kind": "span",
@@ -901,7 +949,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 26,
+      "number": 29,
       "children": [
         {
           "kind": "span",
@@ -927,19 +975,19 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": ";",
-          "href": "docs/settings.html#L21C9"
+          "href": "docs/settings.html#L24C9"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 27,
+      "number": 30,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 28,
+      "number": 31,
       "children": [
         {
           "kind": "span",
@@ -950,7 +998,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "No_Key_Error",
-          "href": "docs/settings.html#L28C4"
+          "href": "docs/settings.html#L31C4"
         },
         {
           "kind": "span",
@@ -981,13 +1029,29 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 29,
+      "number": 32,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 30,
+      "number": 33,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- @summary change the path of the settings file"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 34,
       "children": [
         {
           "kind": "span",
@@ -1008,7 +1072,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Set_Path",
-          "href": "docs/settings.html#L30C14"
+          "href": "docs/settings.html#L34C14"
         },
         {
           "kind": "span",
@@ -1019,7 +1083,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Data",
-          "href": "docs/settings.html#L30C23"
+          "href": "docs/settings.html#L34C23"
         },
         {
           "kind": "span",
@@ -1060,7 +1124,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Settings_Data",
-          "href": "docs/settings.html#L21C9"
+          "href": "docs/settings.html#L24C9"
         },
         {
           "kind": "span",
@@ -1076,7 +1140,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Path",
-          "href": "docs/settings.html#L30C52"
+          "href": "docs/settings.html#L34C52"
         },
         {
           "kind": "span",
@@ -1112,13 +1176,29 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 31,
+      "number": 35,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 32,
+      "number": 36,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- @summary get the current path of the settings file"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 37,
       "children": [
         {
           "kind": "span",
@@ -1139,7 +1219,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Get_Path",
-          "href": "docs/settings.html#L32C13"
+          "href": "docs/settings.html#L37C13"
         },
         {
           "kind": "span",
@@ -1150,7 +1230,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Data",
-          "href": "docs/settings.html#L32C22"
+          "href": "docs/settings.html#L37C22"
         },
         {
           "kind": "span",
@@ -1171,7 +1251,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Settings_Data",
-          "href": "docs/settings.html#L21C9"
+          "href": "docs/settings.html#L24C9"
         },
         {
           "kind": "span",
@@ -1207,13 +1287,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 33,
+      "number": 38,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 34,
+      "number": 39,
       "children": [
         {
           "kind": "span",
@@ -1229,7 +1309,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 35,
+      "number": 40,
       "children": [
         {
           "kind": "span",
@@ -1250,7 +1330,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Load",
-          "href": "docs/settings.html#L35C14"
+          "href": "docs/settings.html#L40C14"
         },
         {
           "kind": "span",
@@ -1266,7 +1346,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Data",
-          "href": "docs/settings.html#L35C20"
+          "href": "docs/settings.html#L40C20"
         },
         {
           "kind": "span",
@@ -1297,7 +1377,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Settings_Data",
-          "href": "docs/settings.html#L21C9"
+          "href": "docs/settings.html#L24C9"
         },
         {
           "kind": "span",
@@ -1313,13 +1393,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 36,
+      "number": 41,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 37,
+      "number": 42,
       "children": [
         {
           "kind": "span",
@@ -1335,7 +1415,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 38,
+      "number": 43,
       "children": [
         {
           "kind": "span",
@@ -1356,7 +1436,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Exists",
-          "href": "docs/settings.html#L38C13"
+          "href": "docs/settings.html#L43C13"
         },
         {
           "kind": "span",
@@ -1372,7 +1452,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Data",
-          "href": "docs/settings.html#L38C21"
+          "href": "docs/settings.html#L43C21"
         },
         {
           "kind": "span",
@@ -1413,7 +1493,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Settings_Data",
-          "href": "docs/settings.html#L21C9"
+          "href": "docs/settings.html#L24C9"
         },
         {
           "kind": "span",
@@ -1429,7 +1509,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/settings.html#L38C50"
+          "href": "docs/settings.html#L43C50"
         },
         {
           "kind": "span",
@@ -1485,13 +1565,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 39,
+      "number": 44,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 40,
+      "number": 45,
       "children": [
         {
           "kind": "span",
@@ -1507,7 +1587,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 41,
+      "number": 46,
       "children": [
         {
           "kind": "span",
@@ -1523,7 +1603,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 42,
+      "number": 47,
       "children": [
         {
           "kind": "span",
@@ -1539,7 +1619,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 43,
+      "number": 48,
       "children": [
         {
           "kind": "span",
@@ -1555,7 +1635,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 44,
+      "number": 49,
       "children": [
         {
           "kind": "span",
@@ -1576,7 +1656,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Get",
-          "href": "docs/settings.html#L44C13"
+          "href": "docs/settings.html#L49C13"
         },
         {
           "kind": "span",
@@ -1592,7 +1672,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Data",
-          "href": "docs/settings.html#L44C18"
+          "href": "docs/settings.html#L49C18"
         },
         {
           "kind": "span",
@@ -1633,7 +1713,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Settings_Data",
-          "href": "docs/settings.html#L21C9"
+          "href": "docs/settings.html#L24C9"
         },
         {
           "kind": "span",
@@ -1649,7 +1729,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/settings.html#L44C47"
+          "href": "docs/settings.html#L49C47"
         },
         {
           "kind": "span",
@@ -1705,13 +1785,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 45,
+      "number": 50,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 46,
+      "number": 51,
       "children": [
         {
           "kind": "span",
@@ -1727,7 +1807,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 47,
+      "number": 52,
       "children": [
         {
           "kind": "span",
@@ -1743,7 +1823,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 48,
+      "number": 53,
       "children": [
         {
           "kind": "span",
@@ -1759,7 +1839,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 49,
+      "number": 54,
       "children": [
         {
           "kind": "span",
@@ -1780,7 +1860,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Set",
-          "href": "docs/settings.html#L49C14"
+          "href": "docs/settings.html#L54C14"
         },
         {
           "kind": "span",
@@ -1796,7 +1876,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Data",
-          "href": "docs/settings.html#L49C19"
+          "href": "docs/settings.html#L54C19"
         },
         {
           "kind": "span",
@@ -1837,7 +1917,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Settings_Data",
-          "href": "docs/settings.html#L21C9"
+          "href": "docs/settings.html#L24C9"
         },
         {
           "kind": "span",
@@ -1853,7 +1933,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/settings.html#L49C48"
+          "href": "docs/settings.html#L54C48"
         },
         {
           "kind": "span",
@@ -1889,7 +1969,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Value",
-          "href": "docs/settings.html#L49C62"
+          "href": "docs/settings.html#L54C62"
         },
         {
           "kind": "span",
@@ -1925,13 +2005,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 50,
+      "number": 55,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 51,
+      "number": 56,
       "children": [
         {
           "kind": "span",
@@ -1947,7 +2027,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 52,
+      "number": 57,
       "children": [
         {
           "kind": "span",
@@ -1963,7 +2043,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 53,
+      "number": 58,
       "children": [
         {
           "kind": "span",
@@ -1979,7 +2059,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 54,
+      "number": 59,
       "children": [
         {
           "kind": "span",
@@ -1995,7 +2075,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 55,
+      "number": 60,
       "children": [
         {
           "kind": "span",
@@ -2016,7 +2096,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Remove",
-          "href": "docs/settings.html#L55C14"
+          "href": "docs/settings.html#L60C14"
         },
         {
           "kind": "span",
@@ -2032,7 +2112,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Data",
-          "href": "docs/settings.html#L55C22"
+          "href": "docs/settings.html#L60C22"
         },
         {
           "kind": "span",
@@ -2073,7 +2153,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Settings_Data",
-          "href": "docs/settings.html#L21C9"
+          "href": "docs/settings.html#L24C9"
         },
         {
           "kind": "span",
@@ -2089,7 +2169,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/settings.html#L55C51"
+          "href": "docs/settings.html#L60C51"
         },
         {
           "kind": "span",
@@ -2125,13 +2205,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 56,
+      "number": 61,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 57,
+      "number": 62,
       "children": [
         {
           "kind": "span",
@@ -2147,7 +2227,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 58,
+      "number": 63,
       "children": [
         {
           "kind": "span",
@@ -2168,7 +2248,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Save",
-          "href": "docs/settings.html#L58C14"
+          "href": "docs/settings.html#L63C14"
         },
         {
           "kind": "span",
@@ -2184,7 +2264,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Data",
-          "href": "docs/settings.html#L58C20"
+          "href": "docs/settings.html#L63C20"
         },
         {
           "kind": "span",
@@ -2205,7 +2285,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Settings_Data",
-          "href": "docs/settings.html#L21C9"
+          "href": "docs/settings.html#L24C9"
         },
         {
           "kind": "span",
@@ -2221,7 +2301,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 59,
+      "number": 64,
       "children": [
         {
           "kind": "span",

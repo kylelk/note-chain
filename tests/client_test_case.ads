@@ -4,11 +4,10 @@ with Ada.Strings.Unbounded;
 
 package Client_Test_Case is
    type Client_Test_Case is new AUnit.Test_Cases.Test_Case with null record;
-   -- @private
-   package UBS renames Ada.Strings.Unbounded;
 
-   function "+"(S : String) return UBS.Unbounded_String
-   is (UBS.To_Unbounded_String(S));
+   -- @private
+   function "+"(S : String) return Ada.Strings.Unbounded.Unbounded_String
+   is (Ada.Strings.Unbounded.To_Unbounded_String(S));
 
    overriding
    function Name (Test : Client_Test_Case) return Message_String;

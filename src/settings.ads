@@ -18,6 +18,9 @@ package Settings is
       Hash            => Hash,
       Equivalent_Keys => UBS."=");
 
+   -- @field Values hash map containing data
+   -- @field Modified if the data has been changed
+   -- @field Path file path to json file
    type Settings_Data is tagged record
       Values   : KV_Map.Map;
       Modified : Boolean := False;
@@ -27,8 +30,10 @@ package Settings is
 
    No_Key_Error : exception;
 
+   -- @summary change the path of the settings file
    procedure Set_Path(Data : in out Settings_Data; Path : String);
 
+   -- @summary get the current path of the settings file
    function Get_Path(Data : Settings_Data) return String;
 
    -- @summary loads the settings data

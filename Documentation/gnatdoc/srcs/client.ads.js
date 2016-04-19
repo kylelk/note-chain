@@ -3856,7 +3856,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Settings.Settings_Data",
-          "href": "docs/settings.html#L21C9"
+          "href": "docs/settings.html#L24C9"
         },
         {
           "kind": "span",

@@ -2,12 +2,6 @@ GNATdoc.EntitiesCategory = {
   "label": "Subprograms",
   "entities": [
     {
-      "label": "+",
-      "docHref": "docs/client_test_case.html#L10C14",
-      "declared": "Client_Test_Case",
-      "srcHref": "srcs/client_test_case.ads.html#L10"
-    },
-    {
       "label": "Add_Note",
       "docHref": "docs/client.html#L146C14",
       "declared": "Client",
@@ -177,9 +171,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Test_Create_Branch",
-      "docHref": "docs/client_test_case.html#L16C14",
+      "docHref": "docs/client_test_case.html#L15C14",
       "declared": "Client_Test_Case",
-      "srcHref": "srcs/client_test_case.ads.html#L16"
+      "srcHref": "srcs/client_test_case.ads.html#L15"
     },
     {
       "label": "Test_Get_Value",
@@ -231,9 +225,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Test_Valid_Branch_Name",
-      "docHref": "docs/client_test_case.html#L18C14",
+      "docHref": "docs/client_test_case.html#L17C14",
       "declared": "Client_Test_Case",
-      "srcHref": "srcs/client_test_case.ads.html#L18"
+      "srcHref": "srcs/client_test_case.ads.html#L17"
     },
     {
       "label": "To_ISO_8601",

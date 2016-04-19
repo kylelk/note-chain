@@ -18,7 +18,7 @@ GNATdoc.InheritanceIndex = [
   },
   {
     "label": "Settings_Data",
-    "docHref": "docs/settings.html#L21C9"
+    "docHref": "docs/settings.html#L24C9"
   },
   {
     "label": "Test_Case",

@@ -8,10 +8,6 @@ GNATdoc.DocumentationIndex = [
     "file": "docs/client_test_case.html"
   },
   {
-    "label": "Client_Test_Case.UBS",
-    "file": "docs/client_test_case.ubs.html"
-  },
-  {
     "label": "Config",
     "file": "docs/config.html"
   },

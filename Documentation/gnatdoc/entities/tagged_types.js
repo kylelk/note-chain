@@ -8,6 +8,12 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/client.ads.html#L100"
     },
     {
+      "label": "Client_Test_Case",
+      "docHref": "docs/client_test_case.html#L6C9",
+      "declared": "Client_Test_Case",
+      "srcHref": "srcs/client_test_case.ads.html#L6"
+    },
+    {
       "label": "JSON_Value",
       "docHref": "docs/gnatcoll_json.html#L53C9",
       "declared": "GNATCOLL_JSON",
@@ -21,9 +27,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Settings_Data",
-      "docHref": "docs/settings.html#L21C9",
+      "docHref": "docs/settings.html#L24C9",
       "declared": "Settings",
-      "srcHref": "srcs/settings.ads.html#L21"
+      "srcHref": "srcs/settings.ads.html#L24"
     },
     {
       "label": "Settings_Test_Case",

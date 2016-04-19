@@ -2951,7 +2951,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Settings.Settings_Data",
-                      "href": "docs/settings.html#L21C9"
+                      "href": "docs/settings.html#L24C9"
                     },
                     {
                       "kind": "span",
@@ -3100,7 +3100,7 @@ GNATdoc.Documentation = {
               "column": 7,
               "type": {
                 "label": "Settings.Settings_Data",
-                "docHref": "docs/settings.html#L21C9"
+                "docHref": "docs/settings.html#L24C9"
               },
               "description": [
                 {
