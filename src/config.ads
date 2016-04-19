@@ -29,4 +29,6 @@ package Config is
    Temp_Note_File : constant String := Join(Temp_Dir & "note_content.txt");
 
    Settings_JSON_File : constant String := Join(Data_Dir & "settings.json");
+
+   Export_Extension : constant String := ".nc_refs";
 end Config;

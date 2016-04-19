@@ -265,8 +265,9 @@ procedure Main is
    procedure Cmd_Export(Status : in out Client.Client_Status) is
    begin
       if CLI.Argument_Count > 1 then
-         Status.Export(CLI.Argument(2));
-         TIO.Put_Line("exported objects to " & CLI.Argument(2));
+         Status.Export(CLI.Argument(2) & Config.Export_Extension);
+         TIO.Put_Line("exported objects to " & CLI.Argument(2)
+                      & Config.Export_Extension);
       end if;
    end Cmd_Export;
 
