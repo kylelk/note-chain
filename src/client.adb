@@ -495,8 +495,8 @@ package body Client is
       Month  : Integer range 1 .. 12;
       Day    : Integer range 1 .. 31;
       Hour   : Integer range 1 .. 23;
-      Minute : Integer range 1 .. 59;
-      Second : Integer range 1 .. 59;
+      Minute : Integer range 0 .. 59;
+      Second : Integer range 0 .. 59;
    begin
       Year  := Integer'Value (Date_Str (Date_Str'First .. Date_Str'First + 3));
       Month :=
