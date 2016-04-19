@@ -581,6 +581,38 @@ GNATdoc.SourceFile = {
         },
         {
           "kind": "span",
+          "cssClass": "comment",
+          "text": "-- @description"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 19,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- returns the entire data object as a string"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 20,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
           "cssClass": "keyword",
           "text": "function"
         },
@@ -592,8 +624,13 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Object_Type",
-          "href": "docs/object_store.html#L18C13"
+          "text": "Read_Object",
+          "href": "docs/object_store.html#L20C13"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
         },
         {
           "kind": "span",
@@ -604,7 +641,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Hash",
-          "href": "docs/object_store.html#L18C25"
+          "href": "docs/object_store.html#L20C26"
         },
         {
           "kind": "span",
@@ -661,40 +698,8 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 19,
-      "children": [
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 20,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "-- @description"
-        }
-      ]
-    },
-    {
-      "kind": "line",
       "number": 21,
       "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "-- checks if an object exists"
-        }
       ]
     },
     {
@@ -719,7 +724,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Exists",
+          "text": "Object_Type",
           "href": "docs/object_store.html#L22C13"
         },
         {
@@ -731,7 +736,134 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Hash",
-          "href": "docs/object_store.html#L22C20"
+          "href": "docs/object_store.html#L22C25"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "SHA256_Value",
+          "href": "docs/object_store.html#L4C12"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "return"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "String"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 23,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 24,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- @description"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 25,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- checks if an object exists"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 26,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "function"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Exists",
+          "href": "docs/object_store.html#L26C13"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Hash",
+          "href": "docs/object_store.html#L26C20"
         },
         {
           "kind": "span",
@@ -788,13 +920,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 23,
+      "number": 27,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 24,
+      "number": 28,
       "children": [
         {
           "kind": "span",
@@ -805,7 +937,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 36,
+      "number": 40,
       "children": [
         {
           "kind": "span",

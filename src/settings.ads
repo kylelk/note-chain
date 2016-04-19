@@ -4,6 +4,7 @@ with Ada.Containers.Hashed_Maps;
 with Config;
 
 package Settings is
+   -- @private
    package UBS renames Ada.Strings.Unbounded;
 
    function Hash

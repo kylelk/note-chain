@@ -3,6 +3,7 @@ with Ada.Strings.Unbounded.Hash;
 with Ada.Containers.Hashed_Maps;
 
 package Message_Format is
+   -- @private
    package UBS renames Ada.Strings.Unbounded;
 
    function Hash

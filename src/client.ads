@@ -9,7 +9,9 @@ with Ada.Calendar;
 with Settings;
 
 package Client is
+   -- @private
    package JSON renames GNATCOLL_JSON;
+   -- @private
    package UBS renames Ada.Strings.Unbounded;
 
    subtype SHA256_Value is String (1 .. 64);

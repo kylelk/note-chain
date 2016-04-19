@@ -27,9 +27,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Empty_Hash_Ref",
-      "docHref": "docs/client.html#L14C4",
+      "docHref": "docs/client.html#L18C4",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L14"
+      "srcHref": "srcs/client.ads.html#L18"
     },
     {
       "label": "JSON_Null",

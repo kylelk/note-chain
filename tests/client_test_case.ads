@@ -4,6 +4,7 @@ with Ada.Strings.Unbounded;
 
 package Client_Test_Case is
    type Client_Test_Case is new AUnit.Test_Cases.Test_Case with null record;
+   -- @private
    package UBS renames Ada.Strings.Unbounded;
 
    function "+"(S : String) return UBS.Unbounded_String

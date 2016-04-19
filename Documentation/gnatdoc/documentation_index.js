@@ -4,12 +4,12 @@ GNATdoc.DocumentationIndex = [
     "file": "docs/client.html"
   },
   {
-    "label": "Client.JSON",
-    "file": "docs/client.json.html"
+    "label": "Client_Test_Case",
+    "file": "docs/client_test_case.html"
   },
   {
-    "label": "Client.UBS",
-    "file": "docs/client.ubs.html"
+    "label": "Client_Test_Case.UBS",
+    "file": "docs/client_test_case.ubs.html"
   },
   {
     "label": "Config",
@@ -28,6 +28,14 @@ GNATdoc.DocumentationIndex = [
     "file": "docs/gnatcoll_json_utility.html"
   },
   {
+    "label": "Message_Format",
+    "file": "docs/message_format.html"
+  },
+  {
+    "label": "Note_Chain_Suites",
+    "file": "docs/note_chain_suites.html"
+  },
+  {
     "label": "Object_Store",
     "file": "docs/object_store.html"
   },
@@ -36,7 +44,7 @@ GNATdoc.DocumentationIndex = [
     "file": "docs/settings.html"
   },
   {
-    "label": "Settings.UBS",
-    "file": "docs/settings.ubs.html"
+    "label": "Settings_Test_Case",
+    "file": "docs/settings_test_case.html"
   }
 ];

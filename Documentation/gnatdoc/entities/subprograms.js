@@ -2,6 +2,24 @@ GNATdoc.EntitiesCategory = {
   "label": "Subprograms",
   "entities": [
     {
+      "label": "+",
+      "docHref": "docs/client_test_case.html#L10C14",
+      "declared": "Client_Test_Case",
+      "srcHref": "srcs/client_test_case.ads.html#L10"
+    },
+    {
+      "label": "Add_Note",
+      "docHref": "docs/client.html#L146C14",
+      "declared": "Client",
+      "srcHref": "srcs/client.ads.html#L146"
+    },
+    {
+      "label": "Branch_Refs",
+      "docHref": "docs/client.html#L192C14",
+      "declared": "Client",
+      "srcHref": "srcs/client.ads.html#L192"
+    },
+    {
       "label": "Clear",
       "docHref": "docs/gnatcoll_json.html#L65C14",
       "declared": "GNATCOLL_JSON",
@@ -27,15 +45,27 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Exists",
-      "docHref": "docs/object_store.html#L22C13",
+      "docHref": "docs/object_store.html#L26C13",
       "declared": "Object_Store",
-      "srcHref": "srcs/object_store.ads.html#L22"
+      "srcHref": "srcs/object_store.ads.html#L26"
+    },
+    {
+      "label": "Export_Refs",
+      "docHref": "docs/client.html#L198C14",
+      "declared": "Client",
+      "srcHref": "srcs/client.ads.html#L198"
+    },
+    {
+      "label": "Format_Note",
+      "docHref": "docs/client.html#L200C13",
+      "declared": "Client",
+      "srcHref": "srcs/client.ads.html#L200"
     },
     {
       "label": "From_ISO_8601",
-      "docHref": "docs/client.html#L166C13",
+      "docHref": "docs/client.html#L206C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L166"
+      "srcHref": "srcs/client.ads.html#L206"
     },
     {
       "label": "Gen_Map_JSON_Object",
@@ -45,9 +75,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Get_Commit",
-      "docHref": "docs/client.html#L136C13",
+      "docHref": "docs/client.html#L160C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L136"
+      "srcHref": "srcs/client.ads.html#L160"
     },
     {
       "label": "Get_File_Sha256",
@@ -57,27 +87,33 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Get_Note",
-      "docHref": "docs/client.html#L140C13",
+      "docHref": "docs/client.html#L164C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L140"
+      "srcHref": "srcs/client.ads.html#L164"
     },
     {
-      "label": "Get_Tree_Entry",
-      "docHref": "docs/client.html#L138C13",
+      "label": "Get_Tree",
+      "docHref": "docs/client.html#L162C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L138"
-    },
-    {
-      "label": "Hash",
-      "docHref": "docs/client.html#L63C13",
-      "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L63"
+      "srcHref": "srcs/client.ads.html#L162"
     },
     {
       "label": "Hash",
-      "docHref": "docs/settings.html#L8C13",
+      "docHref": "docs/client.html#L84C13",
+      "declared": "Client",
+      "srcHref": "srcs/client.ads.html#L84"
+    },
+    {
+      "label": "Hash",
+      "docHref": "docs/message_format.html#L9C13",
+      "declared": "Message_Format",
+      "srcHref": "srcs/message_format.ads.html#L9"
+    },
+    {
+      "label": "Hash",
+      "docHref": "docs/settings.html#L10C13",
       "declared": "Settings",
-      "srcHref": "srcs/settings.ads.html#L8"
+      "srcHref": "srcs/settings.ads.html#L10"
     },
     {
       "label": "Is_Empty",
@@ -105,15 +141,21 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Object_Type",
-      "docHref": "docs/object_store.html#L18C13",
+      "docHref": "docs/object_store.html#L22C13",
       "declared": "Object_Store",
-      "srcHref": "srcs/object_store.ads.html#L18"
+      "srcHref": "srcs/object_store.ads.html#L22"
     },
     {
       "label": "Read",
       "docHref": "docs/object_store.html#L16C13",
       "declared": "Object_Store",
       "srcHref": "srcs/object_store.ads.html#L16"
+    },
+    {
+      "label": "Read_Object",
+      "docHref": "docs/object_store.html#L20C13",
+      "declared": "Object_Store",
+      "srcHref": "srcs/object_store.ads.html#L20"
     },
     {
       "label": "Remake_Directory",
@@ -128,16 +170,100 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/file_operations.ads.html#L12"
     },
     {
+      "label": "Suite",
+      "docHref": "docs/note_chain_suites.html#L5C13",
+      "declared": "Note_Chain_Suites",
+      "srcHref": "srcs/note_chain_suites.ads.html#L5"
+    },
+    {
+      "label": "Test_Create_Branch",
+      "docHref": "docs/client_test_case.html#L16C14",
+      "declared": "Client_Test_Case",
+      "srcHref": "srcs/client_test_case.ads.html#L16"
+    },
+    {
+      "label": "Test_Get_Value",
+      "docHref": "docs/settings_test_case.html#L15C14",
+      "declared": "Settings_Test_Case",
+      "srcHref": "srcs/settings_test_case.ads.html#L15"
+    },
+    {
+      "label": "Test_No_Key_Exception_Get",
+      "docHref": "docs/settings_test_case.html#L21C14",
+      "declared": "Settings_Test_Case",
+      "srcHref": "srcs/settings_test_case.ads.html#L21"
+    },
+    {
+      "label": "Test_No_Key_Exception_Remove",
+      "docHref": "docs/settings_test_case.html#L25C14",
+      "declared": "Settings_Test_Case",
+      "srcHref": "srcs/settings_test_case.ads.html#L25"
+    },
+    {
+      "label": "Test_Raising_Exception_Get",
+      "docHref": "docs/settings_test_case.html#L19C14",
+      "declared": "Settings_Test_Case",
+      "srcHref": "srcs/settings_test_case.ads.html#L19"
+    },
+    {
+      "label": "Test_Raising_Exception_Remove",
+      "docHref": "docs/settings_test_case.html#L23C14",
+      "declared": "Settings_Test_Case",
+      "srcHref": "srcs/settings_test_case.ads.html#L23"
+    },
+    {
+      "label": "Test_Remove",
+      "docHref": "docs/settings_test_case.html#L17C14",
+      "declared": "Settings_Test_Case",
+      "srcHref": "srcs/settings_test_case.ads.html#L17"
+    },
+    {
+      "label": "Test_Set_Path",
+      "docHref": "docs/settings_test_case.html#L11C14",
+      "declared": "Settings_Test_Case",
+      "srcHref": "srcs/settings_test_case.ads.html#L11"
+    },
+    {
+      "label": "Test_Set_Value",
+      "docHref": "docs/settings_test_case.html#L13C14",
+      "declared": "Settings_Test_Case",
+      "srcHref": "srcs/settings_test_case.ads.html#L13"
+    },
+    {
+      "label": "Test_Valid_Branch_Name",
+      "docHref": "docs/client_test_case.html#L18C14",
+      "declared": "Client_Test_Case",
+      "srcHref": "srcs/client_test_case.ads.html#L18"
+    },
+    {
       "label": "To_ISO_8601",
-      "docHref": "docs/client.html#L164C13",
+      "docHref": "docs/client.html#L204C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L164"
+      "srcHref": "srcs/client.ads.html#L204"
+    },
+    {
+      "label": "Tree_Entry_Hash",
+      "docHref": "docs/client.html#L66C13",
+      "declared": "Client",
+      "srcHref": "srcs/client.ads.html#L66"
+    },
+    {
+      "label": "Tree_Refs",
+      "docHref": "docs/client.html#L188C14",
+      "declared": "Client",
+      "srcHref": "srcs/client.ads.html#L188"
     },
     {
       "label": "Un_Escape_String",
       "docHref": "docs/gnatcoll_json_utility.html#L42C13",
       "declared": "GNATCOLL_JSON_Utility",
       "srcHref": "srcs/gnatcoll_json_utility.ads.html#L42"
+    },
+    {
+      "label": "Valid_Branch_Name",
+      "docHref": "docs/client.html#L202C13",
+      "declared": "Client",
+      "srcHref": "srcs/client.ads.html#L202"
     },
     {
       "label": "Write",
