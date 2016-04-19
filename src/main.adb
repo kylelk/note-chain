@@ -84,6 +84,7 @@ procedure Main is
       Tree_Result : Client.Tree;
       Note_Result : Client.Note;
       use Client;
+      use Ada.Strings.Fixed;
    begin
       if Status.Head_Commit_Ref = Client.Empty_Hash_Ref then
          TIO.Put_Line ("tree is null");
@@ -98,7 +99,8 @@ procedure Main is
       for Item of Tree_Result.Entries loop
          if Item.Entry_Type = Type_Note then
             Note_Result := Get_Note (Item.Child_Ref);
-            TIO.Put_Line(Note_Result.Object_Ref);
+            TIO.Put_Line(80 * '-');
+            TIO.Put_Line(Format_Note(Note_Result));
          end if;
       end loop;
    end List_Notes;
@@ -194,7 +196,7 @@ procedure Main is
          New_Commit.Parents.Insert(Status.Head_Commit_Ref);
       end if;
 
-      if CLI.Argument_Count > 1 then
+      if CLI.Argument_Count = 2 then
          if CLI.Argument (2) = "new" then
             Edit_Note_Content;
 --            Status.Create_Note (Note_Item);
@@ -241,14 +243,7 @@ procedure Main is
       else
          Next_Commit_Ref := Status.Head_Commit_Ref;
          if Next_Commit_Ref /= Client.Empty_Hash_Ref then
-            declare
-               procedure Display(Item : Client.Commit) is
-               begin
-                  Display_Commit(Item);
-               end Display;
-            begin
-               Client.Traverse_Commits(Next_Commit_Ref, Display'Access);
-            end;
+               Client.Traverse_Commits(Next_Commit_Ref, Display_Commit'Access);
          end if;
       end if;
    end Cmd_Log;
