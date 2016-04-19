@@ -190,14 +190,14 @@ package body Client is
       pragma Unreferenced (Status);
       Result_JSON : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash : SHA256_Value;
+      Parents_Array : JSON.JSON_Array;
       use Ada.Strings.Unbounded;
    begin
       Item.Created_At := Ada.Calendar.Clock;
-      if Item.Parent_Ref /= Empty_Hash_Ref then
-         Result_JSON.Set_Field ("parent_ref", Item.Parent_Ref);
-      else
-         Result_JSON.Set_Field ("parent_ref", JSON.JSON_Null);
-      end if;
+      for Ref of Item.Parents loop
+         JSON.Append(Parents_Array, Ref);
+      end loop;
+      Result_JSON.Set_Field ("parents", Parents_Array);
       Result_JSON.Set_Field ("tree_ref", Item.Tree_Ref);
       Result_JSON.Set_Field ("created_at", To_ISO_8601 (Item.Created_At));
       if Item.Message /= UBS.Null_Unbounded_String then
@@ -248,13 +248,15 @@ package body Client is
    function Get_Commit (Ref : SHA256_Value) return Commit is
       Item_JSON : JSON.JSON_Value;
       Result    : Commit;
+      Parents_Array : JSON.JSON_Array;
       use JSON;
    begin
       Item_JSON         := JSON.Read (Object_Store.Read (Ref), "");
       Result.Object_Ref := Ref;
-      if JSON.Kind (Item_JSON.Get ("parent_ref")) = JSON.JSON_String_Type then
-         Result.Parent_Ref := Item_JSON.Get ("parent_ref");
-      end if;
+      Parents_Array := Item_JSON.Get("parents");
+      for I in 1 .. Length(Parents_Array) loop
+         Result.Parents.Insert(JSON.Get(Parents_Array, I));
+      end loop;
       if JSON.Kind (Item_JSON.Get ("message")) = JSON.JSON_String_Type then
          Result.Message := Item_JSON.Get ("message");
       end if;
@@ -295,7 +297,7 @@ package body Client is
          end if;
          Result.Entries.Insert (Entry_Item);
       end loop;
-
+      Result.Saved := True;
       return Result;
    end Get_Tree;
 

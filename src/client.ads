@@ -19,6 +19,11 @@ package Client is
 
    type Object_Type is (Type_Commit, Type_Tree, Type_Note, Type_Blob);
 
+   package Reference_Set is new Ada.Containers.Hashed_Sets
+     (Element_Type        => SHA256_Value,
+      Hash                => Ada.Strings.Hash,
+      Equivalent_Elements => "=");
+
    -- @field Object_Ref data object which contains the record
    -- @field Saved has the record been saved yet
    type Object_Record is abstract tagged record
@@ -47,7 +52,7 @@ package Client is
    end record;
 
    type Commit is new Object_Record with record
-      Parent_Ref : SHA256_Value         := Empty_Hash_Ref;
+      Parents    : Reference_Set.Set;
       Tree_Ref   : SHA256_Value         := Empty_Hash_Ref;
       Created_At : Ada.Calendar.Time;
       Message    : UBS.Unbounded_String := UBS.Null_Unbounded_String;
@@ -59,11 +64,6 @@ package Client is
       Child_Ref  : SHA256_Value         := Empty_Hash_Ref;
       Name       : UBS.Unbounded_String := UBS.Null_Unbounded_String;
    end record;
-
-   package Reference_Set is new Ada.Containers.Hashed_Sets
-     (Element_Type        => SHA256_Value,
-      Hash                => Ada.Strings.Hash,
-      Equivalent_Elements => "=");
 
    function Tree_Entry_Hash
      (Item : Tree_Entry) return Ada.Containers.Hash_Type;

@@ -190,7 +190,7 @@ procedure Main is
    begin
       if Status.Head_Commit_Ref /= Client.Empty_Hash_Ref then
          Branch_Tree := Client.Get_Tree(Status.Head_Commit.Tree_Ref);
-         New_Commit.Parent_Ref := Status.Head_Commit_Ref;
+         New_Commit.Parents.Insert(Status.Head_Commit_Ref);
       end if;
 
       if CLI.Argument_Count > 1 then
