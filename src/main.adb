@@ -18,6 +18,7 @@ procedure Main is
    package TIO renames Ada.Text_IO;
    package UBS renames Ada.Strings.Unbounded;
 
+   -- move this code into the client setup procedure
    procedure Setup_Project is
       procedure Create_Dir (Path : String) is
       begin
@@ -234,17 +235,21 @@ procedure Main is
 
    procedure Cmd_Log (Status : in out Client.Client_Status) is
       Next_Commit_Ref : Client.SHA256_Value;
-      Next_Commit     : Client.Commit;
    begin
       if CLI.Argument_Count > 1 then
          null;
       else
          Next_Commit_Ref := Status.Head_Commit_Ref;
-         while Next_Commit_Ref /= Client.Empty_Hash_Ref loop
-            Next_Commit := Client.Get_Commit (Next_Commit_Ref);
-            Display_Commit (Next_Commit);
-            Next_Commit_Ref := Next_Commit.Parent_Ref;
-         end loop;
+         if Next_Commit_Ref /= Client.Empty_Hash_Ref then
+            declare
+               procedure Display(Item : Client.Commit) is
+               begin
+                  Display_Commit(Item);
+               end Display;
+            begin
+               Client.Traverse_Commits(Next_Commit_Ref, Display'Access);
+            end;
+         end if;
       end if;
    end Cmd_Log;
 

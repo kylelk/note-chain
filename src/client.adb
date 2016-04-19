@@ -4,6 +4,7 @@ with GNAT.Calendar.Time_IO;
 with Ada.Calendar.Formatting;
 with Ada.Streams.Stream_IO;
 with GNAT.Regpat;
+with Ada.Containers;
 
 with Config;
 with File_Operations;
@@ -195,7 +196,7 @@ package body Client is
    begin
       Item.Created_At := Ada.Calendar.Clock;
       for Ref of Item.Parents loop
-         JSON.Append(Parents_Array, Ref);
+         JSON.Append(Parents_Array, JSON.Create(Ref));
       end loop;
       Result_JSON.Set_Field ("parents", Parents_Array);
       Result_JSON.Set_Field ("tree_ref", Item.Tree_Ref);
@@ -249,13 +250,15 @@ package body Client is
       Item_JSON : JSON.JSON_Value;
       Result    : Commit;
       Parents_Array : JSON.JSON_Array;
+      Parent_Ref : SHA256_Value;
       use JSON;
    begin
       Item_JSON         := JSON.Read (Object_Store.Read (Ref), "");
       Result.Object_Ref := Ref;
       Parents_Array := Item_JSON.Get("parents");
       for I in 1 .. Length(Parents_Array) loop
-         Result.Parents.Insert(JSON.Get(Parents_Array, I));
+         Parent_Ref := JSON.Get(Val => JSON.Get(Parents_Array, I));
+         Result.Parents.Insert(Parent_Ref);
       end loop;
       if JSON.Kind (Item_JSON.Get ("message")) = JSON.JSON_String_Type then
          Result.Message := Item_JSON.Get ("message");
@@ -380,14 +383,15 @@ package body Client is
       Next_Commit_Ref : Client.SHA256_Value;
       Next_Commit     : Client.Commit;
    begin
-      Next_Commit_Ref := Item.Commit_Ref;
-      while Next_Commit_Ref /= Client.Empty_Hash_Ref loop
-         exit when References.Contains (Next_Commit_Ref);
-         Next_Commit := Client.Get_Commit (Next_Commit_Ref);
-         References.Insert (Next_Commit_Ref);
-         Tree_Refs (Next_Commit.Tree_Ref, References);
-         Next_Commit_Ref := Next_Commit.Parent_Ref;
-      end loop;
+--        Next_Commit_Ref := Item.Commit_Ref;
+--        while Next_Commit_Ref /= Client.Empty_Hash_Ref loop
+--           exit when References.Contains (Next_Commit_Ref);
+--           Next_Commit := Client.Get_Commit (Next_Commit_Ref);
+--           References.Insert (Next_Commit_Ref);
+--           Tree_Refs (Next_Commit.Tree_Ref, References);
+--           Next_Commit_Ref := Next_Commit.Parent_Ref;
+--        end loop;
+null;
    end Branch_Refs;
 
    procedure Export (Status : Client_Status; Filename : String) is
@@ -448,6 +452,27 @@ package body Client is
 
       return Pat.Match (Valid_Pattern, Name);
    end Valid_Branch_Name;
+
+   procedure Traverse_Commits (Ref : SHA256_Value; Proc : Commit_Access) is
+      Next_Ref : Client.SHA256_Value := Ref;
+         Next_Commit     : Client.Commit;
+         Root : Boolean := False;
+         use Ada.Containers;
+   begin
+       while not Root loop
+         Next_Commit := Get_Commit(Next_Ref);
+         Proc.all(Next_Commit);
+            if Next_Commit.Parents.Length = 1 then
+               Next_Ref := Reference_Set.Element(Next_Commit.Parents.First);
+            elsif Next_Commit.Parents.Length > 1 then
+               for Parent_Ref of Next_Commit.Parents loop
+                  Traverse_Commit(Parent_Ref);
+               end loop;
+            else
+               Root := True;
+            end if;
+         end loop;
+   end Traverse_Commits;
 
    function Random_SHA256 return SHA256_Value is
       package Guess_Generator is new Ada.Numerics.Discrete_Random (Character);

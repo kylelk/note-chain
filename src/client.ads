@@ -105,6 +105,8 @@ package Client is
       First_Load : Boolean := False;
    end record;
 
+   type Commit_Access is access procedure (Item : Commit);
+
    No_Branch_Error : exception;
    Branch_Name_Format_Error : exception;
 
@@ -203,6 +205,8 @@ package Client is
    function Format_Note (Item : Note) return String;
 
    function Valid_Branch_Name (Name : String) return Boolean;
+
+   procedure Traverse_Commits (Ref : SHA256_Value; Proc : Commit_Access);
 
    function To_ISO_8601 (Date : Ada.Calendar.Time) return String;
 
