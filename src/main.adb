@@ -6,6 +6,7 @@ with Ada.Strings.Unbounded;
 with GNAT.OS_Lib;
 with Ada.Calendar.Formatting;
 with Ada.Strings.Fixed;
+with Ada.Containers.Generic_Array_Sort;
 
 with Config;
 with Client;
@@ -82,7 +83,6 @@ procedure Main is
    procedure List_Notes (Status : Client.Client_Status) is
       Tree_Ref    : Client.SHA256_Value;
       Tree_Result : Client.Tree;
-      Note_Result : Client.Note;
       use Client;
       use Ada.Strings.Fixed;
    begin
@@ -96,13 +96,30 @@ procedure Main is
       end if;
 
       Tree_Result := Get_Tree(Tree_Ref);
-      for Item of Tree_Result.Entries loop
-         if Item.Entry_Type = Type_Note then
-            Note_Result := Get_Note (Item.Child_Ref);
+      declare
+         type Note_Array is array (Integer range <>) of Note;
+         Note_Count : constant Integer := Integer(Tree_Result.Entries.Length);
+         Notes : Note_Array(1 .. Note_Count);
+         I : Integer := 1;
+         function "<" (L, R : Note) return Boolean is
+            use Ada.Calendar;
+         begin
+            return L.Created_At > R.Created_At;
+         end "<";
+         procedure Sort is new Ada.Containers.Generic_Array_Sort(Integer, Note, Note_Array);
+      begin
+         for Item of Tree_Result.Entries loop
+            if Item.Entry_Type = Type_Note then
+               Notes(I) := Get_Note (Item.Child_Ref);
+            end if;
+            I := I + 1;
+         end loop;
+         Sort(Notes);
+         for Item of Notes loop
             TIO.Put_Line(80 * '-');
-            TIO.Put_Line(Format_Note(Note_Result));
-         end if;
-      end loop;
+            TIO.Put_Line(Format_Note(Item));
+         end loop;
+      end;
    end List_Notes;
 
    procedure List_Settings (Status : Client.Client_Status) is
