@@ -46,8 +46,7 @@ package Client is
       Author     : UBS.Unbounded_String := UBS.Null_Unbounded_String;
    end record;
 
-   type Commit is record
-      Object_Ref : SHA256_Value         := Empty_Hash_Ref;
+   type Commit is new Object_Record with record
       Parent_Ref : SHA256_Value         := Empty_Hash_Ref;
       Tree_Ref   : SHA256_Value         := Empty_Hash_Ref;
       Created_At : Ada.Calendar.Time;
@@ -75,8 +74,7 @@ package Client is
       Hash                => Tree_Entry_Hash,
       Equivalent_Elements => "=");
 
-   type Tree is record
-      Object_Ref : SHA256_Value := Empty_Hash_Ref;
+   type Tree is new Object_Record with record
       Entries : Tree_Entry_Set.Set;
    end record;
 
@@ -147,7 +145,7 @@ package Client is
    -- creates a new note object with the contents of the temporary note file
    procedure Create_Note (Status : in out Client_Status; Item : out Note'Class);
 
-   procedure Add_Note(T : in out Tree; Note_Entry : Note);
+   procedure Add_Note(T : in out Tree; Note_Entry : Note'Class);
 
    -- @summary
    -- saves a Note to the object store
@@ -155,11 +153,11 @@ package Client is
 
    -- @summary
    -- saves a Tree_Entry to the object store
-   procedure Save (Status : in out Client_Status; Item : in out Tree);
+   procedure Save (Status : in out Client_Status; Item : in out Tree'Class);
 
    -- @summary
    -- saves a Commit to the object store
-   procedure Save (Status : in out Client_Status; Item : in out Commit);
+   procedure Save (Status : in out Client_Status; Item : in out Commit'Class);
 
    function Get_Commit (Ref : SHA256_Value) return Commit;
 
@@ -173,7 +171,7 @@ package Client is
 
    -- @summary
    -- returns the commit at the head of the current branch
-   function Head_Commit (Status : Client_Status) return Commit;
+   function Head_Commit (Status : Client_Status) return Commit'Class;
 
    -- @summary
    -- returns the head branch
@@ -187,7 +185,7 @@ package Client is
 
    -- @summary
    -- updates the current branch head to a commit
-   procedure Set_Head (Status : in out Client_Status; Item : Commit);
+   procedure Set_Head (Status : in out Client_Status; Item : Commit'Class);
 
    procedure Tree_Refs
      (Start_Ref  :        SHA256_Value;

@@ -120,7 +120,7 @@ package body Client is
       end if;
    end Create_Note;
 
-   procedure Add_Note (T : in out Tree; Note_Entry : Note) is
+   procedure Add_Note (T : in out Tree; Note_Entry : Note'Class) is
       New_Entry : Tree_Entry;
    begin
       New_Entry.Entry_Type := Type_Note;
@@ -162,7 +162,7 @@ package body Client is
       Ada.Text_IO.Close (Data_File);
    end Save_Branches;
 
-   procedure Save (Status : in out Client_Status; Item : in out Tree) is
+   procedure Save (Status : in out Client_Status; Item : in out Tree'Class) is
       pragma Unreferenced (Status);
       Result_JSON   : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash   : SHA256_Value;
@@ -186,7 +186,7 @@ package body Client is
       Item.Object_Ref := Result_Hash;
    end Save;
 
-   procedure Save (Status : in out Client_Status; Item : in out Commit) is
+   procedure Save (Status : in out Client_Status; Item : in out Commit'Class) is
       pragma Unreferenced (Status);
       Result_JSON : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash : SHA256_Value;
@@ -264,7 +264,7 @@ package body Client is
       return Result;
    end Get_Commit;
 
-   function Head_Commit (Status : Client_Status) return Commit is
+   function Head_Commit (Status : Client_Status) return Commit'Class is
    begin
       return Get_Commit (Status.Head_Commit_Ref);
    end Head_Commit;
@@ -342,7 +342,7 @@ package body Client is
       return Status.Branch_Status.Branches.Contains (Branch_Name);
    end Branch_Exists;
 
-   procedure Set_Head (Status : in out Client_Status; Item : Commit) is
+   procedure Set_Head (Status : in out Client_Status; Item : Commit'Class) is
    begin
       Status.Set_Head_Ref (Item.Object_Ref);
    end Set_Head;
