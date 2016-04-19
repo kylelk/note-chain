@@ -104,7 +104,7 @@ package body Client is
       end if;
    end Copy_Branch;
 
-   procedure Create_Note (Status : in out Client_Status; Item : out Note) is
+   procedure Create_Note (Status : in out Client_Status; Item : out Note'Class) is
       Note_Content : constant String :=
         File_Operations.Load_File (Config.Temp_Note_File);
    begin
@@ -210,7 +210,7 @@ package body Client is
       Item.Saved      := True;
    end Save;
 
-   procedure Save (Status : in out Client_Status; Item : in out Note) is
+   procedure Save (Status : in out Client_Status; Item : in out Note'Class) is
       pragma Unreferenced (Status);
       Result_JSON : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash : SHA256_Value;

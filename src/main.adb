@@ -196,8 +196,10 @@ procedure Main is
       if CLI.Argument_Count > 1 then
          if CLI.Argument (2) = "new" then
             Edit_Note_Content;
-            Status.Create_Note (Note_Item);
-            Status.Save (Note_Item);
+--            Status.Create_Note (Note_Item);
+            Client.Create_Note(Status, Note_Item);
+            Client.Save(Status, Note_Item);
+            -- Status.Save (Note_Item);
 
             -- add note to tree
             Client.Add_Note(Branch_Tree, Note_Item);

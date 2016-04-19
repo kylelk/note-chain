@@ -19,6 +19,10 @@ package Client is
 
    type Object_Type is (Type_Commit, Type_Tree, Type_Note, Type_Blob);
 
+   type Object_Record is abstract tagged record
+      Object_Ref : SHA256_Value         := Empty_Hash_Ref;
+   end record;
+
    -- Stores note infomation
    -- @field Object_Ref data object which contains the record
    -- @field Note_Text content of the note
@@ -29,8 +33,8 @@ package Client is
    -- @field Next_Ref reference to the next note version
    -- @field Version version number of the note edit
    -- @field Saved has the record been saved yet
-   type Note is record
-      Object_Ref : SHA256_Value         := Empty_Hash_Ref;
+   type Note is new Object_Record with record
+      --Object_Ref : SHA256_Value         := Empty_Hash_Ref;
       Note_Text  : UBS.Unbounded_String;
       Encoding   : UBS.Unbounded_String;
       Uniq_UUID  : SHA256_Value;
@@ -141,13 +145,13 @@ package Client is
    -- @summary initalizes a new note object
    -- @description
    -- creates a new note object with the contents of the temporary note file
-   procedure Create_Note (Status : in out Client_Status; Item : out Note);
+   procedure Create_Note (Status : in out Client_Status; Item : out Note'Class);
 
    procedure Add_Note(T : in out Tree; Note_Entry : Note);
 
    -- @summary
    -- saves a Note to the object store
-   procedure Save (Status : in out Client_Status; Item : in out Note);
+   procedure Save (Status : in out Client_Status; Item : in out Note'Class);
 
    -- @summary
    -- saves a Tree_Entry to the object store
