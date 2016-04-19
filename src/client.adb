@@ -380,18 +380,17 @@ package body Client is
      (Item       :        Branch;
       References : in out Reference_Set.Set)
    is
-      Next_Commit_Ref : Client.SHA256_Value;
-      Next_Commit     : Client.Commit;
+      procedure Commit_Refs(Item : Commit) is
+      begin
+         if not References.Contains(Item.Object_Ref) then
+            References.Insert(Item.Object_Ref);
+            Tree_Refs(Item.Tree_Ref, References);
+         end if;
+      end Commit_Refs;
    begin
---        Next_Commit_Ref := Item.Commit_Ref;
---        while Next_Commit_Ref /= Client.Empty_Hash_Ref loop
---           exit when References.Contains (Next_Commit_Ref);
---           Next_Commit := Client.Get_Commit (Next_Commit_Ref);
---           References.Insert (Next_Commit_Ref);
---           Tree_Refs (Next_Commit.Tree_Ref, References);
---           Next_Commit_Ref := Next_Commit.Parent_Ref;
---        end loop;
-null;
+      if Item.Commit_Ref /= Client.Empty_Hash_Ref then
+         Client.Traverse_Commits(Item.Commit_Ref, Commit_Refs'Access);
+      end if;
    end Branch_Refs;
 
    procedure Export (Status : Client_Status; Filename : String) is
@@ -453,11 +452,11 @@ null;
       return Pat.Match (Valid_Pattern, Name);
    end Valid_Branch_Name;
 
-   procedure Traverse_Commits (Ref : SHA256_Value; Proc : Commit_Access) is
+   procedure Traverse_Commits (Ref : SHA256_Value; Proc : access procedure(Item : Commit)) is
       Next_Ref : Client.SHA256_Value := Ref;
-         Next_Commit     : Client.Commit;
-         Root : Boolean := False;
-         use Ada.Containers;
+      Next_Commit     : Client.Commit;
+      Root : Boolean := False;
+      use Ada.Containers;
    begin
        while not Root loop
          Next_Commit := Get_Commit(Next_Ref);
@@ -466,7 +465,7 @@ null;
                Next_Ref := Reference_Set.Element(Next_Commit.Parents.First);
             elsif Next_Commit.Parents.Length > 1 then
                for Parent_Ref of Next_Commit.Parents loop
-                  Traverse_Commit(Parent_Ref);
+                  Traverse_Commits(Parent_Ref, Proc);
                end loop;
             else
                Root := True;
