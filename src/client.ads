@@ -22,8 +22,8 @@ package Client is
    -- @field Object_Ref data object which contains the record
    -- @field Saved has the record been saved yet
    type Object_Record is abstract tagged record
-      Object_Ref : SHA256_Value         := Empty_Hash_Ref;
-      Saved      : Boolean              := False;
+      Object_Ref : SHA256_Value := Empty_Hash_Ref;
+      Saved      : Boolean      := False;
    end record;
 
    -- Stores note infomation
@@ -142,9 +142,11 @@ package Client is
    -- @summary initalizes a new note object
    -- @description
    -- creates a new note object with the contents of the temporary note file
-   procedure Create_Note (Status : in out Client_Status; Item : out Note'Class);
+   procedure Create_Note
+     (Status : in out Client_Status;
+      Item   :    out Note'Class);
 
-   procedure Add_Note(T : in out Tree; Note_Entry : Note'Class);
+   procedure Add_Note (T : in out Tree; Note_Entry : Note'Class);
 
    -- @summary
    -- saves a Note to the object store
