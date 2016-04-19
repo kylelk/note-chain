@@ -19,12 +19,14 @@ package Client is
 
    type Object_Type is (Type_Commit, Type_Tree, Type_Note, Type_Blob);
 
+   -- @field Object_Ref data object which contains the record
+   -- @field Saved has the record been saved yet
    type Object_Record is abstract tagged record
       Object_Ref : SHA256_Value         := Empty_Hash_Ref;
+      Saved      : Boolean              := False;
    end record;
 
    -- Stores note infomation
-   -- @field Object_Ref data object which contains the record
    -- @field Note_Text content of the note
    -- @field Encoding text encoding of the note content
    -- @field Uniq_UUID unique note identifier
@@ -32,7 +34,6 @@ package Client is
    -- @field Updated_At when this version of the note was created
    -- @field Next_Ref reference to the next note version
    -- @field Version version number of the note edit
-   -- @field Saved has the record been saved yet
    type Note is new Object_Record with record
       --Object_Ref : SHA256_Value         := Empty_Hash_Ref;
       Note_Text  : UBS.Unbounded_String;
@@ -42,7 +43,6 @@ package Client is
       Updated_At : Ada.Calendar.Time;
       Next_Ref   : SHA256_Value         := Empty_Hash_Ref;
       Version    : Integer              := 1;
-      Saved      : Boolean              := False;
       Author     : UBS.Unbounded_String := UBS.Null_Unbounded_String;
    end record;
 
@@ -51,7 +51,6 @@ package Client is
       Tree_Ref   : SHA256_Value         := Empty_Hash_Ref;
       Created_At : Ada.Calendar.Time;
       Message    : UBS.Unbounded_String := UBS.Null_Unbounded_String;
-      Saved      : Boolean              := False;
    end record;
 
    type Tree_Entry is record

@@ -1,7 +1,7 @@
 GNATdoc.InheritanceIndex = [
   {
     "label": "Client_Status",
-    "docHref": "docs/client.html#L100C9"
+    "docHref": "docs/client.html#L102C9"
   },
   {
     "label": "Controlled",
@@ -15,6 +15,24 @@ GNATdoc.InheritanceIndex = [
   {
     "label": "Message",
     "docHref": "docs/message_format.html#L20C9"
+  },
+  {
+    "label": "Object_Record",
+    "docHref": "docs/client.html#L22C9",
+    "inherited": [
+      {
+        "label": "Commit",
+        "docHref": "docs/client.html#L49C9"
+      },
+      {
+        "label": "Note",
+        "docHref": "docs/client.html#L36C9"
+      },
+      {
+        "label": "Tree",
+        "docHref": "docs/client.html#L77C9"
+      }
+    ]
   },
   {
     "label": "Settings_Data",
