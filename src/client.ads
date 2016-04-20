@@ -206,6 +206,8 @@ package Client is
 
    procedure Traverse_Commits (Ref : SHA256_Value; Proc : access procedure(Item : Commit));
 
+   function Join_Trees(Left, Right : Tree) return Tree;
+
    function To_ISO_8601 (Date : Ada.Calendar.Time) return String;
 
    function From_ISO_8601 (Date_Str : String) return Ada.Calendar.Time;

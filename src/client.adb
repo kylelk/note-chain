@@ -473,6 +473,13 @@ package body Client is
          end loop;
    end Traverse_Commits;
 
+   function Join_Trees(Left, Right : Tree) return Tree is
+      Result : Tree;
+   begin
+      Result.Entries := Tree_Entry_Set.Union(Left.Entries, Right.Entries);
+      return Result;
+   end Join_Trees;
+
    function Random_SHA256 return SHA256_Value is
       package Guess_Generator is new Ada.Numerics.Discrete_Random (Character);
       Gen  : Guess_Generator.Generator;
