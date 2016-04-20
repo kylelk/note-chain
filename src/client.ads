@@ -40,7 +40,6 @@ package Client is
    -- @field Next_Ref reference to the next note version
    -- @field Version version number of the note edit
    type Note is new Object_Record with record
-      --Object_Ref : SHA256_Value         := Empty_Hash_Ref;
       Note_Text  : UBS.Unbounded_String;
       Encoding   : UBS.Unbounded_String;
       Uniq_UUID  : SHA256_Value;

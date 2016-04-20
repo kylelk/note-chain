@@ -32,6 +32,12 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/client.ads.html#L18"
     },
     {
+      "label": "Export_Extension",
+      "docHref": "docs/config.html#L33C4",
+      "declared": "Config",
+      "srcHref": "srcs/config.ads.html#L33"
+    },
+    {
       "label": "JSON_Null",
       "docHref": "docs/gnatcoll_json.html#L56C4",
       "declared": "GNATCOLL_JSON",
