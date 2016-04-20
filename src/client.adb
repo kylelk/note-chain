@@ -510,6 +510,7 @@ package body Client is
             for Parent_Ref of Next_Commit.Parents loop
                Traverse_Commits (Parent_Ref, Proc);
             end loop;
+            Root := True;
          else
             Root := True;
          end if;
