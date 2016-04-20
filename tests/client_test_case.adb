@@ -23,6 +23,7 @@ package body Client_Test_Case is
       pragma Unreferenced (T);
    begin
       Assert (Client.Valid_Branch_Name ("test"), "failed branch name");
+      Assert (Client.Valid_Branch_Name ("example.com"), "failed branch name");
       Assert
         (not Client.Valid_Branch_Name ("test..master"),
          "failed branch name");
