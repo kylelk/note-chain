@@ -137,6 +137,14 @@ procedure Main is
    end List_Settings;
 
    procedure Cmd_Branch (Info : in out Client.Client_Status) is
+      procedure Merge_Branch(Name : String) is
+         Current_Branch, Other_Branch : Client.Branch;
+      begin
+         Current_Branch := Info.Get_Branch(Info.Branch_Status.Head);
+         Other_Branch := Info.Get_Branch(UBS.To_Unbounded_String(Name));
+         Client.Merge_Branches(Current_Branch, Other_Branch);
+         Info.Set_Branch(Current_Branch);
+      end Merge_Branch;
    begin
       if CLI.Argument_Count > 1 then
          if CLI.Argument_Count > 2 then
@@ -153,7 +161,7 @@ procedure Main is
                TIO.Put_Line ("changed to branch: " & CLI.Argument (3));
 
             elsif CLI.Argument (2) = "merge" then
-               TIO.Put_Line ("TODO: merge branch");
+               Merge_Branch(CLI.Argument(3));
 
             elsif CLI.Argument (2) = "remove" then
                TIO.Put_Line ("TODO: remove");
@@ -201,20 +209,18 @@ procedure Main is
       if CLI.Argument_Count = 2 then
          if CLI.Argument (2) = "new" then
             Edit_Note_Content;
---            Status.Create_Note (Note_Item);
             Client.Create_Note(Status, Note_Item);
-            Client.Save(Status, Note_Item);
-            -- Status.Save (Note_Item);
+            Note_Item.Save;
 
             -- add note to tree
             Client.Add_Note(Branch_Tree, Note_Item);
 
             -- save tree
-            Status.Save(Branch_Tree);
+            Branch_Tree.Save;
 
             -- create new commit for changes
             New_Commit.Tree_Ref := Branch_Tree.Object_Ref;
-            Status.Save (New_Commit);
+            New_Commit.Save;
 
             -- update the head commit to point to the newest tree
             Status.Set_Head (New_Commit);

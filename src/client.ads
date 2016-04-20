@@ -149,15 +149,15 @@ package Client is
 
    -- @summary
    -- saves a Note to the object store
-   procedure Save (Status : in out Client_Status; Item : in out Note'Class);
+   procedure Save (Item : in out Note);
 
    -- @summary
    -- saves a Tree_Entry to the object store
-   procedure Save (Status : in out Client_Status; Item : in out Tree'Class);
+   procedure Save (Item : in out Tree);
 
    -- @summary
    -- saves a Commit to the object store
-   procedure Save (Status : in out Client_Status; Item : in out Commit'Class);
+   procedure Save (Item : in out Commit);
 
    function Get_Commit (Ref : SHA256_Value) return Commit;
 
@@ -183,6 +183,11 @@ package Client is
      (Status      : Client_Status;
       Branch_Name : UBS.Unbounded_String) return Boolean;
 
+   -- @summary get a branch by it's name
+   function Get_Branch
+     (Status : Client_Status;
+      Name   : UBS.Unbounded_String) return Branch;
+
    -- @summary
    -- updates the current branch head to a commit
    procedure Set_Head (Status : in out Client_Status; Item : Commit'Class);
@@ -206,9 +211,18 @@ package Client is
 
    -- @summary
    -- Traverse the commits and pass each commit to a procedure
-   procedure Traverse_Commits (Ref : SHA256_Value; Proc : access procedure(Item : Commit));
+   procedure Traverse_Commits
+     (Ref  : SHA256_Value;
+      Proc : access procedure (Item : Commit));
 
-   function Join_Trees(Left, Right : Tree) return Tree;
+   -- @summary joins together the enties of both trees
+   function Join_Trees (Left, Right : Tree) return Tree;
+
+   -- @summary
+   -- Merges two branches together
+   -- @description
+   -- merges branch B into branch A and creates a new commit for the merge
+   procedure Merge_Branches (A : in out Branch; B : Branch);
 
    function To_ISO_8601 (Date : Ada.Calendar.Time) return String;
 

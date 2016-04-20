@@ -3,6 +3,7 @@ with Ada.Directories;
 with File_Operations;
 with Config;
 with Ada.Strings.Fixed;
+with Ada.IO_Exceptions;
 
 package body Object_Store is
    package DIR_OPS renames GNAT.Directory_Operations;
@@ -20,7 +21,11 @@ package body Object_Store is
       TIO.Put (Data_File, Object_Type & ' ' & Length_Str & ASCII.LF & Content);
       TIO.Close (Data_File);
       Hash := File_Operations.Get_File_Sha256 (Config.Temp_Object_File);
-      Ada.Directories.Rename (Config.Temp_Object_File, Object_Path (Hash));
+      begin
+         Ada.Directories.Rename (Config.Temp_Object_File, Object_Path (Hash));
+      exception
+         when Ada.IO_Exceptions.Use_Error => null;
+      end;
    end Write;
 
    function Read (Hash : SHA256_Value) return String is

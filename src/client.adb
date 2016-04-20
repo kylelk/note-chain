@@ -193,8 +193,7 @@ package body Client is
       Ada.Text_IO.Close (Data_File);
    end Save_Branches;
 
-   procedure Save (Status : in out Client_Status; Item : in out Tree'Class) is
-      pragma Unreferenced (Status);
+   procedure Save (Item : in out Tree) is
       Result_JSON   : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash   : SHA256_Value;
       Entry_JSON    : JSON.JSON_Value;
@@ -217,11 +216,7 @@ package body Client is
       Item.Object_Ref := Result_Hash;
    end Save;
 
-   procedure Save
-     (Status : in out Client_Status;
-      Item   : in out Commit'Class)
-   is
-      pragma Unreferenced (Status);
+   procedure Save (Item : in out Commit) is
       Result_JSON   : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash   : SHA256_Value;
       Parents_Array : JSON.JSON_Array;
@@ -244,8 +239,7 @@ package body Client is
       Item.Saved      := True;
    end Save;
 
-   procedure Save (Status : in out Client_Status; Item : in out Note'Class) is
-      pragma Unreferenced (Status);
+   procedure Save (Item : in out Note) is
       Result_JSON : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash : SHA256_Value;
       use UBS;
@@ -379,6 +373,18 @@ package body Client is
    begin
       return Status.Branch_Status.Branches.Contains (Branch_Name);
    end Branch_Exists;
+
+   function Get_Branch
+     (Status : Client_Status;
+      Name   : UBS.Unbounded_String) return Branch
+   is
+   begin
+      if Status.Branch_Exists (Name) then
+         return Status.Branch_Status.Branches.Element (Name);
+      else
+         raise No_Branch_Error;
+      end if;
+   end Get_Branch;
 
    procedure Set_Head (Status : in out Client_Status; Item : Commit'Class) is
    begin
@@ -516,6 +522,41 @@ package body Client is
       Result.Entries := Tree_Entry_Set.Union (Left.Entries, Right.Entries);
       return Result;
    end Join_Trees;
+
+   procedure Merge_Branches (A : in out Branch; B : Branch) is
+      Commit_A, Commit_B : Commit;
+
+      Merged_Tree : Tree;
+      New_Commit  : Client.Commit;
+   begin
+      -- exit if the commits are null
+      if A.Commit_Ref = Empty_Hash_Ref or B.Commit_Ref = Empty_Hash_Ref then
+         return;
+      end if;
+
+      -- exit if the branches are equal
+      if A.Commit_Ref = B.Commit_Ref then
+         Ada.Text_IO.Put_Line("Error: branches are equal");
+         return;
+      end if;
+
+      Commit_A    := Get_Commit (A.Commit_Ref);
+      Commit_B    := Get_Commit (B.Commit_Ref);
+      Merged_Tree :=
+        Join_Trees
+          (Left  => Get_Tree (Commit_A.Tree_Ref),
+           Right => Get_Tree (Commit_B.Tree_Ref));
+      Ada.Text_IO.Put_Line("saving tree");
+      Merged_Tree.Save;
+
+      New_Commit.Tree_Ref := Merged_Tree.Object_Ref;
+      New_Commit.Parents.Insert (Commit_A.Object_Ref);
+      New_Commit.Parents.Insert (Commit_B.Object_Ref);
+      Ada.Text_IO.Put_Line("saving commit");
+      New_Commit.Save;
+
+      A.Commit_Ref := New_Commit.Object_Ref;
+   end Merge_Branches;
 
    function Random_SHA256 return SHA256_Value is
       package Guess_Generator is new Ada.Numerics.Discrete_Random (Character);
