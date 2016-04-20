@@ -202,8 +202,11 @@ package Client is
 
    function Format_Note (Item : Note) return String;
 
+   -- @summary validate a branch name
    function Valid_Branch_Name (Name : String) return Boolean;
 
+   -- @summary
+   -- Traverse the commits and pass each commit to a procedure
    procedure Traverse_Commits (Ref : SHA256_Value; Proc : access procedure(Item : Commit));
 
    function Join_Trees(Left, Right : Tree) return Tree;

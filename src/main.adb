@@ -1,5 +1,3 @@
-with Ada.Directories;
-with Ada.IO_Exceptions;
 with Ada.Command_Line;
 with Ada.Text_IO;
 with Ada.Strings.Unbounded;
@@ -19,19 +17,6 @@ procedure Main is
    package TIO renames Ada.Text_IO;
    package UBS renames Ada.Strings.Unbounded;
 
-   -- move this code into the client setup procedure
-   procedure Setup_Project is
-      procedure Create_Dir (Path : String) is
-      begin
-         if not Ada.Directories.Exists (Path) then
-            Ada.Directories.Create_Directory (Path);
-         end if;
-      end Create_Dir;
-   begin
-      Create_Dir (Config.Data_Dir);
-      Create_Dir (Config.Object_Dir);
-      Create_Dir (Config.Temp_Dir);
-   end Setup_Project;
 
    procedure Execute_System (Command : String) is
       use GNAT.OS_Lib;
@@ -351,25 +336,9 @@ procedure Main is
       end loop;
    end Display_Help;
 
-   Default_Branch : Client.Branch;
-   First_Load     : Boolean := False;
    Note_Client    : Client.Client_Status;
 begin
-   Setup_Project;
    Note_Client.Init;
-
-   begin
-      Note_Client.Load_Branches;
-   exception
-      when Ada.IO_Exceptions.Name_Error =>
-         First_Load := True;
-   end;
-
-   if First_Load then
-      Default_Branch.Name := Config.Default_Branch_Name;
-      Note_Client.Set_Branch (Default_Branch);
-      Note_Client.Checkout_Branch (Config.Default_Branch_Name);
-   end if;
 
    if CLI.Argument_Count >= 1 then
       if CLI.Argument (1) = "branch" then

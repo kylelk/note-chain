@@ -10,11 +10,38 @@ with Config;
 with File_Operations;
 with Object_Store;
 with Message_Format;
+with Ada.Directories;
+with Ada.IO_Exceptions;
 
 package body Client is
    procedure Init (Status : in out Client_Status) is
-      pragma Unreferenced (Status);
+      procedure Create_Dir (Path : String) is
+      begin
+         if not Ada.Directories.Exists (Path) then
+            Ada.Directories.Create_Directory (Path);
+         end if;
+      end Create_Dir;
+
+      Default_Branch : Client.Branch;
+      First_Load     : Boolean := False;
    begin
+      Create_Dir (Config.Data_Dir);
+      Create_Dir (Config.Object_Dir);
+      Create_Dir (Config.Temp_Dir);
+
+      begin
+         Status.Load_Branches;
+      exception
+         when Ada.IO_Exceptions.Name_Error =>
+            First_Load := True;
+      end;
+
+      if First_Load then
+         Default_Branch.Name := Config.Default_Branch_Name;
+         Status.Set_Branch (Default_Branch);
+         Status.Checkout_Branch (Config.Default_Branch_Name);
+      end if;
+
       Status.Settings_Status.Load;
    end Init;
 
@@ -105,7 +132,10 @@ package body Client is
       end if;
    end Copy_Branch;
 
-   procedure Create_Note (Status : in out Client_Status; Item : out Note'Class) is
+   procedure Create_Note
+     (Status : in out Client_Status;
+      Item   :    out Note'Class)
+   is
       Note_Content : constant String :=
         File_Operations.Load_File (Config.Temp_Note_File);
    begin
@@ -159,7 +189,7 @@ package body Client is
         (Data_File,
          Ada.Text_IO.Out_File,
          Config.Branch_JSON_File);
-      Ada.Text_IO.Put (Data_File, Result_JSON.Write(Compact => False));
+      Ada.Text_IO.Put (Data_File, Result_JSON.Write (Compact => False));
       Ada.Text_IO.Close (Data_File);
    end Save_Branches;
 
@@ -187,16 +217,19 @@ package body Client is
       Item.Object_Ref := Result_Hash;
    end Save;
 
-   procedure Save (Status : in out Client_Status; Item : in out Commit'Class) is
+   procedure Save
+     (Status : in out Client_Status;
+      Item   : in out Commit'Class)
+   is
       pragma Unreferenced (Status);
-      Result_JSON : constant JSON.JSON_Value := JSON.Create_Object;
-      Result_Hash : SHA256_Value;
+      Result_JSON   : constant JSON.JSON_Value := JSON.Create_Object;
+      Result_Hash   : SHA256_Value;
       Parents_Array : JSON.JSON_Array;
       use Ada.Strings.Unbounded;
    begin
       Item.Created_At := Ada.Calendar.Clock;
       for Ref of Item.Parents loop
-         JSON.Append(Parents_Array, JSON.Create(Ref));
+         JSON.Append (Parents_Array, JSON.Create (Ref));
       end loop;
       Result_JSON.Set_Field ("parents", Parents_Array);
       Result_JSON.Set_Field ("tree_ref", Item.Tree_Ref);
@@ -247,18 +280,18 @@ package body Client is
    end Head_Commit_Ref;
 
    function Get_Commit (Ref : SHA256_Value) return Commit is
-      Item_JSON : JSON.JSON_Value;
-      Result    : Commit;
+      Item_JSON     : JSON.JSON_Value;
+      Result        : Commit;
       Parents_Array : JSON.JSON_Array;
-      Parent_Ref : SHA256_Value;
+      Parent_Ref    : SHA256_Value;
       use JSON;
    begin
       Item_JSON         := JSON.Read (Object_Store.Read (Ref), "");
       Result.Object_Ref := Ref;
-      Parents_Array := Item_JSON.Get("parents");
-      for I in 1 .. Length(Parents_Array) loop
-         Parent_Ref := JSON.Get(Val => JSON.Get(Parents_Array, I));
-         Result.Parents.Insert(Parent_Ref);
+      Parents_Array     := Item_JSON.Get ("parents");
+      for I in 1 .. Length (Parents_Array) loop
+         Parent_Ref := JSON.Get (Val => JSON.Get (Parents_Array, I));
+         Result.Parents.Insert (Parent_Ref);
       end loop;
       if JSON.Kind (Item_JSON.Get ("message")) = JSON.JSON_String_Type then
          Result.Message := Item_JSON.Get ("message");
@@ -287,8 +320,8 @@ package body Client is
       Entry_JSON    : JSON.JSON_Value;
       use JSON;
    begin
-      Item_JSON := JSON.Read (Object_Store.Read (Ref), "");
-      Entries_Array := JSON.Get(Item_JSON, "entries");
+      Item_JSON     := JSON.Read (Object_Store.Read (Ref), "");
+      Entries_Array := JSON.Get (Item_JSON, "entries");
 
       for I in 1 .. (JSON.Length (Entries_Array)) loop
          Entry_JSON            := JSON.Get (Entries_Array, I);
@@ -359,8 +392,8 @@ package body Client is
       Tree_Result : Client.Tree;
    begin
       Tree_Result := Get_Tree (Start_Ref);
-      if not References.Contains(Start_Ref) then
-         References.Insert(Start_Ref);
+      if not References.Contains (Start_Ref) then
+         References.Insert (Start_Ref);
       end if;
 
       for Item of Tree_Result.Entries loop
@@ -371,7 +404,8 @@ package body Client is
                Tree_Refs (Item.Child_Ref, References);
             end if;
          exception
-            when Constraint_Error => null;
+            when Constraint_Error =>
+               null;
          end;
       end loop;
    end Tree_Refs;
@@ -380,16 +414,16 @@ package body Client is
      (Item       :        Branch;
       References : in out Reference_Set.Set)
    is
-      procedure Commit_Refs(Item : Commit) is
+      procedure Commit_Refs (Item : Commit) is
       begin
-         if not References.Contains(Item.Object_Ref) then
-            References.Insert(Item.Object_Ref);
-            Tree_Refs(Item.Tree_Ref, References);
+         if not References.Contains (Item.Object_Ref) then
+            References.Insert (Item.Object_Ref);
+            Tree_Refs (Item.Tree_Ref, References);
          end if;
       end Commit_Refs;
    begin
       if Item.Commit_Ref /= Client.Empty_Hash_Ref then
-         Client.Traverse_Commits(Item.Commit_Ref, Commit_Refs'Access);
+         Client.Traverse_Commits (Item.Commit_Ref, Commit_Refs'Access);
       end if;
    end Branch_Refs;
 
@@ -452,31 +486,34 @@ package body Client is
       return Pat.Match (Valid_Pattern, Name);
    end Valid_Branch_Name;
 
-   procedure Traverse_Commits (Ref : SHA256_Value; Proc : access procedure(Item : Commit)) is
-      Next_Ref : Client.SHA256_Value := Ref;
-      Next_Commit     : Client.Commit;
-      Root : Boolean := False;
+   procedure Traverse_Commits
+     (Ref  : SHA256_Value;
+      Proc : access procedure (Item : Commit))
+   is
+      Next_Ref    : Client.SHA256_Value := Ref;
+      Next_Commit : Client.Commit;
+      Root        : Boolean             := False;
       use Ada.Containers;
    begin
-       while not Root loop
-         Next_Commit := Get_Commit(Next_Ref);
-         Proc.all(Next_Commit);
-            if Next_Commit.Parents.Length = 1 then
-               Next_Ref := Reference_Set.Element(Next_Commit.Parents.First);
-            elsif Next_Commit.Parents.Length > 1 then
-               for Parent_Ref of Next_Commit.Parents loop
-                  Traverse_Commits(Parent_Ref, Proc);
-               end loop;
-            else
-               Root := True;
-            end if;
-         end loop;
+      while not Root loop
+         Next_Commit := Get_Commit (Next_Ref);
+         Proc.all (Next_Commit);
+         if Next_Commit.Parents.Length = 1 then
+            Next_Ref := Reference_Set.Element (Next_Commit.Parents.First);
+         elsif Next_Commit.Parents.Length > 1 then
+            for Parent_Ref of Next_Commit.Parents loop
+               Traverse_Commits (Parent_Ref, Proc);
+            end loop;
+         else
+            Root := True;
+         end if;
+      end loop;
    end Traverse_Commits;
 
-   function Join_Trees(Left, Right : Tree) return Tree is
+   function Join_Trees (Left, Right : Tree) return Tree is
       Result : Tree;
    begin
-      Result.Entries := Tree_Entry_Set.Union(Left.Entries, Right.Entries);
+      Result.Entries := Tree_Entry_Set.Union (Left.Entries, Right.Entries);
       return Result;
    end Join_Trees;
 
