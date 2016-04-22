@@ -68,7 +68,7 @@ package body File_Object_Store is
       if Ada.Directories.Exists (File_Path) then
          return File_Operations.Load_File (File_Path);
       else
-         raise KV_Store.Object_Not_Found;
+         raise KV_Store.No_Key_Error;
       end if;
    end Get_Content;
 end File_Object_Store;

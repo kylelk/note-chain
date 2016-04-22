@@ -2,8 +2,13 @@ with AUnit; use AUnit;
 with AUnit.Test_Cases; use AUnit.Test_Cases;
 with Ada.Strings.Unbounded;
 
+with Client;
+with Hash_Store;
+
 package Client_Test_Case is
    type Client_Test_Case is new AUnit.Test_Cases.Test_Case with null record;
+
+   package Test_Client is new Client (Hash_Store.Data);
 
    -- @private
    function "+"(S : String) return Ada.Strings.Unbounded.Unbounded_String

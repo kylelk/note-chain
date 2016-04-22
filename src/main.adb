@@ -16,8 +16,6 @@ procedure Main is
    package TIO renames Ada.Text_IO;
    package UBS renames Ada.Strings.Unbounded;
 
-   Data_DB : File_Object_Store.Data;
-   pragma Unreferenced (Data_DB);
    package Note_Client is new Client (File_Object_Store.Data);
 
    procedure Execute_System (Command : String) is
