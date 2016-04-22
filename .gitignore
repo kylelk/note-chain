@@ -6,3 +6,4 @@ obj/*
 *.db
 .note_chain_data/
 *.nc_refs
+*.bundle
