@@ -21,7 +21,7 @@ package KV_Store is
       Key  :        SHA256_Value) return String is abstract;
 
    function Exists
-     (Self : KV_Container;
+     (Self : in out KV_Container;
       Key  : SHA256_Value) return Boolean is abstract;
 
    procedure Remove

@@ -1,4 +1,4 @@
-with Ada.Text_IO;
+with Ada.Streams; use Ada.Streams;
 
 package body Redis_Store is
    procedure Set_Server
@@ -8,7 +8,7 @@ package body Redis_Store is
       Namespace :        String)
    is
 
-      Host_Entry : GNAT.Sockets.Host_Entry_Type :=
+      Host_Entry : constant GNAT.Sockets.Host_Entry_Type :=
         GNAT.Sockets.Get_Host_By_Name (Host);
    begin
       Self.Address.Addr   := GNAT.Sockets.Addresses (Host_Entry);
@@ -31,9 +31,10 @@ package body Redis_Store is
       GNAT.Sockets.Close_Socket (self.Socket);
    end Cleanup;
 
-   procedure Set (Self : in out Data; Key, Value : String) is
+   procedure Set (Self : in out Data; Key : SHA256_Value; Value : String) is
       JSON_String : JSON.JSON_Value;
       Result      : UBS.Unbounded_String;
+      pragma Unreferenced (Result);
    begin
       JSON_String := JSON.Create (Value);
       Result      :=
@@ -47,19 +48,55 @@ package body Redis_Store is
               JSON_String.Write));
    end Set;
 
-   function Get (Self : in out Data; Key : String) return String is
+   function Get (Self : in out Data; Key : SHA256_Value) return String is
+      JSON_String   : JSON.JSON_Value;
+      Result_String : constant String :=
+        Redis_Call
+          (Self.Socket,
+           "GET " & UBS.To_String (Self.Namespace) & Key);
+      Num_End        : Integer;
+      Content_Length : Integer;
    begin
-      return "";
+      if Result_String (1) = '-' then
+         raise Redis_Error with Result_String;
+      end if;
+
+      Num_End        := STR_FIX.Index (Result_String, CRLF);
+      Content_Length := Integer'Value (Result_String (2 .. Num_End));
+      JSON_String    :=
+        JSON.Read
+          (ASCII.Quotation &
+           Result_String (Num_End .. (Num_End + Content_Length)) &
+           ASCII.Quotation);
+      return JSON.Get (JSON_String);
    end Get;
 
-   function Contains (Self : Data; Key : String) return Boolean is
+   function Exists (Self : in out Data; Key : SHA256_Value) return Boolean is
+      Result_String : constant String :=
+        Redis_Call
+          (Self.Socket,
+           "EXISTS " & UBS.To_String (Self.Namespace) & Key);
    begin
-      return False;
-   end Contains;
+      if Result_String (1) = '-' then
+         raise Redis_Error with Result_String;
+      end if;
 
-   procedure Remove (Self : in out Data; Key : String) is
+      if Result_String = ":1" & CRLF then
+         return True;
+      elsif Result_String = ":0" & CRLF then
+         return False;
+      else
+         raise Redis_Error with Result_String;
+      end if;
+   end Exists;
+
+   procedure Remove (Self : in out Data; Key : SHA256_Value) is
+      Result_String : constant String :=
+        Redis_Call(Self.Socket, "DEL " & UBS.To_String (Self.Namespace) & Key);
    begin
-      null;
+      if Result_String (1) = '-' then
+         raise Redis_Error with Result_String;
+      end if;
    end Remove;
 
    procedure Commit (Self : in out Data) is

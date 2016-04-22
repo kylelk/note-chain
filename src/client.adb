@@ -27,6 +27,8 @@ package body Client is
       Create_Dir (Config.Data_Dir);
       Create_Dir (Config.Temp_Dir);
 
+      Status.Data.Setup;
+
       begin
          Status.Load_Branches;
       exception
@@ -54,6 +56,7 @@ package body Client is
    begin
       Status.Save_Branches;
       Status.Settings_Status.Save;
+      Status.Data.Cleanup;
 
       -- clear the temp directory
       File_Operations.Remake_Directory (Config.Temp_Dir);

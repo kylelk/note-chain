@@ -9,14 +9,15 @@ with Ada.Containers.Generic_Array_Sort;
 with Config;
 with Client;
 with Settings;
-with File_Object_Store;
+-- with File_Object_Store;
+with Redis_Store;
 
 procedure Main is
    package CLI renames Ada.Command_Line;
    package TIO renames Ada.Text_IO;
    package UBS renames Ada.Strings.Unbounded;
 
-   package Note_Client is new Client (File_Object_Store.Data);
+   package Note_Client is new Client (Redis_Store.Data);
 
    procedure Execute_System (Command : String) is
       use GNAT.OS_Lib;
@@ -389,6 +390,8 @@ procedure Main is
 
    Client_Status : Note_Client.Client_Status;
 begin
+   Client_Status.Data.Set_Server
+   (Host => "127.0.0.1", Port => 6379, Namespace => "note_chain:");
    Client_Status.Init;
 
    if CLI.Argument_Count >= 1 then
