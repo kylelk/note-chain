@@ -4,7 +4,6 @@ package KV_Store is
    subtype SHA256_Value is String (1 .. 64);
 
    Object_Not_Found : exception;
-   Invalid_Hash_Format : exception;
 
    procedure Setup (self : in out KV_Container) is abstract;
 

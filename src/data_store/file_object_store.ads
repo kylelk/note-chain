@@ -5,9 +5,6 @@ with Ada.Text_IO;
 package File_Object_Store is
    subtype SHA256_Value is String(1..64);
 
-   Object_Not_Found : exception;
-   Invalid_Hash_Format : exception;
-
    type Data is new KV_Store.KV_Container with null record;
 
    procedure Setup (self : in out Data);

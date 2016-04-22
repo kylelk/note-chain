@@ -18,6 +18,7 @@ package body File_Object_Store is
    end Cleanup;
 
    procedure Set (Self : in out Data; Key : SHA256_Value ; Value : String) is
+      pragma Unreferenced(Self);
       Data_File  : Ada.Text_IO.File_Type;
    begin
       begin
@@ -67,7 +68,7 @@ package body File_Object_Store is
       if Ada.Directories.Exists (File_Path) then
          return File_Operations.Load_File (File_Path);
       else
-         raise Object_Not_Found;
+         raise KV_Store.Object_Not_Found;
       end if;
    end Get_Content;
 end File_Object_Store;

@@ -602,7 +602,7 @@ package body Client is
       Year   : Integer;
       Month  : Integer range 1 .. 12;
       Day    : Integer range 1 .. 31;
-      Hour   : Integer range 1 .. 23;
+      Hour   : Integer range 0 .. 23;
       Minute : Integer range 0 .. 59;
       Second : Integer range 0 .. 59;
    begin
@@ -712,7 +712,7 @@ package body Client is
       procedure Check_SHA256 (Hash : SHA256_Value) is
       begin
          for C of Hash loop
-            if C not in '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' then
+            if C not in '0' .. '9' | 'a' .. 'f' then
                raise Invalid_Hash_Format;
             end if;
          end loop;
