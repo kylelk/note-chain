@@ -34,7 +34,6 @@ package body Redis_Store is
    procedure Set (Self : in out Data; Key : SHA256_Value; Value : String) is
       JSON_String : JSON.JSON_Value;
       Result      : UBS.Unbounded_String;
-      pragma Unreferenced (Result);
    begin
       JSON_String := JSON.Create (Value);
       Result      :=
@@ -44,8 +43,15 @@ package body Redis_Store is
               "SET " &
               UBS.To_String (Self.Namespace) &
               Key &
-              " " &
-              JSON_String.Write));
+              " " & "'" &
+                JSON_String.Write & "'"));
+      declare
+         Result_String : constant String := UBS.To_String(Result);
+      begin
+         if Result_String (1) = '-' then
+            raise Redis_Error with Result_String;
+         end if;
+      end;
    end Set;
 
    function Get (Self : in out Data; Key : SHA256_Value) return String is
@@ -55,19 +61,13 @@ package body Redis_Store is
           (Self.Socket,
            "GET " & UBS.To_String (Self.Namespace) & Key);
       Num_End        : Integer;
-      Content_Length : Integer;
    begin
       if Result_String (1) = '-' then
          raise Redis_Error with Result_String;
       end if;
-
       Num_End        := STR_FIX.Index (Result_String, CRLF);
-      Content_Length := Integer'Value (Result_String (2 .. Num_End));
       JSON_String    :=
-        JSON.Read
-          (ASCII.Quotation &
-           Result_String (Num_End .. (Num_End + Content_Length)) &
-           ASCII.Quotation);
+        JSON.Read(Result_String (Num_End .. Result_String'Length), "");
       return JSON.Get (JSON_String);
    end Get;
 

@@ -33,7 +33,7 @@ package body Hash_Store is
       end if;
    end Get;
 
-   function Exists (Self : Data; Key : SHA256_Value) return Boolean is
+   function Exists (Self : in out Data; Key : SHA256_Value) return Boolean is
    begin
       return Self.Values.Contains (To_Unbounded_String (Key));
    end Exists;

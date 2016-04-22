@@ -36,7 +36,7 @@ package body File_Object_Store is
       return Get_Content(Object_Path(Key));
    end Get;
 
-   function Exists (Self : Data; Key : SHA256_Value) return Boolean is
+   function Exists (Self : in out Data; Key : SHA256_Value) return Boolean is
       pragma Unreferenced(Self);
    begin
       return Ada.Directories.Exists(Object_Path(Key));

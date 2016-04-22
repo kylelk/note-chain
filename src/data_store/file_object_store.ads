@@ -15,7 +15,7 @@ package File_Object_Store is
 
    function Get (Self : in out Data; Key : SHA256_Value) return String;
 
-   function Exists (Self : Data; Key : SHA256_Value) return Boolean;
+   function Exists (Self : in out Data; Key : SHA256_Value) return Boolean;
 
    procedure Remove (Self : in out Data; Key : SHA256_Value);
 
