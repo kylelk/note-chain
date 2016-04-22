@@ -16,7 +16,7 @@ package KV_Store is
 
    function Get (Self : in out KV_Container; Key : SHA256_Value) return String is abstract;
 
-   function Contains(Self : KV_Container; Key : SHA256_Value) return Boolean is abstract;
+   function Exists(Self : KV_Container; Key : SHA256_Value) return Boolean is abstract;
 
    procedure Remove(Self : in out KV_Container; Key : SHA256_Value) is abstract;
 end KV_Store;

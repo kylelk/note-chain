@@ -8,6 +8,7 @@ with Ada.Calendar;
 
 with Settings;
 with KV_Store;
+with Ada.Text_IO;
 
 generic
    type Data_Store is new KV_Store.KV_Container with private;
@@ -103,10 +104,57 @@ package Client is
    type Client_Status is tagged record
       Branch_Status   : Branch_Info;
       Settings_Status : Settings.Settings_Data;
-      Data : Data_Store;
+      Data            : Data_Store;
       -- first time starting the client
       First_Load : Boolean := False;
    end record;
+
+   package Object_Store is
+      subtype SHA256_Value is String (1 .. 64);
+
+      Object_Not_Found : exception;
+      Invalid_Hash_Format : exception;
+
+      -- @description
+      -- Store an object's content
+      procedure Write
+        (Status      : in out Client_Status'Class;
+         Object_Type :        String;
+         Content     :        String;
+         Hash        :    out SHA256_Value);
+
+      -- @description
+      -- Get the content of an object, raises Object_Not_Found when a object
+      -- does not exist
+      function Read
+        (Status : in out Client_Status'Class;
+         Hash   :        SHA256_Value) return String;
+
+      -- @description
+      -- returns the entire data object as a string
+      function Read_Object
+        (Status : in out Client_Status'Class;
+         Hash   :        SHA256_Value) return String;
+
+      function Object_Type
+        (Status : in out Client_Status'Class;
+         Hash   :        SHA256_Value) return String;
+
+      -- @description
+      -- checks if an object exists
+      function Exists
+        (Status : in out Client_Status'Class;
+         Hash   :        SHA256_Value) return Boolean;
+
+   private
+      package TIO renames Ada.Text_IO;
+
+      function Char_Index (Data : String; Char : Character) return Integer;
+
+      function Last_Index (Data : String; Char : Character) return Integer;
+
+      procedure Check_SHA256 (Hash : SHA256_Value);
+   end Object_Store;
 
    No_Branch_Error : exception;
    Branch_Name_Format_Error : exception;
@@ -153,21 +201,27 @@ package Client is
 
    -- @summary
    -- saves a Note to the object store
-   procedure Save (Item : in out Note);
+   procedure Save (Status : in out Client_Status; Item : in out Note'Class);
 
    -- @summary
    -- saves a Tree_Entry to the object store
-   procedure Save (Item : in out Tree);
+   procedure Save (Status : in out Client_Status; Item : in out Tree'Class);
 
    -- @summary
    -- saves a Commit to the object store
-   procedure Save (Item : in out Commit);
+   procedure Save (Status : in out Client_Status; Item : in out Commit'Class);
 
-   function Get_Commit (Ref : SHA256_Value) return Commit;
+   function Get_Commit
+     (Status : in out Client_Status'Class;
+      Ref    :        SHA256_Value) return Commit;
 
-   function Get_Tree (Ref : SHA256_Value) return Tree;
+   function Get_Tree
+     (Status : in out Client_Status'Class;
+      Ref    :        SHA256_Value) return Tree;
 
-   function Get_Note (Ref : SHA256_Value) return Note;
+   function Get_Note
+     (Status : in out Client_Status'Class;
+      Ref    :        SHA256_Value) return Note;
 
    -- @summary
    -- get commit SHA-256 of the commit for the current head branch
@@ -175,7 +229,7 @@ package Client is
 
    -- @summary
    -- returns the commit at the head of the current branch
-   function Head_Commit (Status : Client_Status) return Commit'Class;
+   function Head_Commit (Status : in out Client_Status) return Commit'Class;
 
    -- @summary
    -- returns the head branch
@@ -197,16 +251,18 @@ package Client is
    procedure Set_Head (Status : in out Client_Status; Item : Commit'Class);
 
    procedure Tree_Refs
-     (Start_Ref  :        SHA256_Value;
+     (Status : in out Client_Status;
+      Start_Ref  :        SHA256_Value;
       References : in out Reference_Set.Set);
 
    procedure Branch_Refs
-     (Item       :        Branch;
+     (Status : in out Client_Status;
+      Item       :        Branch;
       References : in out Reference_Set.Set);
 
-   procedure Export (Status : Client_Status; Filename : String);
+   procedure Export (Status : in out Client_Status; Filename : String);
 
-   procedure Export_Refs (Items : Reference_Set.Set; Filename : String);
+   procedure Export_Refs (Status : in out Client_Status ; Items : Reference_Set.Set; Filename : String);
 
    function Format_Note (Item : Note) return String;
 
@@ -216,7 +272,8 @@ package Client is
    -- @summary
    -- Traverse the commits and pass each commit to a procedure
    procedure Traverse_Commits
-     (Ref  : SHA256_Value;
+     (Status : in out Client_Status;
+      Ref  : SHA256_Value;
       Proc : access procedure (Item : Commit));
 
    -- @summary joins together the enties of both trees
@@ -226,7 +283,7 @@ package Client is
    -- Merges two branches together
    -- @description
    -- merges branch B into branch A and creates a new commit for the merge
-   procedure Merge_Branches (A : in out Branch; B : Branch);
+   procedure Merge_Branches (Status : in out Client_Status; A : in out Branch; B : Branch);
 
    function To_ISO_8601 (Date : Ada.Calendar.Time) return String;
 

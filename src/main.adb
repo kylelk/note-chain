@@ -8,7 +8,6 @@ with Ada.Containers.Generic_Array_Sort;
 
 with Config;
 with Client;
-with Object_Store;
 with Settings;
 with File_Object_Store;
 
@@ -69,7 +68,7 @@ procedure Main is
          Ada.Calendar.Formatting.Image (Item.Created_At));
    end Display_Commit;
 
-   procedure List_Notes (Status : Note_Client.Client_Status) is
+   procedure List_Notes (Status : in out Note_Client.Client_Status) is
       Tree_Ref    : Note_Client.SHA256_Value;
       Tree_Result : Note_Client.Tree;
       use Note_Client;
@@ -84,7 +83,7 @@ procedure Main is
          return;
       end if;
 
-      Tree_Result := Get_Tree (Tree_Ref);
+      Tree_Result := Get_Tree (Status, Tree_Ref);
       declare
          type Note_Array is array (Integer range <>) of Note;
          Note_Count : constant Integer := Integer (Tree_Result.Entries.Length);
@@ -102,7 +101,7 @@ procedure Main is
       begin
          for Item of Tree_Result.Entries loop
             if Item.Entry_Type = Type_Note then
-               Notes (I) := Get_Note (Item.Child_Ref);
+               Notes (I) := Get_Note (Status, Item.Child_Ref);
             end if;
             I := I + 1;
          end loop;
@@ -149,7 +148,7 @@ procedure Main is
       begin
          Current_Branch := Info.Get_Branch (Info.Branch_Status.Head);
          Other_Branch   := Info.Get_Branch (UBS.To_Unbounded_String (Name));
-         Note_Client.Merge_Branches (Current_Branch, Other_Branch);
+         Info.Merge_Branches (Current_Branch, Other_Branch);
          Info.Set_Branch (Current_Branch);
       end Merge_Branch;
    begin
@@ -209,7 +208,7 @@ procedure Main is
       Branch_Tree : Note_Client.Tree;
    begin
       if Status.Head_Commit_Ref /= Note_Client.Empty_Hash_Ref then
-         Branch_Tree := Note_Client.Get_Tree (Status.Head_Commit.Tree_Ref);
+         Branch_Tree := Note_Client.Get_Tree (Status, Status.Head_Commit.Tree_Ref);
          New_Commit.Parents.Insert (Status.Head_Commit_Ref);
       end if;
 
@@ -217,17 +216,17 @@ procedure Main is
          if CLI.Argument (2) = "new" then
             Edit_Note_Content;
             Note_Client.Create_Note (Status, Note_Item);
-            Note_Item.Save;
+            Status.Save(Note_Item);
 
             -- add note to tree
             Note_Client.Add_Note (Branch_Tree, Note_Item);
 
             -- save tree
-            Branch_Tree.Save;
+            Status.Save(Branch_Tree);
 
             -- create new commit for changes
             New_Commit.Tree_Ref := Branch_Tree.Object_Ref;
-            New_Commit.Save;
+            Status.Save(New_Commit);
 
             -- update the head commit to point to the newest tree
             Status.Set_Head (New_Commit);
@@ -236,7 +235,7 @@ procedure Main is
          end if;
 
          if CLI.Argument_Count > 2 then
-            Note_Item := Note_Client.Get_Note (CLI.Argument (3));
+            Note_Item := Note_Client.Get_Note (Status, CLI.Argument (3));
             if CLI.Argument (2) = "view" then
                TIO.Put_Line (Note_Client.Format_Note (Note_Item));
             elsif CLI.Argument (2) = "print" then
@@ -277,7 +276,7 @@ procedure Main is
          Index : Integer := 1;
       begin
          for Ref of Commit_Refs loop
-            All_Commits (Index) := Note_Client.Get_Commit (Ref);
+            All_Commits (Index) := Note_Client.Get_Commit (Status, Ref);
             Index               := Index + 1;
          end loop;
          Sort (All_Commits);
@@ -291,21 +290,20 @@ procedure Main is
       else
          Next_Commit_Ref := Status.Head_Commit_Ref;
          if Next_Commit_Ref /= Note_Client.Empty_Hash_Ref then
-            Note_Client.Traverse_Commits (Next_Commit_Ref, Add_Commit'Access);
+            Note_Client.Traverse_Commits (Status, Next_Commit_Ref, Add_Commit'Access);
             Iterate_Commits;
          end if;
       end if;
    end Cmd_Log;
 
-   procedure Cmd_Object (Status : Note_Client.Client_Status) is
-      pragma Unreferenced (Status);
+   procedure Cmd_Object (Status : in out Note_Client.Client_Status) is
    begin
       if CLI.Argument_Count > 1 then
          if CLI.Argument_Count > 2 then
             if CLI.Argument (2) = "type" then
-               TIO.Put_Line (Object_Store.Object_Type (CLI.Argument (3)));
+               TIO.Put_Line (Note_Client.Object_Store.Object_Type (Status, CLI.Argument (3)));
             elsif CLI.Argument (2) = "print" then
-               TIO.Put_Line (Object_Store.Read (CLI.Argument (3)));
+               TIO.Put_Line (Note_Client.Object_Store.Read (Status, CLI.Argument (3)));
             end if;
          end if;
       end if;

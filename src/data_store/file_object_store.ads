@@ -1,8 +1,5 @@
 with KV_Store;
 with GNAT.Directory_Operations;
-with Ada.Text_IO;
-
-
 
 package File_Object_Store is
    subtype SHA256_Value is String(1..64);
@@ -20,7 +17,7 @@ package File_Object_Store is
 
    function Get (Self : in out Data; Key : SHA256_Value) return String;
 
-   function Contains (Self : Data; Key : SHA256_Value) return Boolean;
+   function Exists (Self : Data; Key : SHA256_Value) return Boolean;
 
    procedure Remove (Self : in out Data; Key : SHA256_Value);
 
@@ -32,12 +29,6 @@ private
    function Object_Path(Hash : SHA256_Value) return String;
 
    function Get_Content (File_Path : String) return String;
-
-   function Char_Index (Data : String; Char : Character) return Integer;
-
-   function Last_Index(Data : String; Char : Character) return Integer;
-
-   procedure Check_SHA256(Hash : SHA256_Value);
 
    package DIR_OPS renames GNAT.Directory_Operations;
 
