@@ -2,10 +2,10 @@ GNATdoc.EntitiesCategory = {
   "label": "Packages",
   "entities": [
     {
-      "label": "UBS",
-      "docHref": "docs/client_test_case.ubs.html#L8C12",
-      "declared": "Client_Test_Case",
-      "srcHref": "srcs/client_test_case.ads.html#L8"
+      "label": "Object_Store",
+      "docHref": "docs/client.object_store.html#L112C12",
+      "declared": "Client",
+      "srcHref": "srcs/client.ads.html#L112"
     }
   ]
 };

@@ -147,6 +147,7 @@ package Client is
          Hash   :        SHA256_Value) return Boolean;
 
    private
+      -- @private
       package TIO renames Ada.Text_IO;
 
       function Char_Index (Data : String; Char : Character) return Integer;

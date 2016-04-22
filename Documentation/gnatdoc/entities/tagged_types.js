@@ -3,21 +3,39 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Client_Status",
-      "docHref": "docs/client.html#L100C9",
+      "docHref": "docs/standard.html#L104C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L100"
+      "srcHref": "srcs/client.ads.html#L104"
     },
     {
       "label": "Client_Test_Case",
-      "docHref": "docs/client_test_case.html#L6C9",
+      "docHref": "docs/client_test_case.html#L9C9",
       "declared": "Client_Test_Case",
-      "srcHref": "srcs/client_test_case.ads.html#L6"
+      "srcHref": "srcs/client_test_case.ads.html#L9"
     },
     {
       "label": "Commit",
-      "docHref": "docs/client.html#L53C9",
+      "docHref": "docs/standard.html#L57C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L53"
+      "srcHref": "srcs/client.ads.html#L57"
+    },
+    {
+      "label": "Data",
+      "docHref": "docs/file_object_store.html#L8C9",
+      "declared": "File_Object_Store",
+      "srcHref": "srcs/file_object_store.ads.html#L8"
+    },
+    {
+      "label": "Data",
+      "docHref": "docs/hash_store.html#L17C9",
+      "declared": "Hash_Store",
+      "srcHref": "srcs/hash_store.ads.html#L17"
+    },
+    {
+      "label": "Data",
+      "docHref": "docs/redis_store.html#L10C9",
+      "declared": "Redis_Store",
+      "srcHref": "srcs/redis_store.ads.html#L10"
     },
     {
       "label": "JSON_Value",
@@ -33,15 +51,15 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Note",
-      "docHref": "docs/client.html#L42C9",
+      "docHref": "docs/standard.html#L46C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L42"
+      "srcHref": "srcs/client.ads.html#L46"
     },
     {
       "label": "Object_Record",
-      "docHref": "docs/client.html#L29C9",
+      "docHref": "docs/standard.html#L33C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L29"
+      "srcHref": "srcs/client.ads.html#L33"
     },
     {
       "label": "Settings_Data",
@@ -57,9 +75,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Tree",
-      "docHref": "docs/client.html#L75C9",
+      "docHref": "docs/standard.html#L79C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L75"
+      "srcHref": "srcs/client.ads.html#L79"
     }
   ]
 };

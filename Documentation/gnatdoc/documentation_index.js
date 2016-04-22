@@ -4,12 +4,20 @@ GNATdoc.DocumentationIndex = [
     "file": "docs/client.html"
   },
   {
+    "label": "Client.Object_Store",
+    "file": "docs/client.object_store.html"
+  },
+  {
     "label": "Client_Test_Case",
     "file": "docs/client_test_case.html"
   },
   {
     "label": "Config",
     "file": "docs/config.html"
+  },
+  {
+    "label": "File_Object_Store",
+    "file": "docs/file_object_store.html"
   },
   {
     "label": "File_Operations",
@@ -24,6 +32,14 @@ GNATdoc.DocumentationIndex = [
     "file": "docs/gnatcoll_json_utility.html"
   },
   {
+    "label": "Hash_Store",
+    "file": "docs/hash_store.html"
+  },
+  {
+    "label": "KV_Store",
+    "file": "docs/kv_store.html"
+  },
+  {
     "label": "Message_Format",
     "file": "docs/message_format.html"
   },
@@ -32,8 +48,8 @@ GNATdoc.DocumentationIndex = [
     "file": "docs/note_chain_suites.html"
   },
   {
-    "label": "Object_Store",
-    "file": "docs/object_store.html"
+    "label": "Redis_Store",
+    "file": "docs/redis_store.html"
   },
   {
     "label": "Settings",

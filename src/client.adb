@@ -631,7 +631,6 @@ package body Client is
    end From_ISO_8601;
 
    package body Object_Store is
-
       procedure Write
         (Status      : in out Client_Status'Class;
          Object_Type :        String;

@@ -21,27 +21,39 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Object_Type",
-      "docHref": "docs/client.html#L20C9",
+      "docHref": "docs/standard.html#L24C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L20"
+      "srcHref": "srcs/client.ads.html#L24"
     },
     {
       "label": "SHA256_Value",
-      "docHref": "docs/client.html#L17C12",
+      "docHref": "docs/standard.html#L21C12",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L17"
+      "srcHref": "srcs/client.ads.html#L21"
+    },
+    {
+      "label": "SHA256_Value",
+      "docHref": "docs/client.object_store.html#L113C15",
+      "declared": "Client.Object_Store",
+      "srcHref": "srcs/client.ads.html#L113"
+    },
+    {
+      "label": "SHA256_Value",
+      "docHref": "docs/file_object_store.html#L6C12",
+      "declared": "File_Object_Store",
+      "srcHref": "srcs/file_object_store.ads.html#L6"
+    },
+    {
+      "label": "SHA256_Value",
+      "docHref": "docs/kv_store.html#L4C12",
+      "declared": "KV_Store",
+      "srcHref": "srcs/kv_store.ads.html#L4"
     },
     {
       "label": "SHA256_Value",
       "docHref": "docs/file_operations.html#L2C12",
       "declared": "File_Operations",
       "srcHref": "srcs/file_operations.ads.html#L2"
-    },
-    {
-      "label": "SHA256_Value",
-      "docHref": "docs/object_store.html#L4C12",
-      "declared": "Object_Store",
-      "srcHref": "srcs/object_store.ads.html#L4"
     },
     {
       "label": "UTF8_String",
