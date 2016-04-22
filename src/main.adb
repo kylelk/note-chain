@@ -10,11 +10,17 @@ with Config;
 with Client;
 with Object_Store;
 with Settings;
+with File_Object_Store;
 
 procedure Main is
    package CLI renames Ada.Command_Line;
    package TIO renames Ada.Text_IO;
    package UBS renames Ada.Strings.Unbounded;
+
+   Data_DB : File_Object_Store.Data;
+   pragma Unreferenced(Data_DB);
+   package Note_Client is new Client(File_Object_Store.Data);
+
 
    procedure Execute_System (Command : String) is
       use GNAT.OS_Lib;
@@ -42,7 +48,7 @@ procedure Main is
       Execute_System ("vim " & Config.Temp_Note_File);
    end Edit_Note_Content;
 
-   procedure List_Branches (Status : Client.Client_Status) is
+   procedure List_Branches (Status : Note_Client.Client_Status) is
       use UBS;
    begin
       for Branch_Result of Status.Branch_Status.Branches loop
@@ -55,7 +61,7 @@ procedure Main is
       end loop;
    end List_Branches;
 
-   procedure Display_Commit (Item : Client.Commit) is
+   procedure Display_Commit (Item : Note_Client.Commit) is
    begin
       TIO.Put_Line
         (Item.Object_Ref &
@@ -63,13 +69,13 @@ procedure Main is
          Ada.Calendar.Formatting.Image (Item.Created_At));
    end Display_Commit;
 
-   procedure List_Notes (Status : Client.Client_Status) is
-      Tree_Ref    : Client.SHA256_Value;
-      Tree_Result : Client.Tree;
-      use Client;
+   procedure List_Notes (Status : Note_Client.Client_Status) is
+      Tree_Ref    : Note_Client.SHA256_Value;
+      Tree_Result : Note_Client.Tree;
+      use Note_Client;
       use Ada.Strings.Fixed;
    begin
-      if Status.Head_Commit_Ref = Client.Empty_Hash_Ref then
+      if Status.Head_Commit_Ref = Note_Client.Empty_Hash_Ref then
          TIO.Put_Line ("tree is null");
          return;
       end if;
@@ -108,7 +114,7 @@ procedure Main is
       end;
    end List_Notes;
 
-   procedure List_Settings (Status : Client.Client_Status) is
+   procedure List_Settings (Status : Note_Client.Client_Status) is
       Longest_Key : Integer := 0;
       procedure Put (Run : Integer; Key, Value : UBS.Unbounded_String) is
          use Ada.Strings.Fixed;
@@ -137,13 +143,13 @@ procedure Main is
       end loop;
    end List_Settings;
 
-   procedure Cmd_Branch (Info : in out Client.Client_Status) is
+   procedure Cmd_Branch (Info : in out Note_Client.Client_Status) is
       procedure Merge_Branch (Name : String) is
-         Current_Branch, Other_Branch : Client.Branch;
+         Current_Branch, Other_Branch : Note_Client.Branch;
       begin
          Current_Branch := Info.Get_Branch (Info.Branch_Status.Head);
          Other_Branch   := Info.Get_Branch (UBS.To_Unbounded_String (Name));
-         Client.Merge_Branches (Current_Branch, Other_Branch);
+         Note_Client.Merge_Branches (Current_Branch, Other_Branch);
          Info.Set_Branch (Current_Branch);
       end Merge_Branch;
    begin
@@ -178,7 +184,7 @@ procedure Main is
       end if;
    end Cmd_Branch;
 
-   procedure Cmd_Config (Status : in out Client.Client_Status) is
+   procedure Cmd_Config (Status : in out Note_Client.Client_Status) is
    begin
       if CLI.Argument_Count = 2 then
          if CLI.Argument (2) = "list" then
@@ -197,24 +203,24 @@ procedure Main is
       end if;
    end Cmd_Config;
 
-   procedure Cmd_Note (Status : in out Client.Client_Status) is
-      Note_Item   : Client.Note;
-      New_Commit  : Client.Commit;
-      Branch_Tree : Client.Tree;
+   procedure Cmd_Note (Status : in out Note_Client.Client_Status) is
+      Note_Item   : Note_Client.Note;
+      New_Commit  : Note_Client.Commit;
+      Branch_Tree : Note_Client.Tree;
    begin
-      if Status.Head_Commit_Ref /= Client.Empty_Hash_Ref then
-         Branch_Tree := Client.Get_Tree (Status.Head_Commit.Tree_Ref);
+      if Status.Head_Commit_Ref /= Note_Client.Empty_Hash_Ref then
+         Branch_Tree := Note_Client.Get_Tree (Status.Head_Commit.Tree_Ref);
          New_Commit.Parents.Insert (Status.Head_Commit_Ref);
       end if;
 
       if CLI.Argument_Count = 2 then
          if CLI.Argument (2) = "new" then
             Edit_Note_Content;
-            Client.Create_Note (Status, Note_Item);
+            Note_Client.Create_Note (Status, Note_Item);
             Note_Item.Save;
 
             -- add note to tree
-            Client.Add_Note (Branch_Tree, Note_Item);
+            Note_Client.Add_Note (Branch_Tree, Note_Item);
 
             -- save tree
             Branch_Tree.Save;
@@ -230,9 +236,9 @@ procedure Main is
          end if;
 
          if CLI.Argument_Count > 2 then
-            Note_Item := Client.Get_Note (CLI.Argument (3));
+            Note_Item := Note_Client.Get_Note (CLI.Argument (3));
             if CLI.Argument (2) = "view" then
-               TIO.Put_Line (Client.Format_Note (Note_Item));
+               TIO.Put_Line (Note_Client.Format_Note (Note_Item));
             elsif CLI.Argument (2) = "print" then
                TIO.Put_Line (UBS.To_String (Note_Item.Note_Text));
             end if;
@@ -244,11 +250,11 @@ procedure Main is
       end if;
    end Cmd_Note;
 
-   procedure Cmd_Log (Status : in out Client.Client_Status) is
-      Next_Commit_Ref : Client.SHA256_Value;
+   procedure Cmd_Log (Status : in out Note_Client.Client_Status) is
+      Next_Commit_Ref : Note_Client.SHA256_Value;
 
-      Commit_Refs : Client.Reference_Set.Set;
-      procedure Add_Commit (Item : Client.Commit) is
+      Commit_Refs : Note_Client.Reference_Set.Set;
+      procedure Add_Commit (Item : Note_Client.Commit) is
       begin
          if not Commit_Refs.Contains (Item.Object_Ref) then
             Commit_Refs.Insert (Item.Object_Ref);
@@ -256,22 +262,22 @@ procedure Main is
       end Add_Commit;
 
       procedure Iterate_Commits is
-         type Commit_Array is array (Integer range <>) of Client.Commit;
+         type Commit_Array is array (Integer range <>) of Note_Client.Commit;
          All_Commits : Commit_Array (1 .. Integer (Commit_Refs.Length));
 
-         function "<" (L, R : Client.Commit) return Boolean is
+         function "<" (L, R : Note_Client.Commit) return Boolean is
             use Ada.Calendar;
          begin
             return L.Created_At > R.Created_At;
          end "<";
          procedure Sort is new Ada.Containers.Generic_Array_Sort
            (Integer,
-            Client.Commit,
+            Note_Client.Commit,
             Commit_Array);
          Index : Integer := 1;
       begin
          for Ref of Commit_Refs loop
-            All_Commits (Index) := Client.Get_Commit (Ref);
+            All_Commits (Index) := Note_Client.Get_Commit (Ref);
             Index               := Index + 1;
          end loop;
          Sort (All_Commits);
@@ -284,14 +290,14 @@ procedure Main is
          null;
       else
          Next_Commit_Ref := Status.Head_Commit_Ref;
-         if Next_Commit_Ref /= Client.Empty_Hash_Ref then
-            Client.Traverse_Commits (Next_Commit_Ref, Add_Commit'Access);
+         if Next_Commit_Ref /= Note_Client.Empty_Hash_Ref then
+            Note_Client.Traverse_Commits (Next_Commit_Ref, Add_Commit'Access);
             Iterate_Commits;
          end if;
       end if;
    end Cmd_Log;
 
-   procedure Cmd_Object (Status : Client.Client_Status) is
+   procedure Cmd_Object (Status : Note_Client.Client_Status) is
       pragma Unreferenced (Status);
    begin
       if CLI.Argument_Count > 1 then
@@ -305,7 +311,7 @@ procedure Main is
       end if;
    end Cmd_Object;
 
-   procedure Cmd_Export (Status : in out Client.Client_Status) is
+   procedure Cmd_Export (Status : in out Note_Client.Client_Status) is
    begin
       if CLI.Argument_Count > 1 then
          Status.Export (CLI.Argument (2) & Config.Export_Extension);
@@ -378,33 +384,35 @@ procedure Main is
       end loop;
    end Display_Help;
 
-   Note_Client : Client.Client_Status;
+   Client_Status : Note_Client.Client_Status;
 begin
-   Note_Client.Init;
+   Client_Status.Init;
+
+
 
    if CLI.Argument_Count >= 1 then
       if CLI.Argument (1) = "branch" then
-         Cmd_Branch (Note_Client);
+         Cmd_Branch (Client_Status);
       elsif CLI.Argument (1) = "config" then
-         Cmd_Config (Note_Client);
+         Cmd_Config (Client_Status);
       elsif CLI.Argument (1) = "help" then
          Display_Help;
       elsif CLI.Argument (1) = "--help" then
          Display_Help;
       elsif CLI.Argument (1) = "export" then
-         Cmd_Export (Note_Client);
+         Cmd_Export (Client_Status);
       elsif CLI.Argument (1) = "note" then
-         Cmd_Note (Note_Client);
+         Cmd_Note (Client_Status);
       elsif CLI.Argument (1) = "version" then
          TIO.Put_Line (Config.Version);
       elsif CLI.Argument (1) = "log" then
-         Cmd_Log (Note_Client);
+         Cmd_Log (Client_Status);
       elsif CLI.Argument (1) = "object" then
-         Cmd_Object (Note_Client);
+         Cmd_Object (Client_Status);
       end if;
    else
       TIO.Put_Line ("call 'help' command for more infomation");
    end if;
 
-   Note_Client.Cleanup;
+   Client_Status.Cleanup;
 end Main;

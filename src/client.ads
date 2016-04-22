@@ -7,7 +7,10 @@ with Ada.Strings.Unbounded.Hash;
 with Ada.Calendar;
 
 with Settings;
+with KV_Store;
 
+generic
+   type Data_Store is new KV_Store.KV_Container with private;
 package Client is
    -- @private
    package JSON renames GNATCOLL_JSON;
@@ -100,6 +103,7 @@ package Client is
    type Client_Status is tagged record
       Branch_Status   : Branch_Info;
       Settings_Status : Settings.Settings_Data;
+      Data : Data_Store;
       -- first time starting the client
       First_Load : Boolean := False;
    end record;

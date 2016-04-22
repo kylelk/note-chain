@@ -26,7 +26,6 @@ package body Client is
       First_Load     : Boolean := False;
    begin
       Create_Dir (Config.Data_Dir);
-      Create_Dir (Config.Object_Dir);
       Create_Dir (Config.Temp_Dir);
 
       begin
