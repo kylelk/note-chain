@@ -1,5 +1,6 @@
 with KV_Store;
 with GNAT.Directory_Operations;
+with Ada.Text_IO;
 
 package File_Object_Store is
    subtype SHA256_Value is String(1..64);

@@ -17,9 +17,8 @@ procedure Main is
    package UBS renames Ada.Strings.Unbounded;
 
    Data_DB : File_Object_Store.Data;
-   pragma Unreferenced(Data_DB);
-   package Note_Client is new Client(File_Object_Store.Data);
-
+   pragma Unreferenced (Data_DB);
+   package Note_Client is new Client (File_Object_Store.Data);
 
    procedure Execute_System (Command : String) is
       use GNAT.OS_Lib;
@@ -208,7 +207,8 @@ procedure Main is
       Branch_Tree : Note_Client.Tree;
    begin
       if Status.Head_Commit_Ref /= Note_Client.Empty_Hash_Ref then
-         Branch_Tree := Note_Client.Get_Tree (Status, Status.Head_Commit.Tree_Ref);
+         Branch_Tree :=
+           Note_Client.Get_Tree (Status, Status.Head_Commit.Tree_Ref);
          New_Commit.Parents.Insert (Status.Head_Commit_Ref);
       end if;
 
@@ -216,17 +216,17 @@ procedure Main is
          if CLI.Argument (2) = "new" then
             Edit_Note_Content;
             Note_Client.Create_Note (Status, Note_Item);
-            Status.Save(Note_Item);
+            Status.Save (Note_Item);
 
             -- add note to tree
             Note_Client.Add_Note (Branch_Tree, Note_Item);
 
             -- save tree
-            Status.Save(Branch_Tree);
+            Status.Save (Branch_Tree);
 
             -- create new commit for changes
             New_Commit.Tree_Ref := Branch_Tree.Object_Ref;
-            Status.Save(New_Commit);
+            Status.Save (New_Commit);
 
             -- update the head commit to point to the newest tree
             Status.Set_Head (New_Commit);
@@ -290,7 +290,10 @@ procedure Main is
       else
          Next_Commit_Ref := Status.Head_Commit_Ref;
          if Next_Commit_Ref /= Note_Client.Empty_Hash_Ref then
-            Note_Client.Traverse_Commits (Status, Next_Commit_Ref, Add_Commit'Access);
+            Note_Client.Traverse_Commits
+              (Status,
+               Next_Commit_Ref,
+               Add_Commit'Access);
             Iterate_Commits;
          end if;
       end if;
@@ -301,9 +304,13 @@ procedure Main is
       if CLI.Argument_Count > 1 then
          if CLI.Argument_Count > 2 then
             if CLI.Argument (2) = "type" then
-               TIO.Put_Line (Note_Client.Object_Store.Object_Type (Status, CLI.Argument (3)));
+               TIO.Put_Line
+                 (Note_Client.Object_Store.Object_Type
+                    (Status,
+                     CLI.Argument (3)));
             elsif CLI.Argument (2) = "print" then
-               TIO.Put_Line (Note_Client.Object_Store.Read (Status, CLI.Argument (3)));
+               TIO.Put_Line
+                 (Note_Client.Object_Store.Read (Status, CLI.Argument (3)));
             end if;
          end if;
       end if;
@@ -385,8 +392,6 @@ procedure Main is
    Client_Status : Note_Client.Client_Status;
 begin
    Client_Status.Init;
-
-
 
    if CLI.Argument_Count >= 1 then
       if CLI.Argument (1) = "branch" then

@@ -251,18 +251,21 @@ package Client is
    procedure Set_Head (Status : in out Client_Status; Item : Commit'Class);
 
    procedure Tree_Refs
-     (Status : in out Client_Status;
+     (Status     : in out Client_Status;
       Start_Ref  :        SHA256_Value;
       References : in out Reference_Set.Set);
 
    procedure Branch_Refs
-     (Status : in out Client_Status;
+     (Status     : in out Client_Status;
       Item       :        Branch;
       References : in out Reference_Set.Set);
 
    procedure Export (Status : in out Client_Status; Filename : String);
 
-   procedure Export_Refs (Status : in out Client_Status ; Items : Reference_Set.Set; Filename : String);
+   procedure Export_Refs
+     (Status   : in out Client_Status;
+      Items    :        Reference_Set.Set;
+      Filename :        String);
 
    function Format_Note (Item : Note) return String;
 
@@ -273,8 +276,8 @@ package Client is
    -- Traverse the commits and pass each commit to a procedure
    procedure Traverse_Commits
      (Status : in out Client_Status;
-      Ref  : SHA256_Value;
-      Proc : access procedure (Item : Commit));
+      Ref    :        SHA256_Value;
+      Proc   :        access procedure (Item : Commit));
 
    -- @summary joins together the enties of both trees
    function Join_Trees (Left, Right : Tree) return Tree;
@@ -283,7 +286,10 @@ package Client is
    -- Merges two branches together
    -- @description
    -- merges branch B into branch A and creates a new commit for the merge
-   procedure Merge_Branches (Status : in out Client_Status; A : in out Branch; B : Branch);
+   procedure Merge_Branches
+     (Status : in out Client_Status;
+      A      : in out Branch;
+      B      :        Branch);
 
    function To_ISO_8601 (Date : Ada.Calendar.Time) return String;
 

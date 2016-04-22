@@ -1,6 +1,7 @@
 with Config;
 with Ada.Directories;
 with File_Operations;
+with Ada.IO_Exceptions;
 
 package body File_Object_Store is
    procedure Setup (Self : in out Data) is
@@ -17,14 +18,21 @@ package body File_Object_Store is
    end Cleanup;
 
    procedure Set (Self : in out Data; Key : SHA256_Value ; Value : String) is
+      Data_File  : Ada.Text_IO.File_Type;
    begin
-      null;
+      begin
+         TIO.Create (Data_File, TIO.Out_File, Object_Path(Key));
+         TIO.Put (Data_File, Value);
+         TIO.Close (Data_File);
+      exception
+         when Ada.IO_Exceptions.Use_Error => null;
+      end;
    end Set;
 
    function Get (Self : in out Data; Key : SHA256_Value) return String is
       pragma Unreferenced(Self);
    begin
-      return File_Operations.Load_File(Object_Path(Key));
+      return Get_Content(Object_Path(Key));
    end Get;
 
    function Exists (Self : Data; Key : SHA256_Value) return Boolean is
@@ -36,7 +44,7 @@ package body File_Object_Store is
    procedure Remove (Self : in out Data; Key : SHA256_Value) is
       pragma Unreferenced(Self);
    begin
-
+      Ada.Directories.Delete_File(Object_Path(Key));
    end Remove;
 
    procedure Commit (Self : in out Data) is

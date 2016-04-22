@@ -214,7 +214,10 @@ package body Client is
       Item.Object_Ref := Result_Hash;
    end Save;
 
-   procedure Save (Status : in out Client_Status; Item : in out Commit'Class) is
+   procedure Save
+     (Status : in out Client_Status;
+      Item   : in out Commit'Class)
+   is
       Result_JSON   : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash   : SHA256_Value;
       Parents_Array : JSON.JSON_Array;
@@ -237,7 +240,7 @@ package body Client is
       Item.Saved      := True;
    end Save;
 
-   procedure Save (Status : in out Client_Status ; Item : in out Note'Class) is
+   procedure Save (Status : in out Client_Status; Item : in out Note'Class) is
       Result_JSON : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash : SHA256_Value;
       use UBS;
@@ -271,7 +274,10 @@ package body Client is
           .Commit_Ref;
    end Head_Commit_Ref;
 
-   function Get_Commit (Status : in out Client_Status'Class ; Ref : SHA256_Value) return Commit is
+   function Get_Commit
+     (Status : in out Client_Status'Class;
+      Ref    :        SHA256_Value) return Commit
+   is
       Item_JSON     : JSON.JSON_Value;
       Result        : Commit;
       Parents_Array : JSON.JSON_Array;
@@ -304,7 +310,10 @@ package body Client is
       return Status.Branch_Status.Branches.Element (Status.Branch_Status.Head);
    end Head;
 
-   function Get_Tree (Status : in out Client_Status'Class; Ref : SHA256_Value) return Tree is
+   function Get_Tree
+     (Status : in out Client_Status'Class;
+      Ref    :        SHA256_Value) return Tree
+   is
       Result        : Tree;
       Item_JSON     : JSON.JSON_Value;
       Entry_Item    : Tree_Entry;
@@ -329,8 +338,10 @@ package body Client is
       return Result;
    end Get_Tree;
 
-   function Get_Note (Status : in out Client_Status'Class;
-                      Ref    :        SHA256_Value) return Note is
+   function Get_Note
+     (Status : in out Client_Status'Class;
+      Ref    :        SHA256_Value) return Note
+   is
       Result    : Note;
       Item_JSON : JSON.JSON_Value;
       use JSON;
@@ -391,7 +402,7 @@ package body Client is
    end Set_Head;
 
    procedure Tree_Refs
-     (Status : in out Client_Status;
+     (Status     : in out Client_Status;
       Start_Ref  :        SHA256_Value;
       References : in out Reference_Set.Set)
    is
@@ -417,7 +428,7 @@ package body Client is
    end Tree_Refs;
 
    procedure Branch_Refs
-     (Status : in out Client_Status;
+     (Status     : in out Client_Status;
       Item       :        Branch;
       References : in out Reference_Set.Set)
    is
@@ -443,7 +454,11 @@ package body Client is
       Export_Refs (Status, References, Filename);
    end Export;
 
-   procedure Export_Refs (Status : in out Client_Status ; Items : Reference_Set.Set; Filename : String) is
+   procedure Export_Refs
+     (Status   : in out Client_Status;
+      Items    :        Reference_Set.Set;
+      Filename :        String)
+   is
       Filetype_Str  : constant String := "note chain export" & ASCII.LF;
       Output_File   : Ada.Streams.Stream_IO.File_Type;
       Output_Stream : Ada.Streams.Stream_IO.Stream_Access;
@@ -456,7 +471,8 @@ package body Client is
       String'Write (Output_Stream, Filetype_Str);
       for Ref of Items loop
          declare
-            Content : constant String := Object_Store.Read_Object (Status, Ref);
+            Content : constant String :=
+              Object_Store.Read_Object (Status, Ref);
          begin
             Integer'Write (Output_Stream, Content'Length);
             String'Write (Output_Stream, Content);
@@ -495,8 +511,8 @@ package body Client is
 
    procedure Traverse_Commits
      (Status : in out Client_Status;
-      Ref  : SHA256_Value;
-      Proc : access procedure (Item : Commit))
+      Ref    :        SHA256_Value;
+      Proc   :        access procedure (Item : Commit))
    is
       Next_Ref    : Client.SHA256_Value := Ref;
       Next_Commit : Client.Commit;
@@ -526,7 +542,11 @@ package body Client is
       return Result;
    end Join_Trees;
 
-   procedure Merge_Branches (Status : in out Client_Status; A : in out Branch; B : Branch) is
+   procedure Merge_Branches
+     (Status : in out Client_Status;
+      A      : in out Branch;
+      B      :        Branch)
+   is
       Commit_A, Commit_B : Commit;
 
       Merged_Tree : Tree;
@@ -550,13 +570,13 @@ package body Client is
           (Left  => Get_Tree (Status, Commit_A.Tree_Ref),
            Right => Get_Tree (Status, Commit_B.Tree_Ref));
       Ada.Text_IO.Put_Line ("saving tree");
-      Status.Save(Merged_Tree);
+      Status.Save (Merged_Tree);
 
       New_Commit.Tree_Ref := Merged_Tree.Object_Ref;
       New_Commit.Parents.Insert (Commit_A.Object_Ref);
       New_Commit.Parents.Insert (Commit_B.Object_Ref);
       Ada.Text_IO.Put_Line ("saving commit");
-      Status.Save(New_Commit);
+      Status.Save (New_Commit);
 
       A.Commit_Ref := New_Commit.Object_Ref;
    end Merge_Branches;
@@ -622,13 +642,15 @@ package body Client is
             Object_Content : constant String :=
               Object_Type & ' ' & Length_Str & ASCII.LF & Content;
          begin
-            Hash := File_Operations.String_Hash(Object_Content);
-            Status.Data.Set(Hash, Object_Content);
+            Hash := File_Operations.String_Hash (Object_Content);
+            Status.Data.Set (Hash, Object_Content);
          end;
       end Write;
 
-      function Read (Status : in out Client_Status'Class;
-                     Hash   :        SHA256_Value) return String is
+      function Read
+        (Status : in out Client_Status'Class;
+         Hash   :        SHA256_Value) return String
+      is
          File_Content  : constant String := Status.Data.Get (Hash);
          Newline_Index : Integer;
       begin
@@ -636,15 +658,19 @@ package body Client is
          return File_Content (Newline_Index .. File_Content'Last);
       end Read;
 
-      function Read_Object (Status : in out Client_Status'Class;
-                            Hash   :        SHA256_Value) return String is
+      function Read_Object
+        (Status : in out Client_Status'Class;
+         Hash   :        SHA256_Value) return String
+      is
       begin
-         Check_SHA256(Hash);
-         return Status.Data.Get(Hash);
+         Check_SHA256 (Hash);
+         return Status.Data.Get (Hash);
       end Read_Object;
 
-      function Object_Type (Status : in out Client_Status'Class;
-                            Hash   :        SHA256_Value) return String is
+      function Object_Type
+        (Status : in out Client_Status'Class;
+         Hash   :        SHA256_Value) return String
+      is
          File_Content  : constant String := Read_Object (Status, Hash);
          Newline_Index : Integer;
          Last_Space    : Integer;
@@ -654,11 +680,13 @@ package body Client is
          return File_Content (1 .. Last_Space);
       end Object_Type;
 
-      function Exists (Status : in out Client_Status'Class;
-                       Hash   :        SHA256_Value) return Boolean is
+      function Exists
+        (Status : in out Client_Status'Class;
+         Hash   :        SHA256_Value) return Boolean
+      is
       begin
          Check_SHA256 (Hash);
-         return Status.Data.Exists(Hash);
+         return Status.Data.Exists (Hash);
       end Exists;
 
       function Char_Index (Data : String; Char : Character) return Integer is
