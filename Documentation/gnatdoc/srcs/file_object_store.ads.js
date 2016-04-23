@@ -312,7 +312,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "keyword",
-          "text": "procedure"
+          "text": "function"
         },
         {
           "kind": "span",
@@ -322,13 +322,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Setup",
-          "href": "docs/file_object_store.html#L10C14"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
+          "text": "Name",
+          "href": "docs/file_object_store.html#L10C13"
         },
         {
           "kind": "span",
@@ -338,8 +333,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "self",
-          "href": "docs/file_object_store.html#L10C21"
+          "text": "Self",
+          "href": "docs/file_object_store.html#L10C18"
         },
         {
           "kind": "span",
@@ -358,8 +353,14 @@ GNATdoc.SourceFile = {
         },
         {
           "kind": "span",
-          "cssClass": "keyword",
-          "text": "in"
+          "cssClass": "identifier",
+          "text": "Data",
+          "href": "docs/file_object_store.html#L8C9"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
         },
         {
           "kind": "span",
@@ -369,7 +370,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "keyword",
-          "text": "out"
+          "text": "return"
         },
         {
           "kind": "span",
@@ -379,8 +380,32 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Data",
-          "href": "docs/file_object_store.html#L8C9"
+          "text": "String"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "is"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "string",
+          "text": "\"file_object_store\""
         },
         {
           "kind": "span",
@@ -422,7 +447,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Cleanup",
+          "text": "Setup",
           "href": "docs/file_object_store.html#L12C14"
         },
         {
@@ -439,7 +464,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "self",
-          "href": "docs/file_object_store.html#L12C23"
+          "href": "docs/file_object_store.html#L12C21"
         },
         {
           "kind": "span",
@@ -522,7 +547,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Set",
+          "text": "Cleanup",
           "href": "docs/file_object_store.html#L14C14"
         },
         {
@@ -538,8 +563,108 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
+          "text": "self",
+          "href": "docs/file_object_store.html#L14C23"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "in"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "out"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Data",
+          "href": "docs/file_object_store.html#L8C9"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 15,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 16,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "procedure"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Set",
+          "href": "docs/file_object_store.html#L16C14"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
           "text": "Self",
-          "href": "docs/file_object_store.html#L14C19"
+          "href": "docs/file_object_store.html#L16C19"
         },
         {
           "kind": "span",
@@ -596,7 +721,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/file_object_store.html#L14C39"
+          "href": "docs/file_object_store.html#L16C39"
         },
         {
           "kind": "span",
@@ -638,7 +763,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Value",
-          "href": "docs/file_object_store.html#L14C60"
+          "href": "docs/file_object_store.html#L16C60"
         },
         {
           "kind": "span",
@@ -674,13 +799,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 15,
+      "number": 17,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 16,
+      "number": 18,
       "children": [
         {
           "kind": "span",
@@ -701,7 +826,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Get",
-          "href": "docs/file_object_store.html#L16C13"
+          "href": "docs/file_object_store.html#L18C13"
         },
         {
           "kind": "span",
@@ -717,7 +842,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Self",
-          "href": "docs/file_object_store.html#L16C18"
+          "href": "docs/file_object_store.html#L18C18"
         },
         {
           "kind": "span",
@@ -774,7 +899,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/file_object_store.html#L16C38"
+          "href": "docs/file_object_store.html#L18C38"
         },
         {
           "kind": "span",
@@ -831,13 +956,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 17,
+      "number": 19,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 18,
+      "number": 20,
       "children": [
         {
           "kind": "span",
@@ -858,7 +983,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Exists",
-          "href": "docs/file_object_store.html#L18C13"
+          "href": "docs/file_object_store.html#L20C13"
         },
         {
           "kind": "span",
@@ -874,7 +999,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Self",
-          "href": "docs/file_object_store.html#L18C21"
+          "href": "docs/file_object_store.html#L20C21"
         },
         {
           "kind": "span",
@@ -931,7 +1056,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/file_object_store.html#L18C41"
+          "href": "docs/file_object_store.html#L20C41"
         },
         {
           "kind": "span",
@@ -988,143 +1113,6 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 19,
-      "children": [
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 20,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "procedure"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Remove",
-          "href": "docs/file_object_store.html#L20C14"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "("
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Self",
-          "href": "docs/file_object_store.html#L20C22"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "in"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "out"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Data",
-          "href": "docs/file_object_store.html#L8C9"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Key",
-          "href": "docs/file_object_store.html#L20C42"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "SHA256_Value",
-          "href": "docs/file_object_store.html#L6C12"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ")"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        }
-      ]
-    },
-    {
-      "kind": "line",
       "number": 21,
       "children": [
       ]
@@ -1151,7 +1139,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Commit",
+          "text": "Remove",
           "href": "docs/file_object_store.html#L22C14"
         },
         {
@@ -1214,6 +1202,43 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
+          "text": ";"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Key",
+          "href": "docs/file_object_store.html#L22C42"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "SHA256_Value",
+          "href": "docs/file_object_store.html#L6C12"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
           "text": ")"
         },
         {
@@ -1235,6 +1260,106 @@ GNATdoc.SourceFile = {
       "children": [
         {
           "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "procedure"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Commit",
+          "href": "docs/file_object_store.html#L24C14"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Self",
+          "href": "docs/file_object_store.html#L24C22"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "in"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "out"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Data",
+          "href": "docs/file_object_store.html#L8C9"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 25,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 26,
+      "children": [
+        {
+          "kind": "span",
           "cssClass": "keyword",
           "text": "private"
         }
@@ -1242,7 +1367,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 33,
+      "number": 35,
       "children": [
         {
           "kind": "span",

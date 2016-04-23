@@ -5,6 +5,8 @@ package KV_Store is
 
    No_Key_Error : exception;
 
+   function Name(Self : KV_Container) return String is abstract;
+
    procedure Setup (self : in out KV_Container) is abstract;
 
    procedure Cleanup (Self : in out KV_Container) is abstract;

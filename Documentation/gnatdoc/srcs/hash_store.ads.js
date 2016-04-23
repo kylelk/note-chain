@@ -705,7 +705,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "keyword",
-          "text": "procedure"
+          "text": "function"
         },
         {
           "kind": "span",
@@ -715,8 +715,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Setup",
-          "href": "docs/hash_store.html#L22C14"
+          "text": "Name",
+          "href": "docs/hash_store.html#L22C13"
         },
         {
           "kind": "span",
@@ -731,8 +731,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "self",
-          "href": "docs/hash_store.html#L22C21"
+          "text": "Self",
+          "href": "docs/hash_store.html#L22C19"
         },
         {
           "kind": "span",
@@ -751,8 +751,14 @@ GNATdoc.SourceFile = {
         },
         {
           "kind": "span",
-          "cssClass": "keyword",
-          "text": "in"
+          "cssClass": "identifier",
+          "text": "Data",
+          "href": "docs/hash_store.html#L17C9"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
         },
         {
           "kind": "span",
@@ -762,7 +768,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "keyword",
-          "text": "out"
+          "text": "return"
         },
         {
           "kind": "span",
@@ -772,8 +778,32 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Data",
-          "href": "docs/hash_store.html#L17C9"
+          "text": "String"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "is"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "string",
+          "text": "\"hash_store\""
         },
         {
           "kind": "span",
@@ -815,7 +845,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Cleanup",
+          "text": "Setup",
           "href": "docs/hash_store.html#L24C14"
         },
         {
@@ -832,7 +862,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "self",
-          "href": "docs/hash_store.html#L24C23"
+          "href": "docs/hash_store.html#L24C21"
         },
         {
           "kind": "span",
@@ -915,7 +945,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Set",
+          "text": "Cleanup",
           "href": "docs/hash_store.html#L26C14"
         },
         {
@@ -931,8 +961,108 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
+          "text": "self",
+          "href": "docs/hash_store.html#L26C23"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "in"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "out"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Data",
+          "href": "docs/hash_store.html#L17C9"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 27,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 28,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "procedure"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Set",
+          "href": "docs/hash_store.html#L28C14"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
           "text": "Self",
-          "href": "docs/hash_store.html#L26C19"
+          "href": "docs/hash_store.html#L28C19"
         },
         {
           "kind": "span",
@@ -989,7 +1119,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/hash_store.html#L26C39"
+          "href": "docs/hash_store.html#L28C39"
         },
         {
           "kind": "span",
@@ -1026,7 +1156,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Value",
-          "href": "docs/hash_store.html#L26C59"
+          "href": "docs/hash_store.html#L28C59"
         },
         {
           "kind": "span",
@@ -1062,13 +1192,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 27,
+      "number": 29,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 28,
+      "number": 30,
       "children": [
         {
           "kind": "span",
@@ -1089,7 +1219,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Get",
-          "href": "docs/hash_store.html#L28C13"
+          "href": "docs/hash_store.html#L30C13"
         },
         {
           "kind": "span",
@@ -1105,7 +1235,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Self",
-          "href": "docs/hash_store.html#L28C18"
+          "href": "docs/hash_store.html#L30C18"
         },
         {
           "kind": "span",
@@ -1162,7 +1292,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/hash_store.html#L28C38"
+          "href": "docs/hash_store.html#L30C38"
         },
         {
           "kind": "span",
@@ -1219,13 +1349,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 29,
+      "number": 31,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 30,
+      "number": 32,
       "children": [
         {
           "kind": "span",
@@ -1246,7 +1376,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Exists",
-          "href": "docs/hash_store.html#L30C13"
+          "href": "docs/hash_store.html#L32C13"
         },
         {
           "kind": "span",
@@ -1262,7 +1392,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Self",
-          "href": "docs/hash_store.html#L30C21"
+          "href": "docs/hash_store.html#L32C21"
         },
         {
           "kind": "span",
@@ -1319,7 +1449,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/hash_store.html#L30C41"
+          "href": "docs/hash_store.html#L32C41"
         },
         {
           "kind": "span",
@@ -1376,143 +1506,6 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 31,
-      "children": [
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 32,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "procedure"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Remove",
-          "href": "docs/hash_store.html#L32C14"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "("
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Self",
-          "href": "docs/hash_store.html#L32C22"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "in"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "out"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Data",
-          "href": "docs/hash_store.html#L17C9"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Key",
-          "href": "docs/hash_store.html#L32C42"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "SHA256_Value",
-          "href": "docs/kv_store.html#L4C12"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ")"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        }
-      ]
-    },
-    {
-      "kind": "line",
       "number": 33,
       "children": [
       ]
@@ -1539,7 +1532,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Commit",
+          "text": "Remove",
           "href": "docs/hash_store.html#L34C14"
         },
         {
@@ -1602,6 +1595,43 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
+          "text": ";"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Key",
+          "href": "docs/hash_store.html#L34C42"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "SHA256_Value",
+          "href": "docs/kv_store.html#L4C12"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
           "text": ")"
         },
         {
@@ -1614,6 +1644,106 @@ GNATdoc.SourceFile = {
     {
       "kind": "line",
       "number": 35,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 36,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "procedure"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Commit",
+          "href": "docs/hash_store.html#L36C14"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Self",
+          "href": "docs/hash_store.html#L36C22"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "in"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "out"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Data",
+          "href": "docs/hash_store.html#L17C9"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 37,
       "children": [
         {
           "kind": "span",

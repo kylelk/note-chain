@@ -293,7 +293,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "string",
-          "text": "\"1.10.0\""
+          "text": "\"1.11.0\""
         },
         {
           "kind": "span",

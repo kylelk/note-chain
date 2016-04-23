@@ -375,9 +375,9 @@ GNATdoc.Documentation = {
     {
       "entities": [
         {
-          "label": "Set_Server",
+          "label": "Name",
           "line": 22,
-          "column": 14,
+          "column": 13,
           "src": "srcs/redis_store.ads.html",
           "summary": [
           ],
@@ -388,6 +388,158 @@ GNATdoc.Documentation = {
                 {
                   "kind": "line",
                   "number": 22,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Name",
+                      "href": "docs/redis_store.html#L22C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Self",
+                      "href": "docs/redis_store.html#L22C19"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Data",
+                      "href": "docs/redis_store.html#L10C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "string",
+                      "text": "\"redis_store\""
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "Self",
+              "line": 22,
+              "column": 19,
+              "type": {
+                "label": "Redis_Store.Data",
+                "docHref": "docs/redis_store.html#L10C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Set_Server",
+          "line": 24,
+          "column": 14,
+          "src": "srcs/redis_store.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 24,
                   "children": [
                     {
                       "kind": "span",
@@ -408,7 +560,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Set_Server",
-                      "href": "docs/redis_store.html#L22C14"
+                      "href": "docs/redis_store.html#L24C14"
                     },
                     {
                       "kind": "span",
@@ -419,7 +571,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Self",
-                      "href": "docs/redis_store.html#L22C25"
+                      "href": "docs/redis_store.html#L24C25"
                     },
                     {
                       "kind": "span",
@@ -476,7 +628,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Host",
-                      "href": "docs/redis_store.html#L22C45"
+                      "href": "docs/redis_store.html#L24C45"
                     },
                     {
                       "kind": "span",
@@ -512,7 +664,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Port",
-                      "href": "docs/redis_store.html#L22C60"
+                      "href": "docs/redis_store.html#L24C60"
                     },
                     {
                       "kind": "span",
@@ -548,7 +700,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Namespace",
-                      "href": "docs/redis_store.html#L22C76"
+                      "href": "docs/redis_store.html#L24C76"
                     },
                     {
                       "kind": "span",
@@ -588,7 +740,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Self",
-              "line": 22,
+              "line": 24,
               "column": 25,
               "type": {
                 "label": "Redis_Store.Data",
@@ -599,7 +751,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Host",
-              "line": 22,
+              "line": 24,
               "column": 45,
               "type": {
                 "label": "String"
@@ -609,7 +761,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Port",
-              "line": 22,
+              "line": 24,
               "column": 60,
               "type": {
                 "label": "Integer"
@@ -619,7 +771,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Namespace",
-              "line": 22,
+              "line": 24,
               "column": 76,
               "type": {
                 "label": "String"
@@ -631,128 +783,6 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Setup",
-          "line": 24,
-          "column": 14,
-          "src": "srcs/redis_store.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 24,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "procedure"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Setup",
-                      "href": "docs/redis_store.html#L24C14"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "self",
-                      "href": "docs/redis_store.html#L24C21"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "out"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Data",
-                      "href": "docs/redis_store.html#L10C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "self",
-              "line": 24,
-              "column": 21,
-              "type": {
-                "label": "Redis_Store.Data",
-                "docHref": "docs/redis_store.html#L10C9"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Cleanup",
           "line": 26,
           "column": 14,
           "src": "srcs/redis_store.ads.html",
@@ -784,7 +814,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Cleanup",
+                      "text": "Setup",
                       "href": "docs/redis_store.html#L26C14"
                     },
                     {
@@ -801,7 +831,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "self",
-                      "href": "docs/redis_store.html#L26C23"
+                      "href": "docs/redis_store.html#L26C21"
                     },
                     {
                       "kind": "span",
@@ -863,7 +893,7 @@ GNATdoc.Documentation = {
             {
               "label": "self",
               "line": 26,
-              "column": 23,
+              "column": 21,
               "type": {
                 "label": "Redis_Store.Data",
                 "docHref": "docs/redis_store.html#L10C9"
@@ -874,7 +904,7 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Set",
+          "label": "Cleanup",
           "line": 28,
           "column": 14,
           "src": "srcs/redis_store.ads.html",
@@ -906,7 +936,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Set",
+                      "text": "Cleanup",
                       "href": "docs/redis_store.html#L28C14"
                     },
                     {
@@ -922,8 +952,130 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
+                      "text": "self",
+                      "href": "docs/redis_store.html#L28C23"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Data",
+                      "href": "docs/redis_store.html#L10C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "self",
+              "line": 28,
+              "column": 23,
+              "type": {
+                "label": "Redis_Store.Data",
+                "docHref": "docs/redis_store.html#L10C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Set",
+          "line": 30,
+          "column": 14,
+          "src": "srcs/redis_store.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 30,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Set",
+                      "href": "docs/redis_store.html#L30C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
                       "text": "Self",
-                      "href": "docs/redis_store.html#L28C19"
+                      "href": "docs/redis_store.html#L30C19"
                     },
                     {
                       "kind": "span",
@@ -980,7 +1132,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Key",
-                      "href": "docs/redis_store.html#L28C39"
+                      "href": "docs/redis_store.html#L30C39"
                     },
                     {
                       "kind": "span",
@@ -1017,7 +1169,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Value",
-                      "href": "docs/redis_store.html#L28C59"
+                      "href": "docs/redis_store.html#L30C59"
                     },
                     {
                       "kind": "span",
@@ -1057,7 +1209,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Self",
-              "line": 28,
+              "line": 30,
               "column": 19,
               "type": {
                 "label": "Redis_Store.Data",
@@ -1068,7 +1220,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Key",
-              "line": 28,
+              "line": 30,
               "column": 39,
               "type": {
                 "label": "KV_Store.SHA256_Value",
@@ -1079,7 +1231,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Value",
-              "line": 28,
+              "line": 30,
               "column": 59,
               "type": {
                 "label": "String"
@@ -1091,7 +1243,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Get",
-          "line": 30,
+          "line": 32,
           "column": 13,
           "src": "srcs/redis_store.ads.html",
           "summary": [
@@ -1102,7 +1254,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 30,
+                  "number": 32,
                   "children": [
                     {
                       "kind": "span",
@@ -1123,7 +1275,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Get",
-                      "href": "docs/redis_store.html#L30C13"
+                      "href": "docs/redis_store.html#L32C13"
                     },
                     {
                       "kind": "span",
@@ -1139,7 +1291,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Self",
-                      "href": "docs/redis_store.html#L30C18"
+                      "href": "docs/redis_store.html#L32C18"
                     },
                     {
                       "kind": "span",
@@ -1196,7 +1348,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Key",
-                      "href": "docs/redis_store.html#L30C38"
+                      "href": "docs/redis_store.html#L32C38"
                     },
                     {
                       "kind": "span",
@@ -1257,7 +1409,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Self",
-              "line": 30,
+              "line": 32,
               "column": 18,
               "type": {
                 "label": "Redis_Store.Data",
@@ -1268,7 +1420,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Key",
-              "line": 30,
+              "line": 32,
               "column": 38,
               "type": {
                 "label": "KV_Store.SHA256_Value",
@@ -1281,7 +1433,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Exists",
-          "line": 32,
+          "line": 34,
           "column": 13,
           "src": "srcs/redis_store.ads.html",
           "summary": [
@@ -1292,7 +1444,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 32,
+                  "number": 34,
                   "children": [
                     {
                       "kind": "span",
@@ -1313,7 +1465,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Exists",
-                      "href": "docs/redis_store.html#L32C13"
+                      "href": "docs/redis_store.html#L34C13"
                     },
                     {
                       "kind": "span",
@@ -1329,7 +1481,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Self",
-                      "href": "docs/redis_store.html#L32C21"
+                      "href": "docs/redis_store.html#L34C21"
                     },
                     {
                       "kind": "span",
@@ -1386,7 +1538,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Key",
-                      "href": "docs/redis_store.html#L32C41"
+                      "href": "docs/redis_store.html#L34C41"
                     },
                     {
                       "kind": "span",
@@ -1447,7 +1599,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Self",
-              "line": 32,
+              "line": 34,
               "column": 21,
               "type": {
                 "label": "Redis_Store.Data",
@@ -1458,7 +1610,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Key",
-              "line": 32,
+              "line": 34,
               "column": 41,
               "type": {
                 "label": "KV_Store.SHA256_Value",
@@ -1471,176 +1623,6 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Remove",
-          "line": 34,
-          "column": 14,
-          "src": "srcs/redis_store.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 34,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "procedure"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Remove",
-                      "href": "docs/redis_store.html#L34C14"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Self",
-                      "href": "docs/redis_store.html#L34C22"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "out"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Data",
-                      "href": "docs/redis_store.html#L10C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Key",
-                      "href": "docs/redis_store.html#L34C42"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "SHA256_Value",
-                      "href": "docs/kv_store.html#L4C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "Self",
-              "line": 34,
-              "column": 22,
-              "type": {
-                "label": "Redis_Store.Data",
-                "docHref": "docs/redis_store.html#L10C9"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Key",
-              "line": 34,
-              "column": 42,
-              "type": {
-                "label": "KV_Store.SHA256_Value",
-                "docHref": "docs/kv_store.html#L4C12"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Commit",
           "line": 36,
           "column": 14,
           "src": "srcs/redis_store.ads.html",
@@ -1672,7 +1654,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Commit",
+                      "text": "Remove",
                       "href": "docs/redis_store.html#L36C14"
                     },
                     {
@@ -1735,6 +1717,43 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
+                      "text": ";"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Key",
+                      "href": "docs/redis_store.html#L36C42"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "SHA256_Value",
+                      "href": "docs/kv_store.html#L4C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
                       "text": ")"
                     },
                     {
@@ -1751,6 +1770,139 @@ GNATdoc.Documentation = {
             {
               "label": "Self",
               "line": 36,
+              "column": 22,
+              "type": {
+                "label": "Redis_Store.Data",
+                "docHref": "docs/redis_store.html#L10C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Key",
+              "line": 36,
+              "column": 42,
+              "type": {
+                "label": "KV_Store.SHA256_Value",
+                "docHref": "docs/kv_store.html#L4C12"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Commit",
+          "line": 38,
+          "column": 14,
+          "src": "srcs/redis_store.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 38,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Commit",
+                      "href": "docs/redis_store.html#L38C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Self",
+                      "href": "docs/redis_store.html#L38C22"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Data",
+                      "href": "docs/redis_store.html#L10C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "Self",
+              "line": 38,
               "column": 22,
               "type": {
                 "label": "Redis_Store.Data",

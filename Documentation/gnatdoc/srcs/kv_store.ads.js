@@ -249,7 +249,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "keyword",
-          "text": "procedure"
+          "text": "function"
         },
         {
           "kind": "span",
@@ -259,13 +259,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Setup",
-          "href": "docs/kv_store.html#L8C14"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
+          "text": "Name",
+          "href": "docs/kv_store.html#L8C13"
         },
         {
           "kind": "span",
@@ -275,8 +270,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "self",
-          "href": "docs/kv_store.html#L8C21"
+          "text": "Self",
+          "href": "docs/kv_store.html#L8C18"
         },
         {
           "kind": "span",
@@ -295,26 +290,6 @@ GNATdoc.SourceFile = {
         },
         {
           "kind": "span",
-          "cssClass": "keyword",
-          "text": "in"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "out"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
           "cssClass": "identifier",
           "text": "KV_Container",
           "href": "docs/kv_store.html#L2C9"
@@ -323,6 +298,26 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": ")"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "return"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "String"
         },
         {
           "kind": "span",
@@ -379,7 +374,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Cleanup",
+          "text": "Setup",
           "href": "docs/kv_store.html#L10C14"
         },
         {
@@ -395,8 +390,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Self",
-          "href": "docs/kv_store.html#L10C23"
+          "text": "self",
+          "href": "docs/kv_store.html#L10C21"
         },
         {
           "kind": "span",
@@ -499,7 +494,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Commit",
+          "text": "Cleanup",
           "href": "docs/kv_store.html#L12C14"
         },
         {
@@ -516,7 +511,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Self",
-          "href": "docs/kv_store.html#L12C22"
+          "href": "docs/kv_store.html#L12C23"
         },
         {
           "kind": "span",
@@ -619,14 +614,134 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Set",
+          "text": "Commit",
           "href": "docs/kv_store.html#L14C14"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Self",
+          "href": "docs/kv_store.html#L14C22"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "in"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "out"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "KV_Container",
+          "href": "docs/kv_store.html#L2C9"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "is"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "abstract"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
         }
       ]
     },
     {
       "kind": "line",
       "number": 15,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 16,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "procedure"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Set",
+          "href": "docs/kv_store.html#L16C14"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 17,
       "children": [
         {
           "kind": "span",
@@ -642,7 +757,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Self",
-          "href": "docs/kv_store.html#L15C7"
+          "href": "docs/kv_store.html#L17C7"
         },
         {
           "kind": "span",
@@ -694,7 +809,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 16,
+      "number": 18,
       "children": [
         {
           "kind": "span",
@@ -705,7 +820,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/kv_store.html#L16C7"
+          "href": "docs/kv_store.html#L18C7"
         },
         {
           "kind": "span",
@@ -737,7 +852,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 17,
+      "number": 19,
       "children": [
         {
           "kind": "span",
@@ -748,7 +863,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Value",
-          "href": "docs/kv_store.html#L17C7"
+          "href": "docs/kv_store.html#L19C7"
         },
         {
           "kind": "span",
@@ -804,13 +919,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 18,
+      "number": 20,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 19,
+      "number": 21,
       "children": [
         {
           "kind": "span",
@@ -831,13 +946,13 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Get",
-          "href": "docs/kv_store.html#L19C13"
+          "href": "docs/kv_store.html#L21C13"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 20,
+      "number": 22,
       "children": [
         {
           "kind": "span",
@@ -853,7 +968,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Self",
-          "href": "docs/kv_store.html#L20C7"
+          "href": "docs/kv_store.html#L22C7"
         },
         {
           "kind": "span",
@@ -905,7 +1020,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 21,
+      "number": 23,
       "children": [
         {
           "kind": "span",
@@ -916,7 +1031,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/kv_store.html#L21C7"
+          "href": "docs/kv_store.html#L23C7"
         },
         {
           "kind": "span",
@@ -993,13 +1108,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 22,
+      "number": 24,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 23,
+      "number": 25,
       "children": [
         {
           "kind": "span",
@@ -1020,13 +1135,13 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Exists",
-          "href": "docs/kv_store.html#L23C13"
+          "href": "docs/kv_store.html#L25C13"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 24,
+      "number": 26,
       "children": [
         {
           "kind": "span",
@@ -1042,7 +1157,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Self",
-          "href": "docs/kv_store.html#L24C7"
+          "href": "docs/kv_store.html#L26C7"
         },
         {
           "kind": "span",
@@ -1094,7 +1209,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 25,
+      "number": 27,
       "children": [
         {
           "kind": "span",
@@ -1105,7 +1220,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/kv_store.html#L25C7"
+          "href": "docs/kv_store.html#L27C7"
         },
         {
           "kind": "span",
@@ -1182,13 +1297,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 26,
+      "number": 28,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 27,
+      "number": 29,
       "children": [
         {
           "kind": "span",
@@ -1209,13 +1324,13 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Remove",
-          "href": "docs/kv_store.html#L27C14"
+          "href": "docs/kv_store.html#L29C14"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 28,
+      "number": 30,
       "children": [
         {
           "kind": "span",
@@ -1231,7 +1346,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Self",
-          "href": "docs/kv_store.html#L28C7"
+          "href": "docs/kv_store.html#L30C7"
         },
         {
           "kind": "span",
@@ -1283,7 +1398,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 29,
+      "number": 31,
       "children": [
         {
           "kind": "span",
@@ -1294,7 +1409,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Key",
-          "href": "docs/kv_store.html#L29C7"
+          "href": "docs/kv_store.html#L31C7"
         },
         {
           "kind": "span",
@@ -1351,7 +1466,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 30,
+      "number": 32,
       "children": [
         {
           "kind": "span",

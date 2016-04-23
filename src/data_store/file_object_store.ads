@@ -7,6 +7,8 @@ package File_Object_Store is
 
    type Data is new KV_Store.KV_Container with null record;
 
+   function Name(Self : Data) return String is ("file_object_store");
+
    procedure Setup (self : in out Data);
 
    procedure Cleanup (self : in out Data);

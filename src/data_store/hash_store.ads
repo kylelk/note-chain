@@ -19,6 +19,8 @@ package Hash_Store is
       Modified : Boolean := False;
    end record;
 
+   function Name (Self : Data) return String is ("hash_store");
+
    procedure Setup (self : in out Data);
 
    procedure Cleanup (self : in out Data);

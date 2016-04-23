@@ -270,9 +270,9 @@ GNATdoc.Documentation = {
     {
       "entities": [
         {
-          "label": "Setup",
+          "label": "Name",
           "line": 22,
-          "column": 14,
+          "column": 13,
           "src": "srcs/hash_store.ads.html",
           "summary": [
           ],
@@ -292,7 +292,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "procedure"
+                      "text": "function"
                     },
                     {
                       "kind": "span",
@@ -302,8 +302,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Setup",
-                      "href": "docs/hash_store.html#L22C14"
+                      "text": "Name",
+                      "href": "docs/hash_store.html#L22C13"
                     },
                     {
                       "kind": "span",
@@ -318,8 +318,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "self",
-                      "href": "docs/hash_store.html#L22C21"
+                      "text": "Self",
+                      "href": "docs/hash_store.html#L22C19"
                     },
                     {
                       "kind": "span",
@@ -330,26 +330,6 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "out"
                     },
                     {
                       "kind": "span",
@@ -369,6 +349,56 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "string",
+                      "text": "\"hash_store\""
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
                       "cssClass": "identifier",
                       "text": ";"
                     }
@@ -379,9 +409,9 @@ GNATdoc.Documentation = {
           ],
           "parameters": [
             {
-              "label": "self",
+              "label": "Self",
               "line": 22,
-              "column": 21,
+              "column": 19,
               "type": {
                 "label": "Hash_Store.Data",
                 "docHref": "docs/hash_store.html#L17C9"
@@ -392,7 +422,7 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Cleanup",
+          "label": "Setup",
           "line": 24,
           "column": 14,
           "src": "srcs/hash_store.ads.html",
@@ -424,7 +454,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Cleanup",
+                      "text": "Setup",
                       "href": "docs/hash_store.html#L24C14"
                     },
                     {
@@ -441,7 +471,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "self",
-                      "href": "docs/hash_store.html#L24C23"
+                      "href": "docs/hash_store.html#L24C21"
                     },
                     {
                       "kind": "span",
@@ -503,7 +533,7 @@ GNATdoc.Documentation = {
             {
               "label": "self",
               "line": 24,
-              "column": 23,
+              "column": 21,
               "type": {
                 "label": "Hash_Store.Data",
                 "docHref": "docs/hash_store.html#L17C9"
@@ -514,7 +544,7 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Set",
+          "label": "Cleanup",
           "line": 26,
           "column": 14,
           "src": "srcs/hash_store.ads.html",
@@ -546,7 +576,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Set",
+                      "text": "Cleanup",
                       "href": "docs/hash_store.html#L26C14"
                     },
                     {
@@ -562,8 +592,130 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
+                      "text": "self",
+                      "href": "docs/hash_store.html#L26C23"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Data",
+                      "href": "docs/hash_store.html#L17C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "self",
+              "line": 26,
+              "column": 23,
+              "type": {
+                "label": "Hash_Store.Data",
+                "docHref": "docs/hash_store.html#L17C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Set",
+          "line": 28,
+          "column": 14,
+          "src": "srcs/hash_store.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 28,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Set",
+                      "href": "docs/hash_store.html#L28C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
                       "text": "Self",
-                      "href": "docs/hash_store.html#L26C19"
+                      "href": "docs/hash_store.html#L28C19"
                     },
                     {
                       "kind": "span",
@@ -620,7 +772,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Key",
-                      "href": "docs/hash_store.html#L26C39"
+                      "href": "docs/hash_store.html#L28C39"
                     },
                     {
                       "kind": "span",
@@ -657,7 +809,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Value",
-                      "href": "docs/hash_store.html#L26C59"
+                      "href": "docs/hash_store.html#L28C59"
                     },
                     {
                       "kind": "span",
@@ -697,7 +849,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Self",
-              "line": 26,
+              "line": 28,
               "column": 19,
               "type": {
                 "label": "Hash_Store.Data",
@@ -708,7 +860,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Key",
-              "line": 26,
+              "line": 28,
               "column": 39,
               "type": {
                 "label": "KV_Store.SHA256_Value",
@@ -719,7 +871,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Value",
-              "line": 26,
+              "line": 28,
               "column": 59,
               "type": {
                 "label": "String"
@@ -731,7 +883,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Get",
-          "line": 28,
+          "line": 30,
           "column": 13,
           "src": "srcs/hash_store.ads.html",
           "summary": [
@@ -742,7 +894,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 28,
+                  "number": 30,
                   "children": [
                     {
                       "kind": "span",
@@ -763,7 +915,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Get",
-                      "href": "docs/hash_store.html#L28C13"
+                      "href": "docs/hash_store.html#L30C13"
                     },
                     {
                       "kind": "span",
@@ -779,7 +931,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Self",
-                      "href": "docs/hash_store.html#L28C18"
+                      "href": "docs/hash_store.html#L30C18"
                     },
                     {
                       "kind": "span",
@@ -836,7 +988,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Key",
-                      "href": "docs/hash_store.html#L28C38"
+                      "href": "docs/hash_store.html#L30C38"
                     },
                     {
                       "kind": "span",
@@ -897,7 +1049,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Self",
-              "line": 28,
+              "line": 30,
               "column": 18,
               "type": {
                 "label": "Hash_Store.Data",
@@ -908,7 +1060,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Key",
-              "line": 28,
+              "line": 30,
               "column": 38,
               "type": {
                 "label": "KV_Store.SHA256_Value",
@@ -921,7 +1073,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Exists",
-          "line": 30,
+          "line": 32,
           "column": 13,
           "src": "srcs/hash_store.ads.html",
           "summary": [
@@ -932,7 +1084,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 30,
+                  "number": 32,
                   "children": [
                     {
                       "kind": "span",
@@ -953,7 +1105,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Exists",
-                      "href": "docs/hash_store.html#L30C13"
+                      "href": "docs/hash_store.html#L32C13"
                     },
                     {
                       "kind": "span",
@@ -969,7 +1121,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Self",
-                      "href": "docs/hash_store.html#L30C21"
+                      "href": "docs/hash_store.html#L32C21"
                     },
                     {
                       "kind": "span",
@@ -1026,7 +1178,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Key",
-                      "href": "docs/hash_store.html#L30C41"
+                      "href": "docs/hash_store.html#L32C41"
                     },
                     {
                       "kind": "span",
@@ -1087,7 +1239,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Self",
-              "line": 30,
+              "line": 32,
               "column": 21,
               "type": {
                 "label": "Hash_Store.Data",
@@ -1098,7 +1250,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Key",
-              "line": 30,
+              "line": 32,
               "column": 41,
               "type": {
                 "label": "KV_Store.SHA256_Value",
@@ -1111,176 +1263,6 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Remove",
-          "line": 32,
-          "column": 14,
-          "src": "srcs/hash_store.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 32,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "procedure"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Remove",
-                      "href": "docs/hash_store.html#L32C14"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Self",
-                      "href": "docs/hash_store.html#L32C22"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "out"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Data",
-                      "href": "docs/hash_store.html#L17C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Key",
-                      "href": "docs/hash_store.html#L32C42"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "SHA256_Value",
-                      "href": "docs/kv_store.html#L4C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "Self",
-              "line": 32,
-              "column": 22,
-              "type": {
-                "label": "Hash_Store.Data",
-                "docHref": "docs/hash_store.html#L17C9"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Key",
-              "line": 32,
-              "column": 42,
-              "type": {
-                "label": "KV_Store.SHA256_Value",
-                "docHref": "docs/kv_store.html#L4C12"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Commit",
           "line": 34,
           "column": 14,
           "src": "srcs/hash_store.ads.html",
@@ -1312,7 +1294,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Commit",
+                      "text": "Remove",
                       "href": "docs/hash_store.html#L34C14"
                     },
                     {
@@ -1375,6 +1357,43 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
+                      "text": ";"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Key",
+                      "href": "docs/hash_store.html#L34C42"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "SHA256_Value",
+                      "href": "docs/kv_store.html#L4C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
                       "text": ")"
                     },
                     {
@@ -1391,6 +1410,139 @@ GNATdoc.Documentation = {
             {
               "label": "Self",
               "line": 34,
+              "column": 22,
+              "type": {
+                "label": "Hash_Store.Data",
+                "docHref": "docs/hash_store.html#L17C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Key",
+              "line": 34,
+              "column": 42,
+              "type": {
+                "label": "KV_Store.SHA256_Value",
+                "docHref": "docs/kv_store.html#L4C12"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Commit",
+          "line": 36,
+          "column": 14,
+          "src": "srcs/hash_store.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 36,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Commit",
+                      "href": "docs/hash_store.html#L36C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Self",
+                      "href": "docs/hash_store.html#L36C22"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Data",
+                      "href": "docs/hash_store.html#L17C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "Self",
+              "line": 36,
               "column": 22,
               "type": {
                 "label": "Hash_Store.Data",

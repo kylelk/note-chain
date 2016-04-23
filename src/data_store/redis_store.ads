@@ -19,6 +19,8 @@ package Redis_Store is
    Server_Not_Set : exception;
    Redis_Error : exception;
 
+   function Name (Self : Data) return String is ("redis_store");
+
    procedure Set_Server(Self : in out Data; Host : String; Port : Integer; Namespace : String);
 
    procedure Setup (self : in out Data);
