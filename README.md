@@ -1,12 +1,18 @@
 # Note chain
 
-A decentralized note taking tool
+A decentralized note taking tool inspired by the git version control system, Content is stored in a merkle tree data structure.
 
-## Getting Started
+## Basic usage
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+#### Creating a new note
 
-### Prerequisities
+Run the command `./obj/note_chain note new`, this will open the vim editor. once you close vim the node will be saved.
+
+### Listing nodes
+
+Run `./obj/note_chain note list` to list all of the notes in the current branch
+
+## Prerequisities
 
 GNAT Ada compiler with Ada 2012 support and the Aunit test framework
 
