@@ -8,11 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisities
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+GNAT Ada compiler
 
 ### Installing
 
@@ -34,7 +30,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+The executable `./obj/test` contains the compiled unit test
 
 ### Break down into end to end tests
 
@@ -58,9 +54,8 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* Dropwizard - Bla bla bla
-* Maven - Maybe
-* Atom - ergaerga
+* Ada programming language
+* GPS IDE
 
 ## Contributing
 
