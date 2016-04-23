@@ -133,7 +133,7 @@ package Client is
       -- @description
       -- returns the entire data object as a string
       function Read_Object
-        (Status : in out Client_Status'Class;
+        (Status : Client_Status'Class;
          Hash   :        SHA256_Value) return String;
 
       function Object_Type

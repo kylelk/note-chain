@@ -661,12 +661,13 @@ package body Client is
       end Read;
 
       function Read_Object
-        (Status : in out Client_Status'Class;
+        (Status : Client_Status'Class;
          Hash   :        SHA256_Value) return String
       is
+         Info : Client_Status'Class := Status;
       begin
          Check_SHA256 (Hash);
-         return Status.Data.Get (Hash);
+         return Info.Data.Get (Hash);
       end Read_Object;
 
       function Object_Type
