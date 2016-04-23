@@ -8,45 +8,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisities
 
-GNAT Ada compiler, Aunit test framework
+GNAT Ada compiler with Ada 2012 support and the Aunit test framework
 
-### Installing
+### Building
 
-A step by step series of examples that tell you have to get a development env running
-
-Stay what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+In the project root call the compiler `gnatmake -P note_chain.gpr` or use `gprbuild`
 
 ## Running the tests
 
 The executable `./obj/test` contains the compiled unit test
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
@@ -69,8 +40,3 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 This project is licensed under the GNU GENERAL PUBLIC LICENSE - see the [LICENSE](LICENSE) file for details
 
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
