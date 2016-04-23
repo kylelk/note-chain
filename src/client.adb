@@ -458,7 +458,7 @@ package body Client is
    end Export;
 
    procedure Export_Refs
-     (Status   : in out Client_Status;
+     (Status   : Client_Status;
       Items    :        Reference_Set.Set;
       Filename :        String)
    is
@@ -474,8 +474,9 @@ package body Client is
       String'Write (Output_Stream, Filetype_Str);
       for Ref of Items loop
          declare
+            Info : Client_Status := Status;
             Content : constant String :=
-              Object_Store.Read_Object (Status, Ref);
+              Object_Store.Read_Object (Info, Ref);
          begin
             Integer'Write (Output_Stream, Content'Length);
             String'Write (Output_Stream, Content);
@@ -670,10 +671,11 @@ package body Client is
       end Read_Object;
 
       function Object_Type
-        (Status : in out Client_Status'Class;
+        (Status : Client_Status'Class;
          Hash   :        SHA256_Value) return String
       is
-         File_Content  : constant String := Read_Object (Status, Hash);
+         Info : Client_Status'Class := Status;
+         File_Content  : constant String := Read_Object (Info, Hash);
          Newline_Index : Integer;
          Last_Space    : Integer;
       begin
