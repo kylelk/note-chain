@@ -137,7 +137,7 @@ package Client is
          Hash   :        SHA256_Value) return String;
 
       function Object_Type
-        (Status : Client_Status'Class;
+        (Status : in out Client_Status'Class;
          Hash   :        SHA256_Value) return String;
 
       -- @description
@@ -264,7 +264,7 @@ package Client is
    procedure Export (Status : in out Client_Status; Filename : String);
 
    procedure Export_Refs
-     (Status   : Client_Status;
+     (Status   : in out Client_Status;
       Items    :        Reference_Set.Set;
       Filename :        String);
 
