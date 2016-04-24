@@ -42,7 +42,6 @@ package Client is
    -- @field Created_At when the first note version was created
    -- @field Updated_At when this version of the note was created
    -- @field Next_Ref reference to the next note version
-   -- @field Version version number of the note edit
    type Note is new Object_Record with record
       Note_Text  : UBS.Unbounded_String;
       Encoding   : UBS.Unbounded_String;
@@ -50,7 +49,6 @@ package Client is
       Created_At : Ada.Calendar.Time;
       Updated_At : Ada.Calendar.Time;
       Next_Ref   : SHA256_Value         := Empty_Hash_Ref;
-      Version    : Integer              := 1;
       Author     : UBS.Unbounded_String := UBS.Null_Unbounded_String;
    end record;
 

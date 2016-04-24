@@ -253,7 +253,6 @@ package body Client is
       Result_JSON.Set_Field ("created_at", To_ISO_8601 (Item.Created_At));
       Result_JSON.Set_Field ("updated_at", To_ISO_8601 (Item.Updated_At));
       Result_JSON.Set_Field ("uniq_uuid", Item.Uniq_UUID);
-      Result_JSON.Set_Field ("version", Item.Version);
 
       if Item.Next_Ref /= Empty_Hash_Ref then
          Result_JSON.Set_Field ("next_ref", Item.Next_Ref);
@@ -355,7 +354,6 @@ package body Client is
       Result.Uniq_UUID  := Item_JSON.Get ("uniq_uuid");
       Result.Created_At := From_ISO_8601 (Item_JSON.Get ("created_at"));
       Result.Updated_At := From_ISO_8601 (Item_JSON.Get ("updated_at"));
-      Result.Version    := Item_JSON.Get ("version");
       if JSON.Kind (Item_JSON.Get ("next_ref")) = JSON.JSON_String_Type then
          Result.Next_Ref := Item_JSON.Get ("next_ref");
       end if;
@@ -488,7 +486,6 @@ package body Client is
       Result : Message_Format.Message;
    begin
       Result.Set_Header ("SHA-256", Item.Object_Ref);
-      Result.Set_Header ("Version", Item.Version'Img);
       Result.Set_Header ("Uniq_UUID", Item.Uniq_UUID);
       Result.Set_Header ("Created_At", To_ISO_8601 (Item.Created_At));
       Result.Set_Header ("Updated_At", To_ISO_8601 (Item.Updated_At));
