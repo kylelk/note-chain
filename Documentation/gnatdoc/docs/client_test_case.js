@@ -386,6 +386,399 @@ GNATdoc.Documentation = {
               ]
             }
           ]
+        },
+        {
+          "label": "Test_Create_Note",
+          "line": 24,
+          "column": 14,
+          "src": "srcs/client_test_case.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 24,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Test_Create_Note",
+                      "href": "docs/client_test_case.html#L24C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "T",
+                      "href": "docs/client_test_case.html#L24C32"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Test_Case"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Class"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "T",
+              "line": 24,
+              "column": 32,
+              "type": {
+                "label": "Test_Case",
+                "docHref": "docs/test_case.html#L41C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Test_Get_Note",
+          "line": 26,
+          "column": 14,
+          "src": "srcs/client_test_case.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 26,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Test_Get_Note",
+                      "href": "docs/client_test_case.html#L26C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "T",
+                      "href": "docs/client_test_case.html#L26C29"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Test_Case"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Class"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "T",
+              "line": 26,
+              "column": 29,
+              "type": {
+                "label": "Test_Case",
+                "docHref": "docs/test_case.html#L41C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Test_Create_Tree",
+          "line": 28,
+          "column": 14,
+          "src": "srcs/client_test_case.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 28,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Test_Create_Tree",
+                      "href": "docs/client_test_case.html#L28C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "T",
+                      "href": "docs/client_test_case.html#L28C32"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Test_Case"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Class"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "T",
+              "line": 28,
+              "column": 32,
+              "type": {
+                "label": "Test_Case",
+                "docHref": "docs/test_case.html#L41C9"
+              },
+              "description": [
+              ]
+            }
+          ]
         }
       ],
       "label": "Subprograms"
@@ -395,7 +788,7 @@ GNATdoc.Documentation = {
         {
           "label": "Name",
           "line": 18,
-          "column": 13,
+          "column": 24,
           "src": "srcs/client_test_case.ads.html",
           "summary": [
           ],
@@ -416,17 +809,11 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "keyword",
                       "text": "overriding"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 19,
-                  "children": [
+                    },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "   "
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -441,7 +828,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Name"
+                      "text": "Name",
+                      "href": "docs/client_test_case.html#L18C24"
                     },
                     {
                       "kind": "span",
@@ -456,7 +844,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Test"
+                      "text": "Test",
+                      "href": "docs/client_test_case.html#L18C30"
                     },
                     {
                       "kind": "span",
@@ -476,7 +865,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Client_Test_Case"
+                      "text": "Client_Test_Case",
+                      "href": "docs/client_test_case.html#L9C9"
                     },
                     {
                       "kind": "span",
@@ -517,7 +907,7 @@ GNATdoc.Documentation = {
             {
               "label": "Test",
               "line": 18,
-              "column": 19,
+              "column": 30,
               "type": {
                 "label": "Client_Test_Case.Client_Test_Case",
                 "docHref": "docs/client_test_case.html#L9C9"
@@ -529,7 +919,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Register_Tests",
-          "line": 24,
+          "line": 30,
           "column": 14,
           "src": "srcs/client_test_case.ads.html",
           "summary": [
@@ -540,7 +930,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 24,
+                  "number": 30,
                   "children": [
                     {
                       "kind": "span",
@@ -561,12 +951,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Register_Tests",
-                      "href": "docs/client_test_case.html#L24C14"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
+                      "href": "docs/client_test_case.html#L30C14"
                     },
                     {
                       "kind": "span",
@@ -576,8 +961,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
                       "text": "Test",
-                      "href": "docs/client_test_case.html#L24C30"
+                      "href": "docs/client_test_case.html#L30C30"
                     },
                     {
                       "kind": "span",
@@ -622,11 +1012,6 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
                       "cssClass": "identifier",
                       "text": ")"
                     },
@@ -643,7 +1028,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Test",
-              "line": 24,
+              "line": 30,
               "column": 30,
               "type": {
                 "label": "Client_Test_Case.Client_Test_Case",

@@ -623,7 +623,7 @@ GNATdoc.Documentation = {
         {
           "label": "create_empty_file",
           "line": 14,
-          "column": 15,
+          "column": 14,
           "src": "srcs/file_operations.ads.html",
           "summary": [
           ],
@@ -638,7 +638,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "    "
+                      "text": "   "
                     },
                     {
                       "kind": "span",
@@ -654,7 +654,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "create_empty_file",
-                      "href": "docs/file_operations.html#L14C15"
+                      "href": "docs/file_operations.html#L14C14"
                     },
                     {
                       "kind": "span",
@@ -665,7 +665,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "path",
-                      "href": "docs/file_operations.html#L14C33"
+                      "href": "docs/file_operations.html#L14C32"
                     },
                     {
                       "kind": "span",
@@ -706,7 +706,153 @@ GNATdoc.Documentation = {
             {
               "label": "path",
               "line": 14,
-              "column": 33,
+              "column": 32,
+              "type": {
+                "label": "String"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Write_String",
+          "line": 16,
+          "column": 14,
+          "src": "srcs/file_operations.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 16,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Write_String",
+                      "href": "docs/file_operations.html#L16C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Path",
+                      "href": "docs/file_operations.html#L16C27"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Content",
+                      "href": "docs/file_operations.html#L16C43"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "Path",
+              "line": 16,
+              "column": 27,
+              "type": {
+                "label": "String"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Content",
+              "line": 16,
+              "column": 43,
               "type": {
                 "label": "String"
               },

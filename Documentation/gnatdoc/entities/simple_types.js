@@ -33,9 +33,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "SHA256_Value",
-      "docHref": "docs/client.object_store.html#L113C15",
+      "docHref": "docs/client.object_store.html#L111C15",
       "declared": "Client.Object_Store",
-      "srcHref": "srcs/client.ads.html#L113"
+      "srcHref": "srcs/client.ads.html#L111"
     },
     {
       "label": "SHA256_Value",

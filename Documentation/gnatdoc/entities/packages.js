@@ -3,9 +3,9 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Object_Store",
-      "docHref": "docs/client.object_store.html#L112C12",
+      "docHref": "docs/client.object_store.html#L110C12",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L112"
+      "srcHref": "srcs/client.ads.html#L110"
     }
   ]
 };
