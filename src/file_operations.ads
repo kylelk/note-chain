@@ -11,5 +11,7 @@ package File_Operations is
 
    function String_Hash (Data : String) return SHA256_Value;
 
-    procedure create_empty_file(path : String);
+   procedure create_empty_file(path : String);
+
+   procedure Write_String(Path : String ; Content : String);
 end File_Operations;

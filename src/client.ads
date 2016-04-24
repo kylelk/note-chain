@@ -190,11 +190,10 @@ package Client is
    procedure Save_Branches (Status : in out Client_Status);
 
    -- @summary initalizes a new note object
-   -- @description
-   -- creates a new note object with the contents of the temporary note file
    procedure Create_Note
      (Status : in out Client_Status;
-      Item   :    out Note'Class);
+      Item   :    out Note'Class;
+           Note_Content : String);
 
    procedure Add_Note (T : in out Tree; Note_Entry : Note'Class);
 

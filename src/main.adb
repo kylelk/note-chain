@@ -10,6 +10,7 @@ with Config;
 with Client;
 with Settings;
 with File_Object_Store;
+with File_Operations;
 
 procedure Main is
    package CLI renames Ada.Command_Line;
@@ -39,8 +40,9 @@ procedure Main is
       Free (List);
    end Execute_System;
 
-   procedure Edit_Note_Content is
+   procedure Edit_Note_Content (Content : String) is
    begin
+      File_Operations.Write_String (Config.Temp_Note_File, Content);
       Execute_System ("vim " & Config.Temp_Note_File);
    end Edit_Note_Content;
 
@@ -212,8 +214,13 @@ procedure Main is
 
       if CLI.Argument_Count = 2 then
          if CLI.Argument (2) = "new" then
-            Edit_Note_Content;
-            Note_Client.Create_Note (Status, Note_Item);
+            Edit_Note_Content ("");
+            declare
+               Content : constant String :=
+                 File_Operations.Load_File (Config.Temp_Note_File);
+            begin
+               Status.Create_Note(Note_Item, Content);
+            end;
             Status.Save (Note_Item);
 
             -- add note to tree

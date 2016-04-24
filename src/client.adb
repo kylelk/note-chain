@@ -135,10 +135,9 @@ package body Client is
 
    procedure Create_Note
      (Status : in out Client_Status;
-      Item   :    out Note'Class)
+      Item   :    out Note'Class;
+      Note_Content : String)
    is
-      Note_Content : constant String :=
-        File_Operations.Load_File (Config.Temp_Note_File);
    begin
       Item.Note_Text  := UBS.To_Unbounded_String (Note_Content);
       Item.Encoding   := UBS.To_Unbounded_String ("UTF-8");

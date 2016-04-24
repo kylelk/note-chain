@@ -94,4 +94,16 @@ package body File_Operations is
          Ada.Text_IO.Close (File_Item);
       end if;
    end create_empty_file;
+
+   procedure Write_String(Path : String ; Content : String) is
+      File_Item : Ada.Text_IO.File_Type;
+   begin
+      if Ada.Directories.Exists(Path) then
+         Ada.Text_IO.Open(File_Item, Ada.Text_IO.Out_File, Path);
+      else
+         Ada.Text_IO.Create(File_Item, Ada.Text_IO.Out_File, Path);
+      end if;
+      Ada.Text_IO.Put(File_Item, Content);
+      Ada.Text_IO.Close(File_Item);
+   end Write_String;
 end File_Operations;

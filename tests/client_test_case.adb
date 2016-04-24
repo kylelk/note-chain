@@ -11,7 +11,8 @@ package body Client_Test_Case is
       pragma Unreferenced (T);
       Client_Status : Test_Client.Client_Status;
 
-      Test_Branch : constant Test_Client.Branch := (+"test", Test_Client.Empty_Hash_Ref);
+      Test_Branch : constant Test_Client.Branch :=
+        (+"test", Test_Client.Empty_Hash_Ref);
    begin
       Client_Status.Set_Branch (Test_Branch);
       Assert (Client_Status.Branch_Exists (+"test"), "Branch creation failed");
@@ -21,7 +22,9 @@ package body Client_Test_Case is
       pragma Unreferenced (T);
    begin
       Assert (Test_Client.Valid_Branch_Name ("test"), "failed branch name");
-      Assert (Test_Client.Valid_Branch_Name ("example.com"), "failed branch name");
+      Assert
+        (Test_Client.Valid_Branch_Name ("example.com"),
+         "failed branch name");
       Assert
         (not Test_Client.Valid_Branch_Name ("test..master"),
          "failed branch name");
@@ -34,14 +37,43 @@ package body Client_Test_Case is
          "failed branch name");
    end Test_Valid_Branch_Name;
 
+   procedure Test_Create_Note (T : in out Test_Case'Class) is
+      pragma Unreferenced (T);
+      Client_Status : Test_Client.Client_Status;
+      New_Note      : Test_Client.Note;
+      use Ada.Strings.Unbounded;
+   begin
+      Client_Status.Create_Note (New_Note, "hello world");
+      Assert (New_Note.Note_Text = +"hello world", "failed setting note text");
+      Client_Status.Save (New_Note);
+      Assert (New_Note.Saved, "failed saving note");
+   end Test_Create_Note;
+
+   procedure Test_Get_Note(T : in out Test_Case'Class) is
+      pragma Unreferenced (T);
+      Client_Status : Test_Client.Client_Status;
+      New_Note      : Test_Client.Note;
+      Note_Result : Test_Client.Note;
+      use Ada.Strings.Unbounded;
+   begin
+      -- create note
+      Client_Status.Create_Note (New_Note, "test get note");
+      Client_Status.Save (New_Note);
+      -- get created note
+      Note_Result := Client_Status.Get_Note(New_Note.Object_Ref);
+      Assert(Note_Result.Note_Text="test get note", "failed geting note");
+   end Test_Get_Note;
+
    procedure Register_Tests (Test : in out Client_Test_Case) is
       use AUnit.Test_Cases.Registration;
    begin
-      Register_Routine (Test, Test_Create_Branch'Access, "Test create branch");
+      Register_Routine (Test, Test_Create_Branch'Access, "create branch");
       Register_Routine
         (Test,
          Test_Valid_Branch_Name'Access,
-         "Test branch name validation");
+         "branch name validation");
+      Register_Routine (Test, Test_Create_Note'Access, "create note");
+      Register_Routine (Test, Test_Get_Note'Access, "get note");
    end Register_Tests;
 
 end Client_Test_Case;
