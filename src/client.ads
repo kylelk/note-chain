@@ -195,6 +195,7 @@ package Client is
       Item   :    out Note'Class;
            Note_Content : String);
 
+   -- @summary Adds a note to a tree
    procedure Add_Note (T : in out Tree; Note_Entry : Note'Class);
 
    -- @summary

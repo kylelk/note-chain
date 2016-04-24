@@ -49,20 +49,44 @@ package body Client_Test_Case is
       Assert (New_Note.Saved, "failed saving note");
    end Test_Create_Note;
 
-   procedure Test_Get_Note(T : in out Test_Case'Class) is
+   procedure Test_Get_Note (T : in out Test_Case'Class) is
       pragma Unreferenced (T);
       Client_Status : Test_Client.Client_Status;
       New_Note      : Test_Client.Note;
-      Note_Result : Test_Client.Note;
+      Note_Result   : Test_Client.Note;
       use Ada.Strings.Unbounded;
    begin
       -- create note
       Client_Status.Create_Note (New_Note, "test get note");
       Client_Status.Save (New_Note);
       -- get created note
-      Note_Result := Client_Status.Get_Note(New_Note.Object_Ref);
-      Assert(Note_Result.Note_Text="test get note", "failed geting note");
+      Note_Result := Client_Status.Get_Note (New_Note.Object_Ref);
+      Assert (Note_Result.Note_Text = "test get note", "failed geting note");
    end Test_Get_Note;
+
+   procedure Test_Create_Tree (T : in out Test_Case'Class) is
+      pragma Unreferenced (T);
+      Client_Status : Test_Client.Client_Status;
+      New_Note      : Test_Client.Note;
+      New_Tree      : Test_Client.Tree;
+      use Ada.Strings.Unbounded;
+   begin
+      Client_Status.Create_Note (New_Note, "creating a tree");
+      Client_Status.Save (New_Note);
+      Test_Client.Add_Note (New_Tree, New_Note);
+      Client_Status.Save (New_Tree);
+      Assert
+        (Test_Client.Object_Store.Exists (Client_Status, New_Tree.Object_Ref),
+         "failed creating tree");
+      declare
+         Object_Type : constant String :=
+           Test_Client.Object_Store.Object_Type
+             (Client_Status,
+              New_Tree.Object_Ref);
+      begin
+         Assert (Object_Type = "tree", "wrong object type " & Object_Type);
+      end;
+   end Test_Create_Tree;
 
    procedure Register_Tests (Test : in out Client_Test_Case) is
       use AUnit.Test_Cases.Registration;
@@ -74,6 +98,7 @@ package body Client_Test_Case is
          "branch name validation");
       Register_Routine (Test, Test_Create_Note'Access, "create note");
       Register_Routine (Test, Test_Get_Note'Access, "get note");
+      Register_Routine (Test, Test_Create_Tree'Access, "create tree");
    end Register_Tests;
 
 end Client_Test_Case;

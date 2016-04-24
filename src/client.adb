@@ -676,7 +676,7 @@ package body Client is
       begin
          Newline_Index := Char_Index (File_Content, ASCII.LF);
          Last_Space    := Last_Index (File_Content (1 .. Newline_Index), ' ');
-         return File_Content (1 .. Last_Space);
+         return File_Content (1 .. Last_Space-1);
       end Object_Type;
 
       function Exists
