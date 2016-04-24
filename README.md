@@ -4,13 +4,21 @@ A decentralized note taking tool inspired by the git version control system, Con
 
 ## Basic usage
 
-#### Creating a new note
+##### Creating a new note
 
 Run the command `./obj/note_chain note new`, this will open the vim editor. once you close vim the node will be saved.
 
-### Listing nodes
+##### Listing nodes
 
 Run `./obj/note_chain note list` to list all of the notes in the current branch
+
+##### Creating a new branch
+
+Run `./obj/note_chain branch new <name>` to create a copy of the current branch
+
+##### Changing branches
+
+Run `./obj/note_chain branch checkout <name>` to change to a diffrent branch
 
 ## Prerequisities
 
