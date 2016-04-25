@@ -1,6 +1,3 @@
-with Ada.Numerics.Discrete_Random;
-with GNAT.Calendar.Time_IO;
-with Ada.Calendar.Formatting;
 with Ada.Streams.Stream_IO;
 with GNAT.Regpat;
 with Ada.Containers;
@@ -141,7 +138,7 @@ package body Client is
    begin
       Item.Note_Text  := UBS.To_Unbounded_String (Note_Content);
       Item.Encoding   := UBS.To_Unbounded_String ("UTF-8");
-      Item.Uniq_UUID  := Random_SHA256;
+      Item.Uniq_UUID  := STR_OPS.Random_SHA256;
       Item.Created_At := Ada.Calendar.Clock;
       Item.Updated_At := Ada.Calendar.Clock;
 
@@ -223,7 +220,8 @@ package body Client is
       Result_JSON   : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash   : SHA256_Value;
       Parents_Array : JSON.JSON_Array;
-      use Ada.Strings.Unbounded;
+      use UBS;
+      use STR_OPS;
    begin
       Item.Created_At := Ada.Calendar.Clock;
       for Ref of Item.Parents loop
@@ -246,6 +244,7 @@ package body Client is
       Result_JSON : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash : SHA256_Value;
       use UBS;
+      use STR_OPS;
    begin
       Result_JSON.Set_Field ("note_text", Item.Note_Text);
       Result_JSON.Set_Field ("encoding", Item.Encoding);
@@ -284,6 +283,7 @@ package body Client is
       Parents_Array : JSON.JSON_Array;
       Parent_Ref    : SHA256_Value;
       use JSON;
+      use STR_OPS;
    begin
       Item_JSON         := JSON.Read (Object_Store.Read (Status, Ref), "");
       Result.Object_Ref := Ref;
@@ -346,6 +346,7 @@ package body Client is
       Result    : Note;
       Item_JSON : JSON.JSON_Value;
       use JSON;
+      use STR_OPS;
    begin
       Item_JSON         := JSON.Read (Object_Store.Read (Status, Ref), "");
       Result.Note_Text  := Item_JSON.Get ("note_text");
@@ -483,6 +484,7 @@ package body Client is
 
    function Format_Note (Item : Note) return String is
       Result : Message_Format.Message;
+      use STR_OPS;
    begin
       Result.Set_Header ("SHA-256", Item.Object_Ref);
       Result.Set_Header ("Uniq_UUID", Item.Uniq_UUID);
@@ -580,52 +582,6 @@ package body Client is
       A.Commit_Ref := New_Commit.Object_Ref;
    end Merge_Branches;
 
-   function Random_SHA256 return SHA256_Value is
-      package Guess_Generator is new Ada.Numerics.Discrete_Random (Character);
-      Gen  : Guess_Generator.Generator;
-      Data : SHA256_Value;
-   begin
-      for I in Data'Range loop
-         Guess_Generator.Reset (Gen);
-         Data (I) := Guess_Generator.Random (Gen);
-      end loop;
-      return File_Operations.String_Hash (Data);
-   end Random_SHA256;
-
-   function To_ISO_8601 (Date : in Ada.Calendar.Time) return String is
-   begin
-      return GNAT.Calendar.Time_IO.Image (Date, "%Y-%m-%dT%H:%M:%S");
-   end To_ISO_8601;
-
-   function From_ISO_8601 (Date_Str : String) return Ada.Calendar.Time is
-      Year   : Integer;
-      Month  : Integer range 1 .. 12;
-      Day    : Integer range 1 .. 31;
-      Hour   : Integer range 0 .. 23;
-      Minute : Integer range 0 .. 59;
-      Second : Integer range 0 .. 59;
-   begin
-      Year  := Integer'Value (Date_Str (Date_Str'First .. Date_Str'First + 3));
-      Month :=
-        Integer'Value (Date_Str (Date_Str'First + 5 .. Date_Str'First + 6));
-      Day :=
-        Integer'Value (Date_Str (Date_Str'First + 8 .. Date_Str'First + 9));
-      Hour :=
-        Integer'Value (Date_Str (Date_Str'First + 11 .. Date_Str'First + 12));
-      Minute :=
-        Integer'Value (Date_Str (Date_Str'First + 14 .. Date_Str'First + 15));
-      Second :=
-        Integer'Value (Date_Str (Date_Str'First + 17 .. Date_Str'First + 18));
-      return Ada.Calendar.Formatting.Time_Of
-          (Year       => Year,
-           Month      => Month,
-           Day        => Day,
-           Hour       => Hour,
-           Minute     => Minute,
-           Second     => Second,
-           Sub_Second => 0.0);
-   end From_ISO_8601;
-
    package body Object_Store is
       procedure Write
         (Status      : in out Client_Status'Class;
@@ -673,9 +629,10 @@ package body Client is
          File_Content  : constant String := Read_Object (Status, Hash);
          Newline_Index : Integer;
          Last_Space    : Integer;
+         use STR_OPS;
       begin
-         Newline_Index := STR_OPS.Char_Index (File_Content, ASCII.LF);
-         Last_Space    := STR_OPS.Last_Index (File_Content (1 .. Newline_Index), ' ');
+         Newline_Index := Char_Index (File_Content, ASCII.LF);
+         Last_Space    := Last_Index (File_Content (1 .. Newline_Index), ' ');
          return File_Content (1 .. Last_Space-1);
       end Object_Type;
 

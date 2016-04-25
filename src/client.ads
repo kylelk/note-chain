@@ -284,12 +284,6 @@ package Client is
       A      : in out Branch;
       B      :        Branch);
 
-   function To_ISO_8601 (Date : Ada.Calendar.Time) return String;
-
-   function From_ISO_8601 (Date_Str : String) return Ada.Calendar.Time;
-
 private
-   function Random_SHA256 return SHA256_Value;
-
    package STR_OPS renames String_Operations;
 end Client;
