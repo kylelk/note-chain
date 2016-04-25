@@ -4,13 +4,13 @@ with Ada.Calendar.Formatting;
 with Ada.Streams.Stream_IO;
 with GNAT.Regpat;
 with Ada.Containers;
+with Ada.Directories;
+with Ada.IO_Exceptions;
+with Ada.Strings.Fixed;
 
 with Config;
 with File_Operations;
 with Message_Format;
-with Ada.Directories;
-with Ada.IO_Exceptions;
-with Ada.Strings.Fixed;
 
 package body Client is
    procedure Init (Status : in out Client_Status) is
@@ -652,7 +652,7 @@ package body Client is
          File_Content  : constant String := Status.Data.Get (Hash);
          Newline_Index : Integer;
       begin
-         Newline_Index := Char_Index (File_Content, ASCII.LF) + 1;
+         Newline_Index := STR_OPS.Char_Index (File_Content, ASCII.LF) + 1;
          return File_Content (Newline_Index .. File_Content'Last);
       end Read;
 
@@ -662,7 +662,7 @@ package body Client is
       is
          Info : Client_Status'Class := Status;
       begin
-         Check_SHA256 (Hash);
+         STR_OPS.Check_SHA256 (Hash);
          return Info.Data.Get (Hash);
       end Read_Object;
 
@@ -674,8 +674,8 @@ package body Client is
          Newline_Index : Integer;
          Last_Space    : Integer;
       begin
-         Newline_Index := Char_Index (File_Content, ASCII.LF);
-         Last_Space    := Last_Index (File_Content (1 .. Newline_Index), ' ');
+         Newline_Index := STR_OPS.Char_Index (File_Content, ASCII.LF);
+         Last_Space    := STR_OPS.Last_Index (File_Content (1 .. Newline_Index), ' ');
          return File_Content (1 .. Last_Space-1);
       end Object_Type;
 
@@ -684,37 +684,8 @@ package body Client is
          Hash   :        SHA256_Value) return Boolean
       is
       begin
-         Check_SHA256 (Hash);
+         STR_OPS.Check_SHA256 (Hash);
          return Status.Data.Exists (Hash);
       end Exists;
-
-      function Char_Index (Data : String; Char : Character) return Integer is
-      begin
-         for I in Data'Range loop
-            if Data (I) = Char then
-               return I;
-            end if;
-         end loop;
-         return -1;
-      end Char_Index;
-
-      function Last_Index (Data : String; Char : Character) return Integer is
-      begin
-         for I in reverse Data'Range loop
-            if Data (I) = Char then
-               return I;
-            end if;
-         end loop;
-         return -1;
-      end Last_Index;
-
-      procedure Check_SHA256 (Hash : SHA256_Value) is
-      begin
-         for C of Hash loop
-            if C not in '0' .. '9' | 'a' .. 'f' then
-               raise Invalid_Hash_Format;
-            end if;
-         end loop;
-      end Check_SHA256;
    end Object_Store;
 end Client;

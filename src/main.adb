@@ -26,7 +26,6 @@ procedure Main is
       List      : String_List_Access := Argument_String_To_List (Command);
       Exec_Path : String_Access      := Locate_Exec_On_Path (List (1).all);
       Success   : Boolean;
-
    begin
       if Exec_Path /= null then
          Spawn
@@ -37,7 +36,6 @@ procedure Main is
       else
          Ada.Text_IO.Put_Line ("Command not found");
       end if;
-
       Free (List);
    end Execute_System;
 
@@ -50,7 +48,6 @@ procedure Main is
       else
          Execute_System ("vim " & Config.Temp_Note_File);
       end if;
-
    end Edit_Note_Content;
 
    procedure List_Branches (Status : Note_Client.Client_Status) is

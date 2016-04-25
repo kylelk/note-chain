@@ -5,10 +5,11 @@ with Ada.Containers.Hashed_Maps;
 with Ada.Containers.Hashed_Sets;
 with Ada.Strings.Unbounded.Hash;
 with Ada.Calendar;
+with Ada.Text_IO;
 
 with Settings;
 with KV_Store;
-with Ada.Text_IO;
+with String_Operations;
 
 generic
    type Data_Store is new KV_Store.KV_Container with private;
@@ -111,7 +112,6 @@ package Client is
       subtype SHA256_Value is String (1 .. 64);
 
       Object_Not_Found : exception;
-      Invalid_Hash_Format : exception;
 
       -- @description
       -- Store an object's content
@@ -147,12 +147,6 @@ package Client is
    private
       -- @private
       package TIO renames Ada.Text_IO;
-
-      function Char_Index (Data : String; Char : Character) return Integer;
-
-      function Last_Index (Data : String; Char : Character) return Integer;
-
-      procedure Check_SHA256 (Hash : SHA256_Value);
    end Object_Store;
 
    No_Branch_Error : exception;
@@ -296,4 +290,6 @@ package Client is
 
 private
    function Random_SHA256 return SHA256_Value;
+
+   package STR_OPS renames String_Operations;
 end Client;
