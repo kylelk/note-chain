@@ -229,7 +229,6 @@ package body Client is
       use STR_OPS;
    begin
       Result := JSON.Create_Object;
-      Item.Created_At := Ada.Calendar.Clock;
       for Ref of Item.Parents loop
          JSON.Append (Parents_Array, JSON.Create (Ref));
       end loop;
@@ -333,6 +332,7 @@ package body Client is
       Result_Hash   : SHA256_Value;
       Result_JSON   : JSON.JSON_Value;
    begin
+      Item.Created_At := Ada.Calendar.Clock;
       To_JSON(Item, Result_JSON);
       Object_Store.Write (Status, "commit", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
@@ -343,6 +343,7 @@ package body Client is
       Result_Hash : SHA256_Value;
       Result_JSON : JSON.JSON_Value;
    begin
+      Item.Created_At := Ada.Calendar.Clock;
       To_JSON(Item, Result_JSON);
       Object_Store.Write (Status, "note", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
