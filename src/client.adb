@@ -86,7 +86,7 @@ package body Client is
       Branch_Name :        UBS.Unbounded_String)
    is
    begin
-      if not Valid_Branch_Name (UBS.To_String (Branch_Name)) then
+      if not STR_OPS.Valid_Branch_Name (UBS.To_String (Branch_Name)) then
          raise Branch_Name_Format_Error;
       end if;
       if Status.Branch_Exists (Branch_Name) then
@@ -116,7 +116,7 @@ package body Client is
       New_Branch    : Branch;
       Result_Cursor : Branch_Map.Cursor;
    begin
-      if not Valid_Branch_Name (UBS.To_String (To)) then
+      if not STR_OPS.Valid_Branch_Name (UBS.To_String (To)) then
          raise Branch_Name_Format_Error;
       end if;
       Result_Cursor := Status.Branch_Status.Branches.Find (From);
@@ -494,21 +494,6 @@ package body Client is
       Result.Set_Content (Item.Note_Text);
       return Result.To_String;
    end Format_Note;
-
-   function Valid_Branch_Name (Name : String) return Boolean is
-      package Pat renames GNAT.Regpat;
-      Valid_Pattern : constant String := "^[A-Za-z0-9_\-\+\(\)\.]+$";
-   begin
-      if Name'Length = 40 then
-         return False;
-      end if;
-
-      if Pat.Match ("\.\.", Name) then
-         return False;
-      end if;
-
-      return Pat.Match (Valid_Pattern, Name);
-   end Valid_Branch_Name;
 
    procedure Traverse_Commits
      (Status : in out Client_Status;

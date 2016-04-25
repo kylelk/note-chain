@@ -17,4 +17,7 @@ package String_Operations is
    procedure Check_SHA256 (Hash : SHA256_Value);
 
    function Random_SHA256 return SHA256_Value;
+
+   -- @summary validate a branch name
+   function Valid_Branch_Name (Name : String) return Boolean;
 end String_Operations;
