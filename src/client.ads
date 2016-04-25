@@ -16,6 +16,7 @@ generic
 package Client is
    -- @private
    package JSON renames GNATCOLL_JSON;
+
    -- @private
    package UBS renames Ada.Strings.Unbounded;
 
@@ -36,6 +37,14 @@ package Client is
       Saved      : Boolean      := False;
    end record;
 
+   type JSON_Serializable is interface;
+   procedure To_JSON
+     (Item   : in out JSON_Serializable;
+      Result :    out JSON.JSON_Value) is abstract;
+   procedure From_JSON
+     (Item : in out JSON_Serializable;
+      Data :        String) is abstract;
+
    -- Stores note infomation
    -- @field Note_Text content of the note
    -- @field Encoding text encoding of the note content
@@ -43,7 +52,7 @@ package Client is
    -- @field Created_At when the first note version was created
    -- @field Updated_At when this version of the note was created
    -- @field Next_Ref reference to the next note version
-   type Note is new Object_Record with record
+   type Note is new Object_Record and JSON_Serializable with record
       Note_Text  : UBS.Unbounded_String;
       Encoding   : UBS.Unbounded_String;
       Uniq_UUID  : SHA256_Value;
@@ -53,7 +62,7 @@ package Client is
       Author     : UBS.Unbounded_String := UBS.Null_Unbounded_String;
    end record;
 
-   type Commit is new Object_Record with record
+   type Commit is new Object_Record and JSON_Serializable with record
       Parents    : Reference_Set.Set;
       Tree_Ref   : SHA256_Value         := Empty_Hash_Ref;
       Created_At : Ada.Calendar.Time;
@@ -61,7 +70,6 @@ package Client is
    end record;
 
    type Tree_Entry is record
-      -- Object_Ref : SHA256_Value         := Empty_Hash_Ref;
       Entry_Type : Object_Type range Type_Tree .. Type_Note;
       Child_Ref  : SHA256_Value         := Empty_Hash_Ref;
       Name       : UBS.Unbounded_String := UBS.Null_Unbounded_String;
@@ -75,7 +83,7 @@ package Client is
       Hash                => Tree_Entry_Hash,
       Equivalent_Elements => "=");
 
-   type Tree is new Object_Record with record
+   type Tree is new Object_Record and JSON_Serializable with record
       Entries : Tree_Entry_Set.Set;
    end record;
 
@@ -132,7 +140,7 @@ package Client is
       -- returns the entire data object as a string
       function Read_Object
         (Status : Client_Status'Class;
-         Hash   :        SHA256_Value) return String;
+         Hash   : SHA256_Value) return String;
 
       function Object_Type
         (Status : in out Client_Status'Class;
@@ -185,12 +193,20 @@ package Client is
 
    -- @summary initalizes a new note object
    procedure Create_Note
-     (Status : in out Client_Status;
-      Item   :    out Note'Class;
-           Note_Content : String);
+     (Status       : in out Client_Status;
+      Item         :    out Note'Class;
+      Note_Content :        String);
 
    -- @summary Adds a note to a tree
    procedure Add_Note (T : in out Tree; Note_Entry : Note'Class);
+
+   procedure To_JSON (Item : in out Note; Result : out JSON.JSON_Value);
+   procedure To_JSON (Item : in out Tree; Result : out JSON.JSON_Value);
+   procedure To_JSON (Item : in out Commit; Result : out JSON.JSON_Value);
+
+   procedure From_JSON (Item : in out Note; Data : String);
+   procedure From_JSON (Item : in out Tree; Data : String);
+   procedure From_JSON (Item : in out Commit; Data : String);
 
    -- @summary
    -- saves a Note to the object store
@@ -261,8 +277,6 @@ package Client is
       Filename :        String);
 
    function Format_Note (Item : Note) return String;
-
-
 
    -- @summary
    -- Traverse the commits and pass each commit to a procedure

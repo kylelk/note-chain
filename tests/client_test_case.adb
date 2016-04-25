@@ -21,19 +21,19 @@ package body Client_Test_Case is
    procedure Test_Valid_Branch_Name (T : in out Test_Case'Class) is
       pragma Unreferenced (T);
    begin
-      Assert (Test_Client.Valid_Branch_Name ("test"), "failed branch name");
+      Assert (STR_OPS.Valid_Branch_Name ("test"), "failed branch name");
       Assert
-        (Test_Client.Valid_Branch_Name ("example.com"),
+        (STR_OPS.Valid_Branch_Name ("example.com"),
          "failed branch name");
       Assert
-        (not Test_Client.Valid_Branch_Name ("test..master"),
+        (not STR_OPS.Valid_Branch_Name ("test..master"),
          "failed branch name");
       Assert
-        (not Test_Client.Valid_Branch_Name
+        (not STR_OPS.Valid_Branch_Name
            ("2aae6c35c94fcfb415dbe95f408b9ce91ee846ed"),
          "failed branch name");
       Assert
-        (not Test_Client.Valid_Branch_Name ("Contains Space"),
+        (not STR_OPS.Valid_Branch_Name ("Contains Space"),
          "failed branch name");
    end Test_Valid_Branch_Name;
 

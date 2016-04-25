@@ -1,5 +1,4 @@
 with Ada.Streams.Stream_IO;
-with GNAT.Regpat;
 with Ada.Containers;
 with Ada.Directories;
 with Ada.IO_Exceptions;
@@ -191,12 +190,65 @@ package body Client is
    end Save_Branches;
 
    procedure Save (Status : in out Client_Status; Item : in out Tree'Class) is
-      Result_JSON   : constant JSON.JSON_Value := JSON.Create_Object;
+      Result_JSON   : JSON.JSON_Value;
       Result_Hash   : SHA256_Value;
+   begin
+      To_JSON(Item, Result_JSON);
+      Object_Store.Write (Status, "tree", Result_JSON.Write, Result_Hash);
+      Item.Object_Ref := Result_Hash;
+      Item.Saved := True;
+   end Save;
+
+   procedure To_JSON(Item : in out Note; Result : out JSON.JSON_Value) is
+      use UBS;
+      use STR_OPS;
+   begin
+      Result := JSON.Create_Object;
+      Result.Set_Field ("note_text", Item.Note_Text);
+      Result.Set_Field ("encoding", Item.Encoding);
+      Result.Set_Field ("created_at", To_ISO_8601 (Item.Created_At));
+      Result.Set_Field ("updated_at", To_ISO_8601 (Item.Updated_At));
+      Result.Set_Field ("uniq_uuid", Item.Uniq_UUID);
+
+      if Item.Next_Ref /= Empty_Hash_Ref then
+         Result.Set_Field ("next_ref", Item.Next_Ref);
+      else
+         Result.Set_Field ("next_ref", JSON.JSON_Null);
+      end if;
+
+      if Item.Author /= UBS.Null_Unbounded_String then
+         Result.Set_Field ("author", Item.Author);
+      else
+         Result.Set_Field ("author", JSON.JSON_Null);
+      end if;
+   end To_JSON;
+
+   procedure To_JSON(Item : in out Commit; Result : out JSON.JSON_Value) is
+      Parents_Array : JSON.JSON_Array;
+      use UBS;
+      use STR_OPS;
+   begin
+      Result := JSON.Create_Object;
+      Item.Created_At := Ada.Calendar.Clock;
+      for Ref of Item.Parents loop
+         JSON.Append (Parents_Array, JSON.Create (Ref));
+      end loop;
+      Result.Set_Field ("parents", Parents_Array);
+      Result.Set_Field ("tree_ref", Item.Tree_Ref);
+      Result.Set_Field ("created_at", To_ISO_8601 (Item.Created_At));
+      if Item.Message /= UBS.Null_Unbounded_String then
+         Result.Set_Field ("message", Item.Message);
+      else
+         Result.Set_Field ("message", JSON.JSON_Null);
+      end if;
+   end To_JSON;
+
+   procedure To_JSON(Item : in out Tree; Result : out JSON.JSON_Value) is
       Entry_JSON    : JSON.JSON_Value;
       Entries_Array : JSON.JSON_Array;
       use UBS;
    begin
+      Result := JSON.Create_Object;
       for Entry_Item of Item.Entries loop
          Entry_JSON := JSON.Create_Object;
          Entry_JSON.Set_Field ("entry_type", Entry_Item.Entry_Type'Img);
@@ -208,64 +260,93 @@ package body Client is
          end if;
          JSON.Append (Entries_Array, Entry_JSON);
       end loop;
-      Result_JSON.Set_Field ("entries", Entries_Array);
-      Object_Store.Write (Status, "tree", Result_JSON.Write, Result_Hash);
-      Item.Object_Ref := Result_Hash;
-   end Save;
+      Result.Set_Field ("entries", Entries_Array);
+   end To_JSON;
+
+   procedure From_JSON(Item : in out Note; Data : String) is
+      Item_JSON : JSON.JSON_Value := JSON.Create_Object;
+      use JSON;
+      use STR_OPS;
+   begin
+      Item_JSON         := JSON.Read (Data, "");
+      Item.Note_Text  := Item_JSON.Get ("note_text");
+      Item.Encoding   := Item_JSON.Get ("encoding");
+      Item.Uniq_UUID  := Item_JSON.Get ("uniq_uuid");
+      Item.Created_At := From_ISO_8601 (Item_JSON.Get ("created_at"));
+      Item.Updated_At := From_ISO_8601 (Item_JSON.Get ("updated_at"));
+      if JSON.Kind (Item_JSON.Get ("next_ref")) = JSON.JSON_String_Type then
+         Item.Next_Ref := Item_JSON.Get ("next_ref");
+      end if;
+      if JSON.Kind (Item_JSON.Get ("author")) = JSON.JSON_String_Type then
+         Item.Author := Item_JSON.Get ("author");
+      end if;
+      Item.Saved      := True;
+   end From_JSON;
+
+   procedure From_JSON(Item : in out Tree; Data : String) is
+      Item_JSON     : JSON.JSON_Value;
+      Entry_Item    : Tree_Entry;
+      Entries_Array : JSON.JSON_Array;
+      Entry_JSON    : JSON.JSON_Value;
+      use JSON;
+   begin
+      Item_JSON     := JSON.Read (Data, "");
+      Entries_Array := JSON.Get (Item_JSON, "entries");
+
+      for I in 1 .. (JSON.Length (Entries_Array)) loop
+         Entry_JSON            := JSON.Get (Entries_Array, I);
+         Entry_Item.Entry_Type :=
+           Object_Type'Value (Entry_JSON.Get ("entry_type"));
+         Entry_Item.Child_Ref := Entry_JSON.Get ("child_ref");
+         if JSON.Kind (Item_JSON.Get ("name")) = JSON.JSON_String_Type then
+            Entry_Item.Name := Item_JSON.Get ("name");
+         end if;
+         Item.Entries.Insert (Entry_Item);
+      end loop;
+   end From_JSON;
+
+   procedure From_JSON(Item : in out Commit; Data : String) is
+      Item_JSON     : JSON.JSON_Value;
+      Parents_Array : JSON.JSON_Array;
+      Parent_Ref    : SHA256_Value;
+      use JSON;
+      use STR_OPS;
+   begin
+      Item_JSON         := JSON.Read (Data, "");
+      Parents_Array     := Item_JSON.Get ("parents");
+      for I in 1 .. Length (Parents_Array) loop
+         Parent_Ref := JSON.Get (Val => JSON.Get (Parents_Array, I));
+         Item.Parents.Insert (Parent_Ref);
+      end loop;
+      if JSON.Kind (Item_JSON.Get ("message")) = JSON.JSON_String_Type then
+         Item.Message := Item_JSON.Get ("message");
+      end if;
+      Item.Tree_Ref   := Item_JSON.Get ("tree_ref");
+      Item.Created_At := From_ISO_8601 (Item_JSON.Get ("created_at"));
+      Item.Saved      := True;
+   end From_JSON;
 
    procedure Save
      (Status : in out Client_Status;
       Item   : in out Commit'Class)
    is
-      Result_JSON   : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash   : SHA256_Value;
-      Parents_Array : JSON.JSON_Array;
-      use UBS;
-      use STR_OPS;
+      Result_JSON   : JSON.JSON_Value;
    begin
-      Item.Created_At := Ada.Calendar.Clock;
-      for Ref of Item.Parents loop
-         JSON.Append (Parents_Array, JSON.Create (Ref));
-      end loop;
-      Result_JSON.Set_Field ("parents", Parents_Array);
-      Result_JSON.Set_Field ("tree_ref", Item.Tree_Ref);
-      Result_JSON.Set_Field ("created_at", To_ISO_8601 (Item.Created_At));
-      if Item.Message /= UBS.Null_Unbounded_String then
-         Result_JSON.Set_Field ("message", Item.Message);
-      else
-         Result_JSON.Set_Field ("message", JSON.JSON_Null);
-      end if;
+      To_JSON(Item, Result_JSON);
       Object_Store.Write (Status, "commit", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
       Item.Saved      := True;
    end Save;
 
    procedure Save (Status : in out Client_Status; Item : in out Note'Class) is
-      Result_JSON : constant JSON.JSON_Value := JSON.Create_Object;
       Result_Hash : SHA256_Value;
-      use UBS;
-      use STR_OPS;
+      Result_JSON : JSON.JSON_Value;
    begin
-      Result_JSON.Set_Field ("note_text", Item.Note_Text);
-      Result_JSON.Set_Field ("encoding", Item.Encoding);
-      Result_JSON.Set_Field ("created_at", To_ISO_8601 (Item.Created_At));
-      Result_JSON.Set_Field ("updated_at", To_ISO_8601 (Item.Updated_At));
-      Result_JSON.Set_Field ("uniq_uuid", Item.Uniq_UUID);
-
-      if Item.Next_Ref /= Empty_Hash_Ref then
-         Result_JSON.Set_Field ("next_ref", Item.Next_Ref);
-      else
-         Result_JSON.Set_Field ("next_ref", JSON.JSON_Null);
-      end if;
-
-      if Item.Author /= UBS.Null_Unbounded_String then
-         Result_JSON.Set_Field ("author", Item.Author);
-      else
-         Result_JSON.Set_Field ("author", JSON.JSON_Null);
-      end if;
+      To_JSON(Item, Result_JSON);
       Object_Store.Write (Status, "note", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
-      Item.Saved      := True;
+      Item.Saved := True;
    end Save;
 
    function Head_Commit_Ref (Status : Client_Status) return SHA256_Value is
@@ -278,26 +359,11 @@ package body Client is
      (Status : in out Client_Status'Class;
       Ref    :        SHA256_Value) return Commit
    is
-      Item_JSON     : JSON.JSON_Value;
       Result        : Commit;
-      Parents_Array : JSON.JSON_Array;
-      Parent_Ref    : SHA256_Value;
-      use JSON;
-      use STR_OPS;
    begin
-      Item_JSON         := JSON.Read (Object_Store.Read (Status, Ref), "");
+      From_JSON(Result, Object_Store.Read (Status, Ref));
       Result.Object_Ref := Ref;
-      Parents_Array     := Item_JSON.Get ("parents");
-      for I in 1 .. Length (Parents_Array) loop
-         Parent_Ref := JSON.Get (Val => JSON.Get (Parents_Array, I));
-         Result.Parents.Insert (Parent_Ref);
-      end loop;
-      if JSON.Kind (Item_JSON.Get ("message")) = JSON.JSON_String_Type then
-         Result.Message := Item_JSON.Get ("message");
-      end if;
-      Result.Tree_Ref   := Item_JSON.Get ("tree_ref");
-      Result.Created_At := From_ISO_8601 (Item_JSON.Get ("created_at"));
-      Result.Saved      := True;
+      Result.Saved := True;
       return Result;
    end Get_Commit;
 
@@ -316,25 +382,9 @@ package body Client is
       Ref    :        SHA256_Value) return Tree
    is
       Result        : Tree;
-      Item_JSON     : JSON.JSON_Value;
-      Entry_Item    : Tree_Entry;
-      Entries_Array : JSON.JSON_Array;
-      Entry_JSON    : JSON.JSON_Value;
-      use JSON;
    begin
-      Item_JSON     := JSON.Read (Object_Store.Read (Status, Ref), "");
-      Entries_Array := JSON.Get (Item_JSON, "entries");
-
-      for I in 1 .. (JSON.Length (Entries_Array)) loop
-         Entry_JSON            := JSON.Get (Entries_Array, I);
-         Entry_Item.Entry_Type :=
-           Object_Type'Value (Entry_JSON.Get ("entry_type"));
-         Entry_Item.Child_Ref := Entry_JSON.Get ("child_ref");
-         if JSON.Kind (Item_JSON.Get ("name")) = JSON.JSON_String_Type then
-            Entry_Item.Name := Item_JSON.Get ("name");
-         end if;
-         Result.Entries.Insert (Entry_Item);
-      end loop;
+      From_JSON(Result, Object_Store.Read(Status, Ref));
+      Result.Object_Ref := Ref;
       Result.Saved := True;
       return Result;
    end Get_Tree;
@@ -344,24 +394,10 @@ package body Client is
       Ref    :        SHA256_Value) return Note
    is
       Result    : Note;
-      Item_JSON : JSON.JSON_Value;
-      use JSON;
-      use STR_OPS;
    begin
-      Item_JSON         := JSON.Read (Object_Store.Read (Status, Ref), "");
-      Result.Note_Text  := Item_JSON.Get ("note_text");
-      Result.Encoding   := Item_JSON.Get ("encoding");
-      Result.Uniq_UUID  := Item_JSON.Get ("uniq_uuid");
-      Result.Created_At := From_ISO_8601 (Item_JSON.Get ("created_at"));
-      Result.Updated_At := From_ISO_8601 (Item_JSON.Get ("updated_at"));
-      if JSON.Kind (Item_JSON.Get ("next_ref")) = JSON.JSON_String_Type then
-         Result.Next_Ref := Item_JSON.Get ("next_ref");
-      end if;
-      if JSON.Kind (Item_JSON.Get ("author")) = JSON.JSON_String_Type then
-         Result.Author := Item_JSON.Get ("author");
-      end if;
+      From_JSON(Result, Object_Store.Read (Status, Ref));
       Result.Object_Ref := Ref;
-      Result.Saved      := True;
+      Result.Saved := True;
       return Result;
    end Get_Note;
 

@@ -4,6 +4,7 @@ with Ada.Strings.Unbounded;
 
 with Client;
 with Hash_Store;
+with String_Operations;
 
 package Client_Test_Case is
    type Client_Test_Case is new AUnit.Test_Cases.Test_Case with null record;
@@ -28,5 +29,6 @@ package Client_Test_Case is
    procedure Test_Create_Tree (T : in out Test_Case'Class);
 
    procedure Register_Tests (Test : in out Client_Test_Case);
-
+private
+   package STR_OPS renames String_Operations;
 end Client_Test_Case;
