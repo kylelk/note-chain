@@ -31,4 +31,7 @@ package Config is
    Settings_JSON_File : constant String := Join(Data_Dir & "settings.json");
 
    Export_Extension : constant String := ".nc_refs";
+
+   -- vimscript file passed to the editor
+   Vim_Options_File : constant String := ".note_chain_editor.vim";
 end Config;

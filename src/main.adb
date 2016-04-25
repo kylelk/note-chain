@@ -5,6 +5,7 @@ with GNAT.OS_Lib;
 with Ada.Calendar.Formatting;
 with Ada.Strings.Fixed;
 with Ada.Containers.Generic_Array_Sort;
+with Ada.Directories;
 
 with Config;
 with Client;
@@ -43,7 +44,13 @@ procedure Main is
    procedure Edit_Note_Content (Content : String) is
    begin
       File_Operations.Write_String (Config.Temp_Note_File, Content);
-      Execute_System ("vim " & Config.Temp_Note_File);
+      if Ada.Directories.Exists(Config.Vim_Options_File) then
+         Execute_System ("vim -S " & Config.Vim_Options_File &
+                           " " & Config.Temp_Note_File);
+      else
+         Execute_System ("vim " & Config.Temp_Note_File);
+      end if;
+
    end Edit_Note_Content;
 
    procedure List_Branches (Status : Note_Client.Client_Status) is
