@@ -39,7 +39,7 @@ package Client is
 
    type JSON_Serializable is interface;
    procedure To_JSON
-     (Item   : in out JSON_Serializable;
+     (Item   : in     JSON_Serializable;
       Result :    out JSON.JSON_Value) is abstract;
    procedure From_JSON
      (Item : in out JSON_Serializable;
@@ -200,9 +200,9 @@ package Client is
    -- @summary Adds a note to a tree
    procedure Add_Note (T : in out Tree; Note_Entry : Note'Class);
 
-   procedure To_JSON (Item : in out Note; Result : out JSON.JSON_Value);
-   procedure To_JSON (Item : in out Tree; Result : out JSON.JSON_Value);
-   procedure To_JSON (Item : in out Commit; Result : out JSON.JSON_Value);
+   procedure To_JSON (Item : in Note; Result : out JSON.JSON_Value);
+   procedure To_JSON (Item : in Tree; Result : out JSON.JSON_Value);
+   procedure To_JSON (Item : in Commit; Result : out JSON.JSON_Value);
 
    procedure From_JSON (Item : in out Note; Data : String);
    procedure From_JSON (Item : in out Tree; Data : String);

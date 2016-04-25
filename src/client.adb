@@ -130,9 +130,9 @@ package body Client is
    end Copy_Branch;
 
    procedure Create_Note
-     (Status : in out Client_Status;
-      Item   :    out Note'Class;
-      Note_Content : String)
+     (Status       : in out Client_Status;
+      Item         :    out Note'Class;
+      Note_Content :        String)
    is
    begin
       Item.Note_Text  := UBS.To_Unbounded_String (Note_Content);
@@ -190,16 +190,16 @@ package body Client is
    end Save_Branches;
 
    procedure Save (Status : in out Client_Status; Item : in out Tree'Class) is
-      Result_JSON   : JSON.JSON_Value;
-      Result_Hash   : SHA256_Value;
+      Result_JSON : JSON.JSON_Value;
+      Result_Hash : SHA256_Value;
    begin
-      To_JSON(Item, Result_JSON);
+      To_JSON (Item, Result_JSON);
       Object_Store.Write (Status, "tree", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
-      Item.Saved := True;
+      Item.Saved      := True;
    end Save;
 
-   procedure To_JSON(Item : in out Note; Result : out JSON.JSON_Value) is
+   procedure To_JSON (Item : in Note; Result : out JSON.JSON_Value) is
       use UBS;
       use STR_OPS;
    begin
@@ -223,7 +223,7 @@ package body Client is
       end if;
    end To_JSON;
 
-   procedure To_JSON(Item : in out Commit; Result : out JSON.JSON_Value) is
+   procedure To_JSON (Item : in Commit; Result : out JSON.JSON_Value) is
       Parents_Array : JSON.JSON_Array;
       use UBS;
       use STR_OPS;
@@ -242,7 +242,7 @@ package body Client is
       end if;
    end To_JSON;
 
-   procedure To_JSON(Item : in out Tree; Result : out JSON.JSON_Value) is
+   procedure To_JSON (Item : in Tree; Result : out JSON.JSON_Value) is
       Entry_JSON    : JSON.JSON_Value;
       Entries_Array : JSON.JSON_Array;
       use UBS;
@@ -262,12 +262,12 @@ package body Client is
       Result.Set_Field ("entries", Entries_Array);
    end To_JSON;
 
-   procedure From_JSON(Item : in out Note; Data : String) is
+   procedure From_JSON (Item : in out Note; Data : String) is
       Item_JSON : JSON.JSON_Value := JSON.Create_Object;
       use JSON;
       use STR_OPS;
    begin
-      Item_JSON         := JSON.Read (Data, "");
+      Item_JSON       := JSON.Read (Data, "");
       Item.Note_Text  := Item_JSON.Get ("note_text");
       Item.Encoding   := Item_JSON.Get ("encoding");
       Item.Uniq_UUID  := Item_JSON.Get ("uniq_uuid");
@@ -279,10 +279,10 @@ package body Client is
       if JSON.Kind (Item_JSON.Get ("author")) = JSON.JSON_String_Type then
          Item.Author := Item_JSON.Get ("author");
       end if;
-      Item.Saved      := True;
+      Item.Saved := True;
    end From_JSON;
 
-   procedure From_JSON(Item : in out Tree; Data : String) is
+   procedure From_JSON (Item : in out Tree; Data : String) is
       Item_JSON     : JSON.JSON_Value;
       Entry_Item    : Tree_Entry;
       Entries_Array : JSON.JSON_Array;
@@ -304,15 +304,15 @@ package body Client is
       end loop;
    end From_JSON;
 
-   procedure From_JSON(Item : in out Commit; Data : String) is
+   procedure From_JSON (Item : in out Commit; Data : String) is
       Item_JSON     : JSON.JSON_Value;
       Parents_Array : JSON.JSON_Array;
       Parent_Ref    : SHA256_Value;
       use JSON;
       use STR_OPS;
    begin
-      Item_JSON         := JSON.Read (Data, "");
-      Parents_Array     := Item_JSON.Get ("parents");
+      Item_JSON     := JSON.Read (Data, "");
+      Parents_Array := Item_JSON.Get ("parents");
       for I in 1 .. Length (Parents_Array) loop
          Parent_Ref := JSON.Get (Val => JSON.Get (Parents_Array, I));
          Item.Parents.Insert (Parent_Ref);
@@ -329,11 +329,11 @@ package body Client is
      (Status : in out Client_Status;
       Item   : in out Commit'Class)
    is
-      Result_Hash   : SHA256_Value;
-      Result_JSON   : JSON.JSON_Value;
+      Result_Hash : SHA256_Value;
+      Result_JSON : JSON.JSON_Value;
    begin
       Item.Created_At := Ada.Calendar.Clock;
-      To_JSON(Item, Result_JSON);
+      To_JSON (Item, Result_JSON);
       Object_Store.Write (Status, "commit", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
       Item.Saved      := True;
@@ -344,10 +344,10 @@ package body Client is
       Result_JSON : JSON.JSON_Value;
    begin
       Item.Created_At := Ada.Calendar.Clock;
-      To_JSON(Item, Result_JSON);
+      To_JSON (Item, Result_JSON);
       Object_Store.Write (Status, "note", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
-      Item.Saved := True;
+      Item.Saved      := True;
    end Save;
 
    function Head_Commit_Ref (Status : Client_Status) return SHA256_Value is
@@ -360,11 +360,11 @@ package body Client is
      (Status : in out Client_Status'Class;
       Ref    :        SHA256_Value) return Commit
    is
-      Result        : Commit;
+      Result : Commit;
    begin
-      From_JSON(Result, Object_Store.Read (Status, Ref));
+      From_JSON (Result, Object_Store.Read (Status, Ref));
       Result.Object_Ref := Ref;
-      Result.Saved := True;
+      Result.Saved      := True;
       return Result;
    end Get_Commit;
 
@@ -382,11 +382,11 @@ package body Client is
      (Status : in out Client_Status'Class;
       Ref    :        SHA256_Value) return Tree
    is
-      Result        : Tree;
+      Result : Tree;
    begin
-      From_JSON(Result, Object_Store.Read(Status, Ref));
+      From_JSON (Result, Object_Store.Read (Status, Ref));
       Result.Object_Ref := Ref;
-      Result.Saved := True;
+      Result.Saved      := True;
       return Result;
    end Get_Tree;
 
@@ -394,11 +394,11 @@ package body Client is
      (Status : in out Client_Status'Class;
       Ref    :        SHA256_Value) return Note
    is
-      Result    : Note;
+      Result : Note;
    begin
-      From_JSON(Result, Object_Store.Read (Status, Ref));
+      From_JSON (Result, Object_Store.Read (Status, Ref));
       Result.Object_Ref := Ref;
-      Result.Saved := True;
+      Result.Saved      := True;
       return Result;
    end Get_Note;
 
@@ -636,7 +636,7 @@ package body Client is
 
       function Read_Object
         (Status : Client_Status'Class;
-         Hash   :        SHA256_Value) return String
+         Hash   : SHA256_Value) return String
       is
          Info : Client_Status'Class := Status;
       begin
@@ -655,7 +655,7 @@ package body Client is
       begin
          Newline_Index := Char_Index (File_Content, ASCII.LF);
          Last_Space    := Last_Index (File_Content (1 .. Newline_Index), ' ');
-         return File_Content (1 .. Last_Space-1);
+         return File_Content (1 .. Last_Space - 1);
       end Object_Type;
 
       function Exists
