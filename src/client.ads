@@ -30,9 +30,10 @@ package Client is
       Hash                => Ada.Strings.Hash,
       Equivalent_Elements => "=");
 
+   -- removed "abstract" keyword
    -- @field Object_Ref data object which contains the record
    -- @field Saved has the record been saved yet
-   type Object_Record is abstract tagged record
+   type Object_Record is tagged record
       Object_Ref : SHA256_Value := Empty_Hash_Ref;
       Saved      : Boolean      := False;
    end record;
