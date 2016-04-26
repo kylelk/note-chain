@@ -20,4 +20,10 @@ package String_Operations is
 
    -- @summary validate a branch name
    function Valid_Branch_Name (Name : String) return Boolean;
+
+   type LCS_Matrix is array(Integer  range <>, Integer range <>) of Integer;
+
+   -- @summary
+   -- Longest common subsequence
+   function LCS (S1 : String ; S2 : String) return LCS_Matrix;
 end String_Operations;

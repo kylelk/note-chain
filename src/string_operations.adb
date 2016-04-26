@@ -95,4 +95,21 @@ package body String_Operations is
 
       return Pat.Match (Valid_Pattern, Name);
    end Valid_Branch_Name;
+
+   function LCS(S1 : String ; S2 : String) return LCS_Matrix is
+      M : constant Integer := S1'Length;
+      N : constant Integer := S2'Length;
+      Result : LCS_Matrix (1..N+1, 1..M+1) := (others => (others => 0));
+   begin
+      for I in 1..M+1 loop
+         for J in 1..N+1 loop
+            if S1(I-1) = S2(J-1) then
+               Result(I, J) := Result(I-1, J-1) + 1;
+            else
+               Result(I, J) := Integer'Max(Result(I, J-1), Result(I-1, J));
+            end if;
+         end loop;
+      end loop;
+      return Result;
+   end LCS;
 end String_Operations;
