@@ -1,5 +1,6 @@
 obj/*
 !obj/.keep
+!obj/tests/.keep
 *.npp
 *.o
 *.ali
