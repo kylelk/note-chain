@@ -1,6 +1,8 @@
 The tree will store a list of references to the entries it contains and the type
 of each entry.
 
-the file will be in the JSON format and the root object type will be a
-dictionary so that additional information about the tree can be added. 
+The file will be in the JSON format and the root object type will be a
+dictionary so that additional information about the tree can be added.
+it contains a list of items, each item is a dictionary containing the type of
+entry and the SHA-256 of the item.
 

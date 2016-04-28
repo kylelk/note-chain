@@ -1,11 +1,13 @@
-a commit is a snapshot of what the project looked like at a certain time and can
-be used to get previous versions of notes and project structure. it also keeps
-track of changes so that the project synchronized. each commit will be stored in
-json.
+Commits are snapshot of what the project looked like at a certain time and can
+be used to get previous versions of notes and project structure. It also keeps
+track of changes so that the project synchronized. Commits can also have more
+than one parent reference such as when merging branches.
+Each commit will be stored as JSON.
 
 Example:
 
 {
-    "parent_ref": "parent SHA-256",
-    "tree_ref": "tree SHA-256"
+    "parent_ref": ["parent SHA-256"],
+    "tree_ref": "tree SHA-256",
+    "created_at": "ISO 8601 time stamp"
 }
