@@ -1,16 +1,16 @@
-branches will be stored in the file branches.json of the project directory
-the json will use a dictionary structure to store infomation about the state of
-the branches, the dictionary will contain a entry called "branches" will will
-store a dictionary of all the branches, each branch entry will be a dictionary.
-containing the name of the branch and a refrence to the SHA-256 of the root tree
-
+Branches will be stored in the file branches.json of the project directory the
+json will use a dictionary structure to store information about the state of the
+branches, the dictionary will contain a entry called "branches" will will store
+a dictionary of all the branches, each branch entry will be a dictionary
+Containing the name of the branch and a reference to the SHA-256 of the head
+commit of that commit.
 
 example:
 
 {
     "head": "master",
     "branches": {
-        "master": {"name": "master", "tree_ref": "tree SHA-256"},
-        "test": {"name": "test", "tree_ref": "tree SHA-256"}	
+        "master": {"name": "master", "commit_ref": "SHA-256"},
+        "test": {"name": "test", "commit_ref": "SHA-256"}
     }
 }

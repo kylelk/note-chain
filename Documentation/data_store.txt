@@ -1,0 +1,2 @@
+New types of data stores can be created by implementing the interface
+KV_Container of the KV_Store package
