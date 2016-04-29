@@ -483,6 +483,23 @@ package body Client is
       end if;
    end Branch_Refs;
 
+   function Branch_Commits
+     (Status : in out Client_Status;
+      Item   :        Branch) return Reference_Set.Set is
+      Results: Reference_Set.Set;
+      procedure Add_Commit (Item : Commit) is
+      begin
+         if not Results.Contains (Item.Object_Ref) then
+            Results.Insert (Item.Object_Ref);
+         end if;
+      end Add_Commit;
+   begin
+      if Item.Commit_Ref /= Client.Empty_Hash_Ref then
+         Status.Traverse_Commits(Item.Commit_Ref, Add_Commit'Access);
+      end if;
+      return Results;
+   end Branch_Commits;
+
    procedure Export (Status : in out Client_Status; Filename : String) is
       References : Reference_Set.Set;
    begin
@@ -568,7 +585,8 @@ package body Client is
    procedure Merge_Branches
      (Status : in out Client_Status;
       A      : in out Branch;
-      B      :        Branch)
+      B      :        Branch;
+      Successful : out Boolean)
    is
       Commit_A, Commit_B : Commit;
 
@@ -577,12 +595,20 @@ package body Client is
    begin
       -- exit if the commits are null
       if A.Commit_Ref = Empty_Hash_Ref or B.Commit_Ref = Empty_Hash_Ref then
+         Successful := False;
          return;
       end if;
 
       -- exit if the branches are equal
       if A.Commit_Ref = B.Commit_Ref then
          Ada.Text_IO.Put_Line ("Error: branches are equal");
+         Successful := False;
+         return;
+      end if;
+
+      if Status.Upto_Date(A, B) then
+         Ada.Text_IO.Put_Line("branches already updated");
+         Successful := False;
          return;
       end if;
 
@@ -601,8 +627,23 @@ package body Client is
       Ada.Text_IO.Put_Line ("saving commit");
       Status.Save (New_Commit);
 
+      Successful := True;
       A.Commit_Ref := New_Commit.Object_Ref;
    end Merge_Branches;
+
+
+
+   function Upto_Date
+     (Status : in out Client_Status;
+      A      : Branch;
+      B      : Branch) return Boolean is
+      Branch_A_Commits : Reference_Set.Set;
+      Branch_B_Head : Commit;
+   begin
+      Branch_A_Commits := Status.Branch_Commits(A);
+      Branch_B_Head := Status.Get_Commit(B.Commit_Ref);
+      return Branch_A_Commits.Contains(Branch_B_Head.Object_Ref);
+   end Upto_Date;
 
    package body Object_Store is
       procedure Write

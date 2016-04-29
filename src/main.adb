@@ -42,9 +42,9 @@ procedure Main is
    procedure Edit_Note_Content (Content : String) is
    begin
       File_Operations.Write_String (Config.Temp_Note_File, Content);
-      if Ada.Directories.Exists(Config.Vim_Options_File) then
-         Execute_System ("vim -S " & Config.Vim_Options_File &
-                           " " & Config.Temp_Note_File);
+      if Ada.Directories.Exists (Config.Vim_Options_File) then
+         Execute_System
+           ("vim -S " & Config.Vim_Options_File & " " & Config.Temp_Note_File);
       else
          Execute_System ("vim " & Config.Temp_Note_File);
       end if;
@@ -148,11 +148,19 @@ procedure Main is
    procedure Cmd_Branch (Info : in out Note_Client.Client_Status) is
       procedure Merge_Branch (Name : String) is
          Current_Branch, Other_Branch : Note_Client.Branch;
+         Successful                   : Boolean;
       begin
+         Ada.Text_IO.Put_Line
+           ("merging branch " & Name);
+
          Current_Branch := Info.Get_Branch (Info.Branch_Status.Head);
          Other_Branch   := Info.Get_Branch (UBS.To_Unbounded_String (Name));
-         Info.Merge_Branches (Current_Branch, Other_Branch);
-         Info.Set_Branch (Current_Branch);
+         Info.Merge_Branches (Current_Branch, Other_Branch, Successful);
+         if Successful then
+            Info.Set_Branch (Current_Branch);
+         else
+            TIO.Put_Line ("merge failed");
+         end if;
       end Merge_Branch;
    begin
       if CLI.Argument_Count > 1 then
@@ -223,7 +231,7 @@ procedure Main is
                Content : constant String :=
                  File_Operations.Load_File (Config.Temp_Note_File);
             begin
-               Status.Create_Note(Note_Item, Content);
+               Status.Create_Note (Note_Item, Content);
             end;
             Status.Save (Note_Item);
 

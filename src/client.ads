@@ -270,6 +270,12 @@ package Client is
       Item       :        Branch;
       References : in out Reference_Set.Set);
 
+   -- @description
+   -- returns a set containing all of the commits in the branch
+   function Branch_Commits
+     (Status : in out Client_Status;
+      Item   :        Branch) return Reference_Set.Set;
+
    procedure Export (Status : in out Client_Status; Filename : String);
 
    procedure Export_Refs
@@ -296,7 +302,16 @@ package Client is
    procedure Merge_Branches
      (Status : in out Client_Status;
       A      : in out Branch;
-      B      :        Branch);
+      B      :        Branch;
+      Successful : out Boolean);
+
+   -- @description
+   -- if the head commit of branch B in contained in branch A then the branch
+   -- is upto date
+   function Upto_Date
+     (Status : in out Client_Status;
+      A      : Branch;
+      B      : Branch) return Boolean;
 
 private
    package STR_OPS renames String_Operations;
