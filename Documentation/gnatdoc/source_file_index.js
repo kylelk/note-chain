@@ -4,10 +4,6 @@ GNATdoc.SourceFileIndex = [
     "srcHref": "srcs/client.ads.html"
   },
   {
-    "label": "client_test_case.ads",
-    "srcHref": "srcs/client_test_case.ads.html"
-  },
-  {
     "label": "config.ads",
     "srcHref": "srcs/config.ads.html"
   },
@@ -40,10 +36,6 @@ GNATdoc.SourceFileIndex = [
     "srcHref": "srcs/message_format.ads.html"
   },
   {
-    "label": "note_chain_suites.ads",
-    "srcHref": "srcs/note_chain_suites.ads.html"
-  },
-  {
     "label": "redis_store.ads",
     "srcHref": "srcs/redis_store.ads.html"
   },
@@ -52,7 +44,7 @@ GNATdoc.SourceFileIndex = [
     "srcHref": "srcs/settings.ads.html"
   },
   {
-    "label": "settings_test_case.ads",
-    "srcHref": "srcs/settings_test_case.ads.html"
+    "label": "string_operations.ads",
+    "srcHref": "srcs/string_operations.ads.html"
   }
 ];

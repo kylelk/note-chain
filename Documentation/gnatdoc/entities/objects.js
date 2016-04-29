@@ -27,9 +27,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Empty_Hash_Ref",
-      "docHref": "docs/standard.html#L22C4",
+      "docHref": "docs/standard.html#L24C4",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L22"
+      "srcHref": "srcs/client.ads.html#L24"
     },
     {
       "label": "Export_Extension",
@@ -84,6 +84,12 @@ GNATdoc.EntitiesCategory = {
       "docHref": "docs/config.html#L7C4",
       "declared": "Config",
       "srcHref": "srcs/config.ads.html#L7"
+    },
+    {
+      "label": "Vim_Options_File",
+      "docHref": "docs/config.html#L36C4",
+      "declared": "Config",
+      "srcHref": "srcs/config.ads.html#L36"
     }
   ]
 };

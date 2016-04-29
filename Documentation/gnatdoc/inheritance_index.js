@@ -1,7 +1,7 @@
 GNATdoc.InheritanceIndex = [
   {
     "label": "Client_Status",
-    "docHref": "docs/standard.html#L102C9"
+    "docHref": "docs/standard.html#L112C9"
   },
   {
     "label": "Controlled",
@@ -13,8 +13,12 @@ GNATdoc.InheritanceIndex = [
     ]
   },
   {
+    "label": "JSON_Serializable",
+    "docHref": "docs/standard.html#L41C9"
+  },
+  {
     "label": "KV_Container",
-    "docHref": "docs/kv_store.html#L2C9",
+    "docHref": "docs/kv_store.html#L12C9",
     "inherited": [
       {
         "label": "Data",
@@ -30,7 +34,7 @@ GNATdoc.InheritanceIndex = [
       },
       {
         "label": "Data_Store",
-        "docHref": "docs/standard.html#L14C9"
+        "docHref": "docs/standard.html#L15C9"
       }
     ]
   },
@@ -40,37 +44,24 @@ GNATdoc.InheritanceIndex = [
   },
   {
     "label": "Object_Record",
-    "docHref": "docs/standard.html#L33C9",
+    "docHref": "docs/standard.html#L35C9",
     "inherited": [
       {
         "label": "Commit",
-        "docHref": "docs/standard.html#L55C9"
+        "docHref": "docs/standard.html#L66C9"
       },
       {
         "label": "Note",
-        "docHref": "docs/standard.html#L45C9"
+        "docHref": "docs/standard.html#L56C9"
       },
       {
         "label": "Tree",
-        "docHref": "docs/standard.html#L77C9"
+        "docHref": "docs/standard.html#L87C9"
       }
     ]
   },
   {
     "label": "Settings_Data",
     "docHref": "docs/settings.html#L24C9"
-  },
-  {
-    "label": "Test_Case",
-    "inherited": [
-      {
-        "label": "Client_Test_Case",
-        "docHref": "docs/client_test_case.html#L9C9"
-      },
-      {
-        "label": "Settings_Test_Case",
-        "docHref": "docs/settings_test_case.html#L5C9"
-      }
-    ]
   }
 ];

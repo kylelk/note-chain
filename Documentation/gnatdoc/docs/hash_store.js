@@ -72,7 +72,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "KV_Store.KV_Container",
-                      "href": "docs/kv_store.html#L2C9"
+                      "href": "docs/kv_store.html#L12C9"
                     },
                     {
                       "kind": "span",
@@ -238,7 +238,7 @@ GNATdoc.Documentation = {
           "inherits": [
             {
               "label": "KV_Container",
-              "docHref": "docs/kv_store.html#L2C9"
+              "docHref": "docs/kv_store.html#L12C9"
             }
           ],
           "fields": [
@@ -793,7 +793,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "SHA256_Value",
-                      "href": "docs/kv_store.html#L4C12"
+                      "href": "docs/kv_store.html#L14C12"
                     },
                     {
                       "kind": "span",
@@ -864,7 +864,7 @@ GNATdoc.Documentation = {
               "column": 39,
               "type": {
                 "label": "KV_Store.SHA256_Value",
-                "docHref": "docs/kv_store.html#L4C12"
+                "docHref": "docs/kv_store.html#L14C12"
               },
               "description": [
               ]
@@ -1009,7 +1009,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "SHA256_Value",
-                      "href": "docs/kv_store.html#L4C12"
+                      "href": "docs/kv_store.html#L14C12"
                     },
                     {
                       "kind": "span",
@@ -1064,7 +1064,7 @@ GNATdoc.Documentation = {
               "column": 38,
               "type": {
                 "label": "KV_Store.SHA256_Value",
-                "docHref": "docs/kv_store.html#L4C12"
+                "docHref": "docs/kv_store.html#L14C12"
               },
               "description": [
               ]
@@ -1199,7 +1199,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "SHA256_Value",
-                      "href": "docs/kv_store.html#L4C12"
+                      "href": "docs/kv_store.html#L14C12"
                     },
                     {
                       "kind": "span",
@@ -1254,7 +1254,7 @@ GNATdoc.Documentation = {
               "column": 41,
               "type": {
                 "label": "KV_Store.SHA256_Value",
-                "docHref": "docs/kv_store.html#L4C12"
+                "docHref": "docs/kv_store.html#L14C12"
               },
               "description": [
               ]
@@ -1389,7 +1389,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "SHA256_Value",
-                      "href": "docs/kv_store.html#L4C12"
+                      "href": "docs/kv_store.html#L14C12"
                     },
                     {
                       "kind": "span",
@@ -1424,7 +1424,7 @@ GNATdoc.Documentation = {
               "column": 42,
               "type": {
                 "label": "KV_Store.SHA256_Value",
-                "docHref": "docs/kv_store.html#L4C12"
+                "docHref": "docs/kv_store.html#L14C12"
               },
               "description": [
               ]

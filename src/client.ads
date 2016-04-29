@@ -30,7 +30,6 @@ package Client is
       Hash                => Ada.Strings.Hash,
       Equivalent_Elements => "=");
 
-   -- removed "abstract" keyword
    -- @field Object_Ref data object which contains the record
    -- @field Saved has the record been saved yet
    type Object_Record is tagged record
@@ -38,6 +37,7 @@ package Client is
       Saved      : Boolean      := False;
    end record;
 
+   -- makes sure that a data type can be parsed to and from json
    type JSON_Serializable is interface;
    procedure To_JSON
      (Item   : in     JSON_Serializable;
@@ -276,6 +276,9 @@ package Client is
      (Status : in out Client_Status;
       Item   :        Branch) return Reference_Set.Set;
 
+   -- @description
+   -- checks if a branch contains a commit ref, if the commit is found then
+   -- the function returns true and stops searching
    function Contains_Commit
      (Status : in out Client_Status;
       Branch_Item : Branch;
@@ -292,6 +295,10 @@ package Client is
 
    -- @summary
    -- Traverse the commits and pass each commit to a procedure
+   -- @description
+   -- each commit which is found is passed to the callback procedure,
+   -- the call back takes a parameter for a boolean vairable which is to stop
+   -- iterating the commits
    procedure Traverse_Commits
      (Status : in out Client_Status;
       Ref    :        SHA256_Value;

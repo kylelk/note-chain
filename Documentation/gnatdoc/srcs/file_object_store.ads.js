@@ -254,7 +254,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "KV_Store.KV_Container",
-          "href": "docs/kv_store.html#L2C9"
+          "href": "docs/kv_store.html#L12C9"
         },
         {
           "kind": "span",

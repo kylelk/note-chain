@@ -1,5 +1,5 @@
 GNATdoc.Documentation = {
-  "label": "File_Object_Store",
+  "label": "String_Operations",
   "summary": [
   ],
   "description": [
@@ -11,7 +11,7 @@ GNATdoc.Documentation = {
           "label": "SHA256_Value",
           "line": 6,
           "column": 12,
-          "src": "srcs/file_object_store.ads.html",
+          "src": "srcs/string_operations.ads.html",
           "summary": [
           ],
           "description": [
@@ -21,37 +21,6 @@ GNATdoc.Documentation = {
                 {
                   "kind": "line",
                   "number": 6,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "package"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "File_Object_Store"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "is"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 7,
                   "children": [
                     {
                       "kind": "span",
@@ -71,7 +40,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "SHA256_Value"
+                      "text": "SHA256_Value",
+                      "href": "docs/string_operations.html#L6C12"
                     },
                     {
                       "kind": "span",
@@ -95,6 +65,11 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
                       "cssClass": "identifier",
                       "text": "("
                     },
@@ -105,8 +80,18 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
                       "cssClass": "identifier",
                       "text": ".."
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -128,17 +113,12 @@ GNATdoc.Documentation = {
               ]
             }
           ]
-        }
-      ],
-      "label": "Simple types"
-    },
-    {
-      "entities": [
+        },
         {
-          "label": "Data",
-          "line": 8,
+          "label": "LCS_Matrix",
+          "line": 24,
           "column": 9,
-          "src": "srcs/file_object_store.ads.html",
+          "src": "srcs/string_operations.ads.html",
           "summary": [
           ],
           "description": [
@@ -147,7 +127,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 8,
+                  "number": 24,
                   "children": [
                     {
                       "kind": "span",
@@ -167,8 +147,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Data",
-                      "href": "docs/file_object_store.html#L8C9"
+                      "text": "LCS_Matrix",
+                      "href": "docs/string_operations.html#L24C9"
                     },
                     {
                       "kind": "span",
@@ -188,7 +168,27 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "new"
+                      "text": "array"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Integer"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "  "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "range"
                     },
                     {
                       "kind": "span",
@@ -198,67 +198,255 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "KV_Store.KV_Container",
-                      "href": "docs/kv_store.html#L12C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "with"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "null"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "record"
+                      "text": "<>"
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": ";",
-                      "href": "docs/file_object_store.html#L8C9"
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Integer"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "range"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "<>"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "of"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Integer"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "label": "Simple types"
+    },
+    {
+      "entities": [
+        {
+          "label": "Char_Index",
+          "line": 8,
+          "column": 13,
+          "src": "srcs/string_operations.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 8,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Char_Index",
+                      "href": "docs/string_operations.html#L8C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Data",
+                      "href": "docs/string_operations.html#L8C25"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Char",
+                      "href": "docs/string_operations.html#L8C40"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Character"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Integer"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
                     }
                   ]
                 }
               ]
             }
           ],
-          "inherits": [
+          "parameters": [
             {
-              "label": "KV_Container",
-              "docHref": "docs/kv_store.html#L12C9"
+              "label": "Data",
+              "line": 8,
+              "column": 25,
+              "type": {
+                "label": "String"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Char",
+              "line": 8,
+              "column": 40,
+              "type": {
+                "label": "Character"
+              },
+              "description": [
+              ]
             }
           ]
-        }
-      ],
-      "label": "Tagged types"
-    },
-    {
-      "entities": [
+        },
         {
-          "label": "Name",
+          "label": "Last_Index",
           "line": 10,
           "column": 13,
-          "src": "srcs/file_object_store.ads.html",
+          "src": "srcs/string_operations.ads.html",
           "summary": [
           ],
           "description": [
@@ -287,8 +475,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Name",
-                      "href": "docs/file_object_store.html#L10C13"
+                      "text": "Last_Index",
+                      "href": "docs/string_operations.html#L10C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -298,8 +491,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Self",
-                      "href": "docs/file_object_store.html#L10C18"
+                      "text": "Data",
+                      "href": "docs/string_operations.html#L10C25"
                     },
                     {
                       "kind": "span",
@@ -319,8 +512,43 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Data",
-                      "href": "docs/file_object_store.html#L8C9"
+                      "text": "String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Char",
+                      "href": "docs/string_operations.html#L10C40"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Character"
                     },
                     {
                       "kind": "span",
@@ -345,37 +573,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "String"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "is"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "string",
-                      "text": "\"file_object_store\""
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
+                      "text": "Integer"
                     },
                     {
                       "kind": "span",
@@ -389,12 +587,21 @@ GNATdoc.Documentation = {
           ],
           "parameters": [
             {
-              "label": "Self",
+              "label": "Data",
               "line": 10,
-              "column": 18,
+              "column": 25,
               "type": {
-                "label": "File_Object_Store.Data",
-                "docHref": "docs/file_object_store.html#L8C9"
+                "label": "String"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Char",
+              "line": 10,
+              "column": 40,
+              "type": {
+                "label": "Character"
               },
               "description": [
               ]
@@ -402,10 +609,10 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Setup",
+          "label": "To_ISO_8601",
           "line": 12,
-          "column": 14,
-          "src": "srcs/file_object_store.ads.html",
+          "column": 13,
+          "src": "srcs/string_operations.ads.html",
           "summary": [
           ],
           "description": [
@@ -424,471 +631,6 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "procedure"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Setup",
-                      "href": "docs/file_object_store.html#L12C14"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "self",
-                      "href": "docs/file_object_store.html#L12C21"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "out"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Data",
-                      "href": "docs/file_object_store.html#L8C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "self",
-              "line": 12,
-              "column": 21,
-              "type": {
-                "label": "File_Object_Store.Data",
-                "docHref": "docs/file_object_store.html#L8C9"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Cleanup",
-          "line": 14,
-          "column": 14,
-          "src": "srcs/file_object_store.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 14,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "procedure"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Cleanup",
-                      "href": "docs/file_object_store.html#L14C14"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "self",
-                      "href": "docs/file_object_store.html#L14C23"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "out"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Data",
-                      "href": "docs/file_object_store.html#L8C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "self",
-              "line": 14,
-              "column": 23,
-              "type": {
-                "label": "File_Object_Store.Data",
-                "docHref": "docs/file_object_store.html#L8C9"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Set",
-          "line": 16,
-          "column": 14,
-          "src": "srcs/file_object_store.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 16,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "procedure"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Set",
-                      "href": "docs/file_object_store.html#L16C14"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Self",
-                      "href": "docs/file_object_store.html#L16C19"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "out"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Data",
-                      "href": "docs/file_object_store.html#L8C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Key",
-                      "href": "docs/file_object_store.html#L16C39"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "SHA256_Value",
-                      "href": "docs/file_object_store.html#L6C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Value",
-                      "href": "docs/file_object_store.html#L16C60"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "String"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "Self",
-              "line": 16,
-              "column": 19,
-              "type": {
-                "label": "File_Object_Store.Data",
-                "docHref": "docs/file_object_store.html#L8C9"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Key",
-              "line": 16,
-              "column": 39,
-              "type": {
-                "label": "File_Object_Store.SHA256_Value",
-                "docHref": "docs/file_object_store.html#L6C12"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Value",
-              "line": 16,
-              "column": 60,
-              "type": {
-                "label": "String"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Get",
-          "line": 18,
-          "column": 13,
-          "src": "srcs/file_object_store.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 18,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
                       "text": "function"
                     },
                     {
@@ -899,8 +641,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Get",
-                      "href": "docs/file_object_store.html#L18C13"
+                      "text": "To_ISO_8601",
+                      "href": "docs/string_operations.html#L12C13"
                     },
                     {
                       "kind": "span",
@@ -915,65 +657,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Self",
-                      "href": "docs/file_object_store.html#L18C18"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "out"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Data",
-                      "href": "docs/file_object_store.html#L8C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Key",
-                      "href": "docs/file_object_store.html#L18C38"
+                      "text": "Date",
+                      "href": "docs/string_operations.html#L12C26"
                     },
                     {
                       "kind": "span",
@@ -993,8 +678,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "SHA256_Value",
-                      "href": "docs/file_object_store.html#L6C12"
+                      "text": "Ada.Calendar.Time"
                     },
                     {
                       "kind": "span",
@@ -1033,23 +717,11 @@ GNATdoc.Documentation = {
           ],
           "parameters": [
             {
-              "label": "Self",
-              "line": 18,
-              "column": 18,
+              "label": "Date",
+              "line": 12,
+              "column": 26,
               "type": {
-                "label": "File_Object_Store.Data",
-                "docHref": "docs/file_object_store.html#L8C9"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Key",
-              "line": 18,
-              "column": 38,
-              "type": {
-                "label": "File_Object_Store.SHA256_Value",
-                "docHref": "docs/file_object_store.html#L6C12"
+                "label": "Time"
               },
               "description": [
               ]
@@ -1057,10 +729,10 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Exists",
-          "line": 20,
+          "label": "From_ISO_8601",
+          "line": 14,
           "column": 13,
-          "src": "srcs/file_object_store.ads.html",
+          "src": "srcs/string_operations.ads.html",
           "summary": [
           ],
           "description": [
@@ -1069,7 +741,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 20,
+                  "number": 14,
                   "children": [
                     {
                       "kind": "span",
@@ -1089,8 +761,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Exists",
-                      "href": "docs/file_object_store.html#L20C13"
+                      "text": "From_ISO_8601",
+                      "href": "docs/string_operations.html#L14C13"
                     },
                     {
                       "kind": "span",
@@ -1105,8 +777,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Self",
-                      "href": "docs/file_object_store.html#L20C21"
+                      "text": "Date_Str",
+                      "href": "docs/string_operations.html#L14C28"
                     },
                     {
                       "kind": "span",
@@ -1125,8 +797,13 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
+                      "cssClass": "identifier",
+                      "text": "String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
                     },
                     {
                       "kind": "span",
@@ -1136,7 +813,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "out"
+                      "text": "return"
                     },
                     {
                       "kind": "span",
@@ -1146,13 +823,55 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Data",
-                      "href": "docs/file_object_store.html#L8C9"
+                      "text": "Ada.Calendar.Time"
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "Date_Str",
+              "line": 14,
+              "column": 28,
+              "type": {
+                "label": "String"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Check_SHA256",
+          "line": 17,
+          "column": 14,
+          "src": "srcs/string_operations.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 17,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
                     },
                     {
                       "kind": "span",
@@ -1162,8 +881,24 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Key",
-                      "href": "docs/file_object_store.html#L20C41"
+                      "text": "Check_SHA256",
+                      "href": "docs/string_operations.html#L17C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hash",
+                      "href": "docs/string_operations.html#L17C28"
                     },
                     {
                       "kind": "span",
@@ -1184,7 +919,194 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "SHA256_Value",
-                      "href": "docs/file_object_store.html#L6C12"
+                      "href": "docs/string_operations.html#L6C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "checks if a string is 64 lower case hexadecimal characters\n"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "Hash",
+              "line": 17,
+              "column": 28,
+              "type": {
+                "label": "String_Operations.SHA256_Value",
+                "docHref": "docs/string_operations.html#L6C12"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Random_SHA256",
+          "line": 19,
+          "column": 13,
+          "src": "srcs/string_operations.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 19,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Random_SHA256",
+                      "href": "docs/string_operations.html#L19C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "SHA256_Value",
+                      "href": "docs/string_operations.html#L6C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Valid_Branch_Name",
+          "line": 22,
+          "column": 13,
+          "src": "srcs/string_operations.ads.html",
+          "summary": [
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "validate a branch name\n"
+                }
+              ]
+            }
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 22,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Valid_Branch_Name",
+                      "href": "docs/string_operations.html#L22C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Name",
+                      "href": "docs/string_operations.html#L22C32"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "String"
                     },
                     {
                       "kind": "span",
@@ -1223,23 +1145,11 @@ GNATdoc.Documentation = {
           ],
           "parameters": [
             {
-              "label": "Self",
-              "line": 20,
-              "column": 21,
+              "label": "Name",
+              "line": 22,
+              "column": 32,
               "type": {
-                "label": "File_Object_Store.Data",
-                "docHref": "docs/file_object_store.html#L8C9"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Key",
-              "line": 20,
-              "column": 41,
-              "type": {
-                "label": "File_Object_Store.SHA256_Value",
-                "docHref": "docs/file_object_store.html#L6C12"
+                "label": "String"
               },
               "description": [
               ]
@@ -1247,11 +1157,20 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Remove",
-          "line": 22,
-          "column": 14,
-          "src": "srcs/file_object_store.ads.html",
+          "label": "LCS",
+          "line": 28,
+          "column": 13,
+          "src": "srcs/string_operations.ads.html",
           "summary": [
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Longest common subsequence\n"
+                }
+              ]
+            }
           ],
           "description": [
             {
@@ -1259,7 +1178,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 22,
+                  "number": 28,
                   "children": [
                     {
                       "kind": "span",
@@ -1269,7 +1188,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "procedure"
+                      "text": "function"
                     },
                     {
                       "kind": "span",
@@ -1279,8 +1198,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Remove",
-                      "href": "docs/file_object_store.html#L22C14"
+                      "text": "LCS",
+                      "href": "docs/string_operations.html#L28C13"
                     },
                     {
                       "kind": "span",
@@ -1295,8 +1214,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Self",
-                      "href": "docs/file_object_store.html#L22C22"
+                      "text": "S1",
+                      "href": "docs/string_operations.html#L28C18"
                     },
                     {
                       "kind": "span",
@@ -1315,29 +1234,13 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "out"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Data",
-                      "href": "docs/file_object_store.html#L8C9"
+                      "text": "String"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -1352,8 +1255,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Key",
-                      "href": "docs/file_object_store.html#L22C42"
+                      "text": "S2",
+                      "href": "docs/string_operations.html#L28C32"
                     },
                     {
                       "kind": "span",
@@ -1373,13 +1276,33 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "SHA256_Value",
-                      "href": "docs/file_object_store.html#L6C12"
+                      "text": "String"
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "LCS_Matrix",
+                      "href": "docs/string_operations.html#L24C9"
                     },
                     {
                       "kind": "span",
@@ -1393,145 +1316,21 @@ GNATdoc.Documentation = {
           ],
           "parameters": [
             {
-              "label": "Self",
-              "line": 22,
-              "column": 22,
+              "label": "S1",
+              "line": 28,
+              "column": 18,
               "type": {
-                "label": "File_Object_Store.Data",
-                "docHref": "docs/file_object_store.html#L8C9"
+                "label": "String"
               },
               "description": [
               ]
             },
             {
-              "label": "Key",
-              "line": 22,
-              "column": 42,
+              "label": "S2",
+              "line": 28,
+              "column": 32,
               "type": {
-                "label": "File_Object_Store.SHA256_Value",
-                "docHref": "docs/file_object_store.html#L6C12"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Commit",
-          "line": 24,
-          "column": 14,
-          "src": "srcs/file_object_store.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 24,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "procedure"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Commit",
-                      "href": "docs/file_object_store.html#L24C14"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Self",
-                      "href": "docs/file_object_store.html#L24C22"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "out"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Data",
-                      "href": "docs/file_object_store.html#L8C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "Self",
-              "line": 24,
-              "column": 22,
-              "type": {
-                "label": "File_Object_Store.Data",
-                "docHref": "docs/file_object_store.html#L8C9"
+                "label": "String"
               },
               "description": [
               ]
@@ -1539,7 +1338,7 @@ GNATdoc.Documentation = {
           ]
         }
       ],
-      "label": "Dispatching subprograms"
+      "label": "Subprograms"
     }
   ]
 };
