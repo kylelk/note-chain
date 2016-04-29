@@ -470,12 +470,13 @@ package body Client is
       Item       :        Branch;
       References : in out Reference_Set.Set)
    is
-      procedure Commit_Refs (Item : Commit) is
+      procedure Commit_Refs (Item : Commit; Continue : out Boolean) is
       begin
          if not References.Contains (Item.Object_Ref) then
             References.Insert (Item.Object_Ref);
             Tree_Refs (Status, Item.Tree_Ref, References);
          end if;
+         Continue := True;
       end Commit_Refs;
    begin
       if Item.Commit_Ref /= Client.Empty_Hash_Ref then
@@ -486,12 +487,13 @@ package body Client is
    function Branch_Commits
      (Status : in out Client_Status;
       Item   :        Branch) return Reference_Set.Set is
-      Results: Reference_Set.Set;
-      procedure Add_Commit (Item : Commit) is
+      Results : Reference_Set.Set;
+      procedure Add_Commit (Item : Commit; Continue : out Boolean) is
       begin
          if not Results.Contains (Item.Object_Ref) then
             Results.Insert (Item.Object_Ref);
          end if;
+         Continue := True;
       end Add_Commit;
    begin
       if Item.Commit_Ref /= Client.Empty_Hash_Ref then
@@ -499,6 +501,27 @@ package body Client is
       end if;
       return Results;
    end Branch_Commits;
+
+   function Contains_Commit
+     (Status : in out Client_Status;
+      Branch_Item : Branch;
+      Ref : SHA256_Value) return Boolean is
+
+      Found_Commit : Boolean := False;
+
+      procedure Check_Commit (Item : Commit; Continue : out Boolean) is
+      begin
+         if Item.Object_Ref = Ref then
+            Continue := False;
+            Found_Commit := True;
+         else
+            Continue := True;
+         end if;
+      end Check_Commit;
+      begin
+         Status.Traverse_Commits(Branch_Item.Commit_Ref, Check_Commit'Access);
+      return Found_Commit;
+   end Contains_Commit;
 
    procedure Export (Status : in out Client_Status; Filename : String) is
       References : Reference_Set.Set;
@@ -552,16 +575,19 @@ package body Client is
    procedure Traverse_Commits
      (Status : in out Client_Status;
       Ref    :        SHA256_Value;
-      Proc   :        access procedure (Item : Commit))
+      Proc   :    access procedure (Item : Commit; Continue : out Boolean))
    is
       Next_Ref    : Client.SHA256_Value := Ref;
       Next_Commit : Client.Commit;
       Root        : Boolean             := False;
+      Continue : Boolean;
       use Ada.Containers;
    begin
       while not Root loop
          Next_Commit := Get_Commit (Status, Next_Ref);
-         Proc.all (Next_Commit);
+         Proc.all (Next_Commit, Continue);
+         exit when not Continue;
+
          if Next_Commit.Parents.Length = 1 then
             Next_Ref := Reference_Set.Element (Next_Commit.Parents.First);
          elsif Next_Commit.Parents.Length > 1 then
@@ -631,18 +657,17 @@ package body Client is
       A.Commit_Ref := New_Commit.Object_Ref;
    end Merge_Branches;
 
-
-
    function Upto_Date
      (Status : in out Client_Status;
       A      : Branch;
       B      : Branch) return Boolean is
-      Branch_A_Commits : Reference_Set.Set;
-      Branch_B_Head : Commit;
+      --Branch_A_Commits : Reference_Set.Set;
+      --Branch_B_Head : Commit;
    begin
-      Branch_A_Commits := Status.Branch_Commits(A);
-      Branch_B_Head := Status.Get_Commit(B.Commit_Ref);
-      return Branch_A_Commits.Contains(Branch_B_Head.Object_Ref);
+      --Branch_A_Commits := Status.Branch_Commits(A);
+      --Branch_B_Head := Status.Get_Commit(B.Commit_Ref);
+      --return Branch_A_Commits.Contains(Branch_B_Head.Object_Ref);
+      return Status.Contains_Commit(A, B.Commit_Ref);
    end Upto_Date;
 
    package body Object_Store is

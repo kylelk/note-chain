@@ -270,11 +270,12 @@ procedure Main is
       Next_Commit_Ref : Note_Client.SHA256_Value;
 
       Commit_Refs : Note_Client.Reference_Set.Set;
-      procedure Add_Commit (Item : Note_Client.Commit) is
+      procedure Add_Commit (Item : Note_Client.Commit; Continue : out Boolean) is
       begin
          if not Commit_Refs.Contains (Item.Object_Ref) then
             Commit_Refs.Insert (Item.Object_Ref);
          end if;
+         Continue := True;
       end Add_Commit;
 
       procedure Iterate_Commits is

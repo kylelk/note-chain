@@ -276,6 +276,11 @@ package Client is
      (Status : in out Client_Status;
       Item   :        Branch) return Reference_Set.Set;
 
+   function Contains_Commit
+     (Status : in out Client_Status;
+      Branch_Item : Branch;
+      Ref : SHA256_Value) return Boolean;
+
    procedure Export (Status : in out Client_Status; Filename : String);
 
    procedure Export_Refs
@@ -290,7 +295,7 @@ package Client is
    procedure Traverse_Commits
      (Status : in out Client_Status;
       Ref    :        SHA256_Value;
-      Proc   :        access procedure (Item : Commit));
+      Proc   :    access procedure (Item : Commit; Continue : out Boolean));
 
    -- @summary joins together the enties of both trees
    function Join_Trees (Left, Right : Tree) return Tree;
@@ -300,18 +305,18 @@ package Client is
    -- @description
    -- merges branch B into branch A and creates a new commit for the merge
    procedure Merge_Branches
-     (Status : in out Client_Status;
-      A      : in out Branch;
-      B      :        Branch;
-      Successful : out Boolean);
+     (Status     : in out Client_Status;
+      A          : in out Branch;
+      B          :        Branch;
+      Successful :    out Boolean);
 
    -- @description
    -- if the head commit of branch B in contained in branch A then the branch
    -- is upto date
    function Upto_Date
      (Status : in out Client_Status;
-      A      : Branch;
-      B      : Branch) return Boolean;
+      A      :        Branch;
+      B      :        Branch) return Boolean;
 
 private
    package STR_OPS renames String_Operations;
