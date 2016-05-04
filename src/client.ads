@@ -11,14 +11,13 @@ with Settings;
 with KV_Store;
 with String_Operations;
 
-generic
-   type Data_Store is new KV_Store.KV_Container with private;
 package Client is
    -- @private
    package JSON renames GNATCOLL_JSON;
 
    -- @private
    package UBS renames Ada.Strings.Unbounded;
+   use type KV_Store.KV_Container;
 
    subtype SHA256_Value is String (1 .. 64);
    Empty_Hash_Ref : constant SHA256_Value := (others => ' ');
@@ -38,13 +37,23 @@ package Client is
    end record;
 
    -- makes sure that a data type can be parsed to and from json
-   type JSON_Serializable is interface;
+   type JSON_Serializable is limited interface;
    procedure To_JSON
      (Item   : in     JSON_Serializable;
       Result :    out JSON.JSON_Value) is abstract;
    procedure From_JSON
      (Item : in out JSON_Serializable;
       Data :        String) is abstract;
+
+   type Storable_Object is interface;
+   procedure Save
+     (Db   : in out KV_Store.KV_Container'Class;
+      Item : in out Storable_Object) is abstract;
+   function Get
+     (Db  : in out KV_Store.KV_Container'Class;
+      Ref :        SHA256_Value) return Storable_Object is abstract;
+
+   type Persistable is interface and JSON_Serializable and Storable_Object;
 
    -- Stores note infomation
    -- @field Note_Text content of the note
@@ -53,7 +62,7 @@ package Client is
    -- @field Created_At when the first note version was created
    -- @field Updated_At when this version of the note was created
    -- @field Next_Ref reference to the next note version
-   type Note is new Object_Record and JSON_Serializable with record
+   type Note is new Object_Record and Persistable with record
       Note_Text  : UBS.Unbounded_String;
       Encoding   : UBS.Unbounded_String;
       Uniq_UUID  : SHA256_Value;
@@ -63,7 +72,7 @@ package Client is
       Author     : UBS.Unbounded_String := UBS.Null_Unbounded_String;
    end record;
 
-   type Commit is new Object_Record and JSON_Serializable with record
+   type Commit is new Object_Record and Persistable with record
       Parents    : Reference_Set.Set;
       Tree_Ref   : SHA256_Value         := Empty_Hash_Ref;
       Created_At : Ada.Calendar.Time;
@@ -84,7 +93,7 @@ package Client is
       Hash                => Tree_Entry_Hash,
       Equivalent_Elements => "=");
 
-   type Tree is new Object_Record and JSON_Serializable with record
+   type Tree is new Object_Record and Persistable with record
       Entries : Tree_Entry_Set.Set;
    end record;
 
@@ -112,7 +121,6 @@ package Client is
    type Client_Status is tagged record
       Branch_Status   : Branch_Info;
       Settings_Status : Settings.Settings_Data;
-      Data            : Data_Store;
       -- first time starting the client
       First_Load : Boolean := False;
    end record;
@@ -125,33 +133,33 @@ package Client is
       -- @description
       -- Store an object's content
       procedure Write
-        (Status      : in out Client_Status'Class;
+        (db          : in out KV_Store.KV_Container'Class;
          Object_Type :        String;
          Content     :        String;
-         Hash        :    out SHA256_Value);
+         ref         :    out SHA256_Value);
 
       -- @description
       -- Get the content of an object, raises Object_Not_Found when a object
       -- does not exist
       function Read
-        (Status : in out Client_Status'Class;
-         Hash   :        SHA256_Value) return String;
+        (db  : in out KV_Store.KV_Container'Class;
+         ref :        SHA256_Value) return String;
 
       -- @description
       -- returns the entire data object as a string
       function Read_Object
-        (Status : Client_Status'Class;
-         Hash   : SHA256_Value) return String;
+        (db  : in out KV_Store.KV_Container'Class;
+         ref :        SHA256_Value) return String;
 
       function Object_Type
-        (Status : in out Client_Status'Class;
-         Hash   :        SHA256_Value) return String;
+        (Db  : in out KV_Store.KV_Container'Class;
+         ref :        SHA256_Value) return String;
 
       -- @description
       -- checks if an object exists
       function Exists
-        (Status : in out Client_Status'Class;
-         Hash   :        SHA256_Value) return Boolean;
+        (Db  : in out KV_Store.KV_Container'Class;
+         ref :        SHA256_Value) return Boolean;
 
    private
       -- @private
@@ -161,20 +169,27 @@ package Client is
    No_Branch_Error : exception;
    Branch_Name_Format_Error : exception;
 
-   procedure Init (Status : in out Client_Status);
+   procedure Init
+     (Status : in out Client_Status;
+      DB     : in out KV_Store.KV_Container'Class);
 
    -- @summary
    -- called when done with the client
    -- @description
    -- saves the branches, cleans up the temporary directory
-   procedure Cleanup (Status : in out Client_Status);
+   procedure Cleanup
+     (Status : in out Client_Status;
+      DB     : in out KV_Store.KV_Container'Class);
 
    -- @description
    -- Load branches from the JSON file defined in the config.ads
-   procedure Load_Branches (Status : in out Client_Status);
+   procedure Load_Branches
+     (Status : in out Client_Status;
+      Db     : in out KV_Store.KV_Container'Class);
 
    procedure Checkout_Branch
      (Status      : in out Client_Status;
+      DB          : in out KV_Store.KV_Container'Class;
       Branch_Name :        UBS.Unbounded_String);
 
    -- @description
@@ -190,7 +205,9 @@ package Client is
 
    -- @description
    -- Save branches to the JSON file defined in config.ads
-   procedure Save_Branches (Status : in out Client_Status);
+   procedure Save_Branches
+     (Status : in out Client_Status;
+      DB     : in out KV_Store.KV_Container'Class);
 
    -- @summary initalizes a new note object
    procedure Create_Note
@@ -198,7 +215,7 @@ package Client is
       Item         :    out Note'Class;
       Note_Content :        String);
 
-   -- @summary Adds a note to a tree
+   -- @summary Adds a note to a tree object
    procedure Add_Note (T : in out Tree; Note_Entry : Note'Class);
 
    procedure To_JSON (Item : in Note; Result : out JSON.JSON_Value);
@@ -211,27 +228,33 @@ package Client is
 
    -- @summary
    -- saves a Note to the object store
-   procedure Save (Status : in out Client_Status; Item : in out Note'Class);
+   procedure Save
+     (DB   : in out KV_Store.KV_Container'Class;
+      Item : in out Note);
 
    -- @summary
    -- saves a Tree_Entry to the object store
-   procedure Save (Status : in out Client_Status; Item : in out Tree'Class);
+   procedure Save
+     (DB   : in out KV_Store.KV_Container'Class;
+      Item : in out Tree);
 
    -- @summary
    -- saves a Commit to the object store
-   procedure Save (Status : in out Client_Status; Item : in out Commit'Class);
+   procedure Save
+     (DB   : in out KV_Store.KV_Container'Class;
+      Item : in out Commit);
 
-   function Get_Commit
-     (Status : in out Client_Status'Class;
-      Ref    :        SHA256_Value) return Commit;
+   function Get
+     (Db  : in out KV_Store.KV_Container'Class;
+      Ref :        SHA256_Value) return Commit;
 
-   function Get_Tree
-     (Status : in out Client_Status'Class;
-      Ref    :        SHA256_Value) return Tree;
+   function Get
+     (Db  : in out KV_Store.KV_Container'Class;
+      Ref :        SHA256_Value) return Tree;
 
-   function Get_Note
-     (Status : in out Client_Status'Class;
-      Ref    :        SHA256_Value) return Note;
+   function Get
+     (Db  : in out KV_Store.KV_Container'Class;
+      Ref :        SHA256_Value) return Note;
 
    -- @summary
    -- get commit SHA-256 of the commit for the current head branch
@@ -239,7 +262,9 @@ package Client is
 
    -- @summary
    -- returns the commit at the head of the current branch
-   function Head_Commit (Status : in out Client_Status) return Commit'Class;
+   function Head_Commit
+     (Status : in out Client_Status'Class;
+      Db     : in out KV_Store.KV_Container) return Commit;
 
    -- @summary
    -- returns the head branch
@@ -261,33 +286,36 @@ package Client is
    procedure Set_Head (Status : in out Client_Status; Item : Commit'Class);
 
    procedure Tree_Refs
-     (Status     : in out Client_Status;
+     (Db         : in out KV_Store.KV_Container'Class;
       Start_Ref  :        SHA256_Value;
       References : in out Reference_Set.Set);
 
    procedure Branch_Refs
-     (Status     : in out Client_Status;
+     (Db         : in out KV_Store.KV_Container'Class;
       Item       :        Branch;
       References : in out Reference_Set.Set);
 
    -- @description
    -- returns a set containing all of the commits in the branch
    function Branch_Commits
-     (Status : in out Client_Status;
-      Item   :        Branch) return Reference_Set.Set;
+     (db   : in out KV_Store.KV_Container'Class;
+      Item :        Branch) return Reference_Set.Set;
 
    -- @description
    -- checks if a branch contains a commit ref, if the commit is found then
    -- the function returns true and stops searching
    function Contains_Commit
-     (Status : in out Client_Status;
-      Branch_Item : Branch;
-      Ref : SHA256_Value) return Boolean;
+     (Db          : in out KV_Store.KV_Container'Class;
+      Branch_Item :        Branch;
+      Ref         :        SHA256_Value) return Boolean;
 
-   procedure Export (Status : in out Client_Status; Filename : String);
+   procedure Export
+     (Status   : in out Client_Status;
+      Db       : in out KV_Store.KV_Container'Class;
+      Filename :        String);
 
    procedure Export_Refs
-     (Status   : in out Client_Status;
+     (Db       : in out KV_Store.KV_Container'Class;
       Items    :        Reference_Set.Set;
       Filename :        String);
 
@@ -300,9 +328,9 @@ package Client is
    -- the call back takes a parameter for a boolean vairable which is to stop
    -- iterating the commits
    procedure Traverse_Commits
-     (Status : in out Client_Status;
-      Ref    :        SHA256_Value;
-      Proc   :    access procedure (Item : Commit; Continue : out Boolean));
+     (Db   : in out KV_Store.KV_Container'Class;
+      Ref  :        SHA256_Value;
+      Proc :        access procedure (Item : Commit; Continue : out Boolean));
 
    -- @summary joins together the enties of both trees
    function Join_Trees (Left, Right : Tree) return Tree;
@@ -312,7 +340,7 @@ package Client is
    -- @description
    -- merges branch B into branch A and creates a new commit for the merge
    procedure Merge_Branches
-     (Status     : in out Client_Status;
+     (Db         : in out KV_Store.KV_Container'Class;
       A          : in out Branch;
       B          :        Branch;
       Successful :    out Boolean);
@@ -321,9 +349,9 @@ package Client is
    -- if the head commit of branch B in contained in branch A then the branch
    -- is upto date
    function Upto_Date
-     (Status : in out Client_Status;
-      A      :        Branch;
-      B      :        Branch) return Boolean;
+     (Db : in out KV_Store.KV_Container'Class;
+      A  :        Branch;
+      B  :        Branch) return Boolean;
 
 private
    package STR_OPS renames String_Operations;
