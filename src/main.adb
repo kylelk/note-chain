@@ -12,6 +12,7 @@ with Client;
 with Settings;
 with File_Object_Store;
 with File_Operations;
+with KV_Store;
 
 procedure Main is
    package CLI renames Ada.Command_Line;
@@ -48,18 +49,18 @@ procedure Main is
       end if;
    end Edit_Note_Content;
 
---     procedure List_Branches (Status : Note_Client.Client_Status) is
---        use UBS;
---     begin
---        for Branch_Result of Status.Branch_Status.Branches loop
---           if Branch_Result.Name = Status.Branch_Status.Head then
---              TIO.Put ("* ");
---           else
---              TIO.Put ("  ");
---           end if;
---           TIO.Put_Line (UBS.To_String (Branch_Result.Name));
---        end loop;
---     end List_Branches;
+   procedure List_Branches (Status : Client.Client_Status) is
+      use UBS;
+   begin
+      for Branch_Result of Status.Branch_Status.Branches loop
+         if Branch_Result.Name = Status.Branch_Status.Head then
+            TIO.Put ("* ");
+         else
+            TIO.Put ("  ");
+         end if;
+         TIO.Put_Line (UBS.To_String (Branch_Result.Name));
+      end loop;
+   end List_Branches;
 
 --     procedure Display_Commit (Item : Note_Client.Commit) is
 --     begin
@@ -114,102 +115,103 @@ procedure Main is
 --        end;
 --     end List_Notes;
 
---     procedure List_Settings (Status : Note_Client.Client_Status) is
---        Longest_Key : Integer := 0;
---        procedure Put (Run : Integer; Key, Value : UBS.Unbounded_String) is
---           use Ada.Strings.Fixed;
---        begin
---           if Run = 1 then
---              if UBS.Length (Key) > Longest_Key then
---                 Longest_Key := UBS.Length (Key);
---              end if;
---           elsif Run = 2 then
---              TIO.Put_Line
---                (UBS.To_String (Key) &
---                 ((Longest_Key + 4) - UBS.Length (Key)) * " " &
---                 UBS.To_String (Value));
---           end if;
---        end Put;
---
---        use Settings.KV_Map;
---        Item_Cursor : Settings.KV_Map.Cursor;
---     begin
---        for R in 1 .. 2 loop
---           Item_Cursor := Status.Settings_Status.Values.First;
---           while Item_Cursor /= Settings.KV_Map.No_Element loop
---              Put (R, Key (Item_Cursor), Element (Item_Cursor));
---              Next (Item_Cursor);
---           end loop;
---        end loop;
---     end List_Settings;
+   procedure List_Settings (Status : Client.Client_Status) is
+      Longest_Key : Integer := 0;
+      procedure Put (Run : Integer; Key, Value : UBS.Unbounded_String) is
+         use Ada.Strings.Fixed;
+      begin
+         if Run = 1 then
+            if UBS.Length (Key) > Longest_Key then
+               Longest_Key := UBS.Length (Key);
+            end if;
+         elsif Run = 2 then
+            TIO.Put_Line
+              (UBS.To_String (Key) &
+               ((Longest_Key + 4) - UBS.Length (Key)) * " " &
+               UBS.To_String (Value));
+         end if;
+      end Put;
 
---     procedure Cmd_Branch (Info : in out Note_Client.Client_Status) is
---        procedure Merge_Branch (Name : String) is
---           Current_Branch, Other_Branch : Note_Client.Branch;
---           Successful                   : Boolean;
---        begin
---           Ada.Text_IO.Put_Line
---             ("merging branch " & Name);
---
---           Current_Branch := Info.Get_Branch (Info.Branch_Status.Head);
---           Other_Branch   := Info.Get_Branch (UBS.To_Unbounded_String (Name));
---           Info.Merge_Branches (Current_Branch, Other_Branch, Successful);
---           if Successful then
---              Info.Set_Branch (Current_Branch);
---           else
---              TIO.Put_Line ("merge failed");
---           end if;
---        end Merge_Branch;
---     begin
---        if CLI.Argument_Count > 1 then
---           if CLI.Argument_Count > 2 then
---              if CLI.Argument (2) = "new" then
---                 Info.Copy_Branch
---                 (Info.Branch_Status
---                    .Head, UBS.To_Unbounded_String
---                    (CLI.Argument (3)));
---                 TIO.Put_Line ("created branch: " & CLI.Argument (3));
---
---              elsif CLI.Argument (2) = "checkout" then
---                 Info.Checkout_Branch
---                 (UBS.To_Unbounded_String (CLI.Argument (3)));
---                 TIO.Put_Line ("changed to branch: " & CLI.Argument (3));
---
---              elsif CLI.Argument (2) = "merge" then
---                 Merge_Branch (CLI.Argument (3));
---
---              elsif CLI.Argument (2) = "remove" then
---                 TIO.Put_Line ("TODO: remove");
---              end if;
---           end if;
---           if CLI.Argument (2) = "head" then
---              TIO.Put_Line ("head: " & UBS.To_String (Info.Branch_Status.Head));
---           elsif CLI.Argument (2) = "list" then
---              List_Branches (Info);
---           end if;
---        else
---           List_Branches (Info);
---        end if;
---     end Cmd_Branch;
+      use Settings.KV_Map;
+      Item_Cursor : Settings.KV_Map.Cursor;
+   begin
+      for R in 1 .. 2 loop
+         Item_Cursor := Status.Settings_Status.Values.First;
+         while Item_Cursor /= Settings.KV_Map.No_Element loop
+            Put (R, Key (Item_Cursor), Element (Item_Cursor));
+            Next (Item_Cursor);
+         end loop;
+      end loop;
+   end List_Settings;
 
---     procedure Cmd_Config (Status : in out Note_Client.Client_Status) is
---     begin
---        if CLI.Argument_Count = 2 then
---           if CLI.Argument (2) = "list" then
---              List_Settings (Status);
---           end if;
---        elsif CLI.Argument_Count = 3 then
---           if CLI.Argument (2) = "get" then
---              TIO.Put_Line (Status.Settings_Status.Get (CLI.Argument (3)));
---           elsif CLI.Argument (2) = "remove" then
---              Status.Settings_Status.Remove (CLI.Argument (3));
---           end if;
---        elsif CLI.Argument_Count > 3 then
---           if CLI.Argument (2) = "set" then
---              Status.Settings_Status.Set (CLI.Argument (3), CLI.Argument (4));
---           end if;
---        end if;
---     end Cmd_Config;
+   procedure Cmd_Branch (Info : in out Client.Client_Status;
+                         Db : in out KV_Store.KV_Container'Class) is
+      procedure Merge_Branch (Name : String) is
+         Current_Branch, Other_Branch : Client.Branch;
+         Successful                   : Boolean;
+      begin
+         Ada.Text_IO.Put_Line
+           ("merging branch " & Name);
+
+         Current_Branch := Info.Get_Branch (Info.Branch_Status.Head);
+         Other_Branch   := Info.Get_Branch (UBS.To_Unbounded_String (Name));
+         Client.Merge_Branches (Db, Current_Branch, Other_Branch, Successful);
+         if Successful then
+            Info.Set_Branch (Current_Branch);
+         else
+            TIO.Put_Line ("merge failed");
+         end if;
+      end Merge_Branch;
+   begin
+      if CLI.Argument_Count > 1 then
+         if CLI.Argument_Count > 2 then
+            if CLI.Argument (2) = "new" then
+               Info.Copy_Branch
+               (Info.Branch_Status
+                  .Head, UBS.To_Unbounded_String
+                  (CLI.Argument (3)));
+               TIO.Put_Line ("created branch: " & CLI.Argument (3));
+
+            elsif CLI.Argument (2) = "checkout" then
+               Info.Checkout_Branch
+               (Db, UBS.To_Unbounded_String (CLI.Argument (3)));
+               TIO.Put_Line ("changed to branch: " & CLI.Argument (3));
+
+            elsif CLI.Argument (2) = "merge" then
+               Merge_Branch (CLI.Argument (3));
+
+            elsif CLI.Argument (2) = "remove" then
+               TIO.Put_Line ("TODO: remove");
+            end if;
+         end if;
+         if CLI.Argument (2) = "head" then
+            TIO.Put_Line ("head: " & UBS.To_String (Info.Branch_Status.Head));
+         elsif CLI.Argument (2) = "list" then
+            List_Branches (Info);
+         end if;
+      else
+         List_Branches (Info);
+      end if;
+   end Cmd_Branch;
+
+   procedure Cmd_Config (Status : in out Client.Client_Status) is
+   begin
+      if CLI.Argument_Count = 2 then
+         if CLI.Argument (2) = "list" then
+            List_Settings (Status);
+         end if;
+      elsif CLI.Argument_Count = 3 then
+         if CLI.Argument (2) = "get" then
+            TIO.Put_Line (Status.Settings_Status.Get (CLI.Argument (3)));
+         elsif CLI.Argument (2) = "remove" then
+            Status.Settings_Status.Remove (CLI.Argument (3));
+         end if;
+      elsif CLI.Argument_Count > 3 then
+         if CLI.Argument (2) = "set" then
+            Status.Settings_Status.Set (CLI.Argument (3), CLI.Argument (4));
+         end if;
+      end if;
+   end Cmd_Config;
 
 --     procedure Cmd_Note (Status : in out Note_Client.Client_Status) is
 --        Note_Item   : Note_Client.Note;
@@ -413,10 +415,10 @@ begin
    if CLI.Argument_Count >= 1 then
       if CLI.Argument (1) = "branch" then
          null;
-         --Cmd_Branch (Client_Status);
+         Cmd_Branch (Client_Status, Data_DB);
       elsif CLI.Argument (1) = "config" then
          null;
-         --Cmd_Config (Client_Status);
+         Cmd_Config (Client_Status);
       elsif CLI.Argument (1) = "help" then
          Display_Help;
       elsif CLI.Argument (1) = "--help" then

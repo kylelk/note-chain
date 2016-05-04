@@ -9,7 +9,10 @@ with File_Operations;
 with Message_Format;
 
 package body Client is
-   procedure Init (Status : in out Client_Status; DB : in out KV_Store.KV_Container'Class) is
+   procedure Init
+     (Status : in out Client_Status;
+      DB     : in out KV_Store.KV_Container'Class)
+   is
       procedure Create_Dir (Path : String) is
       begin
          if not Ada.Directories.Exists (Path) then
@@ -23,10 +26,10 @@ package body Client is
       Create_Dir (Config.Data_Dir);
       Create_Dir (Config.Temp_Dir);
 
-      db.Setup;
+      DB.Setup;
 
       begin
-         Status.Load_Branches(db);
+         Status.Load_Branches (DB);
       exception
          when Ada.IO_Exceptions.Name_Error =>
             First_Load := True;
@@ -35,7 +38,7 @@ package body Client is
       if First_Load then
          Default_Branch.Name := Config.Default_Branch_Name;
          Status.Set_Branch (Default_Branch);
-         Status.Checkout_Branch (db, Config.Default_Branch_Name);
+         Status.Checkout_Branch (DB, Config.Default_Branch_Name);
       end if;
 
       Status.Settings_Status.Load;
@@ -48,17 +51,23 @@ package body Client is
       return Ada.Strings.Hash (Item.Child_Ref & UBS.To_String (Item.Name));
    end Tree_Entry_Hash;
 
-   procedure Cleanup (Status : in out Client_Status; DB : in out KV_Store.KV_Container'Class) is
+   procedure Cleanup
+     (Status : in out Client_Status;
+      DB     : in out KV_Store.KV_Container'Class)
+   is
    begin
-      Status.Save_Branches(DB);
+      Status.Save_Branches (DB);
       Status.Settings_Status.Save;
-      db.Cleanup;
+      DB.Cleanup;
 
       -- clear the temp directory
       File_Operations.Remake_Directory (Config.Temp_Dir);
    end Cleanup;
 
-   procedure Load_Branches (Status : in out Client_Status; Db : in out KV_Store.KV_Container'Class) is
+   procedure Load_Branches
+     (Status : in out Client_Status;
+      Db     : in out KV_Store.KV_Container'Class)
+   is
       procedure Handler (Name : JSON.UTF8_String; Value : JSON.JSON_Value) is
          Branch_Result : Branch;
          use JSON;
@@ -82,7 +91,7 @@ package body Client is
 
    procedure Checkout_Branch
      (Status      : in out Client_Status;
-      DB : in out KV_Store.KV_Container'Class;
+      DB          : in out KV_Store.KV_Container'Class;
       Branch_Name :        UBS.Unbounded_String)
    is
       pragma Unreferenced (DB);
@@ -157,7 +166,10 @@ package body Client is
       T.Entries.Insert (New_Entry);
    end Add_Note;
 
-   procedure Save_Branches (Status : in out Client_Status; DB : in out KV_Store.KV_Container'Class) is
+   procedure Save_Branches
+     (Status : in out Client_Status;
+      DB     : in out KV_Store.KV_Container'Class)
+   is
       pragma Unreferenced (DB);
       Result_JSON, Branch_JSON, Branch_Entry_JSON : JSON.JSON_Value;
       Branch_Cursor                               : Branch_Map.Cursor;
@@ -194,7 +206,10 @@ package body Client is
       Ada.Text_IO.Close (Data_File);
    end Save_Branches;
 
-   procedure Save (Db : in out KV_Store.KV_Container'Class; Item : in out Note) is
+   procedure Save
+     (DB   : in out KV_Store.KV_Container'Class;
+      Item : in out Note)
+   is
       Result_JSON : JSON.JSON_Value;
       Result_Hash : SHA256_Value;
    begin
@@ -330,24 +345,29 @@ package body Client is
       Item.Saved      := True;
    end From_JSON;
 
-   procedure Save (DB : in out KV_Store.KV_Container'Class; Item : in out Tree)
+   procedure Save
+     (DB   : in out KV_Store.KV_Container'Class;
+      Item : in out Tree)
    is
       Result_Hash : SHA256_Value;
       Result_JSON : JSON.JSON_Value;
    begin
       To_JSON (Item, Result_JSON);
-      Object_Store.Write (db, "tree", Result_JSON.Write, Result_Hash);
+      Object_Store.Write (DB, "tree", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
       Item.Saved      := True;
    end Save;
 
-   procedure Save (DB : in out KV_Store.KV_Container'Class; Item : in out Commit) is
+   procedure Save
+     (DB   : in out KV_Store.KV_Container'Class;
+      Item : in out Commit)
+   is
       Result_Hash : SHA256_Value;
       Result_JSON : JSON.JSON_Value;
    begin
       Item.Created_At := Ada.Calendar.Clock;
       To_JSON (Item, Result_JSON);
-      Object_Store.Write (db, "note", Result_JSON.Write, Result_Hash);
+      Object_Store.Write (DB, "note", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
       Item.Saved      := True;
    end Save;
@@ -358,7 +378,10 @@ package body Client is
           .Commit_Ref;
    end Head_Commit_Ref;
 
-   function Head_Commit (Status : in out Client_Status'Class; Db : in out KV_Store.KV_Container) return Commit is
+   function Head_Commit
+     (Status : in out Client_Status'Class;
+      Db     : in out KV_Store.KV_Container) return Commit
+   is
    begin
       return Get (Db, Status.Head_Commit_Ref);
    end Head_Commit;
@@ -374,7 +397,7 @@ package body Client is
    is
       Result : Commit;
    begin
-      From_JSON (Result, Object_Store.Read (db, Ref));
+      From_JSON (Result, Object_Store.Read (Db, Ref));
       Result.Object_Ref := Ref;
       Result.Saved      := True;
       return Result;
@@ -398,7 +421,7 @@ package body Client is
    is
       Result : Tree;
    begin
-      From_JSON (Result, Object_Store.Read (db, Ref));
+      From_JSON (Result, Object_Store.Read (Db, Ref));
       Result.Object_Ref := Ref;
       Result.Saved      := True;
       return Result;
@@ -442,7 +465,7 @@ package body Client is
    end Set_Head;
 
    procedure Tree_Refs
-     (Db     : in out KV_Store.KV_Container'class;
+     (Db         : in out KV_Store.KV_Container'Class;
       Start_Ref  :        SHA256_Value;
       References : in out Reference_Set.Set)
    is
@@ -468,7 +491,7 @@ package body Client is
    end Tree_Refs;
 
    procedure Branch_Refs
-     (Db     : in out KV_Store.KV_Container'Class;
+     (Db         : in out KV_Store.KV_Container'Class;
       Item       :        Branch;
       References : in out Reference_Set.Set)
    is
@@ -476,7 +499,7 @@ package body Client is
       begin
          if not References.Contains (Item.Object_Ref) then
             References.Insert (Item.Object_Ref);
-            Tree_Refs (db, Item.Tree_Ref, References);
+            Tree_Refs (Db, Item.Tree_Ref, References);
          end if;
          Continue := True;
       end Commit_Refs;
@@ -487,8 +510,9 @@ package body Client is
    end Branch_Refs;
 
    function Branch_Commits
- (db : in out KV_Store.KV_Container'Class;
-      Item   :        Branch) return Reference_Set.Set is
+     (db   : in out KV_Store.KV_Container'Class;
+      Item :        Branch) return Reference_Set.Set
+   is
       Results : Reference_Set.Set;
       procedure Add_Commit (Item : Commit; Continue : out Boolean) is
       begin
@@ -499,35 +523,38 @@ package body Client is
       end Add_Commit;
    begin
       if Item.Commit_Ref /= Client.Empty_Hash_Ref then
-         Traverse_Commits(db, Item.Commit_Ref, Add_Commit'Access);
+         Traverse_Commits (db, Item.Commit_Ref, Add_Commit'Access);
       end if;
       return Results;
    end Branch_Commits;
 
    function Contains_Commit
-     (Db : in out KV_Store.KV_Container'Class;
-      Branch_Item : Branch;
-      Ref : SHA256_Value) return Boolean is
+     (Db          : in out KV_Store.KV_Container'Class;
+      Branch_Item :        Branch;
+      Ref         :        SHA256_Value) return Boolean
+   is
 
       Found_Commit : Boolean := False;
 
       procedure Check_Commit (Item : Commit; Continue : out Boolean) is
       begin
          if Item.Object_Ref = Ref then
-            Continue := False;
+            Continue     := False;
             Found_Commit := True;
          else
             Continue := True;
          end if;
       end Check_Commit;
-      begin
-      Traverse_Commits(Db, Branch_Item.Commit_Ref, Check_Commit'Access);
+   begin
+      Traverse_Commits (Db, Branch_Item.Commit_Ref, Check_Commit'Access);
       return Found_Commit;
    end Contains_Commit;
 
-   procedure Export (Status : in out Client_Status;
-                     Db : in out KV_Store.KV_Container'Class;
-                       Filename : String) is
+   procedure Export
+     (Status   : in out Client_Status;
+      Db       : in out KV_Store.KV_Container'Class;
+      Filename :        String)
+   is
       References : Reference_Set.Set;
    begin
       for Branch_Result of Status.Branch_Status.Branches loop
@@ -537,7 +564,7 @@ package body Client is
    end Export;
 
    procedure Export_Refs
-     (Db   : in out KV_Store.KV_Container'Class;
+     (Db       : in out KV_Store.KV_Container'Class;
       Items    :        Reference_Set.Set;
       Filename :        String)
    is
@@ -553,8 +580,7 @@ package body Client is
       String'Write (Output_Stream, Filetype_Str);
       for Ref of Items loop
          declare
-            Content : constant String :=
-              Object_Store.Read_Object (Db, Ref);
+            Content : constant String := Object_Store.Read_Object (Db, Ref);
          begin
             Integer'Write (Output_Stream, Content'Length);
             String'Write (Output_Stream, Content);
@@ -577,18 +603,18 @@ package body Client is
    end Format_Note;
 
    procedure Traverse_Commits
-     (Db : in out KV_Store.KV_Container'Class;
-      Ref    :        SHA256_Value;
-      Proc   :    access procedure (Item : Commit; Continue : out Boolean))
+     (Db   : in out KV_Store.KV_Container'Class;
+      Ref  :        SHA256_Value;
+      Proc :        access procedure (Item : Commit; Continue : out Boolean))
    is
       Next_Ref    : Client.SHA256_Value := Ref;
       Next_Commit : Client.Commit;
       Root        : Boolean             := False;
-      Continue : Boolean;
+      Continue    : Boolean;
       use Ada.Containers;
    begin
       while not Root loop
-         Next_Commit := Get (db, Next_Ref);
+         Next_Commit := Get (Db, Next_Ref);
          Proc.all (Next_Commit, Continue);
          exit when not Continue;
 
@@ -613,10 +639,10 @@ package body Client is
    end Join_Trees;
 
    procedure Merge_Branches
-     (Db : in out KV_Store.KV_Container'Class;
-      A      : in out Branch;
-      B      :        Branch;
-      Successful : out Boolean)
+     (Db         : in out KV_Store.KV_Container'Class;
+      A          : in out Branch;
+      B          :        Branch;
+      Successful :    out Boolean)
    is
       Commit_A, Commit_B : Commit;
 
@@ -636,8 +662,8 @@ package body Client is
          return;
       end if;
 
-      if Upto_Date(Db, A, B) then
-         Ada.Text_IO.Put_Line("branches already updated");
+      if Upto_Date (Db, A, B) then
+         Ada.Text_IO.Put_Line ("branches already updated");
          Successful := False;
          return;
       end if;
@@ -657,30 +683,30 @@ package body Client is
       Ada.Text_IO.Put_Line ("saving commit");
       Save (Db, New_Commit);
 
-      Successful := True;
+      Successful   := True;
       A.Commit_Ref := New_Commit.Object_Ref;
    end Merge_Branches;
 
    function Upto_Date
      (Db : in out KV_Store.KV_Container'Class;
-      A      : Branch;
-      B      : Branch) return Boolean is
-      --Branch_A_Commits : Reference_Set.Set;
-      --Branch_B_Head : Commit;
+      A  :        Branch;
+      B  :        Branch) return Boolean
+   is
+   --Branch_A_Commits : Reference_Set.Set;
+   --Branch_B_Head : Commit;
    begin
       --Branch_A_Commits := Status.Branch_Commits(A);
       --Branch_B_Head := Status.Get_Commit(B.Commit_Ref);
       --return Branch_A_Commits.Contains(Branch_B_Head.Object_Ref);
-      return Contains_Commit(Db, A, B.Commit_Ref);
+      return Contains_Commit (Db, A, B.Commit_Ref);
    end Upto_Date;
 
    package body Object_Store is
       procedure Write
-        (
-         db : in out KV_Store.KV_Container'Class;
+        (db          : in out KV_Store.KV_Container'Class;
          Object_Type :        String;
          Content     :        String;
-         ref        :    out SHA256_Value)
+         ref         :    out SHA256_Value)
       is
          Length_Str : constant String :=
            Ada.Strings.Fixed.Trim (Content'Length'Img, Ada.Strings.Left);
@@ -690,17 +716,16 @@ package body Client is
               Object_Type & ' ' & Length_Str & ASCII.LF & Content;
          begin
             ref := File_Operations.String_Hash (Object_Content);
-            Db.Set (ref, Object_Content);
+            db.Set (ref, Object_Content);
 
          end;
       end Write;
 
       function Read
-        (
-         db : in out KV_Store.KV_Container'Class;
-         ref   :        SHA256_Value) return String
+        (db  : in out KV_Store.KV_Container'Class;
+         ref :        SHA256_Value) return String
       is
-         File_Content  : constant String := Db.Get (ref);
+         File_Content  : constant String := db.Get (ref);
          Newline_Index : Integer;
       begin
          Newline_Index := STR_OPS.Char_Index (File_Content, ASCII.LF) + 1;
@@ -708,19 +733,19 @@ package body Client is
       end Read;
 
       function Read_Object
-        (db : in out KV_Store.KV_Container'Class;
-         ref : SHA256_Value) return String
+        (db  : in out KV_Store.KV_Container'Class;
+         ref :        SHA256_Value) return String
       is
       begin
-         STR_OPS.Check_SHA256 (Ref);
-         return Db.Get (Ref);
+         STR_OPS.Check_SHA256 (ref);
+         return db.Get (ref);
       end Read_Object;
 
       function Object_Type
-        (Db : in out KV_Store.KV_Container'Class;
-         ref   :        SHA256_Value) return String
+        (Db  : in out KV_Store.KV_Container'Class;
+         ref :        SHA256_Value) return String
       is
-         File_Content  : constant String := Read_Object (Db, Ref);
+         File_Content  : constant String := Read_Object (Db, ref);
          Newline_Index : Integer;
          Last_Space    : Integer;
          use STR_OPS;
@@ -731,12 +756,12 @@ package body Client is
       end Object_Type;
 
       function Exists
-        (Db : in out KV_Store.KV_Container'Class;
-         Ref   :        SHA256_Value) return Boolean
+        (Db  : in out KV_Store.KV_Container'Class;
+         ref :        SHA256_Value) return Boolean
       is
       begin
-         STR_OPS.Check_SHA256 (Ref);
-         return Db.Exists (Ref);
+         STR_OPS.Check_SHA256 (ref);
+         return Db.Exists (ref);
       end Exists;
    end Object_Store;
 end Client;
