@@ -380,7 +380,7 @@ package body Client is
 
    function Head_Commit
      (Status : in out Client_Status'Class;
-      Db     : in out KV_Store.KV_Container) return Commit
+      Db     : in out KV_Store.KV_Container'Class) return Commit
    is
    begin
       return Get (Db, Status.Head_Commit_Ref);

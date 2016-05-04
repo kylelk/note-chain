@@ -213,58 +213,59 @@ procedure Main is
       end if;
    end Cmd_Config;
 
---     procedure Cmd_Note (Status : in out Note_Client.Client_Status) is
---        Note_Item   : Note_Client.Note;
---        New_Commit  : Note_Client.Commit;
---        Branch_Tree : Note_Client.Tree;
---     begin
---        if Status.Head_Commit_Ref /= Note_Client.Empty_Hash_Ref then
---           Branch_Tree :=
---             Note_Client.Get_Tree (Status, Status.Head_Commit.Tree_Ref);
---           New_Commit.Parents.Insert (Status.Head_Commit_Ref);
---        end if;
---
---        if CLI.Argument_Count = 2 then
---           if CLI.Argument (2) = "new" then
---              Edit_Note_Content ("");
---              declare
---                 Content : constant String :=
---                   File_Operations.Load_File (Config.Temp_Note_File);
---              begin
---                 Status.Create_Note (Note_Item, Content);
---              end;
---              Status.Save (Note_Item);
---
---              -- add note to tree
---              Note_Client.Add_Note (Branch_Tree, Note_Item);
---
---              -- save tree
---              Status.Save (Branch_Tree);
---
---              -- create new commit for changes
---              New_Commit.Tree_Ref := Branch_Tree.Object_Ref;
---              Status.Save (New_Commit);
---
---              -- update the head commit to point to the newest tree
---              Status.Set_Head (New_Commit);
---
---              TIO.Put_Line ("created new note");
---           end if;
---
---           if CLI.Argument_Count > 2 then
---              Note_Item := Note_Client.Get_Note (Status, CLI.Argument (3));
---              if CLI.Argument (2) = "view" then
---                 TIO.Put_Line (Note_Client.Format_Note (Note_Item));
---              elsif CLI.Argument (2) = "print" then
---                 TIO.Put_Line (UBS.To_String (Note_Item.Note_Text));
---              end if;
---           end if;
---
---           if CLI.Argument (2) = "list" then
---              List_Notes (Status);
---           end if;
---        end if;
---     end Cmd_Note;
+   procedure Cmd_Note (Status : in out Client.Client_Status;
+                      Db : in out KV_Store.KV_Container'Class) is
+      Note_Item   : Client.Note;
+      New_Commit  : Client.Commit;
+      Branch_Tree : Client.Tree;
+   begin
+      if Status.Head_Commit_Ref /= Client.Empty_Hash_Ref then
+         Branch_Tree :=
+           Client.Get (db, Client.Head_Commit(Status, Db).Tree_Ref);
+         New_Commit.Parents.Insert (Status.Head_Commit_Ref);
+      end if;
+
+      if CLI.Argument_Count = 2 then
+         if CLI.Argument (2) = "new" then
+            Edit_Note_Content ("");
+            declare
+               Content : constant String :=
+                 File_Operations.Load_File (Config.Temp_Note_File);
+            begin
+               Status.Create_Note (Note_Item, Content);
+            end;
+            Client.Save (Db, Note_Item);
+
+            -- add note to tree
+            Client.Add_Note (Branch_Tree, Note_Item);
+
+            -- save tree
+            Client.Save (Db, Branch_Tree);
+
+            -- create new commit for changes
+            New_Commit.Tree_Ref := Branch_Tree.Object_Ref;
+            Client.Save(Db, New_Commit);
+
+            -- update the head commit to point to the newest tree
+            Status.Set_Head (New_Commit);
+
+            TIO.Put_Line ("created new note");
+         end if;
+
+         if CLI.Argument_Count > 2 then
+            Note_Item := Client.Get (Db, CLI.Argument (3));
+            if CLI.Argument (2) = "view" then
+               TIO.Put_Line (Client.Format_Note (Note_Item));
+            elsif CLI.Argument (2) = "print" then
+               TIO.Put_Line (UBS.To_String (Note_Item.Note_Text));
+            end if;
+         end if;
+
+         if CLI.Argument (2) = "list" then
+            List_Notes (Status);
+         end if;
+      end if;
+   end Cmd_Note;
 
 --     procedure Cmd_Log (Status : in out Note_Client.Client_Status) is
 --        Next_Commit_Ref : Note_Client.SHA256_Value;
@@ -334,16 +335,17 @@ procedure Main is
 --        end if;
 --     end Cmd_Object;
 
---     procedure Cmd_Export (Status : in out Note_Client.Client_Status) is
---     begin
---        if CLI.Argument_Count > 1 then
---           Status.Export (CLI.Argument (2) & Config.Export_Extension);
---           TIO.Put_Line
---             ("exported objects to " &
---              CLI.Argument (2) &
---              Config.Export_Extension);
---        end if;
---     end Cmd_Export;
+   procedure Cmd_Export (Status : in out Client.Client_Status;
+                        Db : in out KV_Store.KV_Container'Class) is
+   begin
+      if CLI.Argument_Count > 1 then
+         Status.Export (Db, CLI.Argument (2) & Config.Export_Extension);
+         TIO.Put_Line
+           ("exported objects to " &
+            CLI.Argument (2) &
+            Config.Export_Extension);
+      end if;
+   end Cmd_Export;
 
    procedure Display_Help is
       longest_name : Integer := 0;
@@ -414,21 +416,17 @@ begin
 
    if CLI.Argument_Count >= 1 then
       if CLI.Argument (1) = "branch" then
-         null;
          Cmd_Branch (Client_Status, Data_DB);
       elsif CLI.Argument (1) = "config" then
-         null;
          Cmd_Config (Client_Status);
       elsif CLI.Argument (1) = "help" then
          Display_Help;
       elsif CLI.Argument (1) = "--help" then
          Display_Help;
       elsif CLI.Argument (1) = "export" then
-         null;
-         -- Cmd_Export (Client_Status);
+         Cmd_Export (Client_Status, Data_DB);
       elsif CLI.Argument (1) = "note" then
-         null;
-         --Cmd_Note (Client_Status);
+         Cmd_Note (Client_Status, Data_DB);
       elsif CLI.Argument (1) = "version" then
          TIO.Put_Line (Config.Version);
       elsif CLI.Argument (1) = "log" then

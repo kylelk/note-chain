@@ -264,7 +264,7 @@ package Client is
    -- returns the commit at the head of the current branch
    function Head_Commit
      (Status : in out Client_Status'Class;
-      Db     : in out KV_Store.KV_Container) return Commit;
+      Db     : in out KV_Store.KV_Container'Class) return Commit;
 
    -- @summary
    -- returns the head branch
