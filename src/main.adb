@@ -62,58 +62,59 @@ procedure Main is
       end loop;
    end List_Branches;
 
---     procedure Display_Commit (Item : Note_Client.Commit) is
---     begin
---        TIO.Put_Line
---          (Item.Object_Ref &
---           " " &
---           Ada.Calendar.Formatting.Image (Item.Created_At));
---     end Display_Commit;
+   procedure Display_Commit (Item : Client.Commit) is
+   begin
+      TIO.Put_Line
+        (Item.Object_Ref &
+         " " &
+         Ada.Calendar.Formatting.Image (Item.Created_At));
+   end Display_Commit;
 
---     procedure List_Notes (Status : in out Note_Client.Client_Status) is
---        Tree_Ref    : Note_Client.SHA256_Value;
---        Tree_Result : Note_Client.Tree;
---        use Note_Client;
---        use Ada.Strings.Fixed;
---     begin
---        if Status.Head_Commit_Ref = Note_Client.Empty_Hash_Ref then
---           TIO.Put_Line ("tree is null");
---           return;
---        end if;
---        Tree_Ref := Status.Head_Commit.Tree_Ref;
---        if Tree_Ref = Empty_Hash_Ref then
---           return;
---        end if;
---
---        Tree_Result := Get_Tree (Status, Tree_Ref);
---        declare
---           type Note_Array is array (Integer range <>) of Note;
---           Note_Count : constant Integer := Integer (Tree_Result.Entries.Length);
---           Notes      : Note_Array (1 .. Note_Count);
---           I          : Integer          := 1;
---           function "<" (L, R : Note) return Boolean is
---              use Ada.Calendar;
---           begin
---              return L.Created_At > R.Created_At;
---           end "<";
---           procedure Sort is new Ada.Containers.Generic_Array_Sort
---             (Integer,
---              Note,
---              Note_Array);
---        begin
---           for Item of Tree_Result.Entries loop
---              if Item.Entry_Type = Type_Note then
---                 Notes (I) := Get_Note (Status, Item.Child_Ref);
---              end if;
---              I := I + 1;
---           end loop;
---           Sort (Notes);
---           for Item of Notes loop
---              TIO.Put_Line (80 * '-');
---              TIO.Put_Line (Format_Note (Item));
---           end loop;
---        end;
---     end List_Notes;
+   procedure List_Notes (Status : in out Client.Client_Status;
+                         Db : in out KV_Store.KV_Container'Class) is
+      Tree_Ref    : Client.SHA256_Value;
+      Tree_Result : Client.Tree;
+      use Client;
+      use Ada.Strings.Fixed;
+   begin
+      if Status.Head_Commit_Ref = Client.Empty_Hash_Ref then
+         TIO.Put_Line ("tree is null");
+         return;
+      end if;
+      Tree_Ref := Status.Head_Commit(Db).Tree_Ref;
+      if Tree_Ref = Empty_Hash_Ref then
+         return;
+      end if;
+
+      Tree_Result := Client.Get (Db, Tree_Ref);
+      declare
+         type Note_Array is array (Integer range <>) of Note;
+         Note_Count : constant Integer := Integer (Tree_Result.Entries.Length);
+         Notes      : Note_Array (1 .. Note_Count);
+         I          : Integer          := 1;
+         function "<" (L, R : Note) return Boolean is
+            use Ada.Calendar;
+         begin
+            return L.Created_At > R.Created_At;
+         end "<";
+         procedure Sort is new Ada.Containers.Generic_Array_Sort
+           (Integer,
+            Note,
+            Note_Array);
+      begin
+         for Item of Tree_Result.Entries loop
+            if Item.Entry_Type = Type_Note then
+               Notes (I) := Get (Db, Item.Child_Ref);
+            end if;
+            I := I + 1;
+         end loop;
+         Sort (Notes);
+         for Item of Notes loop
+            TIO.Put_Line (80 * '-');
+            TIO.Put_Line (Format_Note (Item));
+         end loop;
+      end;
+   end List_Notes;
 
    procedure List_Settings (Status : Client.Client_Status) is
       Longest_Key : Integer := 0;
@@ -262,78 +263,81 @@ procedure Main is
          end if;
 
          if CLI.Argument (2) = "list" then
-            List_Notes (Status);
+            List_Notes (Status, Db);
          end if;
       end if;
    end Cmd_Note;
 
---     procedure Cmd_Log (Status : in out Note_Client.Client_Status) is
---        Next_Commit_Ref : Note_Client.SHA256_Value;
---
---        Commit_Refs : Note_Client.Reference_Set.Set;
---        procedure Add_Commit (Item : Note_Client.Commit; Continue : out Boolean) is
---        begin
---           if not Commit_Refs.Contains (Item.Object_Ref) then
---              Commit_Refs.Insert (Item.Object_Ref);
---           end if;
---           Continue := True;
---        end Add_Commit;
---
---        procedure Iterate_Commits is
---           type Commit_Array is array (Integer range <>) of Note_Client.Commit;
---           All_Commits : Commit_Array (1 .. Integer (Commit_Refs.Length));
---
---           function "<" (L, R : Note_Client.Commit) return Boolean is
---              use Ada.Calendar;
---           begin
---              return L.Created_At > R.Created_At;
---           end "<";
---           procedure Sort is new Ada.Containers.Generic_Array_Sort
---             (Integer,
---              Note_Client.Commit,
---              Commit_Array);
---           Index : Integer := 1;
---        begin
---           for Ref of Commit_Refs loop
---              All_Commits (Index) := Note_Client.Get_Commit (Status, Ref);
---              Index               := Index + 1;
---           end loop;
---           Sort (All_Commits);
---           for C of All_Commits loop
---              Display_Commit (C);
---           end loop;
---        end Iterate_Commits;
---     begin
---        if CLI.Argument_Count > 1 then
---           null;
---        else
---           Next_Commit_Ref := Status.Head_Commit_Ref;
---           if Next_Commit_Ref /= Note_Client.Empty_Hash_Ref then
---              Note_Client.Traverse_Commits
---                (Status,
---                 Next_Commit_Ref,
---                 Add_Commit'Access);
---              Iterate_Commits;
---           end if;
---        end if;
---     end Cmd_Log;
+   procedure Cmd_Log (Status : in out Client.Client_Status;
+                     Db : in out KV_Store.KV_Container'Class) is
+      Next_Commit_Ref : Client.SHA256_Value;
 
---     procedure Cmd_Object (Status : in out Note_Client.Client_Status) is
---     begin
---        if CLI.Argument_Count > 1 then
---           if CLI.Argument_Count > 2 then
---              if CLI.Argument (2) = "type" then
---                 TIO.Put_Line
---                   (Note_Client.Object_Store.Object_Type
---                      (Status,
---                       CLI.Argument (3)));
---              elsif CLI.Argument (2) = "print" then
---                 TIO.Put_Line
---                   (Note_Client.Object_Store.Read (Status, CLI.Argument (3)));
---              end if;
---           end if;
---        end if;
---     end Cmd_Object;
+      Commit_Refs : Client.Reference_Set.Set;
+      procedure Add_Commit (Item : Client.Commit; Continue : out Boolean) is
+      begin
+         if not Commit_Refs.Contains (Item.Object_Ref) then
+            Commit_Refs.Insert (Item.Object_Ref);
+         end if;
+         Continue := True;
+      end Add_Commit;
+
+      procedure Iterate_Commits is
+         type Commit_Array is array (Integer range <>) of Client.Commit;
+         All_Commits : Commit_Array (1 .. Integer (Commit_Refs.Length));
+
+         function "<" (L, R : Client.Commit) return Boolean is
+            use Ada.Calendar;
+         begin
+            return L.Created_At > R.Created_At;
+         end "<";
+         procedure Sort is new Ada.Containers.Generic_Array_Sort
+           (Integer,
+            Client.Commit,
+            Commit_Array);
+         Index : Integer := 1;
+      begin
+         for Ref of Commit_Refs loop
+            All_Commits (Index) := Client.Get (Db, Ref);
+            Index               := Index + 1;
+         end loop;
+         Sort (All_Commits);
+         for C of All_Commits loop
+            Display_Commit (C);
+         end loop;
+      end Iterate_Commits;
+   begin
+      if CLI.Argument_Count > 1 then
+         null;
+      else
+         Next_Commit_Ref := Status.Head_Commit_Ref;
+         if Next_Commit_Ref /= Client.Empty_Hash_Ref then
+            Client.Traverse_Commits
+              (Db,
+               Next_Commit_Ref,
+               Add_Commit'Access);
+            Iterate_Commits;
+         end if;
+      end if;
+   end Cmd_Log;
+
+   procedure Cmd_Object (Status : in out Client.Client_Status;
+                        Db : in out KV_Store.KV_Container'Class) is
+      pragma Unreferenced (Status);
+   begin
+      if CLI.Argument_Count > 1 then
+         if CLI.Argument_Count > 2 then
+            if CLI.Argument (2) = "type" then
+               TIO.Put_Line
+                 (Client.Object_Store.Object_Type
+                    (Db,
+                     CLI.Argument (3)));
+            elsif CLI.Argument (2) = "print" then
+               TIO.Put_Line
+                 (Client.Object_Store.Read (Db, CLI.Argument (3)));
+            end if;
+         end if;
+      end if;
+   end Cmd_Object;
 
    procedure Cmd_Export (Status : in out Client.Client_Status;
                         Db : in out KV_Store.KV_Container'Class) is
@@ -430,11 +434,9 @@ begin
       elsif CLI.Argument (1) = "version" then
          TIO.Put_Line (Config.Version);
       elsif CLI.Argument (1) = "log" then
-         null;
-         --Cmd_Log (Client_Status);
+         Cmd_Log (Client_Status, Data_DB);
       elsif CLI.Argument (1) = "object" then
-         null;
-         --Cmd_Object (Client_Status);
+         Cmd_Object (Client_Status, Data_DB);
       end if;
    else
       TIO.Put_Line ("call 'help' command for more infomation");
