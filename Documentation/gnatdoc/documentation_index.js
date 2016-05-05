@@ -8,10 +8,6 @@ GNATdoc.DocumentationIndex = [
     "file": "docs/client.object_store.html"
   },
   {
-    "label": "Client.STR_OPS",
-    "file": "docs/client.str_ops.html"
-  },
-  {
     "label": "Config",
     "file": "docs/config.html"
   },

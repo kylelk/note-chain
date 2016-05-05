@@ -187,10 +187,6 @@ GNATdoc.Documentation = {
           ],
           "inherited": [
             {
-              "label": "Data_Store",
-              "docHref": "docs/standard.html#L15C9"
-            },
-            {
               "label": "Data",
               "docHref": "docs/file_object_store.html#L8C9"
             },

@@ -3,15 +3,15 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Branch",
-      "docHref": "docs/standard.html#L91C9",
+      "docHref": "docs/client.html#L100C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L91"
+      "srcHref": "srcs/client.ads.html#L100"
     },
     {
       "label": "Branch_Info",
-      "docHref": "docs/standard.html#L106C9",
+      "docHref": "docs/client.html#L115C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L106"
+      "srcHref": "srcs/client.ads.html#L115"
     },
     {
       "label": "JSON_Array",
@@ -21,9 +21,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Tree_Entry",
-      "docHref": "docs/standard.html#L73C9",
+      "docHref": "docs/client.html#L82C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L73"
+      "srcHref": "srcs/client.ads.html#L82"
     },
     {
       "label": "UTF8_Unbounded_String",
