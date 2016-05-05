@@ -214,7 +214,7 @@ package body Client is
       Result_Hash : SHA256_Value;
    begin
       To_JSON (Item, Result_JSON);
-      Object_Store.Write (DB, "tree", Result_JSON.Write, Result_Hash);
+      Object_Store.Write (DB, "note", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
       Item.Saved      := True;
    end Save;
