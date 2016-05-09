@@ -5,7 +5,6 @@ with Ada.Containers.Hashed_Maps;
 with Ada.Containers.Hashed_Sets;
 with Ada.Strings.Unbounded.Hash;
 with Ada.Calendar;
-with Ada.Text_IO;
 
 with Settings;
 with KV_Store;
@@ -125,46 +124,6 @@ package Client is
       First_Load : Boolean := False;
    end record;
 
-   package Object_Store is
-      subtype SHA256_Value is String (1 .. 64);
-
-      Object_Not_Found : exception;
-
-      -- @description
-      -- Store an object's content
-      procedure Write
-        (db          : in out KV_Store.KV_Container'Class;
-         Object_Type :        String;
-         Content     :        String;
-         ref         :    out SHA256_Value);
-
-      -- @description
-      -- Get the content of an object, raises Object_Not_Found when a object
-      -- does not exist
-      function Read
-        (db  : in out KV_Store.KV_Container'Class;
-         ref :        SHA256_Value) return String;
-
-      -- @description
-      -- returns the entire data object as a string
-      function Read_Object
-        (db  : in out KV_Store.KV_Container'Class;
-         ref :        SHA256_Value) return String;
-
-      function Object_Type
-        (Db  : in out KV_Store.KV_Container'Class;
-         ref :        SHA256_Value) return String;
-
-      -- @description
-      -- checks if an object exists
-      function Exists
-        (Db  : in out KV_Store.KV_Container'Class;
-         ref :        SHA256_Value) return Boolean;
-
-   private
-      -- @private
-      package TIO renames Ada.Text_IO;
-   end Object_Store;
 
    No_Branch_Error : exception;
    Branch_Name_Format_Error : exception;

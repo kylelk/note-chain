@@ -13,6 +13,7 @@ with Settings;
 with File_Object_Store;
 with File_Operations;
 with KV_Store;
+with Object_Store;
 
 procedure Main is
    package CLI renames Ada.Command_Line;
@@ -328,12 +329,12 @@ procedure Main is
          if CLI.Argument_Count > 2 then
             if CLI.Argument (2) = "type" then
                TIO.Put_Line
-                 (Client.Object_Store.Object_Type
+                 (Object_Store.Object_Type
                     (Db,
                      CLI.Argument (3)));
             elsif CLI.Argument (2) = "print" then
                TIO.Put_Line
-                 (Client.Object_Store.Read (Db, CLI.Argument (3)));
+                 (Object_Store.Read (Db, CLI.Argument (3)));
             end if;
          end if;
       end if;

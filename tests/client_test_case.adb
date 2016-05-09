@@ -1,5 +1,6 @@
 with AUnit.Assertions; use AUnit.Assertions;
 with Client;
+with Object_Store;
 
 package body Client_Test_Case is
    overriding function Name (Test : Client_Test_Case) return Message_String is
@@ -78,11 +79,11 @@ package body Client_Test_Case is
       Client.Add_Note (New_Tree, New_Note);
       Client.Save (Db, New_Tree);
       Assert
-        (Client.Object_Store.Exists (Db, New_Tree.Object_Ref),
+        (Object_Store.Exists (Db, New_Tree.Object_Ref),
          "failed creating tree");
       declare
          Object_Type : constant String :=
-           Client.Object_Store.Object_Type
+           Object_Store.Object_Type
              (Db,
               New_Tree.Object_Ref);
       begin
