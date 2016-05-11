@@ -34,4 +34,12 @@ package Config is
 
    -- vimscript file passed to the editor
    Vim_Options_File : constant String := ".note_chain_editor.vim";
+
+   Vim_Selected_Line_Script : constant String :=
+     Join(Temp_Dir & "select_line.vim");
+
+   Selected_Line_File : constant String :=
+     Join(Temp_Dir & "selected_line.txt");
+
+   Note_List_File : constant String := Join(Temp_Dir & "note_list.txt");
 end Config;
