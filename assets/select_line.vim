@@ -3,7 +3,7 @@ function! Select_Line()
     %d
     put =current_line
     v/./d
-    write! current_line.txt
+    write! .note_chain_current_line_v1.txt
     q!
 endfunction
 
