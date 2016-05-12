@@ -3,6 +3,7 @@ with Ada.Direct_IO;
 with GNAT.SHA256;
 with Ada.Text_IO;
 with Ada.IO_Exceptions;
+with GNAT.OS_Lib;
 
 package body File_Operations is
    function Load_File (Filename : in String) return String is
@@ -95,15 +96,34 @@ package body File_Operations is
       end if;
    end create_empty_file;
 
-   procedure Write_String(Path : String ; Content : String) is
+   procedure Write_String (Path : String; Content : String) is
       File_Item : Ada.Text_IO.File_Type;
    begin
-      if Ada.Directories.Exists(Path) then
-         Ada.Text_IO.Open(File_Item, Ada.Text_IO.Out_File, Path);
+      if Ada.Directories.Exists (Path) then
+         Ada.Text_IO.Open (File_Item, Ada.Text_IO.Out_File, Path);
       else
-         Ada.Text_IO.Create(File_Item, Ada.Text_IO.Out_File, Path);
+         Ada.Text_IO.Create (File_Item, Ada.Text_IO.Out_File, Path);
       end if;
-      Ada.Text_IO.Put(File_Item, Content);
-      Ada.Text_IO.Close(File_Item);
+      Ada.Text_IO.Put (File_Item, Content);
+      Ada.Text_IO.Close (File_Item);
    end Write_String;
+
+   procedure Execute_System_Cmd (Command : String) is
+      use GNAT.OS_Lib;
+
+      List      : String_List_Access := Argument_String_To_List (Command);
+      Exec_Path : String_Access      := Locate_Exec_On_Path (List (1).all);
+      Success   : Boolean;
+   begin
+      if Exec_Path /= null then
+         Spawn
+           (Program_Name => Exec_Path.all,
+            Args         => List (2 .. List'Last),
+            Success      => Success);
+         Free (Exec_Path);
+      else
+         Ada.Text_IO.Put_Line ("Command not found");
+      end if;
+      Free (List);
+   end Execute_System_Cmd;
 end File_Operations;

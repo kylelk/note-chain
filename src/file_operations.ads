@@ -14,4 +14,6 @@ package File_Operations is
    procedure create_empty_file(path : String);
 
    procedure Write_String(Path : String ; Content : String);
+
+   procedure Execute_System_Cmd (Command : String);
 end File_Operations;

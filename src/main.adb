@@ -1,7 +1,6 @@
 with Ada.Command_Line;
 with Ada.Text_IO;
 with Ada.Strings.Unbounded;
-with GNAT.OS_Lib;
 with Ada.Calendar.Formatting;
 with Ada.Strings.Fixed;
 with Ada.Containers.Generic_Array_Sort;
@@ -21,33 +20,14 @@ procedure Main is
    package TIO renames Ada.Text_IO;
    package UBS renames Ada.Strings.Unbounded;
 
-   procedure Execute_System (Command : String) is
-      use GNAT.OS_Lib;
-
-      List      : String_List_Access := Argument_String_To_List (Command);
-      Exec_Path : String_Access      := Locate_Exec_On_Path (List (1).all);
-      Success   : Boolean;
-   begin
-      if Exec_Path /= null then
-         Spawn
-           (Program_Name => Exec_Path.all,
-            Args         => List (2 .. List'Last),
-            Success      => Success);
-         Free (Exec_Path);
-      else
-         Ada.Text_IO.Put_Line ("Command not found");
-      end if;
-      Free (List);
-   end Execute_System;
-
    procedure Edit_Note_Content (Content : String) is
    begin
       File_Operations.Write_String (Config.Temp_Note_File, Content);
       if Ada.Directories.Exists (Config.Vim_Options_File) then
-         Execute_System
+         File_Operations.Execute_System_Cmd
            ("vim -S " & Config.Vim_Options_File & " " & Config.Temp_Note_File);
       else
-         Execute_System ("vim " & Config.Temp_Note_File);
+         File_Operations.Execute_System_Cmd ("vim " & Config.Temp_Note_File);
       end if;
    end Edit_Note_Content;
 
