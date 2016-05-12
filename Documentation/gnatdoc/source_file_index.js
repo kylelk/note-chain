@@ -8,6 +8,10 @@ GNATdoc.SourceFileIndex = [
     "srcHref": "srcs/config.ads.html"
   },
   {
+    "label": "file_assets.ads",
+    "srcHref": "srcs/file_assets.ads.html"
+  },
+  {
     "label": "file_object_store.ads",
     "srcHref": "srcs/file_object_store.ads.html"
   },
@@ -34,6 +38,14 @@ GNATdoc.SourceFileIndex = [
   {
     "label": "message_format.ads",
     "srcHref": "srcs/message_format.ads.html"
+  },
+  {
+    "label": "note_interactive_menu.ads",
+    "srcHref": "srcs/note_interactive_menu.ads.html"
+  },
+  {
+    "label": "object_store.ads",
+    "srcHref": "srcs/object_store.ads.html"
   },
   {
     "label": "redis_store.ads",

@@ -27,21 +27,15 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Object_Type",
-      "docHref": "docs/client.html#L25C9",
+      "docHref": "docs/client.html#L24C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L25"
+      "srcHref": "srcs/client.ads.html#L24"
     },
     {
       "label": "SHA256_Value",
-      "docHref": "docs/client.html#L22C12",
+      "docHref": "docs/client.html#L21C12",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L22"
-    },
-    {
-      "label": "SHA256_Value",
-      "docHref": "docs/client.object_store.html#L129C15",
-      "declared": "Client.Object_Store",
-      "srcHref": "srcs/client.ads.html#L129"
+      "srcHref": "srcs/client.ads.html#L21"
     },
     {
       "label": "SHA256_Value",
@@ -60,6 +54,12 @@ GNATdoc.EntitiesCategory = {
       "docHref": "docs/file_operations.html#L2C12",
       "declared": "File_Operations",
       "srcHref": "srcs/file_operations.ads.html#L2"
+    },
+    {
+      "label": "SHA256_Value",
+      "docHref": "docs/object_store.html#L5C15",
+      "declared": "Object_Store",
+      "srcHref": "srcs/object_store.ads.html#L5"
     },
     {
       "label": "SHA256_Value",

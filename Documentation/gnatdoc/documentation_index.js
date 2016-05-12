@@ -4,12 +4,12 @@ GNATdoc.DocumentationIndex = [
     "file": "docs/client.html"
   },
   {
-    "label": "Client.Object_Store",
-    "file": "docs/client.object_store.html"
-  },
-  {
     "label": "Config",
     "file": "docs/config.html"
+  },
+  {
+    "label": "File_Assets",
+    "file": "docs/file_assets.html"
   },
   {
     "label": "File_Object_Store",
@@ -38,6 +38,14 @@ GNATdoc.DocumentationIndex = [
   {
     "label": "Message_Format",
     "file": "docs/message_format.html"
+  },
+  {
+    "label": "Note_Interactive_Menu",
+    "file": "docs/note_interactive_menu.html"
+  },
+  {
+    "label": "Object_Store",
+    "file": "docs/object_store.html"
   },
   {
     "label": "Redis_Store",

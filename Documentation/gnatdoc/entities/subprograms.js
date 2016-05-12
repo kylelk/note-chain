@@ -3,15 +3,15 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Branch_Commits",
-      "docHref": "docs/client.html#L300C13",
+      "docHref": "docs/client.html#L259C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L300"
+      "srcHref": "srcs/client.ads.html#L259"
     },
     {
       "label": "Branch_Refs",
-      "docHref": "docs/client.html#L293C14",
+      "docHref": "docs/client.html#L252C14",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L293"
+      "srcHref": "srcs/client.ads.html#L252"
     },
     {
       "label": "Char_Index",
@@ -33,9 +33,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Contains_Commit",
-      "docHref": "docs/client.html#L307C13",
+      "docHref": "docs/client.html#L266C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L307"
+      "srcHref": "srcs/client.ads.html#L266"
     },
     {
       "label": "create_empty_file",
@@ -56,16 +56,22 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/gnatcoll_json_utility.ads.html#L37"
     },
     {
+      "label": "Execute_System_Cmd",
+      "docHref": "docs/file_operations.html#L18C14",
+      "declared": "File_Operations",
+      "srcHref": "srcs/file_operations.ads.html#L18"
+    },
+    {
       "label": "Exists",
-      "docHref": "docs/client.object_store.html#L160C16",
-      "declared": "Client.Object_Store",
-      "srcHref": "srcs/client.ads.html#L160"
+      "docHref": "docs/object_store.html#L36C16",
+      "declared": "Object_Store",
+      "srcHref": "srcs/object_store.ads.html#L36"
     },
     {
       "label": "Export_Refs",
-      "docHref": "docs/client.html#L317C14",
+      "docHref": "docs/client.html#L276C14",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L317"
+      "srcHref": "srcs/client.ads.html#L276"
     },
     {
       "label": "From_ISO_8601",
@@ -87,9 +93,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Hash",
-      "docHref": "docs/client.html#L105C13",
+      "docHref": "docs/client.html#L104C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L105"
+      "srcHref": "srcs/client.ads.html#L104"
     },
     {
       "label": "Hash",
@@ -141,15 +147,15 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Merge_Branches",
-      "docHref": "docs/client.html#L342C14",
+      "docHref": "docs/client.html#L301C14",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L342"
+      "srcHref": "srcs/client.ads.html#L301"
     },
     {
       "label": "Object_Type",
-      "docHref": "docs/client.object_store.html#L154C16",
-      "declared": "Client.Object_Store",
-      "srcHref": "srcs/client.ads.html#L154"
+      "docHref": "docs/object_store.html#L30C16",
+      "declared": "Object_Store",
+      "srcHref": "srcs/object_store.ads.html#L30"
     },
     {
       "label": "Random_SHA256",
@@ -159,21 +165,27 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Read",
-      "docHref": "docs/client.object_store.html#L144C16",
-      "declared": "Client.Object_Store",
-      "srcHref": "srcs/client.ads.html#L144"
+      "docHref": "docs/object_store.html#L20C16",
+      "declared": "Object_Store",
+      "srcHref": "srcs/object_store.ads.html#L20"
     },
     {
       "label": "Read_Object",
-      "docHref": "docs/client.object_store.html#L150C16",
-      "declared": "Client.Object_Store",
-      "srcHref": "srcs/client.ads.html#L150"
+      "docHref": "docs/object_store.html#L26C16",
+      "declared": "Object_Store",
+      "srcHref": "srcs/object_store.ads.html#L26"
     },
     {
       "label": "Remake_Directory",
       "docHref": "docs/file_operations.html#L6C14",
       "declared": "File_Operations",
       "srcHref": "srcs/file_operations.ads.html#L6"
+    },
+    {
+      "label": "Show_Select_Menu",
+      "docHref": "docs/note_interactive_menu.html#L6C14",
+      "declared": "Note_Interactive_Menu",
+      "srcHref": "srcs/note_interactive_menu.ads.html#L6"
     },
     {
       "label": "String_Hash",
@@ -189,21 +201,21 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Traverse_Commits",
-      "docHref": "docs/client.html#L330C14",
+      "docHref": "docs/client.html#L289C14",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L330"
+      "srcHref": "srcs/client.ads.html#L289"
     },
     {
       "label": "Tree_Entry_Hash",
-      "docHref": "docs/client.html#L88C13",
+      "docHref": "docs/client.html#L87C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L88"
+      "srcHref": "srcs/client.ads.html#L87"
     },
     {
       "label": "Tree_Refs",
-      "docHref": "docs/client.html#L288C14",
+      "docHref": "docs/client.html#L247C14",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L288"
+      "srcHref": "srcs/client.ads.html#L247"
     },
     {
       "label": "Un_Escape_String",
@@ -213,9 +225,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Upto_Date",
-      "docHref": "docs/client.html#L351C13",
+      "docHref": "docs/client.html#L310C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L351"
+      "srcHref": "srcs/client.ads.html#L310"
     },
     {
       "label": "Valid_Branch_Name",
@@ -224,10 +236,22 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/string_operations.ads.html#L22"
     },
     {
+      "label": "View_Note",
+      "docHref": "docs/note_interactive_menu.html#L10C14",
+      "declared": "Note_Interactive_Menu",
+      "srcHref": "srcs/note_interactive_menu.ads.html#L10"
+    },
+    {
+      "label": "Vim_Select_Line_Script",
+      "docHref": "docs/file_assets.html#L2C13",
+      "declared": "File_Assets",
+      "srcHref": "srcs/file_assets.ads.html#L2"
+    },
+    {
       "label": "Write",
-      "docHref": "docs/client.object_store.html#L135C17",
-      "declared": "Client.Object_Store",
-      "srcHref": "srcs/client.ads.html#L135"
+      "docHref": "docs/object_store.html#L11C17",
+      "declared": "Object_Store",
+      "srcHref": "srcs/object_store.ads.html#L11"
     },
     {
       "label": "Write_String",

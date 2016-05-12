@@ -1,7 +1,7 @@
 GNATdoc.InheritanceIndex = [
   {
     "label": "Client_Status",
-    "docHref": "docs/client.html#L121C9"
+    "docHref": "docs/client.html#L120C9"
   },
   {
     "label": "Controlled",
@@ -14,11 +14,11 @@ GNATdoc.InheritanceIndex = [
   },
   {
     "label": "JSON_Serializable",
-    "docHref": "docs/client.html#L40C9",
+    "docHref": "docs/client.html#L39C9",
     "inherited": [
       {
         "label": "Persistable",
-        "docHref": "docs/client.html#L56C9"
+        "docHref": "docs/client.html#L55C9"
       }
     ]
   },
@@ -46,19 +46,19 @@ GNATdoc.InheritanceIndex = [
   },
   {
     "label": "Object_Record",
-    "docHref": "docs/client.html#L34C9",
+    "docHref": "docs/client.html#L33C9",
     "inherited": [
       {
         "label": "Commit",
-        "docHref": "docs/client.html#L75C9"
+        "docHref": "docs/client.html#L74C9"
       },
       {
         "label": "Note",
-        "docHref": "docs/client.html#L65C9"
+        "docHref": "docs/client.html#L64C9"
       },
       {
         "label": "Tree",
-        "docHref": "docs/client.html#L96C9"
+        "docHref": "docs/client.html#L95C9"
       }
     ]
   },
@@ -68,6 +68,6 @@ GNATdoc.InheritanceIndex = [
   },
   {
     "label": "Storable_Object",
-    "docHref": "docs/client.html#L48C9"
+    "docHref": "docs/client.html#L47C9"
   }
 ];

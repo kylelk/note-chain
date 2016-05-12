@@ -3,21 +3,21 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Branch_JSON_File",
-      "docHref": "docs/config.html#L19C4",
+      "docHref": "docs/config.html#L21C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L19"
+      "srcHref": "srcs/config.ads.html#L21"
     },
     {
       "label": "Data_Dir",
-      "docHref": "docs/config.html#L10C4",
+      "docHref": "docs/config.html#L12C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L10"
+      "srcHref": "srcs/config.ads.html#L12"
     },
     {
       "label": "Default_Branch_Name",
-      "docHref": "docs/config.html#L22C4",
+      "docHref": "docs/config.html#L24C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L22"
+      "srcHref": "srcs/config.ads.html#L24"
     },
     {
       "label": "Empty_Array",
@@ -27,15 +27,15 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Empty_Hash_Ref",
-      "docHref": "docs/client.html#L23C4",
+      "docHref": "docs/client.html#L22C4",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L23"
+      "srcHref": "srcs/client.ads.html#L22"
     },
     {
       "label": "Export_Extension",
-      "docHref": "docs/config.html#L33C4",
+      "docHref": "docs/config.html#L35C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L33"
+      "srcHref": "srcs/config.ads.html#L35"
     },
     {
       "label": "JSON_Null",
@@ -50,46 +50,64 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/gnatcoll_json_utility.ads.html#L33"
     },
     {
-      "label": "Object_Dir",
-      "docHref": "docs/config.html#L13C4",
+      "label": "Note_List_File",
+      "docHref": "docs/config.html#L46C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L13"
+      "srcHref": "srcs/config.ads.html#L46"
+    },
+    {
+      "label": "Object_Dir",
+      "docHref": "docs/config.html#L15C4",
+      "declared": "Config",
+      "srcHref": "srcs/config.ads.html#L15"
+    },
+    {
+      "label": "Selected_Line_File",
+      "docHref": "docs/config.html#L43C4",
+      "declared": "Config",
+      "srcHref": "srcs/config.ads.html#L43"
     },
     {
       "label": "Settings_JSON_File",
+      "docHref": "docs/config.html#L33C4",
+      "declared": "Config",
+      "srcHref": "srcs/config.ads.html#L33"
+    },
+    {
+      "label": "Temp_Dir",
+      "docHref": "docs/config.html#L18C4",
+      "declared": "Config",
+      "srcHref": "srcs/config.ads.html#L18"
+    },
+    {
+      "label": "Temp_Note_File",
       "docHref": "docs/config.html#L31C4",
       "declared": "Config",
       "srcHref": "srcs/config.ads.html#L31"
     },
     {
-      "label": "Temp_Dir",
-      "docHref": "docs/config.html#L16C4",
-      "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L16"
-    },
-    {
-      "label": "Temp_Note_File",
-      "docHref": "docs/config.html#L29C4",
-      "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L29"
-    },
-    {
       "label": "Temp_Object_File",
-      "docHref": "docs/config.html#L26C4",
+      "docHref": "docs/config.html#L28C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L26"
+      "srcHref": "srcs/config.ads.html#L28"
     },
     {
       "label": "Version",
-      "docHref": "docs/config.html#L7C4",
+      "docHref": "docs/config.html#L9C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L7"
+      "srcHref": "srcs/config.ads.html#L9"
     },
     {
       "label": "Vim_Options_File",
-      "docHref": "docs/config.html#L36C4",
+      "docHref": "docs/config.html#L38C4",
       "declared": "Config",
-      "srcHref": "srcs/config.ads.html#L36"
+      "srcHref": "srcs/config.ads.html#L38"
+    },
+    {
+      "label": "Vim_Selected_Line_Script",
+      "docHref": "docs/config.html#L40C4",
+      "declared": "Config",
+      "srcHref": "srcs/config.ads.html#L40"
     }
   ]
 };
