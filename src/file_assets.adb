@@ -17,6 +17,7 @@ package body File_Assets is
         "set nospell" & NL &
         "set nonumber" & NL &
         "hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white" & NL &
+        "1" & NL &
         "map <CR> :call Select_Line() <CR>";
    end Vim_Select_Line_Script;
 end File_Assets;

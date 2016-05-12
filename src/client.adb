@@ -593,11 +593,15 @@ package body Client is
    function Format_Note (Item : Note) return String is
       Result : Message_Format.Message;
       use STR_OPS;
+      use UBS;
    begin
       Result.Set_Header ("SHA-256", Item.Object_Ref);
       Result.Set_Header ("Uniq_UUID", Item.Uniq_UUID);
       Result.Set_Header ("Created_At", To_ISO_8601 (Item.Created_At));
       Result.Set_Header ("Updated_At", To_ISO_8601 (Item.Updated_At));
+      if Item.Author /= UBS.Null_Unbounded_String then
+         Result.Set_Header("Author", UBS.To_String(Item.Author));
+      end if;
 
       Result.Set_Content (Item.Note_Text);
       return Result.To_String;

@@ -10,6 +10,7 @@ package body Note_Interactive_Menu is
      (Status : in out Client.Client_Status;
       Db     : in out KV_Store.KV_Container'Class)
    is
+      Result_Ref : Client.SHA256_Value;
       Output_File : Ada.Text_IO.File_Type;
       Vim_Cmd     : constant String :=
         "vim -S " &
@@ -30,8 +31,20 @@ package body Note_Interactive_Menu is
 
       File_Operations.Execute_System_Cmd (Vim_Cmd);
 
-      TIO.Put_Line(File_Operations.Load_File(Config.Selected_Line_File));
+      Result_Ref := File_Operations.Load_File(Config.Selected_Line_File)
+        (1..Client.SHA256_Value'Length);
+      View_Note(Db, Result_Ref);
    end Show_Select_Menu;
+
+   procedure View_Note
+     (Db       : in out KV_Store.KV_Container'Class;
+      Ref :        Client.SHA256_Value) is
+
+      Note_Result : constant Client.Note := Client.Get(Db, Ref);
+   begin
+      File_Operations.Write_String(Config.Temp_Note_File, Note_Result.Format_Note);
+      File_Operations.Execute_System_Cmd("vim -c 'set nospell' " & Config.Temp_Note_File);
+   end View_Note;
 
    procedure List_Notes
      (Status : in out Client.Client_Status;
@@ -47,9 +60,7 @@ package body Note_Interactive_Menu is
            " " &
            String_Operations.To_ISO_8601 (Item.Created_At);
       end Format_Line;
-
       use Client;
-
    begin
       if Status.Head_Commit_Ref = Client.Empty_Hash_Ref then
          -- Ada.Text_IO.Put_Line ("tree is null");
