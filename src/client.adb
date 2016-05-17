@@ -207,19 +207,6 @@ package body Client is
       Ada.Text_IO.Close (Data_File);
    end Save_Branches;
 
-   procedure Save
-     (DB   : in out KV_Store.KV_Container'Class;
-      Item : in out Note)
-   is
-      Result_JSON : JSON.JSON_Value;
-      Result_Hash : SHA256_Value;
-   begin
-      To_JSON (Item, Result_JSON);
-      Object_Store.Write (DB, "note", Result_JSON.Write, Result_Hash);
-      Item.Object_Ref := Result_Hash;
-      Item.Saved      := True;
-   end Save;
-
    procedure To_JSON (Item : in Note; Result : out JSON.JSON_Value) is
       use UBS;
       use STR_OPS;
@@ -367,6 +354,19 @@ package body Client is
       Result_JSON : JSON.JSON_Value;
    begin
       Item.Created_At := Ada.Calendar.Clock;
+      To_JSON (Item, Result_JSON);
+      Object_Store.Write (DB, "commit", Result_JSON.Write, Result_Hash);
+      Item.Object_Ref := Result_Hash;
+      Item.Saved      := True;
+   end Save;
+
+   procedure Save
+     (DB   : in out KV_Store.KV_Container'Class;
+      Item : in out Note)
+   is
+      Result_JSON : JSON.JSON_Value;
+      Result_Hash : SHA256_Value;
+   begin
       To_JSON (Item, Result_JSON);
       Object_Store.Write (DB, "note", Result_JSON.Write, Result_Hash);
       Item.Object_Ref := Result_Hash;
@@ -600,7 +600,7 @@ package body Client is
       Result.Set_Header ("Created_At", To_ISO_8601 (Item.Created_At));
       Result.Set_Header ("Updated_At", To_ISO_8601 (Item.Updated_At));
       if Item.Author /= UBS.Null_Unbounded_String then
-         Result.Set_Header("Author", UBS.To_String(Item.Author));
+         Result.Set_Header ("Author", UBS.To_String (Item.Author));
       end if;
 
       Result.Set_Content (Item.Note_Text);

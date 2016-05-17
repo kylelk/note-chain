@@ -13,8 +13,7 @@ package body Client_Test_Case is
       pragma Unreferenced (T);
       Client_Status : Client.Client_Status;
 
-      Test_Branch : constant Client.Branch :=
-        (+"test", Client.Empty_Hash_Ref);
+      Test_Branch : constant Client.Branch := (+"test", Client.Empty_Hash_Ref);
    begin
       Client_Status.Set_Branch (Test_Branch);
       Assert (Client_Status.Branch_Exists (+"test"), "Branch creation failed");
@@ -24,9 +23,7 @@ package body Client_Test_Case is
       pragma Unreferenced (T);
    begin
       Assert (STR_OPS.Valid_Branch_Name ("test"), "failed branch name");
-      Assert
-        (STR_OPS.Valid_Branch_Name ("example.com"),
-         "failed branch name");
+      Assert (STR_OPS.Valid_Branch_Name ("example.com"), "failed branch name");
       Assert
         (not STR_OPS.Valid_Branch_Name ("test..master"),
          "failed branch name");
@@ -83,13 +80,59 @@ package body Client_Test_Case is
          "failed creating tree");
       declare
          Object_Type : constant String :=
-           Object_Store.Object_Type
-             (Db,
-              New_Tree.Object_Ref);
+           Object_Store.Object_Type (Db, New_Tree.Object_Ref);
       begin
          Assert (Object_Type = "tree", "wrong object type " & Object_Type);
       end;
    end Test_Create_Tree;
+
+   procedure Test_Create_Commit (T : in out Test_Case'Class) is
+      pragma Unreferenced (T);
+      Client_Status   : Client.Client_Status;
+      Note_Item       : Client.Note;
+      New_Commit      : Client.Commit;
+      Branch_Tree     : Client.Tree;
+      Commit_Count    : constant Integer := 5;
+      Created_Commits : array (1 .. Commit_Count) of Client.Commit;
+   begin
+      Client_Status.Init (Db);
+      for I in 1 .. Commit_Count loop
+         Client_Status.Create_Note (Note_Item, "hello world");
+
+         Client.Save (Db, Note_Item);
+
+         -- add note to tree
+         Client.Add_Note (Branch_Tree, Note_Item);
+
+         -- save tree
+         Client.Save (Db, Branch_Tree);
+
+         -- create new commit for changes
+         New_Commit.Tree_Ref := Branch_Tree.Object_Ref;
+         Client.Save (Db, New_Commit);
+
+         Created_Commits (I) := New_Commit;
+
+         -- update the head commit to point to the newest tree
+         Client_Status.Set_Head (New_Commit);
+
+      end loop;
+
+      for Created_Commit of Created_Commits loop
+         Assert
+           (Object_Store.Exists (Db, Created_Commit.Object_Ref),
+            "failed creating commit");
+
+         declare
+            Object_Type : constant String :=
+              Object_Store.Object_Type (Db, Created_Commit.Object_Ref);
+         begin
+            Assert
+              (Object_Type = "commit",
+               "wrong object type: " & Object_Type);
+         end;
+      end loop;
+   end Test_Create_Commit;
 
    procedure Register_Tests (Test : in out Client_Test_Case) is
       use AUnit.Test_Cases.Registration;
@@ -102,6 +145,7 @@ package body Client_Test_Case is
       Register_Routine (Test, Test_Create_Note'Access, "create note");
       Register_Routine (Test, Test_Get_Note'Access, "get note");
       Register_Routine (Test, Test_Create_Tree'Access, "create tree");
+      Register_Routine (Test, Test_Create_Commit'Access, "create commit");
    end Register_Tests;
 
 end Client_Test_Case;

@@ -26,6 +26,8 @@ package Client_Test_Case is
 
    procedure Test_Create_Tree (T : in out Test_Case'Class);
 
+   procedure Test_Create_Commit (T : in out Test_Case'Class);
+
    procedure Register_Tests (Test : in out Client_Test_Case);
 private
    package STR_OPS renames String_Operations;
