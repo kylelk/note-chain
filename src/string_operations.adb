@@ -62,12 +62,20 @@ package body String_Operations is
 
    procedure Check_SHA256 (Hash : SHA256_Value) is
    begin
+      if not Valid_SHA256(Hash) then
+         raise Invalid_Hash_Format;
+      end if;
+   end Check_SHA256;
+
+   function Valid_SHA256 (Hash : SHA256_Value) return Boolean is
+   begin
       for C of Hash loop
          if C not in '0' .. '9' | 'a' .. 'f' then
-            raise Invalid_Hash_Format;
+            return False;
          end if;
       end loop;
-   end Check_SHA256;
+      return True;
+   end Valid_SHA256;
 
    function Random_SHA256 return SHA256_Value is
       package Guess_Generator is new Ada.Numerics.Discrete_Random (Character);
@@ -81,7 +89,7 @@ package body String_Operations is
       return File_Operations.String_Hash (Data);
    end Random_SHA256;
 
-      function Valid_Branch_Name (Name : String) return Boolean is
+   function Valid_Branch_Name (Name : String) return Boolean is
       package Pat renames GNAT.Regpat;
       Valid_Pattern : constant String := "^[A-Za-z0-9_\-\+\(\)\.]+$";
    begin
@@ -96,17 +104,19 @@ package body String_Operations is
       return Pat.Match (Valid_Pattern, Name);
    end Valid_Branch_Name;
 
-   function LCS(S1 : String ; S2 : String) return LCS_Matrix is
-      M : constant Integer := S1'Length;
-      N : constant Integer := S2'Length;
-      Result : LCS_Matrix (1..N+1, 1..M+1) := (others => (others => 0));
+   function LCS (S1 : String; S2 : String) return LCS_Matrix is
+      M      : constant Integer                    := S1'Length;
+      N      : constant Integer                    := S2'Length;
+      Result : LCS_Matrix (1 .. N + 1, 1 .. M + 1) :=
+        (others => (others => 0));
    begin
-      for I in 1..M+1 loop
-         for J in 1..N+1 loop
-            if S1(I-1) = S2(J-1) then
-               Result(I, J) := Result(I-1, J-1) + 1;
+      for I in 1 .. M + 1 loop
+         for J in 1 .. N + 1 loop
+            if S1 (I - 1) = S2 (J - 1) then
+               Result (I, J) := Result (I - 1, J - 1) + 1;
             else
-               Result(I, J) := Integer'Max(Result(I, J-1), Result(I-1, J));
+               Result (I, J) :=
+                 Integer'Max (Result (I, J - 1), Result (I - 1, J));
             end if;
          end loop;
       end loop;

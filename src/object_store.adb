@@ -23,7 +23,8 @@ package body Object_Store is
 
       function Read
         (db  : in out KV_Store.KV_Container'Class;
-         ref :        SHA256_Value) return String
+         ref :        SHA256_Value)
+         return String
       is
          File_Content  : constant String := db.Get (ref);
          Newline_Index : Integer;

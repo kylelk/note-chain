@@ -115,7 +115,6 @@ package body Client_Test_Case is
 
          -- update the head commit to point to the newest tree
          Client_Status.Set_Head (New_Commit);
-
       end loop;
 
       for Created_Commit of Created_Commits loop

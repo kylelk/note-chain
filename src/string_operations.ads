@@ -15,6 +15,7 @@ package String_Operations is
 
    -- checks if a string is 64 lower case hexadecimal characters
    procedure Check_SHA256 (Hash : SHA256_Value);
+   function Valid_SHA256 (Hash : SHA256_Value) return Boolean;
 
    function Random_SHA256 return SHA256_Value;
 
