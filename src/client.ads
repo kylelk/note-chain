@@ -38,7 +38,7 @@ package Client is
    end record;
 
    -- makes sure that a data type can be parsed to and from json
-   type JSON_Serializable is limited interface;
+   type JSON_Serializable is interface;
    procedure To_JSON
      (Item   : in     JSON_Serializable;
       Result :    out JSON.JSON_Value) is abstract;
