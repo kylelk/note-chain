@@ -2,7 +2,8 @@ with KV_Store;
 with String_Operations;
 
 package Object_Store is
-      subtype SHA256_Value is String (1 .. 64);
+   subtype SHA256_Value is String (1 .. 64)
+     with Predicate => (String_Operations.Valid_SHA256(SHA256_Value));
 
       Object_Not_Found : exception;
 

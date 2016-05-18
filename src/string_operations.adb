@@ -69,6 +69,9 @@ package body String_Operations is
 
    function Valid_SHA256 (Hash : SHA256_Value) return Boolean is
    begin
+      if (for all C of Hash => (C = ' ')) then
+         return True;
+      end if;
       for C of Hash loop
          if C not in '0' .. '9' | 'a' .. 'f' then
             return False;
