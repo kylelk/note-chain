@@ -10,7 +10,8 @@ package body Note_Interactive_Menu is
      (Status : in out Client.Client_Status;
       Db     : in out KV_Store.KV_Container'Class)
    is
-      Result_Ref : Client.SHA256_Value;
+      Result_Ref  : Client.SHA256_Value;
+      Note_Count  : Integer;
       Output_File : Ada.Text_IO.File_Type;
       Vim_Cmd     : constant String :=
         "vim -S " &
@@ -26,30 +27,39 @@ package body Note_Interactive_Menu is
          File_Assets.Vim_Select_Line_Script);
 
       TIO.Create (Output_File, TIO.Out_File, Config.Note_List_File);
-      List_Notes (Status, Db, Output_File);
+      List_Notes (Status, Db, Output_File, Note_Count);
       TIO.Close (Output_File);
 
-      File_Operations.Execute_System_Cmd (Vim_Cmd);
-
-      Result_Ref := File_Operations.Load_File(Config.Selected_Line_File)
-        (1..Client.SHA256_Value'Length);
-      View_Note(Db, Result_Ref);
+      if Note_Count > 0 then
+         Execute_System_Cmd (Vim_Cmd);
+         Result_Ref :=
+           Load_File (Config.Selected_Line_File)
+           (1 .. Client.SHA256_Value'Length);
+         View_Note (Db, Result_Ref);
+      else
+         TIO.Put_Line ("no notes to show");
+      end if;
    end Show_Select_Menu;
 
    procedure View_Note
-     (Db       : in out KV_Store.KV_Container'Class;
-      Ref :        Client.SHA256_Value) is
+     (Db  : in out KV_Store.KV_Container'Class;
+      Ref :        Client.SHA256_Value)
+   is
 
-      Note_Result : constant Client.Note := Client.Get(Db, Ref);
+      Note_Result : constant Client.Note := Client.Get (Db, Ref);
    begin
-      File_Operations.Write_String(Config.Temp_Note_File, Note_Result.Format_Note);
-      File_Operations.Execute_System_Cmd("vim -c 'set nospell' " & Config.Temp_Note_File);
+      File_Operations.Write_String
+        (Config.Temp_Note_File,
+         Note_Result.Format_Note);
+      File_Operations.Execute_System_Cmd
+        ("vim -c 'set nospell' " & Config.Temp_Note_File);
    end View_Note;
 
    procedure List_Notes
-     (Status : in out Client.Client_Status;
-      Db     : in out KV_Store.KV_Container'Class;
-      Output :   in out TIO.File_Type)
+     (Status       : in out Client.Client_Status;
+      Db           : in out KV_Store.KV_Container'Class;
+      Output       : in out TIO.File_Type;
+      Result_Count :    out Integer)
    is
       Tree_Ref    : Client.SHA256_Value;
       Tree_Result : Client.Tree;
@@ -62,6 +72,7 @@ package body Note_Interactive_Menu is
       end Format_Line;
       use Client;
    begin
+      Result_Count := 0;
       if Status.Head_Commit_Ref = Client.Empty_Hash_Ref then
          -- Ada.Text_IO.Put_Line ("tree is null");
          return;
@@ -93,7 +104,10 @@ package body Note_Interactive_Menu is
             end if;
             I := I + 1;
          end loop;
+
+         Result_Count := I - 1;
          Sort (Notes);
+
          for Item of Notes loop
             TIO.Put_Line (File => Output, Item => Format_Line (Item));
          end loop;
