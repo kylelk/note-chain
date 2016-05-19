@@ -31,10 +31,9 @@ package body Note_Interactive_Menu is
       TIO.Close (Output_File);
 
       if Note_Count > 0 then
+         TIO.Put_Line(Vim_Cmd);
          Execute_System_Cmd (Vim_Cmd);
-         Result_Ref :=
-           Load_File (Config.Selected_Line_File)
-           (1 .. Client.SHA256_Value'Length);
+         Result_Ref := Load_File (Config.Selected_Line_File)(1 .. 64);
          View_Note (Db, Result_Ref);
       else
          TIO.Put_Line ("no notes to show");
