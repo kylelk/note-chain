@@ -52,8 +52,10 @@ procedure Main is
          Ada.Calendar.Formatting.Image (Item.Created_At));
    end Display_Commit;
 
-   procedure List_Notes (Status : in out Client.Client_Status;
-                         Db : in out KV_Store.KV_Container'Class) is
+   procedure List_Notes
+     (Status : in out Client.Client_Status;
+      Db     : in out KV_Store.KV_Container'Class)
+   is
       Tree_Ref    : Client.SHA256_Value;
       Tree_Result : Client.Tree;
       use Client;
@@ -63,7 +65,7 @@ procedure Main is
          TIO.Put_Line ("tree is null");
          return;
       end if;
-      Tree_Ref := Status.Head_Commit(Db).Tree_Ref;
+      Tree_Ref := Status.Head_Commit (Db).Tree_Ref;
       if Tree_Ref = Empty_Hash_Ref then
          return;
       end if;
@@ -127,14 +129,15 @@ procedure Main is
       end loop;
    end List_Settings;
 
-   procedure Cmd_Branch (Info : in out Client.Client_Status;
-                         Db : in out KV_Store.KV_Container'Class) is
+   procedure Cmd_Branch
+     (Info : in out Client.Client_Status;
+      Db   : in out KV_Store.KV_Container'Class)
+   is
       procedure Merge_Branch (Name : String) is
          Current_Branch, Other_Branch : Client.Branch;
          Successful                   : Boolean;
       begin
-         Ada.Text_IO.Put_Line
-           ("merging branch " & Name);
+         Ada.Text_IO.Put_Line ("merging branch " & Name);
 
          Current_Branch := Info.Get_Branch (Info.Branch_Status.Head);
          Other_Branch   := Info.Get_Branch (UBS.To_Unbounded_String (Name));
@@ -196,15 +199,17 @@ procedure Main is
       end if;
    end Cmd_Config;
 
-   procedure Cmd_Note (Status : in out Client.Client_Status;
-                      Db : in out KV_Store.KV_Container'Class) is
+   procedure Cmd_Note
+     (Status : in out Client.Client_Status;
+      Db     : in out KV_Store.KV_Container'Class)
+   is
       Note_Item   : Client.Note;
       New_Commit  : Client.Commit;
       Branch_Tree : Client.Tree;
    begin
       if Status.Head_Commit_Ref /= Client.Empty_Hash_Ref then
          Branch_Tree :=
-           Client.Get (db, Client.Head_Commit(Status, Db).Tree_Ref);
+           Client.Get (Db, Client.Head_Commit (Status, Db).Tree_Ref);
          New_Commit.Parents.Insert (Status.Head_Commit_Ref);
       end if;
 
@@ -227,7 +232,7 @@ procedure Main is
 
             -- create new commit for changes
             New_Commit.Tree_Ref := Branch_Tree.Object_Ref;
-            Client.Save(Db, New_Commit);
+            Client.Save (Db, New_Commit);
 
             -- update the head commit to point to the newest tree
             Status.Set_Head (New_Commit);
@@ -247,14 +252,16 @@ procedure Main is
          if CLI.Argument (2) = "list" then
             List_Notes (Status, Db);
 
-         elsif CLI.Argument(2) = "menu" then
-            Note_Interactive_Menu.Show_Select_Menu(Status, Db);
+         elsif CLI.Argument (2) = "menu" then
+            Note_Interactive_Menu.Show_Select_Menu (Status, Db);
          end if;
       end if;
    end Cmd_Note;
 
-   procedure Cmd_Log (Status : in out Client.Client_Status;
-                     Db : in out KV_Store.KV_Container'Class) is
+   procedure Cmd_Log
+     (Status : in out Client.Client_Status;
+      Db     : in out KV_Store.KV_Container'Class)
+   is
       Next_Commit_Ref : Client.SHA256_Value;
 
       Commit_Refs : Client.Reference_Set.Set;
@@ -296,36 +303,33 @@ procedure Main is
       else
          Next_Commit_Ref := Status.Head_Commit_Ref;
          if Next_Commit_Ref /= Client.Empty_Hash_Ref then
-            Client.Traverse_Commits
-              (Db,
-               Next_Commit_Ref,
-               Add_Commit'Access);
+            Client.Traverse_Commits (Db, Next_Commit_Ref, Add_Commit'Access);
             Iterate_Commits;
          end if;
       end if;
    end Cmd_Log;
 
-   procedure Cmd_Object (Status : in out Client.Client_Status;
-                        Db : in out KV_Store.KV_Container'Class) is
+   procedure Cmd_Object
+     (Status : in out Client.Client_Status;
+      Db     : in out KV_Store.KV_Container'Class)
+   is
       pragma Unreferenced (Status);
    begin
       if CLI.Argument_Count > 1 then
          if CLI.Argument_Count > 2 then
             if CLI.Argument (2) = "type" then
-               TIO.Put_Line
-                 (Object_Store.Object_Type
-                    (Db,
-                     CLI.Argument (3)));
+               TIO.Put_Line (Object_Store.Object_Type (Db, CLI.Argument (3)));
             elsif CLI.Argument (2) = "print" then
-               TIO.Put_Line
-                 (Object_Store.Read (Db, CLI.Argument (3)));
+               TIO.Put_Line (Object_Store.Read (Db, CLI.Argument (3)));
             end if;
          end if;
       end if;
    end Cmd_Object;
 
-   procedure Cmd_Export (Status : in out Client.Client_Status;
-                        Db : in out KV_Store.KV_Container'Class) is
+   procedure Cmd_Export
+     (Status : in out Client.Client_Status;
+      Db     : in out KV_Store.KV_Container'Class)
+   is
    begin
       if CLI.Argument_Count > 1 then
          Status.Export (Db, CLI.Argument (2) & Config.Export_Extension);
@@ -400,9 +404,9 @@ procedure Main is
    end Display_Help;
 
    Client_Status : Client.Client_Status;
-   Data_DB : File_Object_Store.Data;
+   Data_DB       : File_Object_Store.Data;
 begin
-   Client_Status.Init(Data_DB);
+   Client_Status.Init (Data_DB);
 
    if CLI.Argument_Count >= 1 then
       if CLI.Argument (1) = "branch" then
@@ -436,5 +440,5 @@ begin
       TIO.Put_Line ("call 'help' command for more infomation");
    end if;
 
-   Client_Status.Cleanup(Data_DB);
+   Client_Status.Cleanup (Data_DB);
 end Main;

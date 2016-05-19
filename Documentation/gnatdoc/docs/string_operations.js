@@ -116,7 +116,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "LCS_Matrix",
-          "line": 24,
+          "line": 25,
           "column": 9,
           "src": "srcs/string_operations.ads.html",
           "summary": [
@@ -127,7 +127,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 24,
+                  "number": 25,
                   "children": [
                     {
                       "kind": "span",
@@ -148,7 +148,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "LCS_Matrix",
-                      "href": "docs/string_operations.html#L24C9"
+                      "href": "docs/string_operations.html#L25C9"
                     },
                     {
                       "kind": "span",
@@ -960,8 +960,8 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Random_SHA256",
-          "line": 19,
+          "label": "Valid_SHA256",
+          "line": 18,
           "column": 13,
           "src": "srcs/string_operations.ads.html",
           "summary": [
@@ -972,7 +972,129 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 19,
+                  "number": 18,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Valid_SHA256",
+                      "href": "docs/string_operations.html#L18C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hash",
+                      "href": "docs/string_operations.html#L18C27"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "SHA256_Value",
+                      "href": "docs/string_operations.html#L6C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Boolean"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "Hash",
+              "line": 18,
+              "column": 27,
+              "type": {
+                "label": "String_Operations.SHA256_Value",
+                "docHref": "docs/string_operations.html#L6C12"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Random_SHA256",
+          "line": 20,
+          "column": 13,
+          "src": "srcs/string_operations.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 20,
                   "children": [
                     {
                       "kind": "span",
@@ -993,7 +1115,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Random_SHA256",
-                      "href": "docs/string_operations.html#L19C13"
+                      "href": "docs/string_operations.html#L20C13"
                     },
                     {
                       "kind": "span",
@@ -1029,7 +1151,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Valid_Branch_Name",
-          "line": 22,
+          "line": 23,
           "column": 13,
           "src": "srcs/string_operations.ads.html",
           "summary": [
@@ -1049,7 +1171,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 22,
+                  "number": 23,
                   "children": [
                     {
                       "kind": "span",
@@ -1070,7 +1192,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Valid_Branch_Name",
-                      "href": "docs/string_operations.html#L22C13"
+                      "href": "docs/string_operations.html#L23C13"
                     },
                     {
                       "kind": "span",
@@ -1086,7 +1208,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Name",
-                      "href": "docs/string_operations.html#L22C32"
+                      "href": "docs/string_operations.html#L23C32"
                     },
                     {
                       "kind": "span",
@@ -1146,7 +1268,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Name",
-              "line": 22,
+              "line": 23,
               "column": 32,
               "type": {
                 "label": "String"
@@ -1158,7 +1280,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "LCS",
-          "line": 28,
+          "line": 29,
           "column": 13,
           "src": "srcs/string_operations.ads.html",
           "summary": [
@@ -1178,7 +1300,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 28,
+                  "number": 29,
                   "children": [
                     {
                       "kind": "span",
@@ -1199,7 +1321,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "LCS",
-                      "href": "docs/string_operations.html#L28C13"
+                      "href": "docs/string_operations.html#L29C13"
                     },
                     {
                       "kind": "span",
@@ -1215,7 +1337,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "S1",
-                      "href": "docs/string_operations.html#L28C18"
+                      "href": "docs/string_operations.html#L29C18"
                     },
                     {
                       "kind": "span",
@@ -1256,7 +1378,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "S2",
-                      "href": "docs/string_operations.html#L28C32"
+                      "href": "docs/string_operations.html#L29C32"
                     },
                     {
                       "kind": "span",
@@ -1302,7 +1424,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "LCS_Matrix",
-                      "href": "docs/string_operations.html#L24C9"
+                      "href": "docs/string_operations.html#L25C9"
                     },
                     {
                       "kind": "span",
@@ -1317,7 +1439,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "S1",
-              "line": 28,
+              "line": 29,
               "column": 18,
               "type": {
                 "label": "String"
@@ -1327,7 +1449,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "S2",
-              "line": 28,
+              "line": 29,
               "column": 32,
               "type": {
                 "label": "String"

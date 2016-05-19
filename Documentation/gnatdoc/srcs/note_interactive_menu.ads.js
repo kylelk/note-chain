@@ -203,7 +203,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Client.Client_Status",
-          "href": "docs/client.html#L120C9"
+          "href": "docs/client.html#L122C9"
         },
         {
           "kind": "span",
@@ -346,7 +346,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "     "
+          "text": "  "
         },
         {
           "kind": "span",
@@ -419,7 +419,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "    "
+          "text": " "
         },
         {
           "kind": "span",
@@ -468,7 +468,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 21,
+      "number": 22,
       "children": [
         {
           "kind": "span",

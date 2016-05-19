@@ -8,6 +8,63 @@ GNATdoc.Documentation = {
     {
       "entities": [
         {
+          "label": "Db",
+          "line": 10,
+          "column": 4,
+          "src": "srcs/client_test_case.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 10,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Db"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":",
+                      "href": "docs/client_test_case.html#L10C4"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hash_Store.Data"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "label": "Constants and variables"
+    },
+    {
+      "entities": [
+        {
           "label": "Client_Test_Case",
           "line": 9,
           "column": 9,
@@ -127,7 +184,7 @@ GNATdoc.Documentation = {
       "entities": [
         {
           "label": "Test_Create_Branch",
-          "line": 20,
+          "line": 19,
           "column": 14,
           "src": "srcs/client_test_case.ads.html",
           "summary": [
@@ -138,7 +195,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 20,
+                  "number": 19,
                   "children": [
                     {
                       "kind": "span",
@@ -159,7 +216,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Test_Create_Branch",
-                      "href": "docs/client_test_case.html#L20C14"
+                      "href": "docs/client_test_case.html#L19C14"
                     },
                     {
                       "kind": "span",
@@ -175,7 +232,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "T",
-                      "href": "docs/client_test_case.html#L20C34"
+                      "href": "docs/client_test_case.html#L19C34"
                     },
                     {
                       "kind": "span",
@@ -245,7 +302,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "T",
-              "line": 20,
+              "line": 19,
               "column": 34,
               "type": {
                 "label": "Test_Case",
@@ -258,7 +315,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Test_Valid_Branch_Name",
-          "line": 22,
+          "line": 21,
           "column": 14,
           "src": "srcs/client_test_case.ads.html",
           "summary": [
@@ -269,7 +326,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 22,
+                  "number": 21,
                   "children": [
                     {
                       "kind": "span",
@@ -290,7 +347,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Test_Valid_Branch_Name",
-                      "href": "docs/client_test_case.html#L22C14"
+                      "href": "docs/client_test_case.html#L21C14"
                     },
                     {
                       "kind": "span",
@@ -306,7 +363,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "T",
-                      "href": "docs/client_test_case.html#L22C38"
+                      "href": "docs/client_test_case.html#L21C38"
                     },
                     {
                       "kind": "span",
@@ -376,7 +433,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "T",
-              "line": 22,
+              "line": 21,
               "column": 38,
               "type": {
                 "label": "Test_Case",
@@ -389,7 +446,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Test_Create_Note",
-          "line": 24,
+          "line": 23,
           "column": 14,
           "src": "srcs/client_test_case.ads.html",
           "summary": [
@@ -400,7 +457,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 24,
+                  "number": 23,
                   "children": [
                     {
                       "kind": "span",
@@ -421,7 +478,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Test_Create_Note",
-                      "href": "docs/client_test_case.html#L24C14"
+                      "href": "docs/client_test_case.html#L23C14"
                     },
                     {
                       "kind": "span",
@@ -437,7 +494,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "T",
-                      "href": "docs/client_test_case.html#L24C32"
+                      "href": "docs/client_test_case.html#L23C32"
                     },
                     {
                       "kind": "span",
@@ -507,7 +564,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "T",
-              "line": 24,
+              "line": 23,
               "column": 32,
               "type": {
                 "label": "Test_Case",
@@ -520,7 +577,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Test_Get_Note",
-          "line": 26,
+          "line": 25,
           "column": 14,
           "src": "srcs/client_test_case.ads.html",
           "summary": [
@@ -531,7 +588,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 26,
+                  "number": 25,
                   "children": [
                     {
                       "kind": "span",
@@ -552,7 +609,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Test_Get_Note",
-                      "href": "docs/client_test_case.html#L26C14"
+                      "href": "docs/client_test_case.html#L25C14"
                     },
                     {
                       "kind": "span",
@@ -568,7 +625,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "T",
-                      "href": "docs/client_test_case.html#L26C29"
+                      "href": "docs/client_test_case.html#L25C29"
                     },
                     {
                       "kind": "span",
@@ -638,7 +695,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "T",
-              "line": 26,
+              "line": 25,
               "column": 29,
               "type": {
                 "label": "Test_Case",
@@ -651,7 +708,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Test_Create_Tree",
-          "line": 28,
+          "line": 27,
           "column": 14,
           "src": "srcs/client_test_case.ads.html",
           "summary": [
@@ -662,7 +719,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 28,
+                  "number": 27,
                   "children": [
                     {
                       "kind": "span",
@@ -683,7 +740,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Test_Create_Tree",
-                      "href": "docs/client_test_case.html#L28C14"
+                      "href": "docs/client_test_case.html#L27C14"
                     },
                     {
                       "kind": "span",
@@ -699,7 +756,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "T",
-                      "href": "docs/client_test_case.html#L28C32"
+                      "href": "docs/client_test_case.html#L27C32"
                     },
                     {
                       "kind": "span",
@@ -769,8 +826,139 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "T",
-              "line": 28,
+              "line": 27,
               "column": 32,
+              "type": {
+                "label": "Test_Case",
+                "docHref": "docs/test_case.html#L41C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Test_Create_Commit",
+          "line": 29,
+          "column": 14,
+          "src": "srcs/client_test_case.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 29,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Test_Create_Commit",
+                      "href": "docs/client_test_case.html#L29C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "T",
+                      "href": "docs/client_test_case.html#L29C34"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Test_Case"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Class"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "T",
+              "line": 29,
+              "column": 34,
               "type": {
                 "label": "Test_Case",
                 "docHref": "docs/test_case.html#L41C9"
@@ -787,7 +975,7 @@ GNATdoc.Documentation = {
       "entities": [
         {
           "label": "Name",
-          "line": 18,
+          "line": 17,
           "column": 24,
           "src": "srcs/client_test_case.ads.html",
           "summary": [
@@ -798,7 +986,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 18,
+                  "number": 17,
                   "children": [
                     {
                       "kind": "span",
@@ -829,7 +1017,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Name",
-                      "href": "docs/client_test_case.html#L18C24"
+                      "href": "docs/client_test_case.html#L17C24"
                     },
                     {
                       "kind": "span",
@@ -845,7 +1033,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Test",
-                      "href": "docs/client_test_case.html#L18C30"
+                      "href": "docs/client_test_case.html#L17C30"
                     },
                     {
                       "kind": "span",
@@ -906,7 +1094,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Test",
-              "line": 18,
+              "line": 17,
               "column": 30,
               "type": {
                 "label": "Client_Test_Case.Client_Test_Case",
@@ -919,7 +1107,7 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Register_Tests",
-          "line": 30,
+          "line": 31,
           "column": 14,
           "src": "srcs/client_test_case.ads.html",
           "summary": [
@@ -930,7 +1118,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 30,
+                  "number": 31,
                   "children": [
                     {
                       "kind": "span",
@@ -951,7 +1139,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Register_Tests",
-                      "href": "docs/client_test_case.html#L30C14"
+                      "href": "docs/client_test_case.html#L31C14"
                     },
                     {
                       "kind": "span",
@@ -967,7 +1155,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Test",
-                      "href": "docs/client_test_case.html#L30C30"
+                      "href": "docs/client_test_case.html#L31C30"
                     },
                     {
                       "kind": "span",
@@ -1028,7 +1216,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Test",
-              "line": 30,
+              "line": 31,
               "column": 30,
               "type": {
                 "label": "Client_Test_Case.Client_Test_Case",

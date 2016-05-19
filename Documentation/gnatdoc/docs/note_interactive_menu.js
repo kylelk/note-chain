@@ -104,7 +104,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Client.Client_Status",
-                      "href": "docs/client.html#L120C9"
+                      "href": "docs/client.html#L122C9"
                     },
                     {
                       "kind": "span",
@@ -201,7 +201,7 @@ GNATdoc.Documentation = {
               "column": 7,
               "type": {
                 "label": "Client.Client_Status",
-                "docHref": "docs/client.html#L120C9"
+                "docHref": "docs/client.html#L122C9"
               },
               "description": [
               ]
@@ -280,7 +280,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "     "
+                      "text": "  "
                     },
                     {
                       "kind": "span",
@@ -353,7 +353,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "    "
+                      "text": " "
                     },
                     {
                       "kind": "span",

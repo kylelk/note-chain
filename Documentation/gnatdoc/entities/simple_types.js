@@ -21,15 +21,15 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "LCS_Matrix",
-      "docHref": "docs/string_operations.html#L24C9",
+      "docHref": "docs/string_operations.html#L25C9",
       "declared": "String_Operations",
-      "srcHref": "srcs/string_operations.ads.html#L24"
+      "srcHref": "srcs/string_operations.ads.html#L25"
     },
     {
       "label": "Object_Type",
-      "docHref": "docs/client.html#L24C9",
+      "docHref": "docs/client.html#L26C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L24"
+      "srcHref": "srcs/client.ads.html#L26"
     },
     {
       "label": "SHA256_Value",
@@ -57,7 +57,7 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "SHA256_Value",
-      "docHref": "docs/object_store.html#L5C15",
+      "docHref": "docs/object_store.html#L5C12",
       "declared": "Object_Store",
       "srcHref": "srcs/object_store.ads.html#L5"
     },

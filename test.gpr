@@ -15,11 +15,6 @@ project Test extends "note_chain.gpr" is
       for Default_Switches ("ada") use ("-g", "-j2");
    end Builder;
 
-   package Ide is
-      for Documentation_Dir use "Documentation/gnatdoc/";
-      for Vcs_Kind use "Git";
-   end Ide;
-
    package Linker is
       for Default_Switches ("ada") use ("-g");
    end Linker;
