@@ -67,8 +67,11 @@ package body String_Operations is
       end if;
    end Check_SHA256;
 
-   function Valid_SHA256 (Hash : SHA256_Value) return Boolean is
+   function Valid_SHA256 (Hash : String) return Boolean is
    begin
+      if Hash'Length /= SHA256_Value'Last then
+         return False;
+      end if;
       if (for all C of Hash => (C = ' ')) then
          return True;
       end if;

@@ -3,7 +3,8 @@ with Ada.Calendar;
 package String_Operations is
    Invalid_Hash_Format : exception;
 
-   subtype SHA256_Value is String (1 .. 64);
+   subtype SHA256_Value is String (1 .. 64)
+     with Predicate => (Valid_SHA256(SHA256_Value));
 
    function Char_Index (Data : String; Char : Character) return Integer;
 
@@ -15,7 +16,7 @@ package String_Operations is
 
    -- checks if a string is 64 lower case hexadecimal characters
    procedure Check_SHA256 (Hash : SHA256_Value);
-   function Valid_SHA256 (Hash : SHA256_Value) return Boolean;
+   function Valid_SHA256 (Hash : String) return Boolean;
 
    function Random_SHA256 return SHA256_Value;
 

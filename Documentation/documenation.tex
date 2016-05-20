@@ -2,7 +2,9 @@
 \usepackage{lipsum}
 \usepackage{authblk}
 \usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
-\usepackage{fancyhdr}
+\usepackage{tocloft}
+\usepackage{color}
+
 %
 \renewenvironment{abstract}{%
 \hfill\begin{minipage}{0.95\textwidth}
@@ -33,10 +35,13 @@
    /Keywords (PDF;LaTeX)
 }
 
+\definecolor{light-gray}{gray}{0.95}
+\newcommand{\codetext}[1]{\colorbox{light-gray}{\texttt{#1}}}
+
 \begin{document}
 %
 %title and author details
-\title{Note Chain Project}
+\title{\textbf{Note Chain Project}}
 \author{Kyle Kersey}
 \date{}
 
@@ -47,6 +52,8 @@
 A note taking tool for managing simple text based notes containing many version control features for managing revisions such as branching, commits. The software is written in the Ada programming language and has a modular design allowing use of different storage systems.
 \end{abstract}
 
+\renewcommand\cftsecleader{\cftdotfill{\cftdotsep}}
+
 \tableofcontents
 \thispagestyle{empty}
 \pagebreak
@@ -55,9 +62,32 @@ A note taking tool for managing simple text based notes containing many version 
 
 \section{Project structure}
 
-\lipsum
+\subsection{Introduction}
+The main source files are in the \codetext{src} directory and the compiled result is put in the 
+\codetext{obj} directory along with the object files and other intermediate compiled files. Unit tests are in the \codetext{tests} directory.
 
+\subsection{Source files}
+\subsubsection{main.adb}
+This is the main file which loads the other packages and decides how to interact with the other packages based on the command line arguments supplied by the user. At the bottom of the file is a series of if else statements to call a procedure for responding to a command. the methods which interact with a command will by convention start with the \codetext{Cmd\_} prefix. When it first starts it will call the \codetext{Init} procedure in the client package passing in the database object as a parameter. At the end of the declaration section a variable named \codetext{Data\_DB} which is the implementation of Key-Value database being used. When Done the database connection is cleaned up.
+
+\subsubsection{client.ads}
+This package implements the main operations used in the project and is called by \codetext{main.adb} at the start of the file the data types used in the project are declared then the functions and procedures to operate on those types. To make the system more modular this package is independent of the database system being used and and will work with any Key-Value database which implements the interface \codetext{KV\_Container}. Each of the methods which interact with data need to be passed the variable containing the database, the access mode to this variable needs to be \codetext{in out} write even for operations which only read data because the database object might need to be modified such as caching frequently used data.
+
+\subsubsection{config.ads}
+This package contains constant variables for project configuration values such as the version number and paths of where the project data is stored, file paths are made cross platform for Windows or Unix.
+
+\subsubsection{file\_operations.ads}
+Reusable operations for files are declared in this package such as writing to a file or getting the SHA-256 hash of a file this package also contains an operation called \codetext{Execute\_System\_Cmd} runs a shell command.
+
+\subsubsection{settings.ads}
+This stores the settings created by the user the values are stored as a key-value pairs in a hash map data structure then serialized to JSON when storing or loading from a file. The config package contains a constant named \codetext{Settings\_JSON\_File} which defines where this file is located. When a setting key is requested which does not exist then a 
+\codetext{No\_Key\_Error} is raised.
+
+\subsubsection{object\_store.ads}
+Data is stored as as objects, this package contains operations on these objects such as loading and reading them from the Key-Value database, objects are identified by their SHA-256 hash. the methods in this package accept the database as Key-Value database as the first parameter. when an object cannot be found then a \codetext{Object\_Not\_Found} exception is raised. The exact format of an object is described in a later section.
+
+\subsubsection{string\_operations.ads}
+Reusable operations on strings are declared in this package such as converting a time object to and from a text format, it also has functions for searching in a string and validating the format of a SHA-256 hash.
 \section{Usage tutorial}
-\lipsum
 
 \end{document}
