@@ -19,3 +19,4 @@ Documentation/*.dvi
 Documentation/*.tex~
 Documentation/*.toc
 Documentation/*.gz
+Documentation/*.out

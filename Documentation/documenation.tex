@@ -4,6 +4,7 @@
 \usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 \usepackage{tocloft}
 \usepackage{color}
+\usepackage{hyperref}
 
 %
 \renewenvironment{abstract}{%
@@ -33,6 +34,12 @@
    /CreationDate (D:20040502195600)
    /Subject (PDFLaTeX)
    /Keywords (PDF;LaTeX)
+}
+
+\hypersetup{
+	colorlinks,
+	linktoc=all,
+	linkcolor=black
 }
 
 \definecolor{light-gray}{gray}{0.95}
@@ -80,14 +87,18 @@ This package contains constant variables for project configuration values such a
 Reusable operations for files are declared in this package such as writing to a file or getting the SHA-256 hash of a file this package also contains an operation called \codetext{Execute\_System\_Cmd} runs a shell command.
 
 \subsubsection{settings.ads}
-This stores the settings created by the user the values are stored as a key-value pairs in a hash map data structure then serialized to JSON when storing or loading from a file. The config package contains a constant named \codetext{Settings\_JSON\_File} which defines where this file is located. When a setting key is requested which does not exist then a 
+This stores the settings created by the user, the values are stored as key-value pairs in a hash map data structure then serialized to JSON when storing or loading from a file. The config package contains a constant named \codetext{Settings\_JSON\_File} which defines where this file is located. When a setting key is requested which does not exist then a 
 \codetext{No\_Key\_Error} is raised.
 
 \subsubsection{object\_store.ads}
 Data is stored as as objects, this package contains operations on these objects such as loading and reading them from the Key-Value database, objects are identified by their SHA-256 hash. the methods in this package accept the database as Key-Value database as the first parameter. when an object cannot be found then a \codetext{Object\_Not\_Found} exception is raised. The exact format of an object is described in a later section.
 
 \subsubsection{string\_operations.ads}
-Reusable operations on strings are declared in this package such as converting a time object to and from a text format, it also has functions for searching in a string and validating the format of a SHA-256 hash.
+Reusable operations on strings are declared in this package such as converting a time object to and from a text format, it also has functions for searching in a string and validating the format of a SHA-256 hash
+
+\subsubsection{data\_store/kv\_store.ads}
+This package defines an interface for Key-Value databases, new Key-Value databases must implement this interface to be used with the system. The interface ensures that child packages will implement operations such as set, get, remove and check if items exist the data store. It also has a procedure to commit values if the database being used as transactions which need to be committed to permanent storage. The procedure \codetext{Setup} is called to load the database and \codetext{Cleanup} is called when the database is done being used. If a requested item cannot be found in the database then the exception \codetext{No\_Key\_Error} should be raised. The name of a Key-Value store implementation is returned by the function \codetext{Name}.
+
 \section{Usage tutorial}
 
 \end{document}

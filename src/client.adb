@@ -59,6 +59,7 @@ package body Client is
    begin
       Status.Save_Branches (DB);
       Status.Settings_Status.Save;
+      Db.Commit;
       DB.Cleanup;
 
       -- clear the temp directory
