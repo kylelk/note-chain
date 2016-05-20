@@ -1,0 +1,63 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{lipsum}
+\usepackage{authblk}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{fancyhdr}
+%
+\renewenvironment{abstract}{%
+\hfill\begin{minipage}{0.95\textwidth}
+\rule{\textwidth}{1pt}}
+{\par\noindent\rule{\textwidth}{1pt}\end{minipage}}
+%
+\makeatletter
+\renewcommand\@maketitle{%
+    \hfill
+    \begin{minipage}{0.95\textwidth}
+    \vskip 2em
+    \let\footnote\thanks 
+    {\LARGE \@title \par }
+    \vskip 1.5em
+    {\large \@author \par}
+    \end{minipage}
+    \vskip 1em \par
+}
+\makeatother
+
+\renewcommand*\contentsname{Table of contents}
+
+\pdfinfo{
+   /Author (Nicola Talbot)
+   /Title  (Creating a PDF document using PDFLaTeX)
+   /CreationDate (D:20040502195600)
+   /Subject (PDFLaTeX)
+   /Keywords (PDF;LaTeX)
+}
+
+\begin{document}
+%
+%title and author details
+\title{Note Chain Project}
+\author{Kyle Kersey}
+\date{}
+
+\clearpage
+\maketitle
+%
+\begin{abstract}
+A note taking tool for managing simple text based notes containing many version control features for managing revisions such as branching, commits. The software is written in the Ada programming language and has a modular design allowing use of different storage systems.
+\end{abstract}
+
+\tableofcontents
+\thispagestyle{empty}
+\pagebreak
+\setcounter{page}{1}
+
+
+\section{Project structure}
+
+\lipsum
+
+\section{Usage tutorial}
+\lipsum
+
+\end{document}

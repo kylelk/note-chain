@@ -9,3 +9,13 @@ obj/tests/*
 .note_chain_data/
 *.nc_refs
 *.bundle
+ 
+# LaTeX ignore files
+Documentation/*.aux
+Documentation/*.pdf
+Documentation/*.ps
+Documentation/*.log
+Documentation/*.dvi
+Documentation/*.tex~
+Documentation/*.toc
+Documentation/*.gz
