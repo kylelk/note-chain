@@ -96,9 +96,17 @@ Data is stored as as objects, this package contains operations on these objects 
 \subsubsection{string\_operations.ads}
 Reusable operations on strings are declared in this package such as converting a time object to and from a text format, it also has functions for searching in a string and validating the format of a SHA-256 hash
 
+\subsubsection{note\_interactive\_menu.ads}
+this shows a visual interactive menu to select a note. it returns the SHA-256 hash of the selected note, it uses the VIM editor to implement this.
+
 \subsubsection{data\_store/kv\_store.ads}
 This package defines an interface for Key-Value databases, new Key-Value databases must implement this interface to be used with the system. The interface ensures that child packages will implement operations such as set, get, remove and check if items exist the data store. It also has a procedure to commit values if the database being used as transactions which need to be committed to permanent storage. The procedure \codetext{Setup} is called to load the database and \codetext{Cleanup} is called when the database is done being used. If a requested item cannot be found in the database then the exception \codetext{No\_Key\_Error} should be raised. The name of a Key-Value store implementation is returned by the function \codetext{Name}.
 
+\subsection{Unit tests}
+Unit tests are done with the Aunit testing framework
+
 \section{Usage tutorial}
+
+\bibliographystyle{plain}%
 
 \end{document}
