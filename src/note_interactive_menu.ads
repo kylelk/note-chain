@@ -3,9 +3,11 @@ with KV_Store;
 with Ada.Text_IO;
 
 package Note_Interactive_Menu is
-   procedure Show_Select_Menu
+   No_Notes_Error : exception;
+
+   function Note_Select_Menu
      (Status : in out Client.Client_Status;
-      Db     : in out KV_Store.KV_Container'Class);
+      Db     : in out KV_Store.KV_Container'Class) return Client.Note;
 
    procedure View_Note
      (Db  : in out KV_Store.KV_Container'Class;

@@ -6,9 +6,10 @@ with Ada.Containers.Generic_Array_Sort;
 with String_Operations;
 
 package body Note_Interactive_Menu is
-   procedure Show_Select_Menu
+   function Note_Select_Menu
      (Status : in out Client.Client_Status;
       Db     : in out KV_Store.KV_Container'Class)
+      return Client.Note
    is
       Result_Ref  : Client.SHA256_Value;
       Note_Count  : Integer;
@@ -34,17 +35,18 @@ package body Note_Interactive_Menu is
          TIO.Put_Line(Vim_Cmd);
          Execute_System_Cmd (Vim_Cmd);
          Result_Ref := Load_File (Config.Selected_Line_File)(1 .. 64);
-         View_Note (Db, Result_Ref);
+         -- View_Note (Db, Result_Ref);
+         return Client.Get(Db, Result_Ref);
+
       else
-         TIO.Put_Line ("no notes to show");
+         raise No_Notes_Error;
       end if;
-   end Show_Select_Menu;
+   end Note_Select_Menu;
 
    procedure View_Note
      (Db  : in out KV_Store.KV_Container'Class;
       Ref :        Client.SHA256_Value)
    is
-
       Note_Result : constant Client.Note := Client.Get (Db, Ref);
    begin
       File_Operations.Write_String

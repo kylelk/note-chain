@@ -253,7 +253,8 @@ procedure Main is
             List_Notes (Status, Db);
 
          elsif CLI.Argument (2) = "menu" then
-            Note_Interactive_Menu.Show_Select_Menu (Status, Db);
+            Note_Item := Note_Interactive_Menu.Note_Select_Menu (Status, Db);
+            Note_Interactive_Menu.View_Note(Db, Note_Item.Object_Ref);
          end if;
       end if;
    end Cmd_Note;
