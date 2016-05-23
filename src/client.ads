@@ -18,8 +18,7 @@ package Client is
    package UBS renames Ada.Strings.Unbounded;
    use type KV_Store.KV_Container;
 
-   subtype SHA256_Value is String (1 .. 64)
-     with Predicate => (String_Operations.Valid_SHA256(SHA256_Value));
+   subtype SHA256_Value is String (1 .. 64);
 
    Empty_Hash_Ref : constant SHA256_Value := (others => ' ');
 

@@ -3,8 +3,7 @@ with Ada.Calendar;
 package String_Operations is
    Invalid_Hash_Format : exception;
 
-   subtype SHA256_Value is String (1 .. 64)
-     with Predicate => (Valid_SHA256(SHA256_Value));
+   subtype SHA256_Value is String (1 .. 64);
 
    function Char_Index (Data : String; Char : Character) return Integer;
 
