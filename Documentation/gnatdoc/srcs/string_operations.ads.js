@@ -828,8 +828,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "SHA256_Value",
-          "href": "docs/string_operations.html#L6C12"
+          "text": "String"
         },
         {
           "kind": "span",

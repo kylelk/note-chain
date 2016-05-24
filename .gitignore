@@ -20,3 +20,5 @@ Documentation/*.tex~
 Documentation/*.toc
 Documentation/*.gz
 Documentation/*.out
+Documentation/*.bbl
+Documentation/*.blg

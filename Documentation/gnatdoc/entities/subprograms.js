@@ -3,15 +3,15 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Branch_Commits",
-      "docHref": "docs/client.html#L261C13",
+      "docHref": "docs/client.html#L260C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L261"
+      "srcHref": "srcs/client.ads.html#L260"
     },
     {
       "label": "Branch_Refs",
-      "docHref": "docs/client.html#L254C14",
+      "docHref": "docs/client.html#L253C14",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L254"
+      "srcHref": "srcs/client.ads.html#L253"
     },
     {
       "label": "Char_Index",
@@ -33,9 +33,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Contains_Commit",
-      "docHref": "docs/client.html#L268C13",
+      "docHref": "docs/client.html#L267C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L268"
+      "srcHref": "srcs/client.ads.html#L267"
     },
     {
       "label": "create_empty_file",
@@ -69,9 +69,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Export_Refs",
-      "docHref": "docs/client.html#L278C14",
+      "docHref": "docs/client.html#L277C14",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L278"
+      "srcHref": "srcs/client.ads.html#L277"
     },
     {
       "label": "From_ISO_8601",
@@ -93,9 +93,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Hash",
-      "docHref": "docs/client.html#L106C13",
+      "docHref": "docs/client.html#L105C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L106"
+      "srcHref": "srcs/client.ads.html#L105"
     },
     {
       "label": "Hash",
@@ -147,9 +147,15 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Merge_Branches",
-      "docHref": "docs/client.html#L303C14",
+      "docHref": "docs/client.html#L302C14",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L303"
+      "srcHref": "srcs/client.ads.html#L302"
+    },
+    {
+      "label": "Note_Select_Menu",
+      "docHref": "docs/note_interactive_menu.html#L8C13",
+      "declared": "Note_Interactive_Menu",
+      "srcHref": "srcs/note_interactive_menu.ads.html#L8"
     },
     {
       "label": "Object_Type",
@@ -182,12 +188,6 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/file_operations.ads.html#L6"
     },
     {
-      "label": "Show_Select_Menu",
-      "docHref": "docs/note_interactive_menu.html#L6C14",
-      "declared": "Note_Interactive_Menu",
-      "srcHref": "srcs/note_interactive_menu.ads.html#L6"
-    },
-    {
       "label": "String_Hash",
       "docHref": "docs/file_operations.html#L12C13",
       "declared": "File_Operations",
@@ -201,21 +201,21 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Traverse_Commits",
-      "docHref": "docs/client.html#L291C14",
+      "docHref": "docs/client.html#L290C14",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L291"
+      "srcHref": "srcs/client.ads.html#L290"
     },
     {
       "label": "Tree_Entry_Hash",
-      "docHref": "docs/client.html#L89C13",
+      "docHref": "docs/client.html#L88C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L89"
+      "srcHref": "srcs/client.ads.html#L88"
     },
     {
       "label": "Tree_Refs",
-      "docHref": "docs/client.html#L249C14",
+      "docHref": "docs/client.html#L248C14",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L249"
+      "srcHref": "srcs/client.ads.html#L248"
     },
     {
       "label": "Un_Escape_String",
@@ -225,9 +225,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Upto_Date",
-      "docHref": "docs/client.html#L312C13",
+      "docHref": "docs/client.html#L311C13",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L312"
+      "srcHref": "srcs/client.ads.html#L311"
     },
     {
       "label": "Valid_Branch_Name",
@@ -243,9 +243,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "View_Note",
-      "docHref": "docs/note_interactive_menu.html#L10C14",
+      "docHref": "docs/note_interactive_menu.html#L12C14",
       "declared": "Note_Interactive_Menu",
-      "srcHref": "srcs/note_interactive_menu.ads.html#L10"
+      "srcHref": "srcs/note_interactive_menu.ads.html#L12"
     },
     {
       "label": "Vim_Select_Line_Script",

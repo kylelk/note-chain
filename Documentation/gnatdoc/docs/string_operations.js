@@ -1029,8 +1029,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "SHA256_Value",
-                      "href": "docs/string_operations.html#L6C12"
+                      "text": "String"
                     },
                     {
                       "kind": "span",
@@ -1073,8 +1072,7 @@ GNATdoc.Documentation = {
               "line": 18,
               "column": 27,
               "type": {
-                "label": "String_Operations.SHA256_Value",
-                "docHref": "docs/string_operations.html#L6C12"
+                "label": "String"
               },
               "description": [
               ]

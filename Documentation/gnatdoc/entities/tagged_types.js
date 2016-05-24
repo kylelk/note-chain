@@ -3,15 +3,15 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Client_Status",
-      "docHref": "docs/client.html#L122C9",
+      "docHref": "docs/client.html#L121C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L122"
+      "srcHref": "srcs/client.ads.html#L121"
     },
     {
       "label": "Commit",
-      "docHref": "docs/client.html#L76C9",
+      "docHref": "docs/client.html#L75C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L76"
+      "srcHref": "srcs/client.ads.html#L75"
     },
     {
       "label": "Data",
@@ -45,15 +45,15 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Note",
-      "docHref": "docs/client.html#L66C9",
+      "docHref": "docs/client.html#L65C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L66"
+      "srcHref": "srcs/client.ads.html#L65"
     },
     {
       "label": "Object_Record",
-      "docHref": "docs/client.html#L35C9",
+      "docHref": "docs/client.html#L34C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L35"
+      "srcHref": "srcs/client.ads.html#L34"
     },
     {
       "label": "Settings_Data",
@@ -63,9 +63,9 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Tree",
-      "docHref": "docs/client.html#L97C9",
+      "docHref": "docs/client.html#L96C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L97"
+      "srcHref": "srcs/client.ads.html#L96"
     }
   ]
 };

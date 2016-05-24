@@ -3,9 +3,9 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "JSON_Serializable",
-      "docHref": "docs/client.html#L41C9",
+      "docHref": "docs/client.html#L40C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L41"
+      "srcHref": "srcs/client.ads.html#L40"
     },
     {
       "label": "KV_Container",
@@ -15,15 +15,15 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Persistable",
-      "docHref": "docs/client.html#L57C9",
+      "docHref": "docs/client.html#L56C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L57"
+      "srcHref": "srcs/client.ads.html#L56"
     },
     {
       "label": "Storable_Object",
-      "docHref": "docs/client.html#L49C9",
+      "docHref": "docs/client.html#L48C9",
       "declared": "Client",
-      "srcHref": "srcs/client.ads.html#L49"
+      "srcHref": "srcs/client.ads.html#L48"
     }
   ]
 };
