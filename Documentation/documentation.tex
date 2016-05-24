@@ -60,7 +60,10 @@
 \maketitle
 %
 \begin{abstract}
-A note taking tool for managing simple text based notes containing many version control features for managing revisions such as branching, commits. The software is written in the Ada programming language and has a modular design allowing use of different storage systems.
+A note taking tool for managing simple text based notes containing many version
+control features for managing revisions such as branching, commits. The
+software is written in the Ada programming language and has a modular design
+allowing use of different storage systems.
 \end{abstract}
 
 \renewcommand\cftsecleader{\cftdotfill{\cftdotsep}}
@@ -74,15 +77,34 @@ A note taking tool for managing simple text based notes containing many version 
 \section{Project structure}
 
 \subsection{Introduction}
-The main source files are in the \codetext{src} directory and the compiled result is put in the 
-\codetext{obj} directory along with the object files and other intermediate compiled files. Unit tests are in the \codetext{tests} directory.
+The main source files are in the \codetext{src} directory and the compiled
+result is put in the \codetext{obj} directory along with the object files and
+other intermediate compiled files. Unit tests are in the \codetext{tests}
+directory.
 
 \subsection{Source files}
 \subsubsection{main.adb}
-This is the main file which loads the other packages and decides how to interact with the other packages based on the command line arguments supplied by the user. At the bottom of the file is a series of if else statements to call a procedure for responding to a command. the methods which interact with a command will by convention start with the \codetext{Cmd\_} prefix. When it first starts it will call the \codetext{Init} procedure in the client package passing in the database object as a parameter. At the end of the declaration section a variable named \codetext{Data\_DB} which is the implementation of Key-Value database being used. When Done the database connection is cleaned up.
+This is the main file which loads the other packages and decides how to
+interact with the other packages based on the command line arguments supplied
+by the user. At the bottom of the file is a series of if else statements to
+call a procedure for responding to a command. the methods which interact with a
+command will by convention start with the \codetext{Cmd\_} prefix. When it
+first starts it will call the \codetext{Init} procedure in the client package
+passing in the database object as a parameter. At the end of the declaration
+section a variable named \codetext{Data\_DB} which is the implementation of
+Key-Value database being used. When Done the database connection is cleaned up.
 
 \subsubsection{client.ads}
-This package implements the main operations used in the project and is called by \codetext{main.adb} at the start of the file the data types used in the project are declared then the functions and procedures to operate on those types. To make the system more modular this package is independent of the database system being used and and will work with any Key-Value database which implements the interface \codetext{KV\_Container}. Each of the methods which interact with data need to be passed the variable containing the database, the access mode to this variable needs to be \codetext{in out} write even for operations which only read data because the database object might need to be modified such as caching frequently used data.
+This package implements the main operations used in the project and is called
+by \codetext{main.adb} at the start of the file the data types used in the
+project are declared then the functions and procedures to operate on those
+types. To make the system more modular this package is independent of the
+database system being used and and will work with any Key-Value database which
+implements the interface \codetext{KV\_Container}. Each of the methods which
+interact with data need to be passed the variable containing the database, the
+access mode to this variable needs to be \codetext{in out} write even for
+operations which only read data because the database object might need to be
+modified such as caching frequently used data.
 
 \subsubsection{config.ads}
 This package contains constant variables for project configuration values such as the version number and paths of where the project data is stored, file paths are made cross platform for Windows or Unix.
