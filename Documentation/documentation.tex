@@ -45,7 +45,6 @@
 }
 
 %\embedfile[desc=LaTeX source code]{\jobname.tex}
-
 \definecolor{light-gray}{gray}{0.95}
 \newcommand{\codetext}[1]{\colorbox{light-gray}{\texttt{#1}}}
 
@@ -132,7 +131,28 @@ This package defines an interface for Key-Value databases, new Key-Value databas
 Unit tests are done with the Aunit testing framework \cite{Aunit},  a test is written for each major package to unsure that the methods operate properly. For testing the data is stored in memory using a hash map key-value store.
 
 \subsection{Data types and structures}
-The main three data types used for the data are: Commit, Note and Tree. Each of These are record types which inherit from the Object\_Record type. Interface types are used to ensure that each of these data records implement operations for saving to the database. Ada does not have multiple inheritance but it allow for implementing multiple interfaces.  \cite{Ada-Interface-Types}. The Interface \codetext{Persistable} is inherits from the types \codetext{JSON\_Serializable} and \codetext{Storable\_Object} this ensures that each of the record types which inherit from this interface will implement operations to serialize the data to and from a JSON \cite{rfc7159} String.
+The main three data types used for the data are: Commit, Note and Tree. Each of These are record types which inherit from the Object\_Record type. Interface types are used to ensure that each of these data records will implement operations for working with the database. Ada does not have multiple inheritance, but does it allow for implementing multiple interfaces  \cite{Ada-Interface-Types}. The Interface \codetext{Persistable} is inherits from the types \codetext{JSON\_Serializable} and \codetext{Storable\_Object} this ensures that each of the record types which inherit from this interface will implement operations to serialize the data to and from a JSON \cite{rfc7159} String. The Storable\_Object interface makes records implement a procedure for saving to the database and a function for fetching an item from the database by it's SHA-256 hash.  \\
+
+\par
+All data is stored in an immutable data structure called a Merkle tree, each leaf in the tree contains the hash of the children leafs. A list of tree head nodes is maintained in a JSON file each item references a different branch name. The head node points to a commit object. A commit object contains when it was created, it's entry tree object reference and the next commit reference. The commits are like a liked list in that each item points to the next. the tree object contains a list of entries in that tree. Each entry has the type and reference of the entry, such as a Note object or another child tree. All data records items are stored as a JSON object. Before an item is put into the database it is prefixed with the object type name in lower case then the length of the data and a unix new line character then the Data Objects's content begins. This format is taken from how the git version control system stores items.
+
+\subsubsection{Branches}
+
+This is an example of the JSON file which stores the branches:
+
+\begin{verbatim}
+{
+  "branches": {
+    "master": {
+      "name": "master",
+      "commit_ref": "SHA-256 hash"
+    }
+  },
+  "head": "master"
+}
+\end{verbatim}
+
+
 
 \section{Usage tutorial}
 
