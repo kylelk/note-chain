@@ -6,6 +6,7 @@
 \usepackage{color}
 \usepackage{hyperref}
 \usepackage{filecontents}
+\usepackage{listings}
 %\usepackage{embedfile}
 
 %
@@ -44,6 +45,8 @@
 	linktoc=all,
 	linkcolor=black
 }
+
+\lstset{columns=flexible}
 
 %\embedfile[desc=LaTeX source code]{\jobname.tex}
 \definecolor{light-gray}{gray}{0.95}
@@ -107,55 +110,152 @@ operations which only read data because the database object might need to be
 modified such as caching frequently used data.
 
 \subsubsection{config.ads}
-This package contains constant variables for project configuration values such as the version number and paths of where the project data is stored, file paths are made cross platform for Windows or Unix.
+This package contains constant variables for project configuration values such
+as the version number and paths of where the project data is stored, file paths
+are made cross platform for Windows or Unix.
 
 \subsubsection{file\_operations.ads}
-Reusable operations for files are declared in this package such as writing to a file or getting the SHA-256 hash of a file this package also contains an operation called \codetext{Execute\_System\_Cmd} runs a shell command.
+Reusable operations for files are declared in this package such as writing to a
+file or getting the SHA-256 hash of a file this package also contains an
+operation called \codetext{Execute\_System\_Cmd} runs a shell command.
 
 \subsubsection{settings.ads}
-This stores the settings created by the user, the values are stored as key-value pairs in a hash map data structure then serialized to JSON when storing or loading from a file. The config package contains a constant named \codetext{Settings\_JSON\_File} which defines where this file is located. When a setting key is requested which does not exist then a 
-\codetext{No\_Key\_Error} is raised.
+This stores the settings created by the user, the values are stored as key-value
+pairs in a hash map data structure then serialized to JSON when storing or
+loading from a file. The config package contains a constant named
+\codetext{Settings\_JSON\_File} which defines where this file is located. When a
+setting key is requested which does not exist then a \codetext{No\_Key\_Error}
+is raised.
 
 \subsubsection{object\_store.ads}
-Data is stored as as objects, this package contains operations on these objects such as loading and reading them from the Key-Value database, objects are identified by their SHA-256 hash. the methods in this package accept the database as Key-Value database as the first parameter. when an object cannot be found then a \codetext{Object\_Not\_Found} exception is raised. The exact format of an object is described in a later section.
+Data is stored as as objects, this package contains operations on these objects
+such as loading and reading them from the Key-Value database, objects are
+identified by their SHA-256 hash. the methods in this package accept the
+database as Key-Value database as the first parameter. when an object cannot be
+found then a \codetext{Object\_Not\_Found} exception is raised. The exact format
+of an object is described in a later section.
 
 \subsubsection{string\_operations.ads}
-Reusable operations on strings are declared in this package such as converting a time object to and from a text format, it also has functions for searching in a string and validating the format of a SHA-256 hash
+Reusable operations on strings are declared in this package such as converting a
+time object to and from a text format, it also has functions for searching in a
+string and validating the format of a SHA-256 hash.
 
 \subsubsection{note\_interactive\_menu.ads}
-this shows a visual interactive menu to select a note. it returns the SHA-256 hash of the selected note, it uses the VIM editor to implement this.
+this shows a visual interactive menu to select a note. it returns the SHA-256
+hash of the selected note, it uses the VIM editor to implement this.
 
 \subsubsection{data\_store/kv\_store.ads}
-This package defines an interface for Key-Value databases, new Key-Value databases must implement this interface to be used with the system. The interface ensures that child packages will implement operations such as set, get, remove and check if items exist the data store. It also has a procedure to commit values if the database being used as transactions which need to be committed to permanent storage. The procedure \codetext{Setup} is called to load the database and \codetext{Cleanup} is called when the database is done being used. If a requested item cannot be found in the database then the exception \codetext{No\_Key\_Error} should be raised. The name of a Key-Value store implementation is returned by the function \codetext{Name}.
+This package defines an interface for
+Key-Value databases, new Key-Value databases must implement this interface to be
+used with the system. The interface ensures that child packages will implement
+operations such as set, get, remove and check if items exist the data store. It
+also has a procedure to commit values if the database being used as transactions
+which need to be committed to permanent storage. The procedure \codetext{Setup}
+is called to load the database and \codetext{Cleanup} is called when the
+database is done being used. If a requested item cannot be found in the database
+then the exception \codetext{No\_Key\_Error} should be raised. The name of a
+Key-Value store implementation is returned by the function \codetext{Name}.
 
 \subsection{Unit tests}
-Unit tests are done with the Aunit testing framework \cite{Aunit},  a test is written for each major package to unsure that the methods operate properly. For testing the data is stored in memory using a hash map key-value store.
+Unit tests are done with the Aunit testing framework
+\cite{Aunit},  a test is written for each major package to unsure that the
+methods operate properly. For testing the data is stored in memory using a hash
+map key-value store.
 
 \subsection{Data types and structures}
-The main three data types used for the data are: Commit, Note and Tree. Each of These are record types which inherit from the Object\_Record type. Interface types are used to ensure that each of these data records will implement operations for working with the database. Ada does not have multiple inheritance, but does it allow for implementing multiple interfaces  \cite{Ada-Interface-Types}. The Interface \codetext{Persistable} is inherits from the types \codetext{JSON\_Serializable} and \codetext{Storable\_Object} this ensures that each of the record types which inherit from this interface will implement operations to serialize the data to and from a JSON \cite{rfc7159} String. The Storable\_Object interface makes records implement a procedure for saving to the database and a function for fetching an item from the database by it's SHA-256 hash.  \\
+The main three data types used for the
+data are: Commit, Note and Tree. Each of These are record types which inherit
+from the Object\_Record type. Interface types are used to ensure that each of
+these data records will implement operations for working with the database. Ada
+does not have multiple inheritance, but does it allow for implementing multiple
+interfaces  \cite{Ada-Interface-Types}. The Interface \codetext{Persistable} is
+inherits from the types \codetext{JSON\_Serializable} and
+\codetext{Storable\_Object} this ensures that each of the record types which
+inherit from this interface will implement operations to serialize the data to
+and from a JSON \cite{rfc7159} String. The Storable\_Object interface makes
+records implement a procedure for saving to the database and a function for
+fetching an item from the database by it's SHA-256 hash. 
 
-\par
-All data is stored in an immutable data structure called a Merkle tree, each leaf in the tree contains the hash of the children leafs. A list of tree head nodes is maintained in a JSON file each item references a different branch name. The head node points to a commit object. A commit object contains when it was created, it's entry tree object reference and the next commit reference. The commits are like a liked list in that each item points to the next. the tree object contains a list of entries in that tree. Each entry has the type and reference of the entry, such as a Note object or another child tree. All data records items are stored as a JSON object. Before an item is put into the database it is prefixed with the object type name in lower case then the length of the data and a unix new line character then the Data Objects's content begins. This format is taken from how the git version control system stores items.
+\par All data is stored in an immutable data structure called a Merkle tree,
+each leaf in the tree contains the hash of the children leafs. A list of tree
+head nodes is maintained in a JSON file each item references a different branch
+name. The head node points to a commit object. A commit object contains when it
+was created, it's entry tree object reference and the next commit reference. The
+commits are like a liked list in that each item points to the next. the tree
+object contains a list of entries in that tree. Each entry has the type and
+reference of the entry, such as a Note object or another child tree. All data
+records items are stored as a JSON object. Before an item is put into the
+database it is prefixed with the object type name in lower case then the length
+of the data and a unix new line character then the Data Objects's content
+begins. This format is taken from how the git version control system stores
+items.
 
 \subsubsection{Branches}
-
-This is an example of the JSON file which stores the branches:
+This is an example of the JSON file that stores information about the branches,
+the \codetext{head} key stores the name of the current branch which in this
+example is \textit{test}, the \codetext{branches} key contains a JSON object
+where each key is a branch name.
 
 \begin{verbatim}
 {
   "branches": {
     "master": {
       "name": "master",
-      "commit_ref": "SHA-256 hash"
+      "commit_ref": "(SHA-256 Hash)"
+    },
+    "test": {
+      "name": "test",
+      "commit_ref": "(SHA-256 Hash)"
     }
   },
-  "head": "master"
+  "head": "test"
 }
 \end{verbatim}
 
 
 
 \section{Usage tutorial}
+\subsection{Requirements}
+An Ada compiler is required to build the project, it can be downloaded at
+\href{http://libre.adacore.com/}{libre.adacore.com} or one can be installed on
+Linux with the command \codetext{sudo apt-get install gnat}, the compiler also
+needs Ada 2012 support. The vim text editor is required, it is used for editing
+nodes and interactive menus.
+
+\subsection{Building}
+To build the executable run the following command in the project directory:
+
+\begin{lstlisting}[language=bash]
+  gprbuild -P note_chain.gpr
+\end{lstlisting}
+
+\noindent
+this will output the executable to \codetext{./obj/note\_chain}, an exe file
+extension will be added for Windows.
+
+\subsection{Creating a new note}
+To create a note run the command:
+
+\begin{lstlisting}[language=bash]
+  ./obj/note_chain note new
+\end{lstlisting}
+
+\noindent
+This will open the vim editor, type out the content of the note, when done save
+the contents and exit vim, this will create a new note. If you have trouble
+with vim their are many tutorials online detailing the basic operations such as
+how to save and exit.
+
+\subsection{Listing notes}
+To display all of the notes sorted by most recent run the command:
+
+\begin{lstlisting}[language=bash]
+  ./obj/note_chain note new
+\end{lstlisting}
+
+
+
+
 
 \begin{filecontents}{\jobname.bib}
 @misc{Aunit,
