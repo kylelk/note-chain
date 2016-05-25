@@ -46,7 +46,10 @@
 	linkcolor=black
 }
 
-\lstset{columns=flexible}
+\lstset{
+	columns=flexible,
+	basicstyle=\ttfamily
+}
 
 %\embedfile[desc=LaTeX source code]{\jobname.tex}
 \definecolor{light-gray}{gray}{0.95}
@@ -180,8 +183,9 @@ fetching an item from the database by it's SHA-256 hash.
 each leaf in the tree contains the hash of the children leafs. A list of tree
 head nodes is maintained in a JSON file each item references a different branch
 name. The head node points to a commit object. A commit object contains when it
-was created, it's entry tree object reference and the next commit reference. The
-commits are like a liked list in that each item points to the next. the tree
+was created, it's entry tree object reference and the next commit references. The
+commits are like a liked list in that each item points to the next, 
+but a commit can have multiple parents such as in the case of a merge. The tree
 object contains a list of entries in that tree. Each entry has the type and
 reference of the entry, such as a Note object or another child tree. All data
 records items are stored as a JSON object. Before an item is put into the
@@ -220,7 +224,7 @@ An Ada compiler is required to build the project, it can be downloaded at
 \href{http://libre.adacore.com/}{libre.adacore.com} or one can be installed on
 Linux with the command \codetext{sudo apt-get install gnat}, the compiler also
 needs Ada 2012 support. The vim text editor is required, it is used for editing
-nodes and interactive menus.
+nodes and interactive menus. To build the unit tests the Aunit library needs to be installed.
 
 \subsection{Building}
 To build the executable run the following command in the project directory:
@@ -232,6 +236,14 @@ To build the executable run the following command in the project directory:
 \noindent
 this will output the executable to \codetext{./obj/note\_chain}, an exe file
 extension will be added for Windows.
+
+\par \noindent
+To build the unit tests run the following command, this will output an
+executable \codetext{./obj/tests/tests}.
+
+\begin{lstlisting}[language=bash]
+  gprbuild -P test.gpr
+\end{lstlisting}
 
 \subsection{Creating a new note}
 To create a note run the command:
@@ -254,6 +266,86 @@ To display all of the notes sorted by most recent run the command:
 \end{lstlisting}
 
 
+\subsection{Viewing notes}
+To view a note using the interactive menu use the command:
+
+\begin{lstlisting}[language=bash]
+  ./obj/note_chain note menu
+\end{lstlisting}
+
+\noindent
+This will open a temporary file in the vim editor, each line will contain the
+SHA-256 of the note along with the date of when the note was created, the
+selected line will be highlighted in red, use the arrow keys to navigate up and
+down. Open the selected note with the return key. This will open the selected
+note in the vim editor, any changes you make to this node will not be saved.
+
+\subsection{Creating and changing branches}
+To create a new branch from current use the following command:
+
+\begin{lstlisting}[language=bash]
+  ./obj/note_chain branch new <name>
+\end{lstlisting}
+
+\noindent
+To change the branch use the command:
+
+\begin{lstlisting}[language=bash]
+  ./obj/note_chain branch checkout <name>
+\end{lstlisting}
+
+
+\subsection{Merging branches}
+The commits of another branch can be merged into the current branch with the command:
+
+\begin{lstlisting}[language=bash]
+  ./obj/note_chain branch merge <name>
+\end{lstlisting}
+
+\subsection{Branch status}
+To get the name of the current branch use the command:
+
+\begin{lstlisting}[language=bash]
+  ./obj/note_chain branch head
+\end{lstlisting}
+
+\noindent
+To get a list of branch names use the command:
+
+\begin{lstlisting}[language=bash]
+  ./obj/note_chain branch list
+\end{lstlisting}
+
+
+\subsection{Settings}
+Some settings can be defined such as the author name of the notes, values are
+stored as a key-value pairs of strings in a JSON file. Settings are referenced
+by their key name.
+
+\subsubsection{Defining values}
+
+\begin{lstlisting}[language=bash]
+  ./obj/note_chain config set <key> <value>
+\end{lstlisting}
+
+\subsubsection{Getting values}
+
+\begin{lstlisting}[language=bash]
+  ./obj/note_chain config get <key>
+\end{lstlisting}
+
+\subsubsection{Listing}
+This command will show all of the defined settings aligned into columns:
+
+\begin{lstlisting}[language=bash]
+  ./obj/note_chain config list
+\end{lstlisting}
+
+\subsubsection{Removing}
+To remove a setting use the command:
+\begin{lstlisting}[language=bash]
+  ./obj/note_chain config remove <key>
+\end{lstlisting}
 
 
 
