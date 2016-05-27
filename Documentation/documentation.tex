@@ -7,7 +7,6 @@
 \usepackage{hyperref}
 \usepackage{filecontents}
 \usepackage{listings}
-%\usepackage{embedfile}
 
 %
 \renewenvironment{abstract}{%
@@ -31,13 +30,23 @@
 
 \renewcommand*\contentsname{Table of contents}
 
+%-------definitions-----
+\newcommand{\Author}{Kyle Kersey}
+\newcommand{\Title}{Note Chain Project}
+\newcommand{\Keywords}{}
+%--------------------------
+
+%title and author details
+\title{\textbf{\Title}}
+\author{\Author}
+\date{}
+
+
 \pdfinfo{
-   /Author (Nicola Talbot)
-   /Title  (Creating a PDF document using PDFLaTeX)
-   /CreationDate (D:20040502195600)
-   /Subject (PDFLaTeX)
-   /Keywords (PDF;LaTeX)
-   /Date \date{}
+   /Author (\Author)
+   /Title  (\Title)
+   /Keywords (\Keywords)
+   /Date (May 2016)
 }
 
 \hypersetup{
@@ -51,16 +60,11 @@
 	basicstyle=\ttfamily
 }
 
-%\embedfile[desc=LaTeX source code]{\jobname.tex}
 \definecolor{light-gray}{gray}{0.95}
 \newcommand{\codetext}[1]{\colorbox{light-gray}{\texttt{#1}}}
 
 \begin{document}
-%
-%title and author details
-\title{\textbf{Note Chain Project}}
-\author{Kyle Kersey}
-\date{}
+
 
 \clearpage
 \maketitle
