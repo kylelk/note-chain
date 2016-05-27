@@ -7,8 +7,11 @@
 \usepackage{hyperref}
 \usepackage{filecontents}
 \usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes.multipart,chains,arrows}
 
-%
+% end of package imports
+
 \renewenvironment{abstract}{%
 \hfill\begin{minipage}{0.95\textwidth}
 \rule{\textwidth}{1pt}}
@@ -62,6 +65,29 @@
 
 \definecolor{light-gray}{gray}{0.95}
 \newcommand{\codetext}[1]{\colorbox{light-gray}{\texttt{#1}}}
+
+\tikzset{
+    squarecross/.style={
+        draw, rectangle,minimum size=18pt,
+        inner sep=0pt, text=black,
+        path picture = {
+            \draw[black]
+            (path picture bounding box.north west) --
+            (path picture bounding box.south east)
+            (path picture bounding box.south west) --
+            (path picture bounding box.north east);
+        }
+    },
+     connect/.style={-latex, thick},
+     list/.style={
+            very thick, rectangle split,
+            rectangle split parts=4, draw,
+            rectangle split horizontal, minimum size=18pt,
+            inner sep=4pt, text=black
+        },
+        ->, start chain, very thick
+}
+
 
 \begin{document}
 
@@ -351,7 +377,69 @@ To remove a setting use the command:
   ./obj/note_chain config remove <key>
 \end{lstlisting}
 
+\section{Future plans}
+\subsection{Tree structure}
 
+\begin{figure}[!h]
+\centering
+
+\begin{tabular}{|l|l}
+ \cline{1-1}
+	\hspace{1em} & item reference \\ \cline{1-1}
+	& item type  \\ \cline{1-1}
+	& sibling count  \\ \cline{1-1}
+	& deleted node successor ref \\ \cline{1-1}
+	& next ref
+\end{tabular}
+
+
+\caption{Entry structure}
+\label{fig:M4}
+\end{figure}
+
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+
+	\node[list,on chain] (A) {\nodepart{one}{*D} \nodepart{two}{4}};
+	\node[list,on chain] (B) {\nodepart{one}{*C} \nodepart{two}{3}};
+	\node[list,on chain] (C) {\nodepart{one}{*B} \nodepart{two}{2}};
+	\node[list,on chain] (D) {\nodepart{one}{*A} \nodepart{two}{1}};
+
+	  
+	\node[squarecross]   (root) [right=of D] {};
+	\draw[*->] let \p1 = (A.four), \p2 = (A.center) in (\x1,\y2) -- (B);
+	\draw[*->] let \p1 = (B.four), \p2 = (B.center) in (\x1,\y2) -- (C);
+	\draw[*->] let \p1 = (C.four), \p2 = (C.center) in (\x1,\y2) -- (D);
+	\draw[*->] let \p1 = (D.four), \p2 = (D.center) in (\x1,\y2) -- (root);
+\end{tikzpicture}
+\caption{Entries created sequentially}
+\label{fig:M1}
+\end{figure}
+
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+
+	\node (A) [list,on chain]  {4};
+	\node[list,on chain] (B) {3};
+	\node[list,on chain] (C) {2};
+	\node[list,on chain] (D) {1};
+	  
+	\node[squarecross]   (root) [right=of D] {};
+	\draw[*->] let \p1 = (A.three), \p2 = (A.center) in (\x1,\y2) -- (B);
+	\draw[*->] let \p1 = (B.three), \p2 = (B.center) in (\x1,\y2) -- (C);
+	\draw[*->] let \p1 = (C.three), \p2 = (C.center) in (\x1,\y2) -- (D);
+	\draw[*->] let \p1 = (D.three), \p2 = (D.center) in (\x1,\y2) -- (root);
+	\path (A) edge [ bend left] (B);
+\end{tikzpicture}
+\caption{Removing an entry}
+\label{fig:M2}
+\end{figure}
+
+\pagebreak
 
 \begin{filecontents}{\jobname.bib}
 @misc{Aunit,
