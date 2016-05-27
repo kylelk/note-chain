@@ -1,2 +1,2 @@
 pecial-vendored-path/* linguist-vendored
-Documentation/ linguist-vendored=false
+Documentation/gnatdoc/ linguist-vendored=false

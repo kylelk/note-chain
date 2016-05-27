@@ -387,9 +387,8 @@ To remove a setting use the command:
  \cline{1-1}
 	\hspace{1em} & item reference \\ \cline{1-1}
 	& item type  \\ \cline{1-1}
-	& sibling count  \\ \cline{1-1}
-	& deleted node successor ref \\ \cline{1-1}
-	& next ref
+	& modified node reference \\ \cline{1-1}
+	& next node reference \\ \cline{1-1}
 \end{tabular}
 
 
@@ -423,20 +422,22 @@ To remove a setting use the command:
 \centering
 \begin{tikzpicture}
 
-	\node[list,on chain] (A) {\nodepart{one}{*D}};
-	\node[list,on chain] (B) {\nodepart{one}{*C}};
-	\node[list,on chain] (C) {\nodepart{one}{*B}};
-	\node[list,on chain] (D) {\nodepart{one}{*A}};
+	\node[list,on chain] (A) {\nodepart{one}{*B}};
+	\node[list,on chain] (B) {\nodepart{one}{*D}};
+	\node[list,on chain] (C) {\nodepart{one}{*C}};
+	\node[list,on chain] (D) {\nodepart{one}{*B}};
+	\node[list,on chain] (E) {\nodepart{one}{*A}};
 	  
-	\node[squarecross]   (root) [right=of D] {};
+	\node[squarecross]   (root) [right=of E] {};
 	\draw[*->] let \p1 = (A.four), \p2 = (A.center) in (\x1,\y2) -- (B);
 	\draw[*->] let \p1 = (B.four), \p2 = (B.center) in (\x1,\y2) -- (C);
 	\draw[*->] let \p1 = (C.four), \p2 = (C.center) in (\x1,\y2) -- (D);
-	\draw[*->] let \p1 = (D.four), \p2 = (D.center) in (\x1,\y2) -- (root);
+	\draw[*->] let \p1 = (D.four), \p2 = (D.center) in (\x1,\y2) -- (E);
+	\draw[*->] let \p1 = (E.four), \p2 = (E.center) in (\x1,\y2) -- (root);	
 	
-	\path (A) edge [ bend left] (B);
+	\path[*->] let \p1 = (A.three), \p2 = (A.center) in (\x1,\y2) edge [ bend left] (D);
 \end{tikzpicture}
-\caption{Removing an entry}
+\caption{Updating an entry}
 \label{fig:M2}
 \end{figure}
 
