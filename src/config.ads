@@ -6,7 +6,7 @@ package Config is
      (Path : String) return String is
      (GNAT.Directory_Operations.Format_Pathname (Path));
 
-   Version : constant String := "1.12.0";
+   Version : constant String := "1.13.0";
 
    -- directory used to store project data and folders
    Data_Dir : constant String := ".note_chain_data/";
